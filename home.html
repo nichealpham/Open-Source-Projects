@@ -69,6 +69,10 @@
           <i class="fa fa-arrow-right" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Save and Close
         </button>
 
+        <button ng-click="exportToPDF()" class="btn btn-success" style="margin-top:8px;;display:inline-block;margin-left:10px;float:right;padding-left:20px;padding-right:20px;font-size:16px;">
+          <i class="fa fa-floppy-o" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Save and Close
+        </button>
+
 
       </div>
       <div class="col-md-12">
@@ -119,6 +123,7 @@
             <td class="col-md-1" ng-bind="calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
             <td>
                 <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <button class="btn btn-primary" ng-click="insertNewItemAboveThisItemAndThisItemHasNoGroup($index)">Insert above</button>
             </td>
           </tr>
         </table>
@@ -142,6 +147,7 @@
             <td class="col-md-1" ng-bind="calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
             <td>
                 <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProject(group.name, $index, item)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <button class="btn btn-primary" ng-click="insertNewItemAboveThisItemAndThisItemBelongToAGroup(group.name, $index)">Insert above</button>
             </td>
           </tr>
         </table>
@@ -929,6 +935,16 @@
     <script src="lib/json_parse.js"></script>
     <script src="lib/json2.js"></script>
     <script src="lib/json_parse_state.js"></script>
+
+
+    <script src="lib/jspdf/build.js"></script>
+    <script src="lib/jspdf/jspdf.min.js"></script>
+    <script src="lib/jspdf/plugins/from_html.js"></script>
+    <script src="lib/jspdf/plugins/split_text_to_size.js"></script>
+    <script src="lib/jspdf/plugins/png_support.js"></script>
+    <script src="lib/jspdf/plugins/standard_fonts_metrics.js"></script>
+    <script src="lib/jspdf/plugins/javascript.js"></script>
+    <script src="lib/jspdf/plugins/addhtml.js"></script>
 
     <script src="lib/angular.min.js"></script>
     <!-- Scripts files -->

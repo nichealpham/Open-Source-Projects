@@ -6,6 +6,11 @@
     $scope.shouldInsertThisItemToProject = false;
     $scope.shouldInsertThisItemToSelectedProject = false;
     $scope.selectedGroupIndex = -1;
+    $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = false;
+    $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = false;
+    $scope.indexOfItemToInsertAboveAndHasNoGroup = -1;
+    $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;
+    $scope.nameOfTheGroupWhereNewItemInsertAbove = null;
     jq("#btn_displayCreateNewProject").on("click", function () {
         jq("#currentSelectedItemsView").css("display", "inline-block");
         jq("#savedGroupsView").css("display", "none");
@@ -475,23 +480,62 @@
       jq("#popup2").hide();
     };
 
+    $scope.insertNewItemAboveThisItemAndThisItemHasNoGroup = function (itemIndex) {
+      jq("#nenDen").css("display", "inline-block");
+      jq(".left_col").hide();
+      jq("#popup").show();
+      jq("#popup2").hide();
+      $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = true;  // initiated with false
+      $scope.indexOfItemToInsertAboveAndHasNoGroup = itemIndex;               // initiated with -1
+    };
+    $scope.insertNewItemAboveThisItemAndThisItemBelongToAGroup = function (groupName, itemIndex) {
+      jq("#nenDen").css("display", "inline-block");
+      jq(".left_col").hide();
+      jq("#popup").show();
+      jq("#popup2").hide();
+      $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = true;  // initiate with false
+      $scope.indexOfItemToInsertAboveAndBelongToAGroup = itemIndex;               // initiate with -1
+      $scope.nameOfTheGroupWhereNewItemInsertAbove = groupName;                   // initiate with null
+    };
     $scope.addItemToThisGroup = function (itemObj, groupindex, selectedGroupIndex, itemindex) {
       // check first
       // check if this event is fired from currently selected project
       if ( $scope.currentlyInSelectedProjectView == true ) {
-        if ( $scope.shouldInsertThisItemToSelectedProject ) {   // insert this item to items field
-          itemObj.quantity = 1;
-          itemObj.saved = true;
-          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
-          $scope.selectedProject.items.push(JSON.parse(JSON.stringify(itemObj)));
+        if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup ) {
+          // some actions
+          $scope.selectedProject.items.splice($scope.indexOfItemToInsertAboveAndHasNoGroup, 0, JSON.parse(JSON.stringify(itemObj)));
+          // then turn it back to normal state
+          $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = false;
+          $scope.indexOfItemToInsertAboveAndHasNoGroup = -1;
+        }
+        if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup ) {
+          // some actions
+            for (i = 0; i < $scope.selectedProject.groups.length; i ++) {
+              if ($scope.selectedProject.groups[i].name == $scope.nameOfTheGroupWhereNewItemInsertAbove) {
+                $scope.selectedProject.groups[i].items.splice($scope.indexOfItemToInsertAboveAndBelongToAGroup, 0, JSON.parse(JSON.stringify(itemObj)));
+              }
+            };
+          // then turn it back to normal state
+          $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = false;  // initiate with false
+          $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;                       // initiate with -1
+          $scope.nameOfTheGroupWhereNewItemInsertAbove = null;
         }
         else {
-          itemObj.quantity = 1;
-          itemObj.saved = true;
-          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
-          $scope.selectedProject.groups[selectedGroupIndex].items.push(JSON.parse(JSON.stringify(itemObj)));
+          if ( $scope.shouldInsertThisItemToSelectedProject ) {   // insert this item to items field
+            itemObj.quantity = 1;
+            itemObj.saved = true;
+            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+            $scope.selectedProject.items.push(JSON.parse(JSON.stringify(itemObj)));
+          }
+          else {
+            itemObj.quantity = 1;
+            itemObj.saved = true;
+            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+            $scope.selectedProject.groups[selectedGroupIndex].items.push(JSON.parse(JSON.stringify(itemObj)));
+          };
         };
-      } else {
+
+      } else {                                          // this event is fired from create new project view
         if ( $scope.shouldInsertThisItemToProject ) {   // insert this item to items field
           itemObj.quantity = 1;
           itemObj.saved = true;
@@ -788,5 +832,29 @@
     $scope.updateItemLaborCost = function (item) {
       item.saved = false;
     };
+
+    $scope.exportToPDF = function () {
+      // view to export is
+      // div id="checkOutView"
+      var doc = new jsPDF();
+      var elementHandler = {
+        '#ignorePDF': function (element, renderer) {
+          return true;
+        }
+      };
+      var source = jQuery("#checkOutView");
+      doc.fromHTML(
+          source,
+          15,
+          15,
+          {
+            'width': 180,'elementHandlers': elementHandler
+          });
+
+      doc.output("dataurlnewwindow");
+
+    };
+
+
 
 }]);
