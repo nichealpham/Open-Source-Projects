@@ -7,10 +7,89 @@ Next implementation:
 
 1. Insert above:
   - func name: insertNewItemBeforeThisItem(itemIndex, groupIndex, itemToInsert)
+  - changes on the following functions:
+  $scope.insertNewItemAboveThisItemAndThisItemHasNoGroup = function (itemIndex) {
+      jq("#nenDen").css("display", "inline-block");
+      jq(".left_col").hide();
+      jq("#popup").show();
+      jq("#popup2").hide();
+      $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = true;  // initiated with false
+      $scope.indexOfItemToInsertAboveAndHasNoGroup = itemIndex;               // initiated with -1
+    };
+    $scope.insertNewItemAboveThisItemAndThisItemBelongToAGroup = function (groupName, itemIndex) {
+      jq("#nenDen").css("display", "inline-block");
+      jq(".left_col").hide();
+      jq("#popup").show();
+      jq("#popup2").hide();
+      $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = true;  // initiate with false
+      $scope.indexOfItemToInsertAboveAndBelongToAGroup = itemIndex;               // initiate with -1
+      $scope.nameOfTheGroupWhereNewItemInsertAbove = groupName;                   // initiate with null
+    };
+    $scope.addItemToThisGroup = function (itemObj, groupindex, selectedGroupIndex, itemindex) {
+      // check first
+      // check if this event is fired from currently selected project
+      if ( $scope.currentlyInSelectedProjectView == true ) {
+        if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup ) {
+          // some actions
+          $scope.selectedProject.items.splice($scope.indexOfItemToInsertAboveAndHasNoGroup, 0, JSON.parse(JSON.stringify(itemObj)));
+          // then turn it back to normal state
+          $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = false;
+          $scope.indexOfItemToInsertAboveAndHasNoGroup = -1;
+        }
+        if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup ) {
+          // some actions
+            for (i = 0; i < $scope.selectedProject.groups.length; i ++) {
+              if ($scope.selectedProject.groups[i].name == $scope.nameOfTheGroupWhereNewItemInsertAbove) {
+                $scope.selectedProject.groups[i].items.splice($scope.indexOfItemToInsertAboveAndBelongToAGroup, 0, JSON.parse(JSON.stringify(itemObj)));
+              }
+            };
+          // then turn it back to normal state
+          $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = false;  // initiate with false
+          $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;                       // initiate with -1
+          $scope.nameOfTheGroupWhereNewItemInsertAbove = null;
+        }
+        else {
+          if ( $scope.shouldInsertThisItemToSelectedProject ) {   // insert this item to items field
+            itemObj.quantity = 1;
+            itemObj.saved = true;
+            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+            $scope.selectedProject.items.push(JSON.parse(JSON.stringify(itemObj)));
+          }
+          else {
+            itemObj.quantity = 1;
+            itemObj.saved = true;
+            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+            $scope.selectedProject.groups[selectedGroupIndex].items.push(JSON.parse(JSON.stringify(itemObj)));
+          };
+        };
+
+      } else {                                          // this event is fired from create new project view
+        if ( $scope.shouldInsertThisItemToProject ) {   // insert this item to items field
+          itemObj.quantity = 1;
+          itemObj.saved = true;
+          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+          $scope.newProject.items.push(JSON.parse(JSON.stringify(itemObj)));
+        }
+        else {
+          itemObj.quantity = 1;
+          itemObj.saved = true;
+          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+          $scope.newProject.groups[groupindex].items.push(JSON.parse(JSON.stringify(itemObj)));
+        };
+      }
+
+
+
+  //    $scope.items.splice(itemindex, 1);
+    };
   - Layout: "insert above" btn in popup 2 window
+  - Status: in testing...
 2. Import database from CSV
   - func name:
   - Layout: "import from csv" btn on popup 2 window
+  - Status: not yet.
 3. Export to PDF
   - func name: exportToPDF()
-  - Layout: "export to PDF" btn on "checkOutView" div
+  - Layout: "export to PDF" btn on popup 2 window
+  - View to export: div id="checkOutView"
+  - Status: not yet.
