@@ -832,28 +832,77 @@
     $scope.updateItemLaborCost = function (item) {
       item.saved = false;
     };
+    var
+      form = jQuery('#elementToBeConvertedToPDF'),
+
+      a4  =[ 595.28,  841.89];  // for a4 size paper width and height
+//    function getCanvas(){
+//      form.width((a4[0]*1.33333) -80).css('max-width','none');
+//      return html2canvas(form,{
+//         removeContainer:true,
+//         imageTimeout:5000
+//
+//        });
+//    };
 
     $scope.exportToPDF = function () {
-      // view to export is
-      // div id="checkOutView"
-      var doc = new jsPDF();
-      var elementHandler = {
-        '#ignorePDF': function (element, renderer) {
-          return true;
+//      getCanvas().then(function(canvas){
+//        var
+//        img = canvas.toDataURL("image/png"),
+//        doc = new jsPDF({
+//        //    unit:'px',
+//            format:'a4'
+//          });
+  //        doc.addImage(img, 'PNG', 20, 20);
+  //        doc.save('techumber-html-to-pdf.pdf');
+  //        form.width(cache_width);
+  //      });
+      var form = jQuery('#elementToBeConvertedToPDF');
+      var cache_width = jQuery('#elementToBeConvertedToPDF').width();
+      var a4  =[ 595.28,  841.89];
+      form.width((a4[0]*1.33333) -80).css('max-width','none');
+      html2canvas(form, {
+        onrendered: function(canvas) {
+          window.open(canvas.toDataURL("image/png"));
         }
-      };
-      var source = jQuery("#checkOutView");
-      doc.fromHTML(
-          source,
-          15,
-          15,
-          {
-            'width': 180,'elementHandlers': elementHandler
-          });
-
-      doc.output("dataurlnewwindow");
-
+      });
+      form.width(cache_width);
     };
+
+    $scope.exportToPDF2 = function () {
+//      getCanvas().then(function(canvas){
+//        var
+//        img = canvas.toDataURL("image/png"),
+//        doc = new jsPDF({
+//        //    unit:'px',
+//            format:'a4'
+//          });
+  //        doc.addImage(img, 'PNG', 20, 20);
+  //        doc.save('techumber-html-to-pdf.pdf');
+  //        form.width(cache_width);
+  //      });
+      var form = jQuery('#checkOutView');
+      var cache_width = jQuery('#checkOutView').width();
+      var a4  =[1024,  1449];
+      form.width(a4[0]).css('max-width','none');
+      html2canvas(form, {
+        onrendered: function(canvas) {
+          window.open(canvas.toDataURL("image/png"));
+      //    var img = canvas.toDataURL("image/png");
+      //    var doc = new jsPDF({
+      //    //    unit:'px',
+      //        format:'a4'
+      //    });
+      //    doc.addImage(img, 'PNG', 20, 20);
+      //    doc.save('techumber-html-to-pdf.pdf');
+      },
+      width: 1024/2,
+      height: 1449/2
+      });
+      form.width(cache_width);
+    };
+
+    // create canvas object
 
 
 
