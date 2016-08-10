@@ -1,10 +1,8 @@
-@media all {
-
-
-body {
+﻿body {
     margin: 0px;
     padding: 0px;
 }
+new-window { display: none; }
 #createNewPorjectView{
     width:100%;
     display: inline-block;
@@ -22,10 +20,6 @@ body {
     padding-bottom: 20px;
     padding-right:40px;
     display: none;
-}
-.bg-xam {
-  background-color: #EEEEEE !important;
-  color: red;
 }
 .title {
   cursor: pointer;
@@ -56,7 +50,4 @@ body {
   border-radius: 6px;
   overflow: scroll;
   overflow-x: hidden;
-}
--webkit-print-color-adjust: exact;
-
 }

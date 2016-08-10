@@ -1,6 +1,6 @@
 ﻿var app = angular.module("app")
 
-.controller("newProjectController", ["$scope", "$http", function ($scope, $http) {
+.controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", function ($scope, $http, $rootScope, $window, printService) {
     var jq = $.noConflict();
     $scope.stepNum = 1;
     $scope.shouldInsertThisItemToProject = false;
@@ -832,78 +832,41 @@
     $scope.updateItemLaborCost = function (item) {
       item.saved = false;
     };
-    var
-      form = jQuery('#elementToBeConvertedToPDF'),
 
-      a4  =[ 595.28,  841.89];  // for a4 size paper width and height
-//    function getCanvas(){
-//      form.width((a4[0]*1.33333) -80).css('max-width','none');
-//      return html2canvas(form,{
-//         removeContainer:true,
-//         imageTimeout:5000
-//
-//        });
-//    };
-
-    $scope.exportToPDF = function () {
-//      getCanvas().then(function(canvas){
-//        var
-//        img = canvas.toDataURL("image/png"),
-//        doc = new jsPDF({
-//        //    unit:'px',
-//            format:'a4'
-//          });
-  //        doc.addImage(img, 'PNG', 20, 20);
-  //        doc.save('techumber-html-to-pdf.pdf');
-  //        form.width(cache_width);
-  //      });
-      var form = jQuery('#elementToBeConvertedToPDF');
-      var cache_width = jQuery('#elementToBeConvertedToPDF').width();
-      var a4  =[ 595.28,  841.89];
-      form.width((a4[0]*1.33333) -80).css('max-width','none');
-      html2canvas(form, {
-        onrendered: function(canvas) {
-          window.open(canvas.toDataURL("image/png"));
-        }
-      });
-      form.width(cache_width);
+    $scope.printPreview = function (report) {
+      printService.set(report.jsonString);
     };
 
-    $scope.exportToPDF2 = function () {
-//      getCanvas().then(function(canvas){
-//        var
-//        img = canvas.toDataURL("image/png"),
-//        doc = new jsPDF({
-//        //    unit:'px',
-//            format:'a4'
-//          });
-  //        doc.addImage(img, 'PNG', 20, 20);
-  //        doc.save('techumber-html-to-pdf.pdf');
-  //        form.width(cache_width);
-  //      });
-      var form = jQuery('#checkOutView');
-      var cache_width = jQuery('#checkOutView').width();
-      var a4  =[1024,  1449];
-      form.width(a4[0]).css('max-width','none');
-      html2canvas(form, {
-        onrendered: function(canvas) {
-          window.open(canvas.toDataURL("image/png"));
-      //    var img = canvas.toDataURL("image/png");
-      //    var doc = new jsPDF({
-      //    //    unit:'px',
-      //        format:'a4'
-      //    });
-      //    doc.addImage(img, 'PNG', 20, 20);
-      //    doc.save('techumber-html-to-pdf.pdf');
-      },
-      width: 1024/2,
-      height: 1449/2
-      });
-      form.width(cache_width);
-    };
-
-    // create canvas object
 
 
 
+}])
+
+.controller("printController", ["$scope", "$http", "$rootScope", "printService", function ($scope, $http, $rootScope, printService) {
+  $scope.pageTitle = "Print Template";
+  $scope.calculateEachItemTotalMoney2 = function (a, b, c, itemIndex) {
+      var result = parseInt(a) * parseInt(b) + parseInt(c);
+  //    $scope.newProject.items[itemIndex].totalMoney = result;
+      return result;
+  };
+  $scope.projectString = printService.return();
+  $scope.project = JSON.parse($scope.projectString).data;
+  console.log($scope.project);
+
+  $scope.getToTalProjectMoney = function () {
+      var totalMoney = 0;
+      for (i = 0; i <= $scope.project.groups.length - 1; i++) {
+          for (k = 0; k <= $scope.project.groups[i].items.length - 1; k++) {
+              totalMoney += parseInt($scope.project.groups[i].items[k].quantity) * parseInt($scope.project.groups[i].items[k].UnitMaterial) + parseInt($scope.project.groups[i].items[k].UnitLabor);
+          };
+      };
+      for ( j = 0; j <= $scope.project.items.length - 1; j ++ ) {
+        totalMoney += parseInt($scope.project.items[j].quantity) * parseInt($scope.project.items[j].UnitMaterial) + parseInt($scope.project.items[j].UnitLabor);
+      };
+      return totalMoney.toString();
+  };
+
+  window.onbeforeunload = function (e) {
+    window.location("home.html");
+  };
 }]);

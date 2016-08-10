@@ -1,0 +1,128 @@
+<div class="prp-page">
+  <h2 class="color-red">CÔNG TY TNHH TM-DV-CK AN HUY</h2>
+  <h2 class="color-blue">12 HƯNG PHÚ, PHƯỜNG 9 QUẬN 8, TP HCM</h2>
+  <h2 class="color-blue">Tel: (08)-62736308 - Fax: (08)-38595459</h2>
+
+  <br/>
+  <br/>
+  <h2><span class="bold">To:</span> </h2>
+  <h2><span class="bold">From:</span> Dang The Nghiem</h2>
+
+  <br/>
+  <h2><span class="">Date:</span> {{project.Lastmodified}}</h2>
+  <h2><span class="">Quotation:</span> </h2>
+  <h2><span class="">Total pages:</span> </h2>
+  <h2><span class="">Your Ref:</span> </h2>
+
+  <br/>
+  <h1 style="width:96%;display:inline-block;text-align:center;margin-left:2%;font-size:26px;">
+    QUOTATION FOR PIPING & MECHANICAL INSTALLATION
+  </h1>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    1. SCOPE OF WORK:
+  </h2>
+  <h2 style="font-size:15px;">
+    Piping and mechanical installation for Factory Expandsion Project - Akzo Nobel Coatings Vietnam
+  </h2>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    2. PRICE:
+  </h2>
+  <h2 style="font-size:15px;">
+    Total price: (excluded 10% VAT): {{getToTalProjectMoney() | currency:"$":0}} US DOLLARS
+  </h2>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    3. PAYMENT TERMS:
+  </h2>
+  <h2 style="font-size:15px;">
+    Down payment 30% of the contact value after PO/contact signed
+  </h2>
+  <h2 style="font-size:15px;">
+    70% balance to be discussed on payment schedule per completion progress
+  </h2>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    4. TIMING:
+  </h2>
+  <h2 style="font-size:15px;">
+    4 months after PO/confirmation
+  </h2>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    5. VALIDITY:
+  </h2>
+  <h2 style="font-size:15px;">
+    This quotation is valid within 30 days
+  </h2>
+
+  <br/>
+  <h2 style="font-weight:bold;">
+    6. BREAK DOWN COST:
+  </h2>
+
+
+
+
+  <table class="table">
+    <tr class="info">
+      <th>#</th>
+      <th>Prouduct Description</th>
+      <th>Spec</th>
+      <th>Categoty</th>
+      <th>Origin</th>
+      <th>Unit</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Labor</th>
+      <th>Total</th>
+    </tr>
+    <tr ng-repeat="item in project.items track by $index">
+      <td>{{$index + 1}}</td>
+      <td>{{item.Description}}</td>
+      <td>{{item.Spec}}</td>
+      <td>{{item.Category}}</td>
+      <td>{{item.Origin}}</td>
+      <td>{{item.Unit}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.UnitMaterial}}</td>
+      <td>{{item.UnitLabor}}</td>
+      <td ng-bind="calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
+    </tr>
+  </table>
+  <div ng-repeat="group in project.groups track by $index">
+    <h2 class="lbl-group-name">Group {{$index + 1}}: {{group.name}}</h2>
+    <table class="table" >
+      <tr class="info">
+        <th>#</th>
+        <th>Prouduct Description</th>
+        <th>Spec</th>
+        <th>Categoty</th>
+        <th>Origin</th>
+        <th>Unit</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Labor</th>
+        <th>Total</th>
+      </tr>
+      <tr ng-repeat="item in group.items track by $index">
+        <td>{{$index + 1}}</td>
+        <td>{{item.Description}}</td>
+        <td>{{item.Spec}}</td>
+        <td>{{item.Category}}</td>
+        <td>{{item.Origin}}</td>
+        <td>{{item.Unit}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.UnitMaterial}}</td>
+        <td>{{item.UnitLabor}}</td>
+        <td ng-bind="calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
+      </tr>
+    </table>
+  </div>
+</div>
