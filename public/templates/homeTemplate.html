@@ -149,9 +149,9 @@
           <td class="col-md-3">{{item.Description}}</td>
           <td class="col-md-1">{{item.Spec}}</td>
           <td class="col-md-1">{{item.Unit}}</td>
-          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.quantity" on-change="insertQuantity(group, item, $event.target.value)" value="{{item.quantity}}"></input></td>
-          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" on-change="insertPrice(group, item, $event.target.value)" value="{{item.UnitMaterial}}"></input></td>
-          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" on-change="insertLaborCost(group, item, $event.target.value)" value="{{item.UnitLabor}}"></input></td>
+          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.quantity" value="{{item.quantity}}"></input></td>
+          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" value="{{item.UnitMaterial}}"></input></td>
+          <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" value="{{item.UnitLabor}}"></input></td>
           <td class="col-md-1" ng-bind="calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
           <td class="col-md-1"><input type="text" class="form-control" ng-model="item.comments" value="{{item.comments}}"></input></td>
           <td>
@@ -341,7 +341,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-3" ng-repeat="report in ongoingReports track by $index">
+                          <div class="col-md-4" ng-repeat="report in ongoingReports track by $index">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -421,7 +421,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-3" ng-repeat="report in passReports">
+                          <div class="col-md-4" ng-repeat="report in passReports">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -504,7 +504,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-3" ng-repeat="report in failedReports">
+                          <div class="col-md-4" ng-repeat="report in failedReports">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -794,79 +794,24 @@
 
               </div>
             </div>
-            <div class="x_panel home_pannel" id="databasePannel" style="display:none;">
+            <div class="x_panel home_pannel" id="databasePannel">
               <div class="x_title">
-                <h2 style="font-size:24px;">Item Database<small style="font-size:16px;">Insert/Update/Delete Items</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
+                <h2 style="font-size:24px;">{{selectedDatabase.name}} database</h2>
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
                 <div class="col-md-12">
-                    <h1 style="font-size:26px;">Manage Items
+                    <h1 style="font-size:26px;">Items Management
                       <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
                       <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
                     </h1>
                 </div>
-                <div class="col-md-12" id="createNewItemInfoView" style="display:none;">
+                <div class="col-md-12" id="createNewItemInfoView" style="margin-top:20px;display:none;">
                     <form class="form-horizontal" ng-submit="createNewItem()">
-                        <div class="form-group">
-                            <label for="tb_itemName" class="col-sm-2 control-label">Description</label>
+                        <div ng-repeat="field in selectedDatabase.fields" class="form-group">
+                            <label for="tb_itemName" class="col-sm-2 control-label">{{field.fieldname}}</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tb_itemName" ng-model="tb_itemName" placeholder="Item name..." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tb_itemSize" class="col-sm-2 control-label">Spec</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tb_itemSize" placeholder="Size..." ng-model="tb_itemSize" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tb_itemClass" class="col-sm-2 control-label">Origin</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tb_itemOrigin" placeholder="Origin" ng-model="tb_itemOrigin" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tb_itemClass" class="col-sm-2 control-label">Category</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tb_itemClass" placeholder="Class..." ng-model="tb_itemClass" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tb_itemUnit" class="col-sm-2 control-label">Unit</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tb_itemSize" placeholder="Unit..." ng-model="tb_itemUnit" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="tb_itemPrice">Price</label>
-                            <div class="input-group col-md-10">
-                                <div class="input-group-addon">$</div>
-                                <input type="number" class="form-control" id="tb_itemPrize" placeholder="Amount in dollars" ng-model="tb_itemPrice">
-                                <div class="input-group-addon">.00</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="tb_itemlaborCost">Labor cost</label>
-                            <div class="input-group col-md-10">
-                                <div class="input-group-addon">$</div>
-                                <input type="number" class="form-control" id="tb_itemlaborCost" placeholder="Amount in dollars" ng-model="tb_itemLaborCost">
-                                <div class="input-group-addon">.00</div>
+                                <input type="{{field.type}}" class="form-control" ng-model="field.currentData" placeholder="{{field.currentData}}" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -879,55 +824,33 @@
                 <div class="col-md-12">
                     <table class="table table-hover col-md-12" style="margin-top: 10px;display:none;" id="tableSearchItem">
                         <tr style="background-color: #EEEEEE;">
-                            <th class="col-md-1">Search bar</th>
-                            <th class="col-md-5">Description</th>
-                            <th class="col-md-1">Spec</th>
-                            <th class="col-md-1">Category</th>
-                            <th class="col-md-1">Unit</th>
-                            <th class="col-md-1">Price</th>
-                            <th class="col-md-1">Labor cost</th>
-                            <th class="col-md-1"></th>
+                          <tr style="background-color: #EEEEEE;">
+                              <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+                              <th>Action</th>
+                          </tr>
                         </tr>
                         <tr>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox._id" on-change=""></td>
-                            <td class="col-md-5"><input class="form-control" ng-model="searchBox.Description" on-change=""></input></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Spec" on-change=""></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Category" on-change=""></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Unit" on-change=""></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="searchBox.UnitMaterial" on-change=""></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="searchBox.UnitLabor" on-change=""></td>
-                            <td class="col-md-1"></td>
+                          
                         </tr>
                     </table>
                     <table class="table table-hover col-md-12" style="margin-top: 10px;">
                         <tr style="background-color: #EEEEEE;">
-                            <th class="col-md-1">#ID</th>
-                            <th class="col-md-5">Description</th>
-                            <th class="col-md-1">Spec</th>
-                            <th class="col-md-1">Category</th>
-                            <th class="col-md-1">Unit</th>
-                            <th class="col-md-1">Price</th>
-                            <th class="col-md-1">Labor cost</th>
-                            <th class="col-md-1"></th>
+                            <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+                            <th>Action</th>
                         </tr>
-                        <tr ng-repeat="item in items | orderBy: 'Description' | filter: searchBox track by $index">
-                            <td class="col-md-1">{{item._id}}</td>
-                            <td class="col-md-5"><textarea  class="form-control" ng-model="item.Description" ng-change="updateItemName(item)" value="{{item.Description}}"></textarea></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Spec" ng-change="updateItemSize(item)" value="{{item.Spec}}"></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Category" ng-change="updateItemClass(item)" value="{{item.Category}}"></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Unit" ng-change="updateItemUnit(item)" value="{{item.Unit}}"></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" ng-change="updateItemPrice(item)" value="{{item.UnitMaterial}}"></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" ng-change="updateItemLaborCost(item)" value="{{item.UnitLabor}}"></td>
-                            <td class="col-md-1">
-                              <button class="btn btn-danger" ng-click="deleteThisItem($index, item._id)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                              <button class="btn btn-primary" ng-hide="item.saved" ng-click="updateThisItem(item)"><i class="fa fa-save" aria-hidden="true"></i></button>
+                        <tr ng-repeat="entry in selectedDatabase.data | filter: entry_filter1 track by $index">
+                            <td ng-repeat="field in entry track by $index">
+                              <input ng-change="updateThisEntry($parent.$index, $index, field)" type="text" class="form-control" ng-model="field" value="{{field}}"></input>
+                            </td>
+                            <td>
+                              <button class="btn btn-danger" ng-click="deleteThisEntryFromSelectedDatabase($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </table>
                 </div>
               </div>
             </div>
-            <div class="x_panel home_pannel" id="createdDatabasePannel">
+            <div class="x_panel home_pannel" id="createdDatabasePannel" style="display:none;">
               <div class="x_panel">
                 <div class="x_title">
                   <h2 style="font-size:24px;">Created databases<small style="font-size:14px;">Navigate between different databases</small></h2>
@@ -935,7 +858,7 @@
                 </div>
                 <div class="x_content">
                   <h5 ng-show="!checkLengthDatabases()">No databases created yet.</h5>
-                  <div class="col-md-3" ng-repeat="db in databases track by $index">
+                  <div class="col-md-4" ng-repeat="db in databases track by $index">
                       <div class="x_panel">
                           <div class="x_title">
                               <h2>Name: {{db.name}}<small></small></h2>
@@ -970,7 +893,7 @@
                 </div>
               </div>
             </div>
-            <div class="x_panel home_pannel" id="createNewDatabasePannel">
+            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none;">
               <div class="x-panel">
                 <div class="x_title">
                   <h2 style="font-size:24px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>

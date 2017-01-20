@@ -1,7 +1,8 @@
 ﻿var app = angular.module("app")
 
 .controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", function ($scope, $http, $rootScope, $window, printService) {
-    //var jq = $.noConflict();
+
+
     $scope.stepNum = 1;
     $scope.shouldInsertThisItemToProject = false;
     $scope.shouldInsertThisItemToSelectedProject = false;
@@ -200,6 +201,43 @@
       var day = todateFormated.slice(8);
       return day;
     };
+    $scope.databases = [
+      {
+        name: "BME students",
+        dbid: "db#312",
+        date: getToDayFormatted(),
+        fields: [
+          {
+            fieldname: "#ID",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "Name",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "Phone",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "GPA",
+            type: "text",
+            currentData: "",
+          },
+        ],
+        data: [
+          ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
+          ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
+          ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
+          ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
+          ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
+        ],
+      }
+    ];
+    console.log($scope.databases.length);
 
     $http.get("http://112.78.3.114:4220/bomService.asmx/getAllOngoingReport").then(function (response) {
         $scope.ongoingReports = response.data;
@@ -417,7 +455,6 @@
               };
           };
         };
-//        $scope.items.splice(item._id, 0, item);
     };
     $scope.removeThisItemFromSelectedProject = function (groupName, index, item) {
 
@@ -585,10 +622,6 @@
           $scope.newProject.groups[groupindex].items.push(JSON.parse(JSON.stringify(itemObj)));
         };
       }
-
-
-
-  //    $scope.items.splice(itemindex, 1);
     };
     $scope.addThisGroupToProject = function (index, group) {
         //add to projects
@@ -625,7 +658,6 @@
     };
     $scope.calculateEachItemTotalMoney2 = function (a, b, c, itemIndex) {
         var result = parseInt(a) * parseInt(b) + parseInt(c);
-    //    $scope.newProject.items[itemIndex].totalMoney = result;
         return result;
     };
     $scope.insertQuantity = function (groupObj, itemObj, value) {
@@ -698,11 +730,6 @@
           return totalMoney;
         };
     };
-
-//    .controller("updateItemController", ["$scope", "$http", function ($scope, $http) {
-
-
-//    var jq = $.noConflict();
     jQuery("#btn_createNewItem").on("click", function () {
         jQuery("#createNewItemInfoView").toggle();
     });
@@ -854,47 +881,7 @@
       var modal = document.getElementById('myModal');
       modal.style.display = "none";
     };
-    $scope.createNewItem = function () {
-      var len = $scope.items.length;
-      for (i = 0; i < len; i++) {
-        if ($scope.items[i].Description == $scope.tb_itemName) {
-          alert("This description has been used. Please choose another item description!");
-          break;
-        } else {
-          if (i == (len - 1)) {
-            var item = {};
-            var id = getLastItemID() + 1;
-            console.log(id);
-            item._id = id.toString();
-            item.Description = $scope.tb_itemName;
-            item.Spec = $scope.tb_itemSize;
-            item.Origin = $scope.tb_itemOrigin;
-            item.Category = $scope.tb_itemClass;
-            item.Unit = $scope.tb_itemUnit;
-            item.UnitMaterial = $scope.tb_itemPrice;
-            item.UnitLabor = $scope.tb_itemLaborCost;
-            item.saved = true;
-            // date function
 
-            // save it to time modied field
-            item.TimeModified = getToDayFormatted();
-            $scope.items.push(item);
-            $http.post("http://112.78.3.114:4220/bomService.asmx/addNewItem", { "_id": item._id, "Description": item.Description, "Spec": item.Spec, "Origin": item.Origin, "Category": item.Category, "Unit": item.Unit, "UnitLabor": item.UnitLabor, "UnitMaterial": item.UnitMaterial, "TimeModified": item.TimeModified })
-            .then(function() {
-              console.log("OK! Item added to server");
-            });
-            $scope.tb_itemName ="";
-            $scope.tb_itemSize = "";
-            $scope.tb_itemOrigin = "";
-            $scope.tb_itemClass = "";
-            $scope.tb_itemUnit = "";
-            $scope.tb_itemPrice = "";
-            $scope.tb_itemLaborCost = "";
-          };
-        };
-      };
-
-    };
     $scope.deleteThisItem = function (index, itemIDString) {
         $scope.items.splice(index, 1);
         $http.post("http://112.78.3.114:4220/bomService.asmx/deleteItemByID", { "_id": itemIDString }).then(function () {
@@ -939,60 +926,62 @@
 
 
 
-
-
-
+    // $scope.databases = [
+    //   {
+    //     name: "BME students",
+    //     dbid: "db#312",
+    //     date: getToDayFormatted(),
+    //     fields: [
+    //       {
+    //         fieldname: "#ID",
+    //         type: "text",
+    //         currentData: "",
+    //       },
+    //       {
+    //         fieldname: "Name",
+    //         type: "text",
+    //         currentData: "",
+    //       },
+    //       {
+    //         fieldname: "Phone",
+    //         type: "text",
+    //         currentData: "",
+    //       },
+    //       {
+    //         fieldname: "GPA",
+    //         type: "text",
+    //         currentData: "",
+    //       },
+    //     ],
+    //     data: [
+    //       ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
+    //       ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
+    //       ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
+    //       ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
+    //       ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
+    //     ],
+    //   }
+    // ];
     $scope.showCreateNewDatabasePannel = function() {
       jQuery(".home_pannel").hide();
       jQuery("#createNewDatabasePannel").show();
       jQuery("#createdDatabasePannel").show();
     };
-    $scope.databases = [
-      {
-        name: "BME students",
-        dbid: "db#312",
-        date: getToDayFormatted(),
-        fields: [
-          {
-            fieldname: "#ID",
-            type: "text",
-            currentData: "",
-            data: ["BEBEIU13051", "BEBEIU13056", "BEBEIU14567", "BEBEIU17623"],
-          },
-          {
-            fieldname: "Name",
-            type: "text",
-            currentData: "",
-            data: ["Pham, Khoi Nguyen", "Nguyen, Minh Quan", "Tran, Trung Huy", "Do, Viet Duy"],
-          },
-          {
-            fieldname: "Phone",
-            type: "text",
-            currentData: "",
-            data: ["0917264532", "0918273645", "0817453622", "0957346453"],
-          },
-          {
-            fieldname: "GPA",
-            type: "text",
-            currentData: "",
-            data: ["3.45", "3.2", "3.67", "3.9"],
-          },
-        ]
-      }
-    ];
+
     $scope.newDatabase = {
       name: "",
       dbid: "db#" + Math.floor((Math.random() * 10000)),
       date: getToDayFormatted(),
-      fields: []
+      fields: [],
+      data: [],
     };
     $scope.newField = {
       fieldname: "",
       type: "text",
       currentData: "",
     };
+
     $scope.insertThisFieldToNewDatabase = function(fieldObj) {
-      fieldObj.data = [];
       $scope.newDatabase.fields.push(fieldObj);
       $scope.newField = {
         fieldname: "",
@@ -1006,7 +995,8 @@
         name: "",
         dbid: "db#" + Math.floor((Math.random() * 10000)),
         date: getToDayFormatted(),
-        fields: []
+        fields: [],
+        data: [],
       };
     };
     $scope.deleteThisFieldFromNewDatabase = function(index){
@@ -1022,14 +1012,48 @@
       };
     };
 
+    $scope.selectedDatabase = $scope.databases[0];
+    console.log($scope.selectedDatabase);
     $scope.chooseThisDatabase = function(index) {
-
+      $scope.selectedDatabase = $scope.databases[index];
     };
     $scope.updateThisDatabase = function(index) {
 
     };
     $scope.deleteThisDatabase = function(index) {
       $scope.databases.splice(index, 1);
+    };
+
+
+    $scope.updateThisDatabase = function() {
+      var db_id_to_find = $scope.selectedDatabase.dbid;
+      for (i = 0; i < $scope.databases.length; i++) {
+        if ($scope.databases[i].dbid == db_id_to_find) {
+          $scope.databases[i] = $scope.selectedDatabase;
+          console.log("Update database " + db_id_to_find + " succeeded");
+          console.log($scope.databases);
+          break;
+        };
+      };
+    };
+    $scope.deleteThisEntryFromSelectedDatabase = function(index){
+      console.log("Delete entry " + $scope.selectedDatabase.data[index][0] + " succeed");
+      $scope.selectedDatabase.data.splice(index, 1);
+      $scope.updateThisDatabase();
+    };
+    $scope.createNewItem = function () {
+      var arr = [];
+      for (i = 0; i < $scope.selectedDatabase.fields.length; i++) {
+        arr.push($scope.selectedDatabase.fields[i].currentData);
+        $scope.selectedDatabase.fields[i].currentData = "";
+      };
+      $scope.selectedDatabase.data.push(arr);
+      $scope.updateThisDatabase();
+    };
+    $scope.updateThisEntry = function(entryind, valueind, value) {
+      $scope.selectedDatabase.data[entryind][valueind] = value;
+      console.log($scope.selectedDatabase.data[entryind][valueind]);
+      $scope.updateThisDatabase();
     };
 }])
 .controller("printController", ["$scope", "$http", "$rootScope", "printService", "$window", function ($scope, $http, $rootScope, printService, $window) {
@@ -1038,7 +1062,6 @@
       var result = parseInt(a) * parseInt(b) + parseInt(c);
       return result;
   };
-//  $scope.projectString = printService.return();
   $scope.projectString = $window.localStorage['BOM_reportToPrint_string'];
   $scope.project = JSON.parse($scope.projectString).data;
   if ($scope.project.additionalInfo == null) {
