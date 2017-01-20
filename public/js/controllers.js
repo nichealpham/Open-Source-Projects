@@ -1,7 +1,7 @@
 ﻿var app = angular.module("app")
 
 .controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", function ($scope, $http, $rootScope, $window, printService) {
-    var jq = $.noConflict();
+    //var jq = $.noConflict();
     $scope.stepNum = 1;
     $scope.shouldInsertThisItemToProject = false;
     $scope.shouldInsertThisItemToSelectedProject = false;
@@ -11,48 +11,48 @@
     $scope.indexOfItemToInsertAboveAndHasNoGroup = -1;
     $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;
     $scope.nameOfTheGroupWhereNewItemInsertAbove = null;
-    jq("#btn_displayCreateNewProject").on("click", function () {
-        jq("#currentSelectedItemsView").css("display", "inline-block");
-        jq("#savedGroupsView").css("display", "none");
+    jQuery("#btn_displayCreateNewProject").on("click", function () {
+        jQuery("#currentSelectedItemsView").css("display", "inline-block");
+        jQuery("#savedGroupsView").css("display", "none");
     });
-    jq("#btn_displayMySavedGroups").on("click", function () {
-        jq("#currentSelectedItemsView").css("display", "none");
-        jq("#savedGroupsView").css("display", "inline-block");
+    jQuery("#btn_displayMySavedGroups").on("click", function () {
+        jQuery("#currentSelectedItemsView").css("display", "none");
+        jQuery("#savedGroupsView").css("display", "inline-block");
     });
     $scope.goToCheckOutPage = function () {
-      jq("#previewProjectView").css("display", "none");
-      jq("#checkOutView").css("display", "inline-block");
+      jQuery("#previewProjectView").css("display", "none");
+      jQuery("#checkOutView").css("display", "inline-block");
     };
-    jq("#goBackToPreviewProjectPage").on("click", function () {
-        jq("#previewProjectView").css("display", "inline-block");
-        jq("#checkOutView").css("display", "none");
+    jQuery("#goBackToPreviewProjectPage").on("click", function () {
+        jQuery("#previewProjectView").css("display", "inline-block");
+        jQuery("#checkOutView").css("display", "none");
     });
-    jq("#btn_indertItemToProject").on("click", function () {
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup").css("display", "inline-block");
+    jQuery("#btn_indertItemToProject").on("click", function () {
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup").css("display", "inline-block");
       $scope.shouldInsertThisItemToProject = true;
     });
-    jq("#btn_indertItemToSelectedProject").on("click", function () {
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup2").hide();
-      jq("#popup").css("display", "inline-block");
+    jQuery("#btn_indertItemToSelectedProject").on("click", function () {
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup2").hide();
+      jQuery("#popup").css("display", "inline-block");
       $scope.shouldInsertThisItemToSelectedProject = true;
     });
-    jq(".btnComment").on("click", function () {
-      jq(".formComment").hide();
+    jQuery(".btnComment").on("click", function () {
+      jQuery(".formComment").hide();
       jq(this).next().toggle();
     });
-    jq("#nenDen").on("click", function () {
+    jQuery("#nenDen").on("click", function () {
       if ( $scope.currentlyInSelectedProjectView == false ) {
-        jq("#nenDen").css("display", "none");
-        jq("#popup").css("display", "none");
-        jq("#popup2").css("display", "none");
-        jq(".left_col").show();
+        jQuery("#nenDen").css("display", "none");
+        jQuery("#popup").css("display", "none");
+        jQuery("#popup2").css("display", "none");
+        jQuery(".left_col").show();
       } else {
-        jq("#popup").hide();
-        jq("#popup2").show();
+        jQuery("#popup").hide();
+        jQuery("#popup2").show();
       };
 
     });
@@ -145,19 +145,16 @@
         };
 
     $scope.showHomePannel = function () {
-      jq("#databasePannel").hide();
-      jq("#newProjectPannel").hide();
-      jq("#homePannel").show();
+      jQuery(".home_pannel").hide();
+      jQuery("#homePannel").show();
     };
     $scope.showNewProjectPannel = function () {
-      jq("#databasePannel").hide();
-      jq("#newProjectPannel").show();
-      jq("#homePannel").hide();
+      jQuery(".home_pannel").hide();
+      jQuery("#newProjectPannel").show();
     };
     $scope.showDatabasePannel = function () {
-      jq("#databasePannel").show();
-      jq("#newProjectPannel").hide();
-      jq("#homePannel").hide();
+      jQuery(".home_pannel").hide();
+      jQuery("#databasePannel").show();
     };
     var getToDayFormatted = function () {
       var today = new Date();
@@ -204,9 +201,6 @@
       return day;
     };
 
- //   $http.get("http://112.78.3.114:4220/bomService.asmx/getAllReport").then(function (response) {
- //     $scope.reports = response.data;
- //  });
     $http.get("http://112.78.3.114:4220/bomService.asmx/getAllOngoingReport").then(function (response) {
         $scope.ongoingReports = response.data;
         for (i = 0; i <= response.data.length - 1; i++) {
@@ -249,8 +243,6 @@
     $scope.showReportInput = function (reportObj) {
       reportObj.showInput = true;
     };
-    // end of get report
-    // start of get dataItem
     var getLastItemID = function () {
 
       if ($scope.items.length > 0) {
@@ -273,7 +265,6 @@
       else {
         $scope.items = [];
       };
-    //  console.log($scope.items);
     });
     $scope.deleteThisOngoingReport = function (id, index) {
       var cf = confirm("Do you want to delete this report?");
@@ -318,15 +309,14 @@
       $scope.currentlyInSelectedProjectView = true;
       var dataToFetch = JSON.parse(reportObj.jsonString);
       $scope.selectedProject = dataToFetch.data;
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup2").css("display", "inline-block");
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup2").css("display", "inline-block");
     };
     $scope.currentCategory = {
         name: "",
         items: []
     };
-    // http.get from server, store the saved groups in this scope
     $scope.savedGroups = [];
     $scope.groupsInView = [];
 
@@ -338,10 +328,9 @@
         $scope.newProject._id = $scope.tb_projectName;
         $scope.newProject.reportUrl = "report/" + $scope.tb_projectName + ".json",
         $scope.newProject.company = $scope.tb_company;
-        $scope.newProject.Status = jq("#select_Category option:selected").text();
-        jq("#projectInfoView").css("display", "none");
-  //      jq("#addItemView").css("display", "inline-block");
-        jq("#previewProjectView").css("display", "inline-block");
+        $scope.newProject.Status = jQuery("#select_Category option:selected").text();
+        jQuery("#projectInfoView").css("display", "none");
+        jQuery("#previewProjectView").css("display", "inline-block");
         $scope.stepNum = 2;
         console.log($scope.newProject);
     };
@@ -510,32 +499,32 @@
     $scope.addNewItemToThisGroup = function (index) {
       $scope.groupIndex = index;
       $scope.shouldInsertThisItemToProject = false;
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup").css("display", "inline-block");
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup").css("display", "inline-block");
     };
     $scope.addNewItemToThisSelectedGroup = function (index) {
       $scope.selectedGroupIndex = index;
       $scope.shouldInsertThisItemToSelectedProject = false;
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup").show();
-      jq("#popup2").hide();
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup").show();
+      jQuery("#popup2").hide();
     };
 
     $scope.insertNewItemAboveThisItemAndThisItemHasNoGroup = function (itemIndex) {
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup").show();
-      jq("#popup2").hide();
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup").show();
+      jQuery("#popup2").hide();
       $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = true;  // initiated with false
       $scope.indexOfItemToInsertAboveAndHasNoGroup = itemIndex;               // initiated with -1
     };
     $scope.insertNewItemAboveThisItemAndThisItemBelongToAGroup = function (groupName, itemIndex) {
-      jq("#nenDen").css("display", "inline-block");
-      jq(".left_col").hide();
-      jq("#popup").show();
-      jq("#popup2").hide();
+      jQuery("#nenDen").css("display", "inline-block");
+      jQuery(".left_col").hide();
+      jQuery("#popup").show();
+      jQuery("#popup2").hide();
       $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = true;  // initiate with false
       $scope.indexOfItemToInsertAboveAndBelongToAGroup = itemIndex;               // initiate with -1
       $scope.nameOfTheGroupWhereNewItemInsertAbove = groupName;                   // initiate with null
@@ -608,16 +597,16 @@
         console.log($scope.newProject.groups.length);
         //update the groups view
         $scope.savedGroups.splice(index, 1);
-        jq("#btn_goToNextStage").css("display", "inline-block");
+        jQuery("#btn_goToNextStage").css("display", "inline-block");
     };
     $scope.previewProject = function () {
-        jq("#addItemView").css("display", "none");
-        jq("#previewProjectView").css("display", "inline-block");
+        jQuery("#addItemView").css("display", "none");
+        jQuery("#previewProjectView").css("display", "inline-block");
         $scope.stepNum = 3;
     };
     $scope.goBackToAddItemPage = function () {
-        jq("#addItemView").css("display", "inline-block");
-        jq("#previewProjectView").css("display", "none");
+        jQuery("#addItemView").css("display", "inline-block");
+        jQuery("#previewProjectView").css("display", "none");
         $scope.stepNum = 2;
     };
     $scope.calculateEachItemTotalMoney = function (a, b, c, groupObj, itemObj) {
@@ -714,11 +703,11 @@
 
 
 //    var jq = $.noConflict();
-    jq("#btn_createNewItem").on("click", function () {
-        jq("#createNewItemInfoView").toggle();
+    jQuery("#btn_createNewItem").on("click", function () {
+        jQuery("#createNewItemInfoView").toggle();
     });
-    jq("#btn_searchItem").on("click", function () {
-        jq("#tableSearchItem").toggle();
+    jQuery("#btn_searchItem").on("click", function () {
+        jQuery("#tableSearchItem").toggle();
     });
     $scope.sendThisReportToPassedProjectsSentByOngoing = function (reportObj, index) {
       $scope.ongoingReports.splice(index, 1);
@@ -790,20 +779,20 @@
             $scope.passReports[i].jsonString = JSON.stringify(objToStringnify);
           };
         };
-        jq("#nenDen").hide();
-        jq("#popup").hide();
-        jq(".left_col").show();
-        jq("#popup2").hide();
+        jQuery("#nenDen").hide();
+        jQuery("#popup").hide();
+        jQuery(".left_col").show();
+        jQuery("#popup2").hide();
       });
     };
     $scope.CloseThisReport = function () {
       var conf = confirm("Close without saving?");
       if (conf) {
         $scope.currentlyInSelectedProjectView = false;
-        jq("#nenDen").hide();
-        jq("#popup").hide();
-        jq(".left_col").show();
-        jq("#popup2").hide();
+        jQuery("#nenDen").hide();
+        jQuery("#popup").hide();
+        jQuery(".left_col").show();
+        jQuery("#popup2").hide();
       };
 
     };
@@ -949,8 +938,100 @@
 
 
 
-}])
 
+
+
+
+    $scope.showCreateNewDatabasePannel = function() {
+      jQuery(".home_pannel").hide();
+      jQuery("#createNewDatabasePannel").show();
+      jQuery("#createdDatabasePannel").show();
+    };
+    $scope.databases = [
+      {
+        name: "BME students",
+        dbid: "db#312",
+        date: getToDayFormatted(),
+        fields: [
+          {
+            fieldname: "#ID",
+            type: "text",
+            currentData: "",
+            data: ["BEBEIU13051", "BEBEIU13056", "BEBEIU14567", "BEBEIU17623"],
+          },
+          {
+            fieldname: "Name",
+            type: "text",
+            currentData: "",
+            data: ["Pham, Khoi Nguyen", "Nguyen, Minh Quan", "Tran, Trung Huy", "Do, Viet Duy"],
+          },
+          {
+            fieldname: "Phone",
+            type: "text",
+            currentData: "",
+            data: ["0917264532", "0918273645", "0817453622", "0957346453"],
+          },
+          {
+            fieldname: "GPA",
+            type: "text",
+            currentData: "",
+            data: ["3.45", "3.2", "3.67", "3.9"],
+          },
+        ]
+      }
+    ];
+    $scope.newDatabase = {
+      name: "",
+      dbid: "db#" + Math.floor((Math.random() * 10000)),
+      date: getToDayFormatted(),
+      fields: []
+    };
+    $scope.newField = {
+      fieldname: "",
+      type: "text",
+      currentData: "",
+    };
+    $scope.insertThisFieldToNewDatabase = function(fieldObj) {
+      fieldObj.data = [];
+      $scope.newDatabase.fields.push(fieldObj);
+      $scope.newField = {
+        fieldname: "",
+        type: "text",
+        currentData: "",
+      };
+    };
+    $scope.createThisDatabase = function() {
+      $scope.databases.push($scope.newDatabase);
+      $scope.newDatabase = {
+        name: "",
+        dbid: "db#" + Math.floor((Math.random() * 10000)),
+        date: getToDayFormatted(),
+        fields: []
+      };
+    };
+    $scope.deleteThisFieldFromNewDatabase = function(index){
+      $scope.newDatabase.fields.splice(index, 1);
+    };
+    $scope.checkLengthDatabases = function() {
+      var len = $scope.databases.length;
+      if (len >= 1) {
+        return true;
+      }
+      else {
+        return false;
+      };
+    };
+
+    $scope.chooseThisDatabase = function(index) {
+
+    };
+    $scope.updateThisDatabase = function(index) {
+
+    };
+    $scope.deleteThisDatabase = function(index) {
+      $scope.databases.splice(index, 1);
+    };
+}])
 .controller("printController", ["$scope", "$http", "$rootScope", "printService", "$window", function ($scope, $http, $rootScope, printService, $window) {
   $scope.pageTitle = "Print Template";
   $scope.calculateEachItemTotalMoney2 = function (a, b, c, itemIndex) {

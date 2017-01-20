@@ -183,8 +183,9 @@
           <div class="menu_section">
             <ul class="nav side-menu">
               <li ng-click="showHomePannel()"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-              <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> New Project <span class="fa fa-chevron-down"></span></a></li>
-              <li ng-click="showDatabasePannel()"><a><i class="fa fa-table"></i> Item Database <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> Create New Project <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showDatabasePannel()"><a><i class="fa fa-table"></i> Items List <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Create New Database <span class="fa fa-chevron-down"></span></a></li>
             </ul>
           </div>
 
@@ -314,7 +315,7 @@
 
         <div class="row" style="min-height:600px;">
           <div class="col-md-12">
-              <div id="homePannel">
+            <div class="home_pannel" id="homePannel" style="display:none;">
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;" class="bg-xam">Ongoing Projects<small style="font-size:14px;">Review </small></h2>
@@ -340,7 +341,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in ongoingReports track by $index">
+                          <div class="col-md-3" ng-repeat="report in ongoingReports track by $index">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -420,7 +421,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in passReports">
+                          <div class="col-md-3" ng-repeat="report in passReports">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -503,7 +504,7 @@
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in failedReports">
+                          <div class="col-md-3" ng-repeat="report in failedReports">
                               <div class="x_panel">
                                   <div class="x_title">
                                       <h2>ID: {{report._id}}<small></small></h2>
@@ -558,10 +559,8 @@
                           </div>
                       </div>
                   </div>
-              </div>
-
-
-            <div class="x_panel" id="newProjectPannel" style="display:none;min-height:600px;">
+            </div>
+            <div class="x_panel home_pannel" id="newProjectPannel" style="display:none;min-height:600px;">
               <div class="x_title">
                 <h2 style="font-size:24px;">Create New Project Form<small style="font-size:16px;"></small></h2>
                 <ul class="nav navbar-right panel_toolbox">
@@ -795,7 +794,7 @@
 
               </div>
             </div>
-            <div class="x_panel" id="databasePannel" style="display:none;">
+            <div class="x_panel home_pannel" id="databasePannel" style="display:none;">
               <div class="x_title">
                 <h2 style="font-size:24px;">Item Database<small style="font-size:16px;">Insert/Update/Delete Items</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
@@ -925,6 +924,133 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="createdDatabasePannel">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2 style="font-size:24px;">Created databases<small style="font-size:14px;">Navigate between different databases</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h5 ng-show="!checkLengthDatabases()">No databases created yet.</h5>
+                  <div class="col-md-3" ng-repeat="db in databases track by $index">
+                      <div class="x_panel">
+                          <div class="x_title">
+                              <h2>Name: {{db.name}}<small></small></h2>
+                              <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                              <article class="media event" style="margin-bottom:6px;">
+                                  <a class="pull-left date">
+                                      <p class="month">{{getMonthFormated(db.date)}}</p>
+                                      <p class="day">{{getDayFormated(db.date)}}</p>
+                                  </a>
+                                  <div class="media-body">
+                                      <p>ID: {{db.dbid}}</p>
+                                      <p>Date {{db.date}}</p>
+                                      <a class="title" ng-click="chooseThisDatabase($index)"><u>Choose</u></a> |
+                                      <a class="title" ng-click="updateThisDatabase($index)"><u>Update</u></a> |
+                                      <a class="title" ng-click="deleteThisDatabase($index)"><u>Delete</u></a>
+                                  </div>
+                              </article>
+
+                              <p class="title" style="margin-left:0px;">
+                                <span ng-click="showReportInput(report)" style="font-weight:bold;float:left;width:40%;display:inline-block;">Field names:</span>
+                                <span style="float:left;width:95%;display:inline-block;">
+                                  <label ng-repeat="field in db.fields" style="font-weight:400;">{{field.fieldname}},</label>
+                                </span>
+
+
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="createNewDatabasePannel">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:24px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-12">
+                      <h1 style="font-size:26px;">Database Info:</h1>
+                  </div>
+                  <div class="col-md-12">
+                      <form class="form-horizontal">
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Name:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="name..." ng-model="newDatabase.name" required>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemSize" class="col-sm-2 control-label">ID:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="id..." ng-model="newDatabase.dbid" required disabled>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemSize" class="col-sm-2 control-label">Date:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="date..." ng-model="newDatabase.date" required disabled>
+                              </div>
+                          </div>
+                      </form>
+                      <div class="col-md-12">
+                          <h1 style="font-size:26px;">Insert fields:</h1>
+                          <form class="form-horizontal" ng-submit="insertThisFieldToNewDatabase(newField)">
+                              <div class="form-group">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Field name:</label>
+                                  <div class="col-sm-10">
+                                      <input type="text" class="form-control" placeholder="name..." ng-model="newField.fieldname" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Field type:</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control" ng-model="newField.type">
+                                      <option>text</option>
+                                      <option>number</option>
+                                      <option>email</option>
+                                      <option>phone</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-sm-offset-2 col-sm-10">
+                                      <button type="submit" class="btn btn-default">Insert field</button>
+                                  </div>
+                              </div>
+                          </form>
+                          <table style="border:none;" class="col-sm-10 col-sm-offset-2">
+                            <tr ng-repeat="field in newDatabase.fields">
+                              <td class="col-md-2 col-sm-6">{{field.fieldname}}</td>
+                              <td class="col-md-1 col-sm-4">{{field.type}}</td>
+                              <td class="col-md-1 col-sm-2">
+                                <button type="submt" class="btn btn-danger" ng-click="deleteThisFieldFromNewDatabase($index)">
+                                  <i class="fa fa-minus"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </table>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <h1 style="display:inline-block;width:100%;text-align:center;">{{newDatabase.name}}</h1>
+                      <table class="table table-hover col-md-12" style="margin-top: 10px;">
+                          <tr style="background-color: #EEEEEE;">
+                              <th ng-repeat="field in newDatabase.fields">{{field.fieldname}}</th>
+                          </tr>
+                      </table>
+                  </div>
+                  <div class="col-sm-offset-2 col-sm-10" style="margin-top:20px;">
+                      <button type="submit" class="btn btn-default" ng-click="createThisDatabase()">Create this database</button>
+                  </div>
                 </div>
               </div>
             </div>
