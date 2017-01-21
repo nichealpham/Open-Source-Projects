@@ -1,0 +1,7 @@
+- import/export data scheme
+
+- search box
+
+- database server
+
+- input text ng-change auto update local storage

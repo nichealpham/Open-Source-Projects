@@ -60,54 +60,50 @@
     $scope.currentlyInSelectedProjectView = false;
     $scope.selectedProject = {};
     $scope.exportReport = function (reportObj) {
-            // If JSONData is not an object then JSON.parse will parse the JSON string in an Object
             var JSONData = reportObj.jsonString;
             var ReportTitle = reportObj._id;
             var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-            var dataObj = arrData.data;   // dataObj is the object that represents the report itself
+            var dataObj = arrData.data;
             console.log(dataObj);
-            //
             var CSV = '';
-            //Set Report title in first row or line
-            // Static Info
             CSV += '_id:,' + dataObj._id + '\r\n';
             CSV += 'Day created:,' + '"' + dataObj.Lastmodified + '"' + '\r\n';
             CSV += 'Status:,'  + dataObj.Status + '\r\n';
             CSV += 'Comment:,' + dataObj.Comment + '\r\n';
             CSV += '\r\n\n';
-            //Create table headers
 
-            var row = '_id,Name,Category,Unit,Origin,Spec,Price,Quantity,Labor,Money';
+            var row = "";
+            for (i = 0; i < dataObj.fields.length; i++) {
+              var data = dataObj.fields[i].fieldname;
+              data = data.replace(",", "");
+              row = row + "," + data;
+            };
+            row = row.slice(1);
             CSV += row + '\r\n';
 
-
-            //1st loop is to extract each item in the items array
             for (var i = 0; i <= dataObj.items.length - 1; i++) {
-                var row = '';
-                var thisItemCost = parseInt(dataObj.items[i].quantity) * parseInt(dataObj.items[i].UnitMaterial) + parseInt(dataObj.items[i].UnitLabor);
-                // insert the value into the row string, comma-seperated
-                row += ( dataObj.items[i]._id + ',"' + dataObj.items[i].Description + '",' + dataObj.items[i].Category + ',' + dataObj.items[i].Unit + ',' + dataObj.items[i].Origin + ',' + dataObj.items[i].Spec + ',' + dataObj.items[i].UnitMaterial + ',' + dataObj.items[i].quantity );
-                row += ( ',' + dataObj.items[i].UnitLabor + ',' + thisItemCost );
-
-                row.slice(0, row.length - 1);
-
-                //add a line break after each row
-                CSV += row + '\r\n';
+              var entry = dataObj.items[i];
+              var row = "";
+              for (k = 0; k < entry.length; k++) {
+                var data = entry[k];
+                data = data.replace(",", "");
+                row = row + "," + data;
+              };
+              row = row.slice(1);
+              CSV += row + '\r\n';
             };
-            //2nd loop to insert all groups items to CSV
             for (var j = 0; j <= dataObj.groups.length - 1; j++) {
               var name = dataObj.groups[j].name + '\r\n';
               CSV += name;
               for (var i = 0; i <= dataObj.groups[j].items.length - 1; i++) {
-                  var row = '';
-                  var thisItemCost = parseInt(dataObj.groups[j].items[i].quantity) * parseInt(dataObj.groups[j].items[i].UnitMaterial) + parseInt(dataObj.groups[j].items[i].UnitLabor);
-                  // insert the value into the row string, comma-seperated
-                  row += ( dataObj.groups[j].items[i]._id + ',"' + dataObj.groups[j].items[i].Description + '",' + dataObj.groups[j].items[i].Category + ',' + dataObj.groups[j].items[i].Unit + ',' + dataObj.groups[j].items[i].Origin + ',' + dataObj.groups[j].items[i].Spec + ',' + dataObj.groups[j].items[i].UnitMaterial + ',' + dataObj.groups[j].items[i].quantity );
-                  row += ( ',' + dataObj.groups[j].items[i].UnitLabor + ',' + thisItemCost );
-
-                  row.slice(0, row.length - 1);
-
-                  //add a line break after each row
+                  var row = "";
+                  var entry = dataObj.groups[j].items[i];
+                  for (k = 0; k < entry.length; k++) {
+                    var data = entry[k];
+                    data = data.replace(",", "");
+                    row = row + "," + data;
+                  };
+                  row = row.slice(1);
                   CSV += row + '\r\n';
               };
             };
@@ -116,29 +112,21 @@
                 alert("Invalid data");
                 return;
             }
-            // for creating file in web app
-
-            //Generate a file name
             var fileName = "MyReport_";
             //this will remove the blank-spaces from the title and replace it with an underscore
             fileName += ReportTitle.replace(/ /g,"_");
-
             //Initialize file format you want csv or xls
             var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-
             // Now the little tricky part.
             // you can use either>> window.open(uri);
             // but this will not work in some browsers
             // or you will not get the correct file extension
-
             //this trick will generate a temp <a /> tag
             var link = document.createElement("a");
             link.href = uri;
-
             //set the visibility hidden so it will not effect on your web-layout
             link.style = "visibility:hidden";
             link.download = fileName + ".csv";
-
             //this part will append the anchor tag and remove it after automatic click
             document.body.appendChild(link);
             link.click();
@@ -201,46 +189,10 @@
       var day = todateFormated.slice(8);
       return day;
     };
-
-    $http.get("http://112.78.3.114:4220/bomService.asmx/getAllOngoingReport").then(function (response) {
-        $scope.ongoingReports = response.data;
-        for (i = 0; i <= response.data.length - 1; i++) {
-          $scope.ongoingReports[i].showInput = false;
-        };
-        if ($scope.ongoingReports.length > 0) {
-          $scope.selectedProject = $scope.ongoingReports[0];
-          $scope.selectedProject.groups = [];
-          $scope.selectedProject.items = [];
-        };
-    });
-    $http.get("http://112.78.3.114:4220/bomService.asmx/getAllPassReport").then(function (response) {
-        $scope.passReports = response.data;
-        for (i = 0; i <= response.data.length - 1; i++) {
-          $scope.passReports[i].showInput = false;
-        };
-        if ($scope.passReports.length > 0) {
-          $scope.selectedProject = $scope.passReports[0];
-          $scope.selectedProject.groups = [];
-          $scope.selectedProject.items = [];
-        };
-    });
     $scope.changeThisReportComment = function (reportObj) {
       reportObj.showInput = false;
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportComment', { "_id": reportObj._id, "Comment": reportObj.Comment }).then(function () {
-        console.log("Comment changed successfully");
-      });
+      $scope.updateAllReports();
     };
-    $http.get("http://112.78.3.114:4220/bomService.asmx/getAllFaliedlReport").then(function (response) {
-        $scope.failedReports = response.data;
-        for (i = 0; i <= response.data.length - 1; i++) {
-          $scope.failedReports[i].showInput = false;
-        };
-        if ($scope.failedReports.length > 0) {
-          $scope.selectedProject = $scope.failedReports[0];
-          $scope.selectedProject.groups = [];
-          $scope.selectedProject.items = [];
-        };
-    });
     $scope.showReportInput = function (reportObj) {
       reportObj.showInput = true;
     };
@@ -256,46 +208,33 @@
       };
 
     };
-    $http.get("http://112.78.3.114:4220/bomService.asmx/getAllItem").then(function (response) {
-      if (response.data.length > 0) {
-        $scope.items = response.data;               // use for inserting new item to group
-        for (i = 0; i <= $scope.items.length - 1; i++) {
-          $scope.items[i].saved = true;
-        };
-      }
-      else {
-        $scope.items = [];
-      };
-    });
     $scope.deleteThisOngoingReport = function (id, index) {
       var cf = confirm("Do you want to delete this report?");
       if (cf == true) {
         console.log("Delete action fired!");
-        $http.post("http://112.78.3.114:4220/bomService.asmx/deleteReportByID", { "_id": id }).then(function () {
-            $scope.ongoingReports.splice(index, 1);
-        });
+        $scope.ongoingReports.splice(index, 1);
       };
-
+      $scope.updateAllReports();
     };
     $scope.deleteThisPassReport = function (id, index) {
 
         var cf = confirm("Do you want to delete this report?");
         if (cf == true) {
           console.log("Delete action fired!");
-          $http.post("http://112.78.3.114:4220/bomService.asmx/deleteReportByID", { "_id": id }).then(function () {
-              $scope.passReports.splice(index, 1);
-          });
+
+          $scope.passReports.splice(index, 1);
+
         };
+        $scope.updateAllReports();
     };
     $scope.deleteThisFailedReport = function (id, index) {
 
         var cf = confirm("Do you want to delete this report?");
         if (cf == true) {
           console.log("Delete action fired!");
-          $http.post("http://112.78.3.114:4220/bomService.asmx/deleteReportByID", { "_id": id }).then(function () {
-              $scope.failedReports.splice(index, 1);
-          });
+          $scope.failedReports.splice(index, 1);
         };
+        $scope.updateAllReports();
     };
     $scope.admin = {
         name: "Admin",
@@ -317,44 +256,49 @@
 
     $scope.savedGroups = [];
     $scope.groupsInView = [];
+    if ($window.localStorage['databases']) {
+      $scope.databases = JSON.parse($window.localStorage['databases']);
+    } else {
+      $scope.databases = [
+        {
+          name: "BME students",
+          dbid: "db#312",
+          date: getToDayFormatted(),
+          fields: [
+            {
+              fieldname: "#ID",
+              type: "text",
+              currentData: "",
+            },
+            {
+              fieldname: "Name",
+              type: "text",
+              currentData: "",
+            },
+            {
+              fieldname: "Phone",
+              type: "text",
+              currentData: "",
+            },
+            {
+              fieldname: "GPA",
+              type: "text",
+              currentData: "",
+            },
+          ],
+          data: [
+            ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
+            ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
+            ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
+            ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
+            ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
+          ],
+        }
+      ];
+    };
 
-    $scope.databases = [
-      {
-        name: "BME students",
-        dbid: "db#312",
-        date: getToDayFormatted(),
-        fields: [
-          {
-            fieldname: "#ID",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "Name",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "Phone",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "GPA",
-            type: "text",
-            currentData: "",
-          },
-        ],
-        data: [
-          ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
-          ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
-          ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
-          ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
-          ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
-        ],
-      }
-    ];
-    $scope.selectedDatabase = $scope.databases[0];
+    $scope.selectedDatabaseIndex = $scope.databases.length - 1;
+    $scope.selectedDatabase = $scope.databases[$scope.selectedDatabaseIndex];
     $scope.newProject = {
         name: getToDayFormattedForReportID(),
         _id: getToDayFormattedForReportID(),
@@ -375,7 +319,24 @@
         name: "",
         items: []
     };
-
+    if ($window.localStorage['ongoingReports']) {
+      $scope.ongoingReports = JSON.parse($window.localStorage['ongoingReports']);
+    }
+    else {
+      $scope.ongoingReports = [];
+    };
+    if ($window.localStorage['passReports']) {
+      $scope.passReports = JSON.parse($window.localStorage['passReports']);
+    }
+    else {
+      $scope.passReports = [];
+    };
+    if ($window.localStorage['failedReports']) {
+      $scope.failedReports = JSON.parse($window.localStorage['failedReports']);
+    }
+    else {
+      $scope.failedReports = [];
+    };
     // functions
 
     $scope.createNewProject = function () {
@@ -397,12 +358,15 @@
 
       if ($scope.newProject.Status == "ongoing") {
           $scope.ongoingReports.push($scope.newProject);
+          $window.localStorage['ongoingReports'] = JSON.stringify($scope.ongoingReports);
       };
       if ($scope.newProject.Status == "pass") {
           $scope.passReports.push($scope.newProject);
+          $window.localStorage['passReports'] = JSON.stringify($scope.passReports);
       };
       if ($scope.newProject.Status == "failed") {
           $scope.failedReports.push($scope.newProject);
+          $window.localStorage['failedReports'] = JSON.stringify($scope.failedReports);
       };
       $scope.newProject = {
           name: getToDayFormattedForReportID(),
@@ -433,14 +397,6 @@
 
     };
     $scope.removeThisGroupFromSelectedProject = function (index) {
-
-        var cf = confirm("Delete this Group?");
-        if (cf == true) {
-          $scope.selectedProject.groups.splice(index, 1);
-        };
-    };
-    $scope.removeThisGroupFromSelectedProject = function (index) {
-
       var cf = confirm("Delete this Group?");
       if (cf == true) {
         $scope.selectedProject.groups.splice(index, 1);
@@ -457,13 +413,14 @@
           };
         };
     };
-    $scope.removeThisItemFromSelectedProject = function (groupName, index, item) {
+    $scope.removeThisItemFromSelectedProject = function (groupName, index) {
 
       var cf = confirm("Delete this Item?");
       if (cf == true) {
         for (i = 0; i <= $scope.selectedProject.groups.length - 1; i++) {
             if ($scope.selectedProject.groups[i].name == groupName) {
                 $scope.selectedProject.groups[i].items.splice(index, 1);
+                break;
             };
         };
       };
@@ -709,49 +666,42 @@
     jQuery("#btn_searchItem").on("click", function () {
         jQuery("#tableSearchItem").toggle();
     });
+    $scope.updateAllReports = function() {
+      $window.localStorage["ongoingReports"] = JSON.stringify($scope.ongoingReports);
+      $window.localStorage["passReports"] = JSON.stringify($scope.passReports);
+      $window.localStorage["failedReports"] = JSON.stringify($scope.failedReports);
+    };
     $scope.sendThisReportToPassedProjectsSentByOngoing = function (reportObj, index) {
       $scope.ongoingReports.splice(index, 1);
       $scope.passReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "pass" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     $scope.sendThisReportToFailedProjectsSentByOngoing = function (reportObj, index) {
       $scope.ongoingReports.splice(index, 1);
       $scope.failedReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "failed" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     ///////
     $scope.sendThisReportToOngoingProjectsSentByPassed = function (reportObj, index) {
       $scope.passReports.splice(index, 1);
       $scope.ongoingReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "ongoing" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     $scope.sendThisReportToFailedProjectsSentByPassed = function (reportObj, index) {
       $scope.passReports.splice(index, 1);
       $scope.failedReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "failed" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     ///////
     $scope.sendThisReportToOngoingProjectsSentByFailed = function (reportObj, index) {
       $scope.failedReports.splice(index, 1);
       $scope.ongoingReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "ongoing" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     $scope.sendThisReportToPassedProjectsSentByFailed = function (reportObj, index) {
       $scope.failedReports.splice(index, 1);
       $scope.passReports.push(reportObj);
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportStatus', { "_id": reportObj._id, "Status": "pass" }).then(function (response) {
-        console.log("Status updated successfully");
-      });
+      $scope.updateAllReports();
     };
     ////////
     $scope.saveAndCloseThisReport = function () {
@@ -759,31 +709,29 @@
       var objToStringnify = {
         data: $scope.selectedProject
       };
-      $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportJsonString', { "_id": $scope.selectedProject._id, "jsonString": JSON.stringify(objToStringnify) }).then(function (response) {
-        console.log("Report saved");
-        // now fake the client software
-        // loop through every reports
-        // and change it!
-        for (i = 0; i <= $scope.ongoingReports.length - 1; i++) {
-          if ( $scope.selectedProject._id == $scope.ongoingReports[i]._id ) {
-            $scope.ongoingReports[i].jsonString = JSON.stringify(objToStringnify);
-          };
+      for (i = 0; i <= $scope.ongoingReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.ongoingReports[i]._id ) {
+          $scope.ongoingReports[i].jsonString = JSON.stringify(objToStringnify);
+          break;
         };
-        for (i = 0; i <= $scope.failedReports.length - 1; i++) {
-          if ( $scope.selectedProject._id == $scope.failedReports[i]._id ) {
-            $scope.failedReports[i].jsonString = JSON.stringify(objToStringnify);
-          };
+      };
+      for (i = 0; i <= $scope.failedReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.failedReports[i]._id ) {
+          $scope.failedReports[i].jsonString = JSON.stringify(objToStringnify);
+          break;
         };
-        for (i = 0; i <= $scope.passReports.length - 1; i++) {
-          if ( $scope.selectedProject._id == $scope.passReports[i]._id ) {
-            $scope.passReports[i].jsonString = JSON.stringify(objToStringnify);
-          };
+      };
+      for (i = 0; i <= $scope.passReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.passReports[i]._id ) {
+          $scope.passReports[i].jsonString = JSON.stringify(objToStringnify);
+          break;
         };
-        jQuery("#nenDen").hide();
-        jQuery("#popup").hide();
-        jQuery(".left_col").show();
-        jQuery("#popup2").hide();
-      });
+      };
+      jQuery("#nenDen").hide();
+      jQuery("#popup").hide();
+      jQuery(".left_col").show();
+      jQuery("#popup2").hide();
+      $scope.updateAllReports();
     };
     $scope.CloseThisReport = function () {
       var conf = confirm("Close without saving?");
@@ -799,14 +747,12 @@
     $scope.saveNewThisReport = function() {
       var modal = document.getElementById('myModal');
       modal.style.display = "inline-block";
-      // Get the <span> element that closes the modal
+
       var span = document.getElementsByClassName("close")[0];
 
       span.onclick = function() {
           modal.style.display = "none";
       };
-
-// When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
           if (event.target == modal) {
               modal.style.display = "none";
@@ -821,56 +767,38 @@
           data: $scope.newProject
       };
       $scope.newProject.jsonString = JSON.stringify(dataString);
-      console.log($scope.newProject.jsonString);
-      $scope.newProject.Comment = "none";
-      console.log($scope.newProject._id);
-      $http.post("http://112.78.3.114:4220/bomService.asmx/addNewReport", { "_id": $scope.newProject._id, "reportUrl": $scope.newProject.reportUrl, "Status": $scope.newProject.Status, "Comment": $scope.newProject.Comment, "Createdby": $scope.newProject.Createdby, "Lastmodified": $scope.newProject.Lastmodified, "jsonString": $scope.newProject.jsonString }).then(function () {
-          if ($scope.newProject.Status == "ongoing") {
-              $scope.ongoingReports.push($scope.newProject);
-          };
-          if ($scope.newProject.Status == "pass") {
-              $scope.passReports.push($scope.newProject);
-          };
-          if ($scope.newProject.Status == "failed") {
-              $scope.failedReports.push($scope.newProject);
-          };
-          $scope.newProject = {
-              name: getToDayFormattedForReportID(),
-              _id: getToDayFormattedForReportID(),
-              showInput: false,
-              company: "Default Company",
-              category: "Engineer",
-              reportUrl: "report/" + $scope.tb_projectName + ".json",
-              Status: "ongoing",
-              Createdby: $scope.admin.name,
-              Comment: "",
-              Lastmodified: getToDayFormatted(),
-              jsonString: "none",
-              fields: $scope.selectedDatabase.fields,
-              items: [],
-              groups: []
-          };
-          console.log("Report saved successfully");
-      });
+      if ($scope.newProject.Status == "ongoing") {
+          $scope.ongoingReports.push($scope.newProject);
+      };
+      if ($scope.newProject.Status == "pass") {
+          $scope.passReports.push($scope.newProject);
+      };
+      if ($scope.newProject.Status == "failed") {
+          $scope.failedReports.push($scope.newProject);
+      };
+      $scope.newProject = {
+          name: getToDayFormattedForReportID(),
+          _id: getToDayFormattedForReportID(),
+          showInput: false,
+          company: "Default Company",
+          category: "Engineer",
+          reportUrl: "report/" + $scope.tb_projectName + ".json",
+          Status: "ongoing",
+          Createdby: $scope.admin.name,
+          Comment: "",
+          Lastmodified: getToDayFormatted(),
+          jsonString: "none",
+          fields: $scope.selectedDatabase.fields,
+          items: [],
+          groups: []
+      };
+      console.log("Report saved successfully");
       var modal = document.getElementById('myModal');
       modal.style.display = "none";
-    };
-
-    $scope.deleteThisItem = function (index, itemIDString) {
-        $scope.items.splice(index, 1);
-        $http.post("http://112.78.3.114:4220/bomService.asmx/deleteItemByID", { "_id": itemIDString }).then(function () {
-          console.log("Item Deleted");
-        });
+      $scope.updateAllReports();
     };
     // functions
     // when "save button" is clicked
-    $scope.updateThisItem = function (item) {
-      $http.post("http://112.78.3.114:4220/bomService.asmx/updateItemByID", { "_id": item._id, "Description": item.Description, "Spec": item.Spec, "Origin": item.Origin, "Category": item.Category, "Unit": item.Unit, "UnitLabor": item.UnitLabor, "UnitMaterial": item.UnitMaterial, "TimeModified": item.TimeModified })
-      .then(function() {
-        console.log("OK! Item added to server");
-        item.saved = true;
-      });
-    };
     $scope.updateItemName = function (item) {
         item.saved = false;
     };
@@ -891,7 +819,6 @@
     };
 
     $scope.printPreview = function (report) {
-      //printService.set(report.jsonString);
       $window.localStorage['BOM_reportToPrint_string'] = report.jsonString;
       $window.open("#/print", "_blank");
     };
@@ -966,6 +893,7 @@
     };
     $scope.createThisDatabase = function() {
       $scope.databases.push($scope.newDatabase);
+      $window.localStorage['databases'] = JSON.stringify($scope.databases);
       $scope.newDatabase = {
         name: "",
         dbid: "db#" + Math.floor((Math.random() * 10000)),
@@ -973,6 +901,8 @@
         fields: [],
         data: [],
       };
+      var index = $scope.databases.length - 1;
+      $scope.chooseThisDatabase(index);
     };
     $scope.deleteThisFieldFromNewDatabase = function(index){
       $scope.newDatabase.fields.splice(index, 1);
@@ -987,10 +917,26 @@
       };
     };
 
-
     console.log($scope.selectedDatabase);
     $scope.chooseThisDatabase = function(index) {
       $scope.selectedDatabase = $scope.databases[index];
+      console.log($scope.selectedDatabase);
+      $scope.newProject = {
+          name: getToDayFormattedForReportID(),
+          _id: getToDayFormattedForReportID(),
+          showInput: false,
+          company: "Default Company",
+          category: "Engineer",
+          reportUrl: "report/" + $scope.tb_projectName + ".json",
+          Status: "ongoing",
+          Createdby: $scope.admin.name,
+          Comment: "",
+          Lastmodified: getToDayFormatted(),
+          jsonString: "",
+          fields: $scope.selectedDatabase.fields,
+          items: [],
+          groups: []
+      };
     };
     $scope.updateThisDatabase = function(index) {
 
@@ -1005,8 +951,10 @@
       for (i = 0; i < $scope.databases.length; i++) {
         if ($scope.databases[i].dbid == db_id_to_find) {
           $scope.databases[i] = $scope.selectedDatabase;
+          $window.localStorage['databases'] = JSON.stringify($scope.databases);
           console.log("Update database " + db_id_to_find + " succeeded");
           console.log($scope.databases);
+
           break;
         };
       };
@@ -1032,11 +980,14 @@
     };
 }])
 .controller("printController", ["$scope", "$http", "$rootScope", "printService", "$window", function ($scope, $http, $rootScope, printService, $window) {
-  $scope.pageTitle = "Print Template";
-  $scope.calculateEachItemTotalMoney2 = function (a, b, c, itemIndex) {
-      var result = parseInt(a) * parseInt(b) + parseInt(c);
-      return result;
+  $scope.company = {
+    name: "Cassandra startup",
+    address: "Office A1.513, International University, Linh Trung district, Vietnam",
+    tel: "(08)-38766575",
+    fax: "(08)-38595459",
+    logo: "images/logo.png"
   };
+  $scope.pageTitle = "Print Template";
   $scope.projectString = $window.localStorage['BOM_reportToPrint_string'];
   $scope.project = JSON.parse($scope.projectString).data;
   if ($scope.project.additionalInfo == null) {
@@ -1103,9 +1054,6 @@
       data: $scope.project
     };
     $window.localStorage['BOM_reportToPrint_string'] = JSON.stringify(objToStringnify);
-    $http.post('http://112.78.3.114:4220/bomService.asmx/updateReportJsonString', { "_id": $scope.project._id, "jsonString": JSON.stringify(objToStringnify) }).then(function (response) {
-      console.log("Report saved");
-    });
   };
   $scope.getToTalProjectMoney = function () {
       var totalMoney = 0;
