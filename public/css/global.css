@@ -129,3 +129,6 @@ new-window { display: none; }
   overflow: scroll;
   overflow-x: hidden;
 }
+input {
+  border-radius: 4px;
+}

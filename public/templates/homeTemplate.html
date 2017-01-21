@@ -29,35 +29,25 @@
   <div class="col-md-6">
     <input ng-model="tb_filterMaterialByName.Description" type="text" class="form-control" placeholder="search by item name..." />
   </div>
-    <div class="col-md-2">
-        <input ng-model="tb_filterMaterialByName.Spec" type="text" class="form-control" placeholder="search by size..." />
-    </div>
-    <div class="col-md-2">
-        <input ng-model="tb_filterMaterialByName.Category" type="text" class="form-control" placeholder="search by class..." />
-    </div>
+  <div class="col-md-2">
+      <input ng-model="tb_filterMaterialByName.Spec" type="text" class="form-control" placeholder="search by size..." />
+  </div>
+  <div class="col-md-2">
+      <input ng-model="tb_filterMaterialByName.Category" type="text" class="form-control" placeholder="search by class..." />
+  </div>
   <table class="table table-hover col-md-12" style="margin-top: 10px;">
     <tr style="background-color: #EEEEEE;">
-      <th>#</th>
-      <th>Description</th>
-      <th>Spec</th>
-      <th>Category</th>
-      <th>Origin</th>
-      <th>Unit</th>
-      <th>Price</th>
-      <th>Labor</th>
-      <th></th>
+      <th>Index</th>
+      <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+      <th>Action</th>
     </tr>
-    <tr ng-repeat="item in items | orderBy: 'Description' | filter: tb_filterMaterialByName">
+    <tr ng-repeat="entry in selectedDatabase.data track by $index">
       <td><b>{{$index + 1}}</b></td>
-      <td>{{item.Description}}</td>
-      <td>{{item.Spec}}</td>
-      <td>{{item.Category}}</td>
-      <td>{{item.Origin}}</td>
-      <td>{{item.Unit}}</td>
-      <td>{{item.UnitMaterial}}</td>
-      <td>{{item.UnitLabor}}</td>
+      <td ng-repeat="value in entry track by $index">
+        <input type="text" ng-model="value" value="{{value}}" class="form-control" style="border-radius:2px;"></input>
+      </td>
       <td>
-        <button class="btn btn-primary" ng-click="addItemToThisGroup(item, groupIndex, selectedGroupIndex, $index)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="btn btn-primary" ng-click="addItemToThisGroup(entry, groupIndex, selectedGroupIndex, $index)"><i class="fa fa-plus" aria-hidden="true"></i></button>
       </td>
     </tr>
   </table>
@@ -81,22 +71,26 @@
 
     </div>
     <div class="col-md-12">
-      <div class="col-md-12" style="margin-bottom:10px;">
-        <form ng-submit="saveCurrentCaterogyToSelectedProject()" class="col-md-12" style="width:100%;">
-          <div class="col-md-8">
-            <input type="text" class="form-control" ng-model="tb_currentGroupNameSelectedProject" placeholder="new group name..." style="height:40px;line-height:40px;width:100%;margin:0px;" required />
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-warning" style="width:100%;height:40px;">
-              <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
-            </button>
-          </div>
-          <div class="col-md-2">
-
-            <button class="btn btn-warning" style="height:40px;width:100%;" id="btn_indertItemToSelectedProject">
-              <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
-            </button>
-          </div>
+      <div style="margin-bottom:10px;display:inline-block;width:100%;">
+        <form ng-submit="saveCurrentCaterogyToSelectedProject()" style="width:100%;display:inline-block;">
+          <table class="table">
+            <tr style="height:80px;line-height:80px;">
+              <td class="col-md-9">
+                <input type="text" class="form-control" ng-model="tb_currentGroupNameSelectedProject" placeholder="Group name..." style="border-radius:4px;height:40px;line-height:40px;width:100%;margin:0px;font-size:16px;margin-top:10px;" required />
+              </td>
+              <td class="col-md-1">
+                <button type="submit" class="btn btn-warning" style="padding-left:20px;padding-right:20px;height:40px;margin-top:10px;display:inline-block;">
+                  <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
+                </button>
+              </td>
+              <td class="col-md-2">
+                <span style="height:40px;margin-top:10px;display:inline-block;float:left;line-height:40px;">OR</span>
+                <button id="btn_indertItemToSelectedProject" class="btn btn-warning" style="float:left;padding-left:20px;padding-right:20px;height:40px;margin-left:10px;margin-top:10px;display:inline-block;">
+                  <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
+                </button>
+              </td>
+            </tr>
+          </table>
 
         </form>
 
@@ -161,10 +155,7 @@
         </tr>
       </table>
     </div>
-
-
   </div>
-
 </div>
 <div class="container body">
   <div class="main_container">
@@ -315,7 +306,7 @@
 
         <div class="row" style="min-height:600px;">
           <div class="col-md-12">
-            <div class="home_pannel" id="homePannel" style="display:none;">
+            <div class="home_pannel" id="homePannel" style="">
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;" class="bg-xam">Ongoing Projects<small style="font-size:14px;">Review </small></h2>
@@ -563,21 +554,7 @@
             <div class="x_panel home_pannel" id="newProjectPannel" style="display:none;min-height:600px;">
               <div class="x_title">
                 <h2 style="font-size:24px;">Create New Project Form<small style="font-size:16px;"></small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
+
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
@@ -638,163 +615,96 @@
 
                     <div id="previewProjectView" class="viewChild2 col-md-12">
                       <div class="col-md-12">
-                        <h3 style="font-size:32px;">Add Items to: {{newProject.name}}
-                        <button ng-click="goToCheckOutPage()" id="goToCheckOutPage" class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;">
-                          <i class="fa fa-arrow-right" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Check out
-                        </button>
-
-                      </h3>
+                        <h3 style="font-size:32px;width:100%;display:inline-block;">Add Items to: {{newProject.name}}
+                          <button ng-click="goToCheckOutPage()" id="goToCheckOutPage" class="btn btn-success" style="display:inline-block;margin-left:20px; float:right;padding-left:20px;padding-right:20px;font-size:14px;">
+                            <i class="fa fa-arrow-right" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Next step
+                          </button>
+                        </h3>
                       </div>
                       <div class="col-md-12">
 
-                        <div class="col-md-12" style="margin-bottom:10px;">
-                          <form ng-submit="saveCurrentCaterogy()" class="col-md-10">
-                            <div class="col-md-9">
-                              <input type="text" class="form-control" ng-model="tb_currentGroupName" placeholder="new group name..." style="height:40px;line-height:40px;width:100%;margin:0px;" required />
-                            </div>
-                            <div class="col-md-3">
-                              <button type="submit" class="btn btn-warning" style="width:100%;height:40px;">
-                                <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
-                              </button>
-                            </div>
-
+                        <div style="margin-bottom:10px;display:inline-block;width:100%;">
+                          <form ng-submit="saveCurrentCaterogy()" style="display:inline-block;width:100%;">
+                            <table class="table">
+                              <tr style="height:80px;line-height:80px;">
+                                <td class="col-md-7">
+                                  <input type="text" class="form-control" ng-model="tb_currentGroupName" placeholder="Group name..." style="border-radius:4px;height:40px;line-height:40px;width:100%;margin:0px;font-size:16px;margin-top:10px;" required />
+                                </td>
+                                <td class="col-md-2">
+                                  <button type="submit" class="btn btn-warning" style="padding-left:20px;padding-right:20px;height:40px;margin-top:10px;display:inline-block;">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
+                                  </button>
+                                </td>
+                                <td class="col-md-3">
+                                  <span style="height:40px;margin-top:10px;display:inline-block;float:left;line-height:40px;">OR</span>
+                                  <button class="btn btn-warning" style="float:left;padding-left:20px;padding-right:20px;height:40px;margin-left:10px;margin-top:10px;display:inline-block;" id="btn_indertItemToProject">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
+                                  </button>
+                                </td>
+                              </tr>
+                            </table>
                           </form>
-                          <div class="col-md-2">
-
-                            <button class="btn btn-warning" style="height:40px;width:100%;" id="btn_indertItemToProject">
-                              <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
-                            </button>
-                          </div>
                         </div>
-
 
                         <table class="table table-hover col-md-12" style="margin-top: 10px;">
                           <tr style="background-color: #EEEEEE;">
-                            <th class="col-md-1" style="font-size:16px;">#</th>
-                            <th class="col-md-3" style="font-size:16px;">Description</th>
-                            <th class="col-md-1" style="font-size:16px;">Category</th>
-                            <th class="col-md-1" style="font-size:16px;">Unit</th>
-                            <th class="col-md-1" style="font-size:16px;">Quantity</th>
-                            <th class="col-md-1" style="font-size:16px;">Price</th>
-                            <th class="col-md-1" style="font-size:16px;">Labor</th>
-                            <th class="col-md-1" style="font-size:16px;">Total</th>
-                            <th class="col-md-1" style="font-size:16px;">Comments</th>
-                            <th class="col-md-1" style="font-size:16px;"></th>
+                            <th style="font-size:16px;">
+                              <input type="text" class="form-control" disabled="true" value="Ind"></input>
+                            </th>
+                            <th style="font-size:16px;" ng-repeat="field in newProject.fields track by $index">
+                              <input type="text" class="form-control" ng-model="field.fieldname" value="{{field.fieldname}}"></input>
+                            </th>
+                            <th style="font-size:16px;"></th>
                           </tr>
-                        </table>
-                        <table class="table table-hover col-md-12">
-
-                          <tr ng-repeat="item in newProject.items | orderBy: 'Description' track by $index">
-                            <td class="col-md-1">{{$index + 1}}</td>
-                            <td class="col-md-3">{{item.Description}}</td>
-                            <td class="col-md-1">{{item.Spec}}</td>
-                            <td class="col-md-1">{{item.Unit}}</td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.quantity" value="{{item.quantity}}"></input></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" value="{{item.UnitMaterial}}"></input></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" value="{{item.UnitLabor}}"></input></td>
-                            <td class="col-md-1" ng-bind="calculateEachItemTotalMoney(item.quantity, item.UnitMaterial, item.UnitLabor, $index)"></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="item.comments" value="{{item.comments}}"></input></td>
+                          <tr ng-repeat="entry in newProject.items track by $index">
                             <td>
-                                <button class="btn btn-danger" ng-click="removeThisItemFromNewProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              <input type="text" class="form-control" disabled="true" value="{{$index + 1}}"></input>
+                            </td>
+                            <td ng-repeat="value in entry track by $index">
+                              <input type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                            </td>
+                            <td>
+                              <button class="btn btn-danger" ng-click="removeThisItemFromNewProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                             </td>
                           </tr>
                         </table>
-                        <table class="table table-hover col-md-12" ng-repeat="group in newProject.groups">
-                          <tr>
-                            <td colspan="9" style="background-color:#EEEEEE;">
-                              <input type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" on-change="updateGroupName($index, $event.target.value)" value="{{group.name}}" />
+
+                        <div ng-repeat="group in newProject.groups" style="margin-top:-1px;width:100%;display:inline-block;">
+                          <div style="background-color:#EEEEEE;width:100%;display:inline-block;height:60px;border:1px solid black;padding:10px;">
+
+                              <input type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" ng-change="updateGroupName($index, group.name)" value="{{group.name}}" />
                               <button ng-click="removeThisGroupFromNewProject($index)" class="btn btn-danger" style="float:right;display:inline-block;"><i class="fa fa-minus" aria-hidden="true"></i></button>
                               <button ng-click="addNewItemToThisGroup($index)" class="btn btn-success" style="float:right;display:inline-block;margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i>Add Item</button>
-                            </td>
-                          </tr>
 
-                          <tr ng-repeat="item in group.items | orderBy: 'Description' track by $index">
-                            <td class="col-md-1">{{$index + 1}}</td>
-                            <td class="col-md-3">{{item.Description}}</td>
-                            <td class="col-md-1">{{item.Spec}}</td>
-                            <td class="col-md-1">{{item.Unit}}</td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.quantity" on-change="insertQuantity(group, item, $event.target.value)" value="{{item.quantity}}"></input></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" on-change="insertPrice(group, item, $event.target.value)" value="{{item.UnitMaterial}}"></input></td>
-                            <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" on-change="insertLaborCost(group, item, $event.target.value)" value="{{item.UnitLabor}}"></input></td>
-                            <td class="col-md-1" ng-bind="calculateEachItemTotalMoney(item.quantity, item.UnitMaterial, item.UnitLabor, group, item)"></td>
-                            <td class="col-md-1"><input type="text" class="form-control" ng-model="item.comments" value="{{item.comments}}"></input></td>
-                            <td>
-                                <button class="btn btn-danger" ng-click="removeThisItemFromNewProject(group.name, $index, item)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                            </td>
-                          </tr>
-                        </table>
+                          </div>
+                          <table class="table table-hover col-md-12" style="margin-top:-1px;">
+                            <tr ng-repeat="entry in group.items track by $index">
+                              <td>
+                                <input type="text" class="form-control" disabled="true" value="{{$index + 1}}"></input>
+                              </td>
+                              <td ng-repeat="value in entry track by $index">
+                                <input type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                              </td>
+                              <td>
+                                  <button class="btn btn-danger" ng-click="removeThisItemFromNewProject(group.name, $index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-success" ng-click="saveThisProjectToServer()" style="font-size:18px;width:30%;display:inline-block;margin-left:35%;height:40px;margin-top:16px;">
+                          Save Report
+                        </button>
                       </div>
                     </div>
-                    <div id="checkOutView" class="viewChild2 col-md-12">
-                        <div class="col-md-12">
-                            <h2 style="font-size:32px;">Preview Project {{newProject.name}}
-                                <button class="btn btn-success" id="goBackToPreviewProjectPage" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;">
-                                    <i class="fa fa-arrow-left" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>
-                                    Previous
-                                </button>
-                            </h2>
-                            <h3>Total cost: {{getToTalProjectMoney() | currency:"$":0}}</h3>
-                        </div>
-                        <table class="table table-hover col-md-12" style="margin-top: 10px;">
-                            <tr style="background-color: #EEEEEE;">
-                                <th class="col-md-1">#</th>
-                                <th class="col-md-3">Description</th>
-                                <th class="col-md-1">Category</th>
-                                <th class="col-md-1">Spec</th>
-                                <th class="col-md-1">Unit</th>
-                                <th class="col-md-1">Quantity</th>
-                                <th class="col-md-1">Price</th>
-                                <th class="col-md-1">Labor</th>
 
-                                <th class="col-md-1">Total</th>
-                                <th class="col-md-1">Comments</th>
-
-                            </tr>
-                        </table>
-
-                        <table class="table table-hover col-md-12">
-                            <tr ng-repeat="item in newProject.items | orderBy: 'Description' track by $index" style="border:0px;">
-                                <td class="col-md-1">{{$index + 1}}</td>
-                                <td class="col-md-3">{{item.Description}}</td>
-                                <td class="col-md-1">{{item.Category}}</td>
-                                <td class="col-md-1">{{item.Spec}}</td>
-                                <td class="col-md-1">{{item.Unit}}</td>
-                                <td class="col-md-1">{{item.quantity}}</td>
-                                <td class="col-md-1">{{item.UnitMaterial}}</td>
-                                <td class="col-md-1">{{item.UnitLabor}}</td>
-                                <td class="col-md-1">{{calculateEachItemTotalMoney2(item.quantity, item.UnitMaterial, item.UnitLabor, $index)}}</td>
-                                <td class="col-md-1">{{item.comments}}</td>
-                            </tr>
-                        </table>
-
-                        <table class="table table-hover col-md-12" ng-repeat="group in newProject.groups track by $index">
-                            <tr>
-                                <td colspan="9" style="background-color:#EEEEEE;">
-                                    {{group.name}}
-                                </td>
-                            </tr>
-                            <tr ng-repeat="item in group.items | orderBy: 'Description' track by $index">
-                                <td class="col-md-1">{{$index + 1}}</td>
-                                <td class="col-md-3">{{item.Description}}</td>
-                                <td class="col-md-1">{{item.Category}}</td>
-                                <td class="col-md-1">{{item.Spec}}</td>
-                                <td class="col-md-1">{{item.Unit}}</td>
-                                <td class="col-md-1">{{item.quantity}}</td>
-                                <td class="col-md-1">{{item.UnitMaterial}}</td>
-                                <td class="col-md-1">{{item.UnitLabor}}</td>
-                                <td class="col-md-1">{{calculateEachItemTotalMoney(item.quantity, item.UnitMaterial, item.UnitLabor, group, item)}}</td>
-                                <td class="col-md-1">{{item.comments}}</td>
-                            </tr>
-                        </table>
-                        <button class="btn btn-success" ng-click="saveThisProjectToServer()" style="font-size:18px;width:30%;display:inline-block;margin-left:20%;height:40px;margin-top:16px;">Save Report</button>
-                        <button class="btn btn-success" ng-click="printThisReport(newProject)" style="font-size:18px;width:30%;display:inline-block;margin-left:0%;height:40px;margin-top:16px;">Print Preview</button>
-                    </div>
 
                 </div>
 
               </div>
             </div>
-            <div class="x_panel home_pannel" id="databasePannel">
+            <div class="x_panel home_pannel" id="databasePannel" style="display:none">
               <div class="x_title">
                 <h2 style="font-size:24px;">{{selectedDatabase.name}} database</h2>
                 <div class="clearfix"></div>
@@ -830,7 +740,7 @@
                           </tr>
                         </tr>
                         <tr>
-                          
+
                         </tr>
                     </table>
                     <table class="table table-hover col-md-12" style="margin-top: 10px;">

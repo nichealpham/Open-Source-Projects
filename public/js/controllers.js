@@ -201,43 +201,6 @@
       var day = todateFormated.slice(8);
       return day;
     };
-    $scope.databases = [
-      {
-        name: "BME students",
-        dbid: "db#312",
-        date: getToDayFormatted(),
-        fields: [
-          {
-            fieldname: "#ID",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "Name",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "Phone",
-            type: "text",
-            currentData: "",
-          },
-          {
-            fieldname: "GPA",
-            type: "text",
-            currentData: "",
-          },
-        ],
-        data: [
-          ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
-          ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
-          ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
-          ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
-          ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
-        ],
-      }
-    ];
-    console.log($scope.databases.length);
 
     $http.get("http://112.78.3.114:4220/bomService.asmx/getAllOngoingReport").then(function (response) {
         $scope.ongoingReports = response.data;
@@ -351,27 +314,47 @@
       jQuery(".left_col").hide();
       jQuery("#popup2").css("display", "inline-block");
     };
-    $scope.currentCategory = {
-        name: "",
-        items: []
-    };
+
     $scope.savedGroups = [];
     $scope.groupsInView = [];
 
-    // functions
-
-    $scope.createNewProject = function () {
-        console.log("button clicked");
-        $scope.newProject.name = $scope.tb_projectName;
-        $scope.newProject._id = $scope.tb_projectName;
-        $scope.newProject.reportUrl = "report/" + $scope.tb_projectName + ".json",
-        $scope.newProject.company = $scope.tb_company;
-        $scope.newProject.Status = jQuery("#select_Category option:selected").text();
-        jQuery("#projectInfoView").css("display", "none");
-        jQuery("#previewProjectView").css("display", "inline-block");
-        $scope.stepNum = 2;
-        console.log($scope.newProject);
-    };
+    $scope.databases = [
+      {
+        name: "BME students",
+        dbid: "db#312",
+        date: getToDayFormatted(),
+        fields: [
+          {
+            fieldname: "#ID",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "Name",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "Phone",
+            type: "text",
+            currentData: "",
+          },
+          {
+            fieldname: "GPA",
+            type: "text",
+            currentData: "",
+          },
+        ],
+        data: [
+          ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
+          ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
+          ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
+          ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
+          ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
+        ],
+      }
+    ];
+    $scope.selectedDatabase = $scope.databases[0];
     $scope.newProject = {
         name: getToDayFormattedForReportID(),
         _id: getToDayFormattedForReportID(),
@@ -384,45 +367,63 @@
         Comment: "",
         Lastmodified: getToDayFormatted(),
         jsonString: "",
+        fields: $scope.selectedDatabase.fields,
         items: [],
         groups: []
     };
+    $scope.currentCategory = {
+        name: "",
+        items: []
+    };
+
+    // functions
+
+    $scope.createNewProject = function () {
+        $scope.newProject.name = $scope.tb_projectName;
+        $scope.newProject._id = $scope.tb_projectName;
+        $scope.newProject.reportUrl = "report/" + $scope.tb_projectName + ".json",
+        $scope.newProject.company = $scope.tb_company;
+        $scope.newProject.Status = jQuery("#select_Category option:selected").text();
+        jQuery("#projectInfoView").css("display", "none");
+        jQuery("#previewProjectView").css("display", "inline-block");
+        $scope.stepNum = 2;
+    };
     $scope.saveThisProjectToServer = function () {
-        var dataString = {
-            data: $scope.newProject
-        };
-        $scope.newProject.jsonString = JSON.stringify(dataString);
-        console.log($scope.newProject.jsonString);
-        $scope.newProject.Comment = "none";
-        console.log($scope.newProject._id);
-        $http.post("http://112.78.3.114:4220/bomService.asmx/addNewReport", { "_id": $scope.newProject._id, "reportUrl": $scope.newProject.reportUrl, "Status": $scope.newProject.Status, "Comment": $scope.newProject.Comment, "Createdby": $scope.newProject.Createdby, "Lastmodified": $scope.newProject.Lastmodified, "jsonString": $scope.newProject.jsonString }).then(function () {
-            if ($scope.newProject.Status == "ongoing") {
-                $scope.ongoingReports.push($scope.newProject);
-            };
-            if ($scope.newProject.Status == "pass") {
-                $scope.passReports.push($scope.newProject);
-            };
-            if ($scope.newProject.Status == "failed") {
-                $scope.failedReports.push($scope.newProject);
-            };
-            $scope.newProject = {
-                name: getToDayFormattedForReportID(),
-                _id: getToDayFormattedForReportID(),
-                showInput: false,
-                company: "Default Company",
-                category: "Engineer",
-                reportUrl: "report/" + $scope.tb_projectName + ".json",
-                Status: "ongoing",
-                Createdby: $scope.admin.name,
-                Comment: "",
-                Lastmodified: getToDayFormatted(),
-                jsonString: "none",
-                items: [],
-                groups: []
-            };
-            console.log("Report saved successfully");
-            window.location = "home.html";
-        });
+      $scope.newProject.Comment = "none";
+      var dataString = {
+          data: $scope.newProject
+      };
+      $scope.newProject.jsonString = JSON.stringify(dataString);
+
+      if ($scope.newProject.Status == "ongoing") {
+          $scope.ongoingReports.push($scope.newProject);
+      };
+      if ($scope.newProject.Status == "pass") {
+          $scope.passReports.push($scope.newProject);
+      };
+      if ($scope.newProject.Status == "failed") {
+          $scope.failedReports.push($scope.newProject);
+      };
+      $scope.newProject = {
+          name: getToDayFormattedForReportID(),
+          _id: getToDayFormattedForReportID(),
+          showInput: false,
+          company: "Default Company",
+          category: "Engineer",
+          reportUrl: "report/" + $scope.tb_projectName + ".json",
+          Status: "ongoing",
+          Createdby: $scope.admin.name,
+          Comment: "",
+          Lastmodified: getToDayFormatted(),
+          jsonString: "none",
+          fields: $scope.selectedDatabase.fields,
+          items: [],
+          groups: []
+      };
+      console.log("Report saved successfully");
+      jQuery("#previewProjectView").hide();
+      jQuery("#projectInfoView").show();
+      $scope.showHomePannel();
     };
     $scope.removeThisGroupFromNewProject = function (index) {
       var cf = confirm("Delete this Group?");
@@ -445,13 +446,13 @@
         $scope.selectedProject.groups.splice(index, 1);
       };
     };
-    $scope.removeThisItemFromNewProject = function (groupName, index, item) {
-
+    $scope.removeThisItemFromNewProject = function (groupName, index) {
         var cf = confirm("Delete this Item?");
         if (cf == true) {
           for (i = 0; i <= $scope.newProject.groups.length - 1; i++) {
               if ($scope.newProject.groups[i].name == groupName) {
                   $scope.newProject.groups[i].items.splice(index, 1);
+                  break;
               };
           };
         };
@@ -472,7 +473,6 @@
       if (cf == true) {
         $scope.newProject.items.splice(index, 1);
       };
-
     };
     $scope.removeThisItemFromSelectedProjectItemsList = function (index) {
 
@@ -513,17 +513,11 @@
         $scope.currentCategory.name = $scope.tb_currentGroupName;
         $scope.savedGroups.push($scope.currentCategory);
         $scope.newProject.groups.push($scope.currentCategory);
-     //   $scope.groupsInView = [];
-     //   for (i = 0; i <= $scope.savedGroups.length - 1; i++) {
-     //       $scope.groupsInView.push($scope.savedGroups[i]);
-     //   };
-        // reinitiate blank category
         $scope.currentCategory = {
             name: "",
             items: []
         };
         $scope.tb_currentGroupName = "";
-
     };
     $scope.saveCurrentCaterogyToSelectedProject = function () {
       var obj = {
@@ -566,59 +560,38 @@
       $scope.indexOfItemToInsertAboveAndBelongToAGroup = itemIndex;               // initiate with -1
       $scope.nameOfTheGroupWhereNewItemInsertAbove = groupName;                   // initiate with null
     };
-    $scope.addItemToThisGroup = function (itemObj, groupindex, selectedGroupIndex, itemindex) {
-      // check first
-      // check if this event is fired from currently selected project
-      if ( $scope.currentlyInSelectedProjectView == true ) {
+    $scope.addItemToThisGroup = function (entryarr, groupindex, selectedGroupIndex, itemindex) {
+      itemObj = entryarr;
+      if ( $scope.currentlyInSelectedProjectView == true ) {  // this event is for updating projects
         if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup ) {
-          // some actions
           $scope.selectedProject.items.splice($scope.indexOfItemToInsertAboveAndHasNoGroup, 0, JSON.parse(JSON.stringify(itemObj)));
-          // then turn it back to normal state
           $scope.actionToInsertNewItemAboveThisItemAndThisItemHasNoGroup = false;
           $scope.indexOfItemToInsertAboveAndHasNoGroup = -1;
         }
         if ( $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup ) {
-          // some actions
             for (i = 0; i < $scope.selectedProject.groups.length; i ++) {
               if ($scope.selectedProject.groups[i].name == $scope.nameOfTheGroupWhereNewItemInsertAbove) {
                 $scope.selectedProject.groups[i].items.splice($scope.indexOfItemToInsertAboveAndBelongToAGroup, 0, JSON.parse(JSON.stringify(itemObj)));
               }
             };
-          // then turn it back to normal state
-          $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = false;  // initiate with false
-          $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;                       // initiate with -1
+          $scope.actionToInsertNewItemAboveThisItemAndThisItemBelongToAGroup = false;
+          $scope.indexOfItemToInsertAboveAndBelongToAGroup = -1;
           $scope.nameOfTheGroupWhereNewItemInsertAbove = null;
         }
         else {
-          if ( $scope.shouldInsertThisItemToSelectedProject ) {   // insert this item to items field
-            itemObj.quantity = 1;
-            itemObj.saved = true;
-            itemObj.comments = "";
-            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
+          if ( $scope.shouldInsertThisItemToSelectedProject ) {
             $scope.selectedProject.items.push(JSON.parse(JSON.stringify(itemObj)));
           }
           else {
-            itemObj.quantity = 1;
-            itemObj.saved = true;
-            itemObj.comments = "";
-            itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
             $scope.selectedProject.groups[selectedGroupIndex].items.push(JSON.parse(JSON.stringify(itemObj)));
           };
         };
 
       } else {                                          // this event is fired from create new project view
         if ( $scope.shouldInsertThisItemToProject ) {   // insert this item to items field
-          itemObj.quantity = 1;
-          itemObj.saved = true;
-          itemObj.comments = "";
-          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
           $scope.newProject.items.push(JSON.parse(JSON.stringify(itemObj)));
         }
         else {
-          itemObj.quantity = 1;
-          itemObj.saved = true;
-          itemObj.comments = "";
-          itemObj.totalMoney = parseInt(itemObj.quantity) * parseInt(itemObj.UnitMaterial) + parseInt(itemObj.UnitLabor);
           $scope.newProject.groups[groupindex].items.push(JSON.parse(JSON.stringify(itemObj)));
         };
       }
@@ -873,6 +846,7 @@
               Comment: "",
               Lastmodified: getToDayFormatted(),
               jsonString: "none",
+              fields: $scope.selectedDatabase.fields,
               items: [],
               groups: []
           };
@@ -962,6 +936,7 @@
     //     ],
     //   }
     // ];
+    // $scope.selectedDatabase = $scope.databases[0];
     $scope.showCreateNewDatabasePannel = function() {
       jQuery(".home_pannel").hide();
       jQuery("#createNewDatabasePannel").show();
@@ -1012,7 +987,7 @@
       };
     };
 
-    $scope.selectedDatabase = $scope.databases[0];
+
     console.log($scope.selectedDatabase);
     $scope.chooseThisDatabase = function(index) {
       $scope.selectedDatabase = $scope.databases[index];
