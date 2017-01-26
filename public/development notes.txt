@@ -1,4 +1,4 @@
-- import/export data scheme
+- import/export data scheme  -  done
 
 - develop function field
 
@@ -6,4 +6,4 @@
 
 - database server
 
-- input text ng-change auto update local storage
+- input text ng-change auto update local storage  -  done

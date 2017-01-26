@@ -36,8 +36,8 @@
     </form>
 
     <br/>
-    <h1 class="hover-pointer" style="width:96%;display:inline-block;text-align:center;margin-left:2%;font-size:26px;" ng-click="showTitle()">
-      {{project.additionalInfo.projectTitle.value | uppercase}}
+    <h1 class="hover-pointer" ng-bind-html="project.additionalInfo.projectTitle.value" style="width:96%;display:inline-block;text-align:center;margin-left:2%;font-size:26px;" ng-click="showTitle()">
+
     </h1>
     <form ng-show="project.additionalInfo.projectTitle.show" ng-submit="changeProjectTitle()">
       <input class="form-control" type="text" ng-model="project.additionalInfo.projectTitle.value" value="{{project.additionalInfo.projectTitle.value}}" />
@@ -48,8 +48,8 @@
     <h2 class="hover-pointer" style="font-weight:bold;" ng-click="showScopeOfWork()">
       1. SCOPE OF WORK:
     </h2>
-    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showScopeOfWork()">
-      {{project.additionalInfo.scopeOfWork.value}}
+    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showScopeOfWork()" ng-bind-html="project.additionalInfo.scopeOfWork.value">
+
     </h2>
     <form ng-show="project.additionalInfo.scopeOfWork.show" ng-submit="changeProjectScopeOfWork()">
       <input class="form-control" type="text" ng-model="project.additionalInfo.scopeOfWork.value" value="{{project.additionalInfo.scopeOfWork.value}}" />
@@ -60,8 +60,8 @@
     <h2 class="hover-pointer" style="font-weight:bold;" ng-click="showPrice()">
       2. PRICE:
     </h2>
-    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showPrice()">
-      {{project.additionalInfo.price.value}} {{getToTalProjectMoney() | currency:"$":0}}
+    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showPrice()" ng-bind-html="project.additionalInfo.price.value">
+
     </h2>
     <form ng-show="project.additionalInfo.price.show" ng-submit="changeProjectPrice()">
       <input class="form-control" type="text" ng-model="project.additionalInfo.price.value" value="{{project.additionalInfo.price.value}}" />
@@ -84,8 +84,8 @@
     <h2 class="hover-pointer" style="font-weight:bold;" ng-click="showTimming()">
       4. TIMING:
     </h2>
-    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showTimming()">
-      {{project.additionalInfo.timming.value}}
+    <h2 class="hover-pointer" style="font-size:15px;" ng-click="showTimming()" ng-bind-html="project.additionalInfo.timming.value">
+
     </h2>
     <form ng-show="project.additionalInfo.timming.show" ng-submit="changeProjectTimming()">
       <input class="form-control" type="text" ng-model="project.additionalInfo.timming.value" value="{{project.additionalInfo.timming.value}}" />

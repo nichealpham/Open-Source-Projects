@@ -100,9 +100,9 @@
           <th style="font-size:16px;"></th>
         </tr>
         <tr ng-repeat="entry in selectedProject.items track by $index">
-          <td>{{$index + 1}}</td>
+          <td style="line-height:40px;">{{$index + 1}}</td>
           <td ng-repeat="value in entry track by $index">
-            <input type="text" class="form-control" ng-model="value" value="{{value}}"></input>
+            <input ng-change="updateThisEntryInSelectedProjectWithoutGroup($parent.$index, $index, value)" type="text" class="form-control" ng-model="value" value="{{value}}"></input>
           </td>
           <td>
             <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
@@ -112,18 +112,18 @@
       <div ng-repeat="group in selectedProject.groups track by $index" style="margin-top:-1px;width:100%;display:inline-block;">
         <div style="background-color:#EEEEEE;width:calc(100% - 1px);display:inline-block;height:60px;border:1px solid black;padding:10px;">
 
-            <input type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" ng-change="updateGroupName($index, group.name)" value="{{group.name}}" />
+            <input ng-change="updateThisGroupTitleInSelectedProject($index, group.name)" type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" value="{{group.name}}" />
             <button ng-click="removeThisGroupFromSelectedProject($index)" class="btn btn-danger" style="float:right;display:inline-block;"><i class="fa fa-minus" aria-hidden="true"></i></button>
             <button ng-click="addNewItemToThisSelectedGroup($index)" class="btn btn-success" style="float:right;display:inline-block;margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i>Add Item</button>
 
         </div>
         <table class="table table-hover col-md-12" style="margin-top:-1px;">
           <tr ng-repeat="entry in group.items track by $index">
-            <td>
+            <td style="line-height:40px;">
               {{$index + 1}}
             </td>
             <td ng-repeat="value in entry track by $index">
-              <input type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+              <input ng-change="updateThisEntryInSelectedProjectWithGroup($parent.$parent.$index, $parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
             </td>
             <td>
                 <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProject(group.name, $index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
@@ -153,7 +153,8 @@
               <li ng-click="showHomePannel()"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
               <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> Create New Project <span class="fa fa-chevron-down"></span></a></li>
               <li ng-click="showDatabasePannel()"><a><i class="fa fa-table"></i> Items List <span class="fa fa-chevron-down"></span></a></li>
-              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Create New Database <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Database Management <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showImportExportPannel()"><a><i class="fa fa-download"></i> Export/Import <span class="fa fa-chevron-down"></span></a></li>
             </ul>
           </div>
 
@@ -530,7 +531,7 @@
             </div>
             <div class="x_panel home_pannel" id="newProjectPannel" style="display:none;min-height:600px;">
               <div class="x_title">
-                <h2 style="font-size:24px;">Create New Project Form<small style="font-size:16px;"></small></h2>
+                <h2 style="font-size:24px;">New Project Form<small style="font-size:16px;"></small></h2>
 
                 <div class="clearfix"></div>
               </div>
@@ -633,11 +634,11 @@
                             <th style="font-size:16px;"></th>
                           </tr>
                           <tr ng-repeat="entry in newProject.items track by $index">
-                            <td>
+                            <td style="line-height:40px;">
                               {{$index + 1}}
                             </td>
                             <td ng-repeat="value in entry track by $index">
-                              <input type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                              <input ng-change="updateThisEntryInNewProjectWithoutGroup($parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
                             </td>
                             <td>
                               <button class="btn btn-danger" ng-click="removeThisItemFromNewProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
@@ -648,18 +649,18 @@
                         <div ng-repeat="group in newProject.groups" style="margin-top:-1px;width:100%;display:inline-block;">
                           <div style="background-color:#EEEEEE;width:100%;display:inline-block;height:60px;border:1px solid black;padding:10px;">
 
-                              <input type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" ng-change="updateGroupName($index, group.name)" value="{{group.name}}" />
+                              <input ng-change="updateThisGroupTitleInNewProject($index, group.name)" type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" ng-change="updateGroupName($index, group.name)" value="{{group.name}}" />
                               <button ng-click="removeThisGroupFromNewProject($index)" class="btn btn-danger" style="float:right;display:inline-block;"><i class="fa fa-minus" aria-hidden="true"></i></button>
                               <button ng-click="addNewItemToThisGroup($index)" class="btn btn-success" style="float:right;display:inline-block;margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i>Add Item</button>
 
                           </div>
                           <table class="table table-hover col-md-12" style="margin-top:-1px;">
                             <tr ng-repeat="entry in group.items track by $index">
-                              <td>
+                              <td style="line-height:40px;">
                                 {{$index + 1}}
                               </td>
                               <td ng-repeat="value in entry track by $index">
-                                <input type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                                <input ng-change="updateThisEntryInNewProjectWithGroup($parent.$parent.$index, $parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
                               </td>
                               <td>
                                   <button class="btn btn-danger" ng-click="removeThisItemFromNewProject(group.name, $index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
@@ -736,10 +737,10 @@
                 </div>
               </div>
             </div>
-            <div class="x_panel home_pannel" id="createdDatabasePannel" style="display:none;">
-              <div class="x_panel">
+            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none;">
+              <div class="x-panel">
                 <div class="x_title">
-                  <h2 style="font-size:24px;">Created databases<small style="font-size:14px;">Navigate between different databases</small></h2>
+                  <h2 style="font-size:24px;">Created Databases<small style="font-size:14px;">Navigate between different databases</small></h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -777,10 +778,6 @@
                       </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none;">
-              <div class="x-panel">
                 <div class="x_title">
                   <h2 style="font-size:24px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>
                   <div class="clearfix"></div>
@@ -859,6 +856,36 @@
                   </div>
                   <div class="col-sm-offset-2 col-sm-10" style="margin-top:20px;">
                       <button type="submit" class="btn btn-default" ng-click="createThisDatabase()">Create this database</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="importExportPannel" style="display:none;">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:24px;">Export This System</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-offset-2 col-md-10">
+                      <textarea class="form-control" ng-model="exprortPackage" rows="5" readonly></textarea>
+                  </div>
+
+                  <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
+                      <button class="btn btn-default" ng-click="createExportPackage()">Export package</button>
+                  </div>
+                </div>
+                <div class="x_title">
+                  <h2 style="font-size:24px;">Import This System</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-offset-2 col-md-10">
+                      <textarea class="form-control" ng-model="importPackage" rows="5"></textarea>
+                  </div>
+
+                  <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
+                      <button class="btn btn-default" ng-click="importThisPackage(importPackage)">Import package</button>
                   </div>
                 </div>
               </div>
