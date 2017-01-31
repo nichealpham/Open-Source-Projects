@@ -132,3 +132,64 @@ new-window { display: none; }
 input {
   border-radius: 4px;
 }
+.form-control {
+  border-radius: 3px;
+}
+.custom_card {
+  border-radius: 3px;
+  border: 1px solid #E0E0E0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 22px;
+  max-width: 300px;
+  float:left;
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+.card_content {
+  margin-top: 0px;
+}
+.card_title {
+  display: inline-block;
+  max-width: 65%;
+  text-overflow: ellipsis;
+}
+.card_toolbox {
+  display: inline-block;
+  float: right;
+  max-width: 20%;
+  text-align: right;
+  text-overflow: ellipsis;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db;
+    border-bottom: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    display: none;
+}
+#uploadProgressBar {
+  display:none;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.input_text {
+  display: inline-block;
+  max-width: 120px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.input_operation {
+  display: inline-block;
+  max-width: 60px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

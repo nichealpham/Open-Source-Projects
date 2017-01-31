@@ -1,9 +1,15 @@
 - import/export data scheme  -  done
 
-- develop function field
+- export into files, import from file - done
+
+- develop function field - done
+
+- develop static number field as function field
 
 - search box
 
 - database server
 
 - input text ng-change auto update local storage  -  done
+
+- ...

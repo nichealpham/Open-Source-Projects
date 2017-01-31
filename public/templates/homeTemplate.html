@@ -288,46 +288,16 @@
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;">Ongoing Projects<small style="font-size:14px;">Review</small></h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                              <li>
-                                  <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                  <ul class="dropdown-menu" role="menu">
-                                      <li>
-                                          <a href="#">Setting 1</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Setting 2</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li>
-                                  <a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
-                          </ul>
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in ongoingReports track by $index">
-                              <div class="x_panel">
+                          <div class=" " ng-repeat="report in ongoingReports track by $index">
+                              <div class="x_panel custom_card col-sm-12">
                                   <div class="x_title">
-                                      <h2>ID: {{report._id}}<small></small></h2>
-                                      <ul class="nav navbar-right panel_toolbox">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
                                           <li>
                                               <a class="collapse-link" ng-click="sendThisReportToPassedProjectsSentByOngoing(report, $index)"><i class="fa fa-chevron-down"></i></a>
-                                          </li>
-                                          <li class="dropdown">
-                                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                              <ul class="dropdown-menu" role="menu">
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToPassedProjectsSentByOngoing(report, $index)">Send to passed projects</a>
-                                                  </li>
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToFailedProjectsSentByOngoing(report, $index)">Send to failed projects</a>
-                                                  </li>
-                                              </ul>
                                           </li>
                                           <li>
                                               <a class="close-link" ng-click="deleteThisOngoingReport(report._id, $index)"><i class="fa fa-close"></i></a>
@@ -335,7 +305,7 @@
                                       </ul>
                                       <div class="clearfix"></div>
                                   </div>
-                                  <div class="x_content">
+                                  <div class="x_content card_content">
                                       <article class="media event" style="margin-bottom:6px;">
                                           <a class="pull-left date">
                                               <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
@@ -368,49 +338,19 @@
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;">Passed Projects<small style="font-size:14px;">Review </small></h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                              <li>
-                                  <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                  <ul class="dropdown-menu" role="menu">
-                                      <li>
-                                          <a href="#">Settings 1</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Settings 2</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li>
-                                  <a class="close-link"><i class="fa fa-close"></i></a>
-                              </li>
-                          </ul>
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in passReports">
-                              <div class="x_panel">
+                          <div class=" " ng-repeat="report in passReports">
+                              <div class="x_panel custom_card col-sm-12">
                                   <div class="x_title">
-                                      <h2>ID: {{report._id}}<small></small></h2>
-                                      <ul class="nav navbar-right panel_toolbox">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
                                           <li>
                                               <a class="collapse-link" ng-click="sendThisReportToOngoingProjectsSentByPassed(report, $index)"><i class="fa fa-chevron-up"></i></a>
                                           </li>
                                           <li>
                                               <a class="collapse-link" ng-click="sendThisReportToFailedProjectsSentByPassed(report, $index)"><i class="fa fa-chevron-down"></i></a>
-                                          </li>
-                                          <li class="dropdown">
-                                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                              <ul class="dropdown-menu" role="menu">
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToOngoingProjectsSentByPassed(report, $index)">Send to ongoing projects</a>
-                                                  </li>
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToFailedProjectsSentByPassed(report, $index)">Send to failed projects</a>
-                                                  </li>
-                                              </ul>
                                           </li>
                                           <li>
                                               <a class="close-link" ng-click="deleteThisPassReport(report._id, $index)"><i class="fa fa-close"></i></a>
@@ -418,7 +358,7 @@
                                       </ul>
                                       <div class="clearfix"></div>
                                   </div>
-                                  <div class="x_content">
+                                  <div class="x_content card_content">
                                       <article class="media event" style="margin-bottom:6px;">
                                           <a class="pull-left date">
                                               <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
@@ -451,46 +391,16 @@
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;">Failed Projects<small style="font-size:14px;">Review </small></h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                              <li>
-                                  <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                              </li>
-                              <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                  <ul class="dropdown-menu" role="menu">
-                                      <li>
-                                          <a href="#">Settings 1</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Settings 2</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li>
-                                  <a class="close-link" ng-click="deleteThisFailedReport(report._id, $index)"><i class="fa fa-close"></i></a>
-                              </li>
-                          </ul>
                           <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
-                          <div class="col-md-4" ng-repeat="report in failedReports">
-                              <div class="x_panel">
+                          <div class=" " ng-repeat="report in failedReports">
+                              <div class="x_panel custom_card col-sm-12">
                                   <div class="x_title">
-                                      <h2>ID: {{report._id}}<small></small></h2>
-                                      <ul class="nav navbar-right panel_toolbox">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
                                           <li>
                                               <a class="collapse-link" ng-click="sendThisReportToPassedProjectsSentByFailed(report, $index)"><i class="fa fa-chevron-up"></i></a>
-                                          </li>
-                                          <li class="dropdown">
-                                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                              <ul class="dropdown-menu" role="menu">
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToOngoingProjectsSentByFailed(report, $index)">Send to ongoing projects</a>
-                                                  </li>
-                                                  <li>
-                                                      <a href="#" ng-click="sendThisReportToPassedProjectsSentByFailed(report, $index)">Send to passed projects</a>
-                                                  </li>
-                                              </ul>
                                           </li>
                                           <li>
                                               <a class="close-link"><i class="fa fa-close"></i></a>
@@ -498,7 +408,7 @@
                                       </ul>
                                       <div class="clearfix"></div>
                                   </div>
-                                  <div class="x_content">
+                                  <div class="x_content card_content">
                                       <article class="media event" style="margin-bottom:6px;">
                                           <a class="pull-left date">
                                               <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
@@ -531,7 +441,7 @@
             </div>
             <div class="x_panel home_pannel" id="newProjectPannel" style="display:none;min-height:600px;">
               <div class="x_title">
-                <h2 style="font-size:24px;">New Project Form<small style="font-size:16px;"></small></h2>
+                <h2 style="font-size:26px;">New Project Form<small style="font-size:16px;"></small></h2>
 
                 <div class="clearfix"></div>
               </div>
@@ -593,10 +503,7 @@
 
                     <div id="previewProjectView" class="viewChild2 col-md-12">
                       <div class="col-md-12">
-                        <h3 style="font-size:32px;width:100%;display:inline-block;">Add Items to: {{newProject.name}}
-                          <button ng-click="goToCheckOutPage()" id="goToCheckOutPage" class="btn btn-success" style="display:inline-block;margin-left:20px; float:right;padding-left:20px;padding-right:20px;font-size:14px;">
-                            <i class="fa fa-arrow-right" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Next step
-                          </button>
+                        <h3 style=";width:100%;display:inline-block;">Add Items
                         </h3>
                       </div>
                       <div class="col-md-12">
@@ -683,12 +590,12 @@
             </div>
             <div class="x_panel home_pannel" id="databasePannel" style="display:none">
               <div class="x_title">
-                <h2 style="font-size:24px;">{{selectedDatabase.name}} database</h2>
+                <h2 style="font-size:26px;">Items Management</h2>
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
                 <div class="col-md-12">
-                    <h1 style="font-size:26px;">Items Management
+                    <h1 style="font-size:26px;">{{selectedDatabase.name}} database
                       <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
                       <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
                     </h1>
@@ -697,8 +604,8 @@
                     <form name="form8" class="form-horizontal" ng-submit="createNewItem()">
                         <div ng-repeat="field in selectedDatabase.fields" class="form-group">
                             <label for="tb_itemName" class="col-sm-2 control-label">{{field.fieldname}}</label>
-                            <div class="col-sm-10">
-                                <input type="{{field.type}}" class="form-control" ng-model="field.currentData" placeholder="{{field.currentData}}" required>
+                            <div class="col-sm-9">
+                                <input type="text" ng-change="performFunctionCalib()" class="form-control" ng-model="field.currentData" placeholder="{{field.currentData}}" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -737,21 +644,21 @@
                 </div>
               </div>
             </div>
-            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none;">
+            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none">
               <div class="x-panel">
                 <div class="x_title">
-                  <h2 style="font-size:24px;">Created Databases<small style="font-size:14px;">Navigate between different databases</small></h2>
+                  <h2 style="font-size:26px;">Created Databases<small style="font-size:14px;">Navigate between different databases</small></h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                   <h5 ng-show="!checkLengthDatabases()">No databases created yet.</h5>
-                  <div class="col-md-4" ng-repeat="db in databases track by $index">
-                      <div class="x_panel">
+                  <div class=" " ng-repeat="db in databases track by $index">
+                      <div class="x_panel custom_card col-sm-12 card_db">
                           <div class="x_title">
-                              <h2>Name: {{db.name}}<small></small></h2>
+                              <h2>{{db.name}}<small></small></h2>
                               <div class="clearfix"></div>
                           </div>
-                          <div class="x_content">
+                          <div class="x_content card_content">
                               <article class="media event" style="margin-bottom:6px;">
                                   <a class="pull-left date">
                                       <p class="month">{{getMonthFormated(db.date)}}</p>
@@ -760,7 +667,7 @@
                                   <div class="media-body">
                                       <p>ID: {{db.dbid}}</p>
                                       <p>Date {{db.date}}</p>
-                                      <a class="title" ng-click="chooseThisDatabase($index)"><u>Choose</u></a> |
+                                      <a class="title btn_chooseThisDB" ng-click="chooseThisDatabase($index)"><u>Choose</u></a> |
                                       <a class="title" ng-click="updateThisDatabase($index)"><u>Update</u></a> |
                                       <a class="title" ng-click="deleteThisDatabase($index)"><u>Delete</u></a>
                                   </div>
@@ -779,7 +686,7 @@
                   </div>
                 </div>
                 <div class="x_title">
-                  <h2 style="font-size:24px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>
+                  <h2 style="font-size:26px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -819,24 +726,129 @@
                               <div class="form-group">
                                   <label for="tb_itemName" class="col-sm-2 control-label">Field type:</label>
                                   <div class="col-sm-10">
-                                    <select class="form-control" ng-model="newField.type">
-                                      <option>text</option>
-                                      <option>number</option>
-                                      <option>email</option>
-                                      <option>phone</option>
+                                    <select class="form-control" ng-model="newField.type" ng-change="showFunctionField(newField.type)">
+                                      <option>value</option>
+                                      <option>function</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group" id="functionField" style="display:none;">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Function:</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control input_text" ng-model="funcTit_1">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_1">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_2">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_2">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_3">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_3">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_4">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_4">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_5">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_5">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_6">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_6">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_7">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_7">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_8">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_8">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_9">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_9">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_10">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_10">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_11">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_11">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_12">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
                                     </select>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-offset-2 col-sm-10">
-                                      <button type="submit" class="btn btn-default">Insert field</button>
+                                      <button type="submit" class="btn btn-default">Insert this field</button>
                                   </div>
                               </div>
                           </form>
                           <table style="border:none;" class="col-sm-10 col-sm-offset-2">
                             <tr ng-repeat="field in newDatabase.fields">
                               <td class="col-md-2 col-sm-6">{{field.fieldname}}</td>
-                              <td class="col-md-1 col-sm-4">{{field.type}}</td>
+                              <td class="col-md-1 col-sm-4"><label style="margin-right:4px;font-weight:400;" ng-repeat="value in field.type track by $index">{{value}}</label></td>
                               <td class="col-md-1 col-sm-2">
                                 <button type="submt" class="btn btn-danger" ng-click="deleteThisFieldFromNewDatabase($index)">
                                   <i class="fa fa-minus"></i>
@@ -863,30 +875,43 @@
             <div class="x_panel home_pannel" id="importExportPannel" style="display:none;">
               <div class="x-panel">
                 <div class="x_title">
-                  <h2 style="font-size:24px;">Export This System</h2>
+                  <h2 style="font-size:26px;">Export Data Scheme</h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                   <div class="col-md-offset-2 col-md-10">
-                      <textarea class="form-control" ng-model="exprortPackage" rows="5" readonly></textarea>
+                      <textarea class="form-control" ng-model="exprortPackage" rows="10" readonly></textarea>
                   </div>
 
                   <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
-                      <button class="btn btn-default" ng-click="createExportPackage()">Export package</button>
+                      <button class="btn btn-default" ng-click="createExportPackage()">Export package</button> OR
+                      <button class="btn btn-default" ng-click="createFilePackage()" style="margin-left:8px;">Save as text file</button>
                   </div>
                 </div>
                 <div class="x_title">
-                  <h2 style="font-size:24px;">Import This System</h2>
+                  <h2 style="font-size:26px;">Import Data Schemes</h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                  <div class="col-md-offset-2 col-md-10" style="padding-bottom:16px;">
+                    <h4 style="font-weight:400;">CHOOSE A SCHEME FILE</h4>
+                    <div class="btn btn-default" style="margin-left:8px;margin-top:16px;margin-left:0px;">
+                      <input type="file" on-read-file="importPackageFromTextFile($fileContent)"></input>
+                    </div><br/>
+                    <b>Progress:</b>
+                    <progress id="uploadProgressBar"></progress>
+                  </div>
+
                   <div class="col-md-offset-2 col-md-10">
-                      <textarea class="form-control" ng-model="importPackage" rows="5"></textarea>
+                    <h4 style="font-weight:400;">OR PAST SCHEME DATA HERE</h4>
+                    <textarea class="form-control" ng-model="importPackage" rows="10"></textarea>
                   </div>
 
                   <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
                       <button class="btn btn-default" ng-click="importThisPackage(importPackage)">Import package</button>
+
                   </div>
+
                 </div>
               </div>
             </div>

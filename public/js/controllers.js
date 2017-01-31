@@ -1,8 +1,16 @@
 ﻿var app = angular.module("app")
 
-.controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", function ($scope, $http, $rootScope, $window, printService) {
-
+.controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", 'FileSaver', 'Blob', function ($scope, $http, $rootScope, $window, printService, FileSaver, Blob) {
+    $scope.company = {
+      name: "Cassandra startup",
+      address: "Office A1.513, International University, Linh Trung district, Vietnam",
+      tel: "(08)-38766575",
+      fax: "(08)-38595459",
+      logo: "images/logo.png"
+    };
     $scope.stepNum = 1;
+    $scope.func_field_ind = [];
+    $scope.indi_field_ind = [];
     $scope.shouldInsertThisItemToProject = false;
     $scope.shouldInsertThisItemToSelectedProject = false;
     $scope.selectedGroupIndex = -1;
@@ -55,6 +63,11 @@
         jQuery("#popup2").show();
       };
 
+    });
+    jQuery('body').on('click', '.btn_chooseThisDB', function() {
+      console.log("OK");
+      jQuery(".card_db").css("background-color","white");
+      jQuery(this).parent().parent().parent().parent().css("background-color","#FAFAFA");
     });
     $scope.currentlyInSelectedProjectView = false;
     $scope.selectedProject = {};
@@ -257,10 +270,48 @@
     $scope.groupsInView = [];
     if ($window.localStorage["databases"]) {
       $rootScope.databases = JSON.parse($window.localStorage["databases"]);
+      if ($rootScope.databases.length == 0) {
+        $rootScope.databases = [
+          {
+            name: "Test DB - BME students",
+            dbid: "db#312",
+            date: getToDayFormatted(),
+            fields: [
+              {
+                fieldname: "#ID",
+                type: "text",
+                currentData: "",
+              },
+              {
+                fieldname: "Name",
+                type: "text",
+                currentData: "",
+              },
+              {
+                fieldname: "Phone",
+                type: "text",
+                currentData: "",
+              },
+              {
+                fieldname: "GPA",
+                type: "text",
+                currentData: "",
+              },
+            ],
+            data: [
+              ["BEBEIU13051"  ,"Pham, Khoi Nguyen"  ,"0914 118 896" ,"3.62"],
+              ["BEBEIU14092"  ,"Nguyen, Minh Quan"  ,"0872 345 284" ,"3.54"],
+              ["BABANM09233"  ,"Tran, Hoang Nam"    ,"0453 274 283" ,"3.87"],
+              ["BTBTMA17212"  ,"Do, Duy Viet"       ,"0917 273 247" ,"3.91"],
+              ["BABANM09233"  ,"Hoang, Phuong Bac"  ,"0172 482 465" ,"3.23"],
+            ],
+          }
+        ];
+      };
     } else {
       $rootScope.databases = [
         {
-          name: "BME students",
+          name: "Test DB - BME students",
           dbid: "db#312",
           date: getToDayFormatted(),
           fields: [
@@ -825,6 +876,7 @@
       $window.open("#/print", "_blank");
     };
 
+    $scope.functionArray = [];
 
 
 
@@ -874,7 +926,8 @@
       jQuery(".home_pannel").hide();
       jQuery("#importExportPannel").show();
     };
-
+    $scope.tit = [];
+    $scope.ope = [];
     $scope.newDatabase = {
       name: "",
       dbid: "db#" + Math.floor((Math.random() * 10000)),
@@ -884,16 +937,125 @@
     };
     $scope.newField = {
       fieldname: "",
-      type: "text",
+      type: "value",
       currentData: "",
     };
+    $scope.performFunctionCalib = function() {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunction();
+          $scope.selectedDatabase.fields[ind].currentData = out.toString();
+        };
+    };
+    $scope.calibThisFunction = function() {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.selectedDatabase.fields[h].currentData);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+    $scope.gradualCalibration = function() {
+      if ($scope.ope.length > 0) {
+        for (i = 0; i < $scope.ope.length; i++) {
+          if ($scope.ope[i] == "*" || $scope.ope[i] == "/") {
+            var thisope = $scope.ope[i];
+            if (thisope == "*") {
+              var result;
+              result = Number($scope.tit[i]) * Number($scope.tit[i + 1]);
+              $scope.tit.splice(i, 2);
+              $scope.tit.splice(i, 0, Number(result));
+              $scope.ope.splice(i, 1);
+              return;
+            } else {
+              var result;
+              result = Number($scope.tit[i]) / Number($scope.tit[i + 1]);
+              $scope.tit.splice(i, 2);
+              $scope.tit.splice(i, 0, Number(result));
+              $scope.ope.splice(i, 1);
+              return;
+            };
+          } else {
+            continue;
+          };
+        };
+        var thisope = $scope.ope[0];
+        if (thisope == "+") {
+          var result;
+          result = Number($scope.tit[0]) + Number($scope.tit[1]);
+          $scope.tit.splice(0, 2);
+          $scope.tit.splice(0, 0, Number(result));
+          $scope.ope.splice(0, 1);
+          return;
+        } else {
+          var result;
+          result = Number($scope.tit[0]) - Number($scope.tit[1]);
+          $scope.tit.splice(0, 2);
+          $scope.tit.splice(0, 0, Number(result));
+          $scope.ope.splice(0, 1);
+          return;
+        };
+      } else {
+        console.log("Exit gradual calibration");
+        return;
+      };
+    };
+
+
 
     $scope.insertThisFieldToNewDatabase = function(fieldObj) {
-      $scope.newDatabase.fields.push(fieldObj);
-      $scope.newField = {
-        fieldname: "",
-        type: "text",
-        currentData: "",
+      if (fieldObj.type == "value") {
+        fieldObj.type = ["value"];
+        $scope.newDatabase.fields.push(fieldObj);
+        $scope.newField = {
+          fieldname: "",
+          type: "value",
+          currentData: "",
+        };
+      } else {
+        var array = [];
+        fieldObj.type = [$scope.funcTit_1, $scope.funcOpe_1, $scope.funcTit_2, $scope.funcOpe_2, $scope.funcTit_3, $scope.funcOpe_3, $scope.funcTit_4, $scope.funcOpe_4, $scope.funcTit_5, $scope.funcOpe_5, $scope.funcTit_6, $scope.funcOpe_6, $scope.funcTit_7, $scope.funcOpe_7, $scope.funcTit_8, $scope.funcOpe_8, $scope.funcTit_9, $scope.funcOpe_9, $scope.funcTit_10, $scope.funcOpe_10, $scope.funcTit_11, $scope.funcOpe_11, $scope.funcTit_12];
+        for (i = 0; i < fieldObj.type.length; i++) {
+          if (fieldObj.type[i]) {
+            array.push(fieldObj.type[i]);
+          };
+        };
+        if (array.length % 2 == 0) {
+          array.splice(array.length - 1, 1);
+        };
+        fieldObj.type = array;
+        $scope.newDatabase.fields.push(fieldObj);
+        $scope.newField = {
+          fieldname: "",
+          type: "function",
+          currentData: "",
+        };
+        $scope.funcTit_1 = ""; $scope.funcOpe_1 = "";$scope.funcTit_2 = ""; $scope.funcOpe_2 = ""; $scope.funcTit_3 = ""; $scope.funcOpe_3 = ""; $scope.funcTit_4 = ""; $scope.funcOpe_4 = ""; $scope.funcTit_5 = ""; $scope.funcOpe_5 = ""; $scope.funcTit_6 = ""; $scope.funcOpe_6 = ""; $scope.funcTit_7 = ""; $scope.funcOpe_7 = ""; $scope.funcTit_8 = ""; $scope.funcOpe_8 = ""; $scope.funcTit_9 = ""; $scope.funcOpe_9 = ""; $scope.funcTit_10 = ""; $scope.funcOpe_10 = ""; $scope.funcTit_11 = ""; $scope.funcOpe_11 = ""; $scope.funcTit_12 = "";
+      };
+    };
+    $scope.showFunctionField = function(text) {
+      if (text == "function") {
+        jQuery("#functionField").show();
+      } else {
+        jQuery("#functionField").hide();
       };
     };
     $scope.createThisDatabase = function() {
@@ -908,6 +1070,7 @@
       };
       var index = $rootScope.databases.length - 1;
       $scope.chooseThisDatabase(index);
+      $scope.findFunctionFieldAndIndividualFieldIndex();
     };
     $scope.deleteThisFieldFromNewDatabase = function(index){
       $scope.newDatabase.fields.splice(index, 1);
@@ -942,6 +1105,7 @@
           items: [],
           groups: []
       };
+      $scope.findFunctionFieldAndIndividualFieldIndex();
     };
     $scope.deleteThisDatabase = function(index) {
       $rootScope.databases.splice(index, 1);
@@ -955,8 +1119,6 @@
         if ($rootScope.databases[i].dbid == db_id_to_find) {
           $rootScope.databases[i] = $scope.selectedDatabase;
           $window.localStorage['databases'] = JSON.stringify($rootScope.databases);
-          console.log("Update database " + db_id_to_find + " succeeded");
-          console.log($rootScope.databases);
           break;
         };
       };
@@ -975,28 +1137,226 @@
       $scope.selectedDatabase.data.push(arr);
       $scope.updateThisDatabase();
     };
+
+
+
     $scope.updateThisEntry = function(entryind, valueind, value) {
       $scope.selectedDatabase.data[entryind][valueind] = value;
+      $scope.performFunctionCalibForDatabaseManagement(entryind);
       $scope.updateThisDatabase();
     };
+    $scope.performFunctionCalibForDatabaseManagement = function(entryind) {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunctionForDatabaseManagement(entryind);
+          $scope.selectedDatabase.data[entryind][ind] = out.toString();
+        };
+    };
+    $scope.calibThisFunctionForDatabaseManagement = function(entryind) {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.selectedDatabase.data[entryind][h]);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+
+
+
     $scope.updateThisEntryInNewProjectWithoutGroup = function(entryind, valueind, value) {
       $scope.newProject.items[entryind][valueind] = value;
+      $scope.performFunctionCalibForEntryInNewProjectWithoutGroup(entryind);
     };
+    $scope.performFunctionCalibForEntryInNewProjectWithoutGroup = function(entryind) {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunctionForEntryInNewProjectWithoutGroup(entryind);
+          $scope.newProject.items[entryind][ind] = out.toString();
+        };
+    };
+    $scope.calibThisFunctionForEntryInNewProjectWithoutGroup = function(entryind) {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.newProject.items[entryind][h]);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+
+
+
     $scope.updateThisGroupTitleInNewProject = function(groupind, value) {
       $scope.newProject.groups[groupind].name = value;
     };
+
+
+
     $scope.updateThisEntryInNewProjectWithGroup = function(groupind, entryind, valueind, value) {
       $scope.newProject.groups[groupind].items[entryind][valueind] = value;
+      $scope.performFunctionCalibForEntryInNewProjectWithGroup(groupind, entryind);
     };
+    $scope.performFunctionCalibForEntryInNewProjectWithGroup = function(groupind, entryind) {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunctionForEntryInNewProjectWithGroup(groupind, entryind);
+          $scope.newProject.groups[groupind].items[entryind][ind] = out.toString();
+        };
+    };
+    $scope.calibThisFunctionForEntryInNewProjectWithGroup = function(groupind, entryind) {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.newProject.groups[groupind].items[entryind][h]);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+
+
+
     $scope.updateThisEntryInSelectedProjectWithoutGroup = function(entryind, valueind, value) {
       $scope.selectedProject.items[entryind][valueind] = value;
+      $scope.performFunctionCalibForEntryInSelectedProjectWithoutGroup(entryind);
     };
+    $scope.performFunctionCalibForEntryInSelectedProjectWithoutGroup = function(entryind) {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunctionForEntryInSelectedProjectWithoutGroup(entryind);
+          $scope.selectedProject.items[entryind][ind] = out.toString();
+        };
+    };
+    $scope.calibThisFunctionForEntryInSelectedProjectWithoutGroup = function(entryind) {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.selectedProject.items[entryind][h]);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+
+
+
     $scope.updateThisGroupTitleInSelectedProject = function(groupind, value) {
       $scope.selectedProject.groups[groupind].name = value;
     };
+
+
+
+
+
     $scope.updateThisEntryInSelectedProjectWithGroup = function(groupind, entryind, valueind, value) {
       $scope.selectedProject.groups[groupind].items[entryind][valueind] = value;
+      $scope.performFunctionCalibForEntryInSelectedProjectWithGroup(groupind, entryind);
     };
+    $scope.performFunctionCalibForEntryInSelectedProjectWithGroup = function(groupind, entryind) {
+        for (hkm = 0; hkm < $scope.func_field_ind.length; hkm++) {
+          var ind = $scope.func_field_ind[hkm];
+          $scope.tit = [];
+          $scope.ope = [];
+          var arr = $scope.selectedDatabase.fields[ind].type;
+          for (klm = 0; klm < arr.length; klm ++) {
+            if (klm % 2 == 0) {
+              $scope.tit.push(arr[klm]);
+            } else {
+              $scope.ope.push(arr[klm]);
+            };
+          };
+          var out = $scope.calibThisFunctionForEntryInSelectedProjectWithGroup(groupind, entryind);
+          $scope.selectedProject.groups[groupind].items[entryind][ind] = out.toString();
+        };
+    };
+    $scope.calibThisFunctionForEntryInSelectedProjectWithGroup = function(groupind, entryind) {
+      for (i = 0; i < $scope.tit.length; i++) {
+        var fieldname = $scope.tit[i];
+        for (h = 0; h < $scope.selectedDatabase.fields.length; h ++) {
+          if ($scope.selectedDatabase.fields[h].fieldname == fieldname) {
+            $scope.tit[i] = Number($scope.selectedProject.groups[groupind].items[entryind][h]);
+            break;
+          };
+        };
+      };
+      times_to_repeat = $scope.ope.length;
+      for (k = 1; k <= times_to_repeat; k++) {
+        $scope.gradualCalibration();
+      };
+      return $scope.tit[0];
+    };
+
+
+
+
+
     // IMPORT/EXPORT PACKAGE
     $scope.createExportPackage = function() {
       var obj = {
@@ -1005,15 +1365,28 @@
         passedProjects: $rootScope.passReports,
         failedProjects: $rootScope.failedReports
       };
-      console.log(obj);
       $scope.exprortPackage = JSON.stringify(obj);
+    };
+    $scope.createFilePackage = function() {
+      var obj = {
+        databases: $rootScope.databases,
+        ongoingProjects: $rootScope.ongoingReports,
+        passedProjects: $rootScope.passReports,
+        failedProjects: $rootScope.failedReports
+      };
+      var string_value = JSON.stringify(obj);
+      var data = new Blob([string_value], {type: 'text/plain;charset=unicode'});
+      var filename = $scope.company.name + "_data_scheme.txt";
+      FileSaver.saveAs(data, filename);
+    };
+    $scope.importPackageFromTextFile = function($fileContent) {
+      $scope.importPackage = $fileContent;
     };
     $scope.importThisPackage = function(datastring) {
       if (datastring) {
         try {
           var JSONData = JSON.parse(datastring);
           var obj = JSONData;
-          console.log(obj);
           for (i = 0; i < obj.databases.length; i++) {
             $rootScope.databases.push(obj.databases[i]);
           };
@@ -1030,6 +1403,7 @@
           $scope.updateAllDatabases();
           $scope.importPackage = "";
           $scope.exprortPackage = "";
+          alert("Package imported successfully");
         } catch(e) {
           alert("The package is either not an object or not useable with this software. Please try to export data scheme using this software");
         };
@@ -1037,6 +1411,25 @@
         alert("No package inserted!");
       };
     };
+    $scope.findFunctionFieldAndIndividualFieldIndex = function() {
+      $scope.func_field_ind = [];
+      $scope.indi_field_ind = [];
+      if ($scope.selectedDatabase) {
+        if ($scope.selectedDatabase.fields[0].type instanceof Array) {
+          for (i = 0; i < $scope.selectedDatabase.fields.length; i++) {
+            if ($scope.selectedDatabase.fields[i].type.length > 1) {
+              $scope.func_field_ind.push(i);
+              $scope.selectedDatabase.fields[i].currentData = "Waiting for all inputs to be inserted...";
+            } else {
+              $scope.indi_field_ind.push(i);
+            };
+          };
+        };
+      };
+      console.log($scope.func_field_ind);
+      console.log($scope.indi_field_ind);
+    };
+    $scope.findFunctionFieldAndIndividualFieldIndex();
 }])
 .controller("printController", ["$scope", "$http", "$rootScope", "printService", "$window", function ($scope, $http, $rootScope, printService, $window) {
   $scope.company = {

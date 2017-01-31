@@ -2,6 +2,7 @@
   *{
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    overflow: visible;
   }
   .logo-img {
     height: 90px;
@@ -88,5 +89,8 @@
     background-color: #EEEEEE !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+  #page {
+    overflow-y: visible;
   }
 }
