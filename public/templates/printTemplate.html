@@ -1,9 +1,9 @@
 <div class="prp-page" id="page">
-  <img class="logo-img" src="{{company.logo}}" />
+  <img class="logo_img" src="{{company.logo}}" />
   <h2 class="color-red align-right" style="max-width:95%;float:right;display:inline-block;">{{company.name | uppercase}}</h2>
   <h2 class="color-blue align-right" style="max-width:95%;float:right;display:inline-block;">{{company.address}}</h2>
   <h2 class="color-blue align-right" style="max-width:95%;float:right;display:inline-block;">Tel: {{company.tel}} - Fax: {{company.fax}}</h2>
-  <div class="clickToMargin col-md-12" style="width:100%;display:inline-block;margin-top:-20px;">
+  <div class="clickToMargin col-md-12" style="width:100%;display:inline-block;margin-top:20px;">
     <h2><span class="bold">To:</span> <span class="hover-pointer" ng-click="showTo()">{{project.additionalInfo.to.value}}</span></h2>
     <form ng-show="project.additionalInfo.to.show" ng-submit="changeProjectTo()">
       <input class="form-control" type="text" ng-model="project.additionalInfo.to.value" value="{{project.additionalInfo.to.value}}" />

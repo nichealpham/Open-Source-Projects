@@ -1,4 +1,8 @@
-<div id="nenDen" class="divNenDen"></div>
+<div id="nenDen" class="divNenDen">
+  <a ng-click="smartQuit()" style="position:absolute;top:20px;right:calc(2.5% - 10px);font-size:20px;color:white;cursor:pointer;">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </a>
+</div>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -23,17 +27,12 @@
 
 </div>
 <div class="modal_popup" id="popup">
-  <div class="col-md-2">
-    <input ng-model="tb_filterMaterialByName._id" type="text" class="form-control" placeholder="search by id..." />
-  </div>
-  <div class="col-md-6">
-    <input ng-model="tb_filterMaterialByName.Description" type="text" class="form-control" placeholder="search by item name..." />
-  </div>
-  <div class="col-md-2">
-      <input ng-model="tb_filterMaterialByName.Spec" type="text" class="form-control" placeholder="search by size..." />
-  </div>
-  <div class="col-md-2">
-      <input ng-model="tb_filterMaterialByName.Category" type="text" class="form-control" placeholder="search by class..." />
+
+  <div class="form-group" style="margin-top:10px;">
+      <label class="col-sm-2 control-label" style="display:inline-block;text-align:right;line-height:32px;">Search term:</label>
+      <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="searchTerm1" placeholder="item name..." required>
+      </div>
   </div>
   <table class="table table-hover col-md-12" style="margin-top: 10px;">
     <tr style="background-color: #EEEEEE;">
@@ -41,10 +40,10 @@
       <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
       <th>Action</th>
     </tr>
-    <tr ng-repeat="entry in selectedDatabase.data track by $index">
-      <td><b>{{$index + 1}}</b></td>
-      <td ng-repeat="value in entry track by $index">
-        <input type="text" ng-model="value" value="{{value}}" class="form-control" style="border-radius:2px;"></input>
+    <tr ng-repeat="entry in selectedDatabase.data | filter: searchTerm1 track by $index">
+      <td style="line-height:32px;"><b>{{$index + 1}}</b></td>
+      <td style="line-height:32px;" ng-repeat="value in entry track by $index">
+        {{value}}
       </td>
       <td>
         <button class="btn btn-primary" ng-click="addItemToThisGroup(entry, groupIndex, selectedGroupIndex, $index)"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -150,11 +149,14 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           <div class="menu_section">
             <ul class="nav side-menu">
-              <li ng-click="showHomePannel()"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-              <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> Create New Project <span class="fa fa-chevron-down"></span></a></li>
+
+              <li ng-click="showHomePannel()"><a><i class="fa fa-home"></i> My Dashboard <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> New Project <span class="fa fa-chevron-down"></span></a></li>
               <li ng-click="showDatabasePannel()"><a><i class="fa fa-table"></i> Items List <span class="fa fa-chevron-down"></span></a></li>
-              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Database Management <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Databases Management <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCompanyPannel()"><a><i class="fa fa-building-o"></i> Company Information <span class="fa fa-chevron-down"></span></a></li>
               <li ng-click="showImportExportPannel()"><a><i class="fa fa-download"></i> Export/Import <span class="fa fa-chevron-down"></span></a></li>
+
             </ul>
           </div>
 
@@ -284,7 +286,7 @@
 
         <div class="row" style="min-height:600px;">
           <div class="col-md-12">
-            <div class="home_pannel" id="homePannel" style="">
+            <div class="home_pannel" id="homePannel" style="display:none">
                   <div class="x_panel">
                       <div class="x_title">
                           <h2 style="font-size:26px;">Ongoing Projects<small style="font-size:14px;">Review</small></h2>
@@ -403,7 +405,7 @@
                                               <a class="collapse-link" ng-click="sendThisReportToPassedProjectsSentByFailed(report, $index)"><i class="fa fa-chevron-up"></i></a>
                                           </li>
                                           <li>
-                                              <a class="close-link"><i class="fa fa-close"></i></a>
+                                              <a ng-click="deleteThisFailedReport(report._id, $index)" class="close-link"><i class="fa fa-close"></i></a>
                                           </li>
                                       </ul>
                                       <div class="clearfix"></div>
@@ -588,16 +590,16 @@
 
               </div>
             </div>
-            <div class="x_panel home_pannel" id="databasePannel" style="display:none">
+            <div class="x_panel home_pannel" id="databasePannel" style="display:none;">
               <div class="x_title">
                 <h2 style="font-size:26px;">Items Management</h2>
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
                 <div class="col-md-12">
-                    <h1 style="font-size:26px;">{{selectedDatabase.name}} database
-                      <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
-                      <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
+                    <h1 style="font-size:26px;">{{selectedDatabase.name}}
+                      <button class="btn btn-success" style="display:none;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
+                      <button class="btn btn-success" style="display:inline-block;margin-left:10px;margin-right:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
                     </h1>
                 </div>
                 <div class="col-md-12" id="createNewItemInfoView" style="margin-top:20px;display:none;">
@@ -620,11 +622,16 @@
                         <tr style="background-color: #EEEEEE;">
                           <tr style="background-color: #EEEEEE;">
                               <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
-                              <th>Action</th>
+                              <th>Clear</th>
                           </tr>
                         </tr>
                         <tr>
-
+                          <td ng-repeat="field in selectedDatabase.fields track by $index">
+                            <input ng-change="searchThisEntry()" type="text" class="form-control" ng-model="field.searchTerm" value="{{field.searchTerm}}"></input>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger" ng-click="clearAllSearchTerm()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                          </td>
                         </tr>
                     </table>
                     <table class="table table-hover col-md-12" style="margin-top: 10px;">
@@ -912,6 +919,50 @@
 
                   </div>
 
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="companyInfoPannel" style="">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Company Information</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-12" style="margin-top:20px;">
+                      <form class="form-horizontal">
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Name:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.name" placeholder="{{company.name}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Address:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.address" placeholder="{{company.address}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Phone:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.tel" placeholder="{{company.tel}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Fax:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.fax" placeholder="{{company.fax}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Logo:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.logo" placeholder="{{company.logo}}">
+                              </div>
+                          </div>
+                      </form>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,13 +1,7 @@
 ﻿var app = angular.module("app")
 
 .controller("mainController", ["$scope", "$http", "$rootScope", "$window", "printService", 'FileSaver', 'Blob', function ($scope, $http, $rootScope, $window, printService, FileSaver, Blob) {
-    $scope.company = {
-      name: "Cassandra startup",
-      address: "Office A1.513, International University, Linh Trung district, Vietnam",
-      tel: "(08)-38766575",
-      fax: "(08)-38595459",
-      logo: "images/logo.png"
-    };
+
     $scope.stepNum = 1;
     $scope.func_field_ind = [];
     $scope.indi_field_ind = [];
@@ -157,6 +151,11 @@
       jQuery(".home_pannel").hide();
       jQuery("#databasePannel").show();
     };
+    $scope.showCompanyPannel = function() {
+      jQuery(".home_pannel").hide();
+      jQuery("#companyInfoPannel").show();
+    };
+
     var getToDayFormatted = function () {
       var today = new Date();
       var dd = today.getDate();
@@ -224,7 +223,7 @@
       var cf = confirm("Do you want to delete this report?");
       if (cf == true) {
         console.log("Delete action fired!");
-        $rootScope.ongoingReports.splice(index, 1);
+        $scope.ongoingReports.splice(index, 1);
       };
       $scope.updateAllReports();
     };
@@ -234,7 +233,7 @@
         if (cf == true) {
           console.log("Delete action fired!");
 
-          $rootScope.passReports.splice(index, 1);
+          $scope.passReports.splice(index, 1);
 
         };
         $scope.updateAllReports();
@@ -244,7 +243,7 @@
         var cf = confirm("Do you want to delete this report?");
         if (cf == true) {
           console.log("Delete action fired!");
-          $rootScope.failedReports.splice(index, 1);
+          $scope.failedReports.splice(index, 1);
         };
         $scope.updateAllReports();
     };
@@ -268,10 +267,25 @@
 
     $scope.savedGroups = [];
     $scope.groupsInView = [];
+
+    if ($window.localStorage["BOM_company"]) {
+      $scope.company = JSON.parse($window.localStorage["BOM_company"]);
+      $scope.showHomePannel();
+    } else {
+      $scope.company = {
+        name: "Cassandra startup",
+        address: "Office A1.513, International University, Linh Trung district, Vietnam",
+        tel: "(08)-38766575",
+        fax: "(08)-38595459",
+        logo: "images/logo.png"
+      };
+      $window.localStorage["BOM_company"] = JSON.stringify($scope.company);
+    };
+
     if ($window.localStorage["databases"]) {
-      $rootScope.databases = JSON.parse($window.localStorage["databases"]);
-      if ($rootScope.databases.length == 0) {
-        $rootScope.databases = [
+      $scope.databases = JSON.parse($window.localStorage["databases"]);
+      if ($scope.databases.length == 0) {
+        $scope.databases = [
           {
             name: "Test DB - BME students",
             dbid: "db#312",
@@ -309,7 +323,7 @@
         ];
       };
     } else {
-      $rootScope.databases = [
+      $scope.databases = [
         {
           name: "Test DB - BME students",
           dbid: "db#312",
@@ -347,8 +361,8 @@
       ];
     };
 
-    $scope.selectedDatabaseIndex = $rootScope.databases.length - 1;
-    $scope.selectedDatabase = $rootScope.databases[$scope.selectedDatabaseIndex];
+    $scope.selectedDatabaseIndex = $scope.databases.length - 1;
+    $scope.selectedDatabase = $scope.databases[$scope.selectedDatabaseIndex];
     $scope.newProject = {
         name: getToDayFormattedForReportID(),
         _id: getToDayFormattedForReportID(),
@@ -370,22 +384,22 @@
         items: []
     };
     if ($window.localStorage['ongoingReports']) {
-      $rootScope.ongoingReports = JSON.parse($window.localStorage['ongoingReports']);
+      $scope.ongoingReports = JSON.parse($window.localStorage['ongoingReports']);
     }
     else {
-      $rootScope.ongoingReports = [];
+      $scope.ongoingReports = [];
     };
     if ($window.localStorage['passReports']) {
-      $rootScope.passReports = JSON.parse($window.localStorage['passReports']);
+      $scope.passReports = JSON.parse($window.localStorage['passReports']);
     }
     else {
-      $rootScope.passReports = [];
+      $scope.passReports = [];
     };
     if ($window.localStorage['failedReports']) {
-      $rootScope.failedReports = JSON.parse($window.localStorage['failedReports']);
+      $scope.failedReports = JSON.parse($window.localStorage['failedReports']);
     }
     else {
-      $rootScope.failedReports = [];
+      $scope.failedReports = [];
     };
     // functions
 
@@ -407,16 +421,16 @@
       $scope.newProject.jsonString = JSON.stringify(dataString);
 
       if ($scope.newProject.Status == "ongoing") {
-          $rootScope.ongoingReports.push($scope.newProject);
-          $window.localStorage['ongoingReports'] = JSON.stringify($rootScope.ongoingReports);
+          $scope.ongoingReports.push($scope.newProject);
+          $window.localStorage['ongoingReports'] = JSON.stringify($scope.ongoingReports);
       };
       if ($scope.newProject.Status == "pass") {
-          $rootScope.passReports.push($scope.newProject);
-          $window.localStorage['passReports'] = JSON.stringify($rootScope.passReports);
+          $scope.passReports.push($scope.newProject);
+          $window.localStorage['passReports'] = JSON.stringify($scope.passReports);
       };
       if ($scope.newProject.Status == "failed") {
-          $rootScope.failedReports.push($scope.newProject);
-          $window.localStorage['failedReports'] = JSON.stringify($rootScope.failedReports);
+          $scope.failedReports.push($scope.newProject);
+          $window.localStorage['failedReports'] = JSON.stringify($scope.failedReports);
       };
       $scope.newProject = {
           name: getToDayFormattedForReportID(),
@@ -717,43 +731,43 @@
         jQuery("#tableSearchItem").toggle();
     });
     $scope.updateAllReports = function() {
-      $window.localStorage["ongoingReports"] = JSON.stringify($rootScope.ongoingReports);
-      $window.localStorage["passReports"] = JSON.stringify($rootScope.passReports);
-      $window.localStorage["failedReports"] = JSON.stringify($rootScope.failedReports);
+      $window.localStorage["ongoingReports"] = JSON.stringify($scope.ongoingReports);
+      $window.localStorage["passReports"] = JSON.stringify($scope.passReports);
+      $window.localStorage["failedReports"] = JSON.stringify($scope.failedReports);
     };
     $scope.updateAllDatabases = function() {
-      $window.localStorage["databases"] = JSON.stringify($rootScope.databases);
+      $window.localStorage["databases"] = JSON.stringify($scope.databases);
     };
     $scope.sendThisReportToPassedProjectsSentByOngoing = function (reportObj, index) {
-      $rootScope.ongoingReports.splice(index, 1);
-      $rootScope.passReports.push(reportObj);
+      $scope.ongoingReports.splice(index, 1);
+      $scope.passReports.push(reportObj);
       $scope.updateAllReports();
     };
     $scope.sendThisReportToFailedProjectsSentByOngoing = function (reportObj, index) {
-      $rootScope.ongoingReports.splice(index, 1);
-      $rootScope.failedReports.push(reportObj);
+      $scope.ongoingReports.splice(index, 1);
+      $scope.failedReports.push(reportObj);
       $scope.updateAllReports();
     };
     ///////
     $scope.sendThisReportToOngoingProjectsSentByPassed = function (reportObj, index) {
-      $rootScope.passReports.splice(index, 1);
-      $rootScope.ongoingReports.push(reportObj);
+      $scope.passReports.splice(index, 1);
+      $scope.ongoingReports.push(reportObj);
       $scope.updateAllReports();
     };
     $scope.sendThisReportToFailedProjectsSentByPassed = function (reportObj, index) {
-      $rootScope.passReports.splice(index, 1);
-      $rootScope.failedReports.push(reportObj);
+      $scope.passReports.splice(index, 1);
+      $scope.failedReports.push(reportObj);
       $scope.updateAllReports();
     };
     ///////
     $scope.sendThisReportToOngoingProjectsSentByFailed = function (reportObj, index) {
-      $rootScope.failedReports.splice(index, 1);
-      $rootScope.ongoingReports.push(reportObj);
+      $scope.failedReports.splice(index, 1);
+      $scope.ongoingReports.push(reportObj);
       $scope.updateAllReports();
     };
     $scope.sendThisReportToPassedProjectsSentByFailed = function (reportObj, index) {
-      $rootScope.failedReports.splice(index, 1);
-      $rootScope.passReports.push(reportObj);
+      $scope.failedReports.splice(index, 1);
+      $scope.passReports.push(reportObj);
       $scope.updateAllReports();
     };
     ////////
@@ -762,21 +776,21 @@
       var objToStringnify = {
         data: $scope.selectedProject
       };
-      for (i = 0; i <= $rootScope.ongoingReports.length - 1; i++) {
-        if ( $scope.selectedProject._id == $rootScope.ongoingReports[i]._id ) {
-          $rootScope.ongoingReports[i].jsonString = JSON.stringify(objToStringnify);
+      for (i = 0; i <= $scope.ongoingReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.ongoingReports[i]._id ) {
+          $scope.ongoingReports[i].jsonString = JSON.stringify(objToStringnify);
           break;
         };
       };
-      for (i = 0; i <= $rootScope.failedReports.length - 1; i++) {
-        if ( $scope.selectedProject._id == $rootScope.failedReports[i]._id ) {
-          $rootScope.failedReports[i].jsonString = JSON.stringify(objToStringnify);
+      for (i = 0; i <= $scope.failedReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.failedReports[i]._id ) {
+          $scope.failedReports[i].jsonString = JSON.stringify(objToStringnify);
           break;
         };
       };
-      for (i = 0; i <= $rootScope.passReports.length - 1; i++) {
-        if ( $scope.selectedProject._id == $rootScope.passReports[i]._id ) {
-          $rootScope.passReports[i].jsonString = JSON.stringify(objToStringnify);
+      for (i = 0; i <= $scope.passReports.length - 1; i++) {
+        if ( $scope.selectedProject._id == $scope.passReports[i]._id ) {
+          $scope.passReports[i].jsonString = JSON.stringify(objToStringnify);
           break;
         };
       };
@@ -821,13 +835,13 @@
       };
       $scope.newProject.jsonString = JSON.stringify(dataString);
       if ($scope.newProject.Status == "ongoing") {
-          $rootScope.ongoingReports.push($scope.newProject);
+          $scope.ongoingReports.push($scope.newProject);
       };
       if ($scope.newProject.Status == "pass") {
-          $rootScope.passReports.push($scope.newProject);
+          $scope.passReports.push($scope.newProject);
       };
       if ($scope.newProject.Status == "failed") {
-          $rootScope.failedReports.push($scope.newProject);
+          $scope.failedReports.push($scope.newProject);
       };
       $scope.newProject = {
           name: getToDayFormattedForReportID(),
@@ -881,7 +895,7 @@
 
 
 
-    // $rootScope.databases = [
+    // $scope.databases = [
     //   {
     //     name: "BME students",
     //     dbid: "db#312",
@@ -917,7 +931,7 @@
     //     ],
     //   }
     // ];
-    // $scope.selectedDatabase = $rootScope.databases[0];
+    // $scope.selectedDatabase = $scope.databases[0];
     $scope.showCreateNewDatabasePannel = function() {
       jQuery(".home_pannel").hide();
       jQuery("#createNewDatabasePannel").show();
@@ -1050,6 +1064,7 @@
         };
         $scope.funcTit_1 = ""; $scope.funcOpe_1 = "";$scope.funcTit_2 = ""; $scope.funcOpe_2 = ""; $scope.funcTit_3 = ""; $scope.funcOpe_3 = ""; $scope.funcTit_4 = ""; $scope.funcOpe_4 = ""; $scope.funcTit_5 = ""; $scope.funcOpe_5 = ""; $scope.funcTit_6 = ""; $scope.funcOpe_6 = ""; $scope.funcTit_7 = ""; $scope.funcOpe_7 = ""; $scope.funcTit_8 = ""; $scope.funcOpe_8 = ""; $scope.funcTit_9 = ""; $scope.funcOpe_9 = ""; $scope.funcTit_10 = ""; $scope.funcOpe_10 = ""; $scope.funcTit_11 = ""; $scope.funcOpe_11 = ""; $scope.funcTit_12 = "";
       };
+      $scope.updateSearchItemField();
     };
     $scope.showFunctionField = function(text) {
       if (text == "function") {
@@ -1059,7 +1074,7 @@
       };
     };
     $scope.createThisDatabase = function() {
-      $rootScope.databases.push($scope.newDatabase);
+      $scope.databases.push($scope.newDatabase);
       $scope.updateAllDatabases();
       $scope.newDatabase = {
         name: "",
@@ -1068,7 +1083,7 @@
         fields: [],
         data: [],
       };
-      var index = $rootScope.databases.length - 1;
+      var index = $scope.databases.length - 1;
       $scope.chooseThisDatabase(index);
       $scope.findFunctionFieldAndIndividualFieldIndex();
     };
@@ -1076,7 +1091,7 @@
       $scope.newDatabase.fields.splice(index, 1);
     };
     $scope.checkLengthDatabases = function() {
-      var len = $rootScope.databases.length;
+      var len = $scope.databases.length;
       if (len >= 1) {
         return true;
       }
@@ -1087,8 +1102,7 @@
 
     console.log($scope.selectedDatabase);
     $scope.chooseThisDatabase = function(index) {
-      $scope.selectedDatabase = $rootScope.databases[index];
-      console.log($scope.selectedDatabase);
+      $scope.selectedDatabase = $scope.databases[index];
       $scope.newProject = {
           name: getToDayFormattedForReportID(),
           _id: getToDayFormattedForReportID(),
@@ -1106,19 +1120,20 @@
           groups: []
       };
       $scope.findFunctionFieldAndIndividualFieldIndex();
+      $scope.updateSearchItemField();
     };
     $scope.deleteThisDatabase = function(index) {
-      $rootScope.databases.splice(index, 1);
+      $scope.databases.splice(index, 1);
       $scope.updateAllDatabases();
     };
 
 
     $scope.updateThisDatabase = function() {
       var db_id_to_find = $scope.selectedDatabase.dbid;
-      for (i = 0; i < $rootScope.databases.length; i++) {
-        if ($rootScope.databases[i].dbid == db_id_to_find) {
-          $rootScope.databases[i] = $scope.selectedDatabase;
-          $window.localStorage['databases'] = JSON.stringify($rootScope.databases);
+      for (i = 0; i < $scope.databases.length; i++) {
+        if ($scope.databases[i].dbid == db_id_to_find) {
+          $scope.databases[i] = $scope.selectedDatabase;
+          $window.localStorage['databases'] = JSON.stringify($scope.databases);
           break;
         };
       };
@@ -1360,19 +1375,21 @@
     // IMPORT/EXPORT PACKAGE
     $scope.createExportPackage = function() {
       var obj = {
-        databases: $rootScope.databases,
-        ongoingProjects: $rootScope.ongoingReports,
-        passedProjects: $rootScope.passReports,
-        failedProjects: $rootScope.failedReports
+        databases: $scope.databases,
+        ongoingProjects: $scope.ongoingReports,
+        passedProjects: $scope.passReports,
+        failedProjects: $scope.failedReports,
+        company: $scope.company,
       };
       $scope.exprortPackage = JSON.stringify(obj);
     };
     $scope.createFilePackage = function() {
       var obj = {
-        databases: $rootScope.databases,
-        ongoingProjects: $rootScope.ongoingReports,
-        passedProjects: $rootScope.passReports,
-        failedProjects: $rootScope.failedReports
+        databases: $scope.databases,
+        ongoingProjects: $scope.ongoingReports,
+        passedProjects: $scope.passReports,
+        failedProjects: $scope.failedReports,
+        company: $scope.company,
       };
       var string_value = JSON.stringify(obj);
       var data = new Blob([string_value], {type: 'text/plain;charset=unicode'});
@@ -1388,19 +1405,21 @@
           var JSONData = JSON.parse(datastring);
           var obj = JSONData;
           for (i = 0; i < obj.databases.length; i++) {
-            $rootScope.databases.push(obj.databases[i]);
+            $scope.databases.push(obj.databases[i]);
           };
           for (i = 0; i < obj.ongoingProjects.length; i++) {
-            $rootScope.ongoingReports.push(obj.ongoingProjects[i]);
+            $scope.ongoingReports.push(obj.ongoingProjects[i]);
           };
           for (i = 0; i < obj.passedProjects.length; i++) {
-            $rootScope.passReports.push(obj.passedProjects[i]);
+            $scope.passReports.push(obj.passedProjects[i]);
           };
           for (i = 0; i < obj.failedProjects.length; i++) {
-            $rootScope.failedReports.push(obj.failedProjects[i]);
+            $scope.failedReports.push(obj.failedProjects[i]);
           };
+          $scope.company = obj.company;
           $scope.updateAllReports();
           $scope.updateAllDatabases();
+          $scope.updateThisCompany();
           $scope.importPackage = "";
           $scope.exprortPackage = "";
           alert("Package imported successfully");
@@ -1430,32 +1449,70 @@
       console.log($scope.indi_field_ind);
     };
     $scope.findFunctionFieldAndIndividualFieldIndex();
+    $scope.currentlyStoredDatabase = $scope.selectedDatabase;
+    $scope.searchThisEntry = function() {
+
+    };
+    $scope.updateSearchItemField = function() {
+      for (i = 0; i < $scope.selectedDatabase.fields.length; i++) {
+        $scope.selectedDatabase.fields[i].searchTerm = "";
+      };
+      console.log($scope.selectedDatabase.fields);
+    };
+    $scope.updateSearchItemField();
+    $scope.clearAllSearchTerm = function() {
+      $scope.selectedDatabase = $scope.currentlyStoredDatabase;
+      $scope.updateSearchItemField();
+    };
+
+    $scope.updateThisCompany = function() {
+      $window.localStorage["BOM_company"] = JSON.stringify($scope.company);
+    };
+
+    $scope.smartQuit = function() {
+      if ($scope.currentlyInSelectedProjectView) {
+        if (jQuery("#popup").css("display") == "none") {
+          $scope.CloseThisReport();
+        } else {
+          jQuery("#popup").hide();
+          jQuery("#popup2").show();
+        };
+      } else {
+        jQuery("#popup").hide();
+        jQuery("#popup2").show();
+      };
+    };
 }])
 .controller("printController", ["$scope", "$http", "$rootScope", "printService", "$window", function ($scope, $http, $rootScope, printService, $window) {
-  $scope.company = {
-    name: "Cassandra startup",
-    address: "Office A1.513, International University, Linh Trung district, Vietnam",
-    tel: "(08)-38766575",
-    fax: "(08)-38595459",
-    logo: "images/logo.png"
+  if ($window.localStorage["BOM_company"]) {
+    $scope.company = JSON.parse($window.localStorage["BOM_company"]);
+  } else {
+    $scope.company = {
+      name: "Cassandra startup",
+      address: "Office A1.513, International University, Linh Trung district, Vietnam",
+      tel: "(08)-38766575",
+      fax: "(08)-38595459",
+      logo: "images/logo.png"
+    };
+    $window.localStorage["BOM_company"] = JSON.stringify($scope.company);
   };
   if ($window.localStorage['ongoingReports']) {
-    $rootScope.ongoingReports = JSON.parse($window.localStorage['ongoingReports']);
+    $scope.ongoingReports = JSON.parse($window.localStorage['ongoingReports']);
   }
   else {
-    $rootScope.ongoingReports = [];
+    $scope.ongoingReports = [];
   };
   if ($window.localStorage['passReports']) {
-    $rootScope.passReports = JSON.parse($window.localStorage['passReports']);
+    $scope.passReports = JSON.parse($window.localStorage['passReports']);
   }
   else {
-    $rootScope.passReports = [];
+    $scope.passReports = [];
   };
   if ($window.localStorage['failedReports']) {
-    $rootScope.failedReports = JSON.parse($window.localStorage['failedReports']);
+    $scope.failedReports = JSON.parse($window.localStorage['failedReports']);
   }
   else {
-    $rootScope.failedReports = [];
+    $scope.failedReports = [];
   };
   $scope.pageTitle = "Print Template";
   $scope.projectString = $window.localStorage['BOM_reportToPrint_string'];
@@ -1524,30 +1581,30 @@
       data: $scope.project
     };
     $scope.project.jsonString = JSON.stringify(objToStringnify);
-    for (i = 0; i <= $rootScope.ongoingReports.length - 1; i++) {
-      if ( $scope.project._id == $rootScope.ongoingReports[i]._id ) {
-        $rootScope.ongoingReports[i] = $scope.project;
+    for (i = 0; i <= $scope.ongoingReports.length - 1; i++) {
+      if ( $scope.project._id == $scope.ongoingReports[i]._id ) {
+        $scope.ongoingReports[i] = $scope.project;
         break;
       };
     };
-    for (i = 0; i <= $rootScope.failedReports.length - 1; i++) {
-      if ( $scope.selectedProject._id == $rootScope.failedReports[i]._id ) {
-        $rootScope.failedReports[i] = $scope.project;
+    for (i = 0; i <= $scope.failedReports.length - 1; i++) {
+      if ( $scope.selectedProject._id == $scope.failedReports[i]._id ) {
+        $scope.failedReports[i] = $scope.project;
         break;
       };
     };
-    for (i = 0; i <= $rootScope.passReports.length - 1; i++) {
-      if ( $scope.selectedProject._id == $rootScope.passReports[i]._id ) {
-        $rootScope.passReports[i] = $scope.project;
+    for (i = 0; i <= $scope.passReports.length - 1; i++) {
+      if ( $scope.selectedProject._id == $scope.passReports[i]._id ) {
+        $scope.passReports[i] = $scope.project;
         break;
       };
     };
     $scope.updateAllReports();
   };
   $scope.updateAllReports = function() {
-    $window.localStorage["ongoingReports"] = JSON.stringify($rootScope.ongoingReports);
-    $window.localStorage["passReports"] = JSON.stringify($rootScope.passReports);
-    $window.localStorage["failedReports"] = JSON.stringify($rootScope.failedReports);
+    $window.localStorage["ongoingReports"] = JSON.stringify($scope.ongoingReports);
+    $window.localStorage["passReports"] = JSON.stringify($scope.passReports);
+    $window.localStorage["failedReports"] = JSON.stringify($scope.failedReports);
   };
   $scope.getToTalProjectMoney = function () {
       var totalMoney = 0;
