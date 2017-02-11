@@ -1,7 +1,7 @@
 ![ScreenShot](/screen_shot/dash.PNG)
 <h1>BOM Management Software</h1>
 <p>A simple web-based application to create bill of materials</p>
-[An online demo with some of its features is available here](http://112.78.3.114:4220/home.html)
+
 <h2>Installation</h2>
 
 1. [Download and install Nodejs](https://nodejs.org/en/)
