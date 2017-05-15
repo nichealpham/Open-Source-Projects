@@ -1,21 +1,23 @@
 {
-  "name": "socket.io-chat",
-  "version": "0.0.0",
-  "description": "A simple chat client using socket.io",
-  "main": "index.js",
-  "author": "Grant Timmerman",
-  "private": true,
-  "license": "BSD",
-  "dependencies": {
-    "express": "~4.14.0",
-    "body-parser": "~1.15.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "jade": "~1.11.0",
-    "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+  "name": "bom_desktop",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager ./ bom_desktop --platform=win32 --arch=ia32 --version=0.30.0"
   },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "bom",
+    "bill of material",
+    "bill",
+    "software",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.4.15"
+    "electron": "^1.4.1"
   }
 }

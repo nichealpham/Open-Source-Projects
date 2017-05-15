@@ -1,0 +1,21 @@
+- import/export data scheme  -  done
+
+- export into files, import from file - done
+
+- develop function field - done
+
+- develop static number field as function field
+
+- search box
+
+- database server
+
+- input text ng-change auto update local storage  -  done
+
+- ...
+
+ALEART
+
+- print PDF will not work of Pin interest extension is installed - disable it when you use this function
+
+- keep only google extensions will make this function work perfectly
