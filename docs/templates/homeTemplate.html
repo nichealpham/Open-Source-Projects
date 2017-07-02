@@ -1,0 +1,986 @@
+<div id="nenDen" class="divNenDen">
+  <a ng-click="smartQuit()" style="position:absolute;top:20px;right:calc(2.5% - 10px);font-size:20px;color:white;cursor:pointer;">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </a>
+</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <form name="form1" ng-submit="saveThisReportAsNewReport()">
+      <div class="modal-header">
+
+        <span class="close">×</span>
+        <h2>Save As New Report</h2>
+      </div>
+      <div class="modal-body">
+        <h2>Report Name</h2>
+        <p>
+          <input ng-model="tb_newReportName" type="text" class="form-control" placeholder="new name here..." />
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<div class="modal_popup" id="popup">
+
+  <div class="form-group" style="margin-top:10px;">
+      <label class="col-sm-2 control-label" style="display:inline-block;text-align:right;line-height:32px;">Search term:</label>
+      <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="searchTerm1" placeholder="item name..." required>
+      </div>
+  </div>
+  <table class="table table-hover col-md-12" style="margin-top: 10px;">
+    <tr style="background-color: #EEEEEE;">
+      <th>Index</th>
+      <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+      <th>Action</th>
+    </tr>
+    <tr ng-repeat="entry in selectedDatabase.data | filter: searchTerm1 track by $index">
+      <td style="line-height:32px;"><b>{{$index + 1}}</b></td>
+      <td style="line-height:32px;" ng-repeat="value in entry track by $index">
+        {{value}}
+      </td>
+      <td>
+        <button class="btn btn-primary" ng-click="addItemToThisGroup(entry, groupIndex, selectedGroupIndex, $index)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="modal_popup" id="popup2">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <h4 style="font-size:32px;float:left;width:60%;display:inline-block;">Proj ID: {{selectedProject._id}}, total: {{getToTalSelectedProjectMoney() | currency:'':0}}</h4>
+
+      <button ng-click="CloseThisReport()" class="btn btn-success" style="margin-top:0px;;display:inline-block;float:right;font-size:16px;margin-right:-20px;padding-left:20px;">
+        <i class="fa fa-close" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>
+      </button>
+      <button ng-click="saveAndCloseThisReport()" id="goToCheckOutPage" class="btn btn-success" style="margin-top:0px;;display:inline-block;margin-left:10px;float:right;padding-left:20px;padding-right:20px;font-size:16px;margin-right:6px;">
+        Save and Close
+      </button>
+      <button ng-click="saveNewThisReport()" class="btn btn-success" style="margin-top:0px;;display:inline-block;margin-left:10px;float:right;padding-left:20px;padding-right:20px;font-size:16px;margin-right:6px;">
+        Save New
+      </button>
+
+
+
+    </div>
+    <div class="col-md-12">
+      <div style="margin-bottom:10px;display:inline-block;width:100%;">
+        <form name="form2" ng-submit="saveCurrentCaterogyToSelectedProject()" style="width:100%;display:inline-block;">
+          <table class="table" style="border:none;">
+            <tr style="height:80px;line-height:80px;">
+              <td class="col-md-8">
+                <input type="text" class="form-control" ng-model="tb_currentGroupNameSelectedProject" placeholder="Group name..." style="border-radius:4px;height:40px;line-height:40px;width:100%;margin:0px;font-size:16px;margin-top:10px;" required />
+              </td>
+              <td class="col-md-2">
+                <button type="submit" class="btn btn-warning" style="padding-left:20px;padding-right:20px;height:40px;margin-top:10px;display:inline-block;margin-left:auto;margin-right:auto;">
+                  <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
+                </button>
+              </td>
+              <td class="col-md-2">
+                <button id="btn_indertItemToSelectedProject" class="btn btn-warning" style="float:left;padding-left:20px;padding-right:20px;height:40px;margin-left:auto;margin-right:auto;margin-top:10px;display:inline-block;">
+                  <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
+                </button>
+              </td>
+            </tr>
+          </table>
+
+        </form>
+      </div>
+      <table class="table table-hover col-md-12" style="margin-top: 10px;">
+        <tr class="bg-xam">
+          <th style="font-size:16px;">#</th>
+          <th style="font-size:16px;" ng-repeat="field in selectedProject.fields track by $index">{{field.fieldname}}</th>
+          <th style="font-size:16px;"></th>
+        </tr>
+        <tr ng-repeat="entry in selectedProject.items track by $index">
+          <td style="line-height:40px;">{{$index + 1}}</td>
+          <td ng-repeat="value in entry track by $index">
+            <input ng-change="updateThisEntryInSelectedProjectWithoutGroup($parent.$index, $index, value)" type="text" class="form-control" ng-model="value" value="{{value}}"></input>
+          </td>
+          <td>
+            <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+          </td>
+        </tr>
+      </table>
+      <div ng-repeat="group in selectedProject.groups track by $index" style="margin-top:-1px;width:100%;display:inline-block;">
+        <div style="background-color:#EEEEEE;width:calc(100% - 1px);display:inline-block;height:60px;border:1px solid black;padding:10px;">
+
+            <input ng-change="updateThisGroupTitleInSelectedProject($index, group.name)" type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" value="{{group.name}}" />
+            <button ng-click="removeThisGroupFromSelectedProject($index)" class="btn btn-danger" style="float:right;display:inline-block;"><i class="fa fa-minus" aria-hidden="true"></i></button>
+            <button ng-click="addNewItemToThisSelectedGroup($index)" class="btn btn-success" style="float:right;display:inline-block;margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i>Add Item</button>
+
+        </div>
+        <table class="table table-hover col-md-12" style="margin-top:-1px;">
+          <tr ng-repeat="entry in group.items track by $index">
+            <td style="line-height:40px;">
+              {{$index + 1}}
+            </td>
+            <td ng-repeat="value in entry track by $index">
+              <input ng-change="updateThisEntryInSelectedProjectWithGroup($parent.$parent.$index, $parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+            </td>
+            <td>
+                <button class="btn btn-danger" ng-click="removeThisItemFromSelectedProject(group.name, $index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container body" id="testpage">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="#home" class="site_title"><i class="fa fa-paw"></i> <span>BOM Software</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <ul class="nav side-menu">
+
+              <li ng-click="showHomePannel()"><a><i class="fa fa-home"></i> My Dashboard <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showNewProjectPannel()"><a><i class="fa fa-edit"></i> New Project <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showDatabasePannel()"><a><i class="fa fa-table"></i> Items List <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCreateNewDatabasePannel()"><a><i class="fa fa-database"></i> Databases Management <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showCompanyPannel()"><a><i class="fa fa-building-o"></i> Company Information <span class="fa fa-chevron-down"></span></a></li>
+              <li ng-click="showImportExportPannel()"><a><i class="fa fa-download"></i> Export/Import <span class="fa fa-chevron-down"></span></a></li>
+
+            </ul>
+          </div>
+
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <img src="images/img.jpg" alt="">Welcome Admin
+                <span class=" fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li><a href="javascript:;"> Profile</a></li>
+                <li>
+                  <a href="javascript:;">
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li><a href="javascript:;">Help</a></li>
+                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+              </ul>
+            </li>
+
+            <li role="presentation" class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-green">6</span>
+              </a>
+              <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                      <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                      Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                      <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                      Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                      <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                      Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                      <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                    </span>
+                    <span class="message">
+                      Film festivals used to be do-or-die moments for movie makers. They were where...
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="text-center">
+                    <a>
+                      <strong>See All Alerts</strong>
+                      <i class="fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="clearfix"></div>
+
+        <div class="row" style="min-height:600px;">
+          <div class="col-md-12">
+            <div class="home_pannel" id="homePannel" style="display:none">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2 style="font-size:26px;">Ongoing Projects<small style="font-size:14px;">Review</small></h2>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                          <div class=" " ng-repeat="report in ongoingReports track by $index">
+                              <div class="x_panel custom_card col-sm-12">
+                                  <div class="x_title">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
+                                          <li>
+                                              <a class="collapse-link" ng-click="sendThisReportToPassedProjectsSentByOngoing(report, $index)"><i class="fa fa-chevron-down"></i></a>
+                                          </li>
+                                          <li>
+                                              <a class="close-link" ng-click="deleteThisOngoingReport(report._id, $index)"><i class="fa fa-close"></i></a>
+                                          </li>
+                                      </ul>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="x_content card_content">
+                                      <article class="media event" style="margin-bottom:6px;">
+                                          <a class="pull-left date">
+                                              <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
+                                              <p class="day">{{getDayFormated(report.Lastmodified)}}</p>
+                                          </a>
+                                          <div class="media-body">
+                                              <p>Created by: {{report.Createdby | uppercase}}</p>
+                                              <p>Last modified: {{report.Lastmodified}}</p>
+                                              <a class="title" ng-click="viewThisReport(report)">Update</a> |
+                                              <a class="title" ng-click="exportReport(report)">Export</a> |
+                                              <a class="title" ng-click="printPreview(report)">Detail</a>
+                                          </div>
+                                      </article>
+
+                                      <p class="title" style="margin-left:0px;">
+                                        <span ng-click="showReportInput(report)" style="font-weight:bold;float:left;width:40%;display:inline-block;">Comments:</span>
+                                        <form name="form3" ng-show="report.showInput" ng-submit="changeThisReportComment(report)" style="float:left;display:inline-block;margin-top:-6px;width:55%;">
+                                          <input class="smallText" type="text" ng-model="report.Comment" value="{{report.Comment}}" />
+                                          <button style="display:none" type="submit"></button>
+                                        </form>
+                                        <span style="float:left;width:95%;display:inline-block;">{{report.Comment}}</span>
+
+
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2 style="font-size:26px;">Passed Projects<small style="font-size:14px;">Review </small></h2>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                          <div class=" " ng-repeat="report in passReports">
+                              <div class="x_panel custom_card col-sm-12">
+                                  <div class="x_title">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
+                                          <li>
+                                              <a class="collapse-link" ng-click="sendThisReportToOngoingProjectsSentByPassed(report, $index)"><i class="fa fa-chevron-up"></i></a>
+                                          </li>
+                                          <li>
+                                              <a class="collapse-link" ng-click="sendThisReportToFailedProjectsSentByPassed(report, $index)"><i class="fa fa-chevron-down"></i></a>
+                                          </li>
+                                          <li>
+                                              <a class="close-link" ng-click="deleteThisPassReport(report._id, $index)"><i class="fa fa-close"></i></a>
+                                          </li>
+                                      </ul>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="x_content card_content">
+                                      <article class="media event" style="margin-bottom:6px;">
+                                          <a class="pull-left date">
+                                              <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
+                                              <p class="day">{{getDayFormated(report.Lastmodified)}}</p>
+                                          </a>
+                                          <div class="media-body">
+                                              <p>Created by: {{report.Createdby | uppercase}}</p>
+                                              <p>Last modified: {{report.Lastmodified}}</p>
+                                              <a class="title" ng-click="viewThisReport(report)">Update</a> |
+                                              <a class="title" ng-click="exportReport(report)">Export</a> |
+                                              <a class="title" ng-click="printPreview(report)">Detail</a>
+                                          </div>
+                                      </article>
+
+                                      <p class="title" style="margin-left:0px;">
+                                        <span ng-click="showReportInput(report)" style="font-weight:bold;float:left;width:40%;display:inline-block;">Comments:</span>
+                                        <form name="form4" ng-show="report.showInput" ng-submit="changeThisReportComment(report)" style="float:left;display:inline-block;margin-top:-6px;width:55%;">
+                                          <input class="smallText" type="text" ng-model="report.Comment" value="{{report.Comment}}" />
+                                          <button style="display:none" type="submit"></button>
+                                        </form>
+                                        <span style="float:left;width:95%;display:inline-block;">{{report.Comment}}</span>
+
+
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2 style="font-size:26px;">Failed Projects<small style="font-size:14px;">Review </small></h2>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                          <div class=" " ng-repeat="report in failedReports">
+                              <div class="x_panel custom_card col-sm-12">
+                                  <div class="x_title">
+                                      <h2 class="card_title">{{report._id}}</h2>
+                                      <ul class="nav navbar-right panel_toolbox card_toolbox">
+                                          <li>
+                                              <a class="collapse-link" ng-click="sendThisReportToPassedProjectsSentByFailed(report, $index)"><i class="fa fa-chevron-up"></i></a>
+                                          </li>
+                                          <li>
+                                              <a ng-click="deleteThisFailedReport(report._id, $index)" class="close-link"><i class="fa fa-close"></i></a>
+                                          </li>
+                                      </ul>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="x_content card_content">
+                                      <article class="media event" style="margin-bottom:6px;">
+                                          <a class="pull-left date">
+                                              <p class="month">{{getMonthFormated(report.Lastmodified)}}</p>
+                                              <p class="day">{{getDayFormated(report.Lastmodified)}}</p>
+                                          </a>
+                                          <div class="media-body">
+                                              <p>Created by: {{report.Createdby | uppercase}}</p>
+                                              <p>Last modified: {{report.Lastmodified}}</p>
+                                              <a class="title" ng-click="viewThisReport(report)">Update</a> |
+                                              <a class="title" ng-click="exportReport(report)">Export</a> |
+                                              <a class="title" ng-click="printPreview(report)">Detail</a>
+                                          </div>
+                                      </article>
+
+                                      <p class="title" style="margin-left:0px;">
+                                        <span ng-click="showReportInput(report)" style="font-weight:bold;float:left;width:40%;display:inline-block;">Comments:</span>
+                                        <form name="form5" ng-show="report.showInput" ng-submit="changeThisReportComment(report)" style="float:left;display:inline-block;margin-top:-6px;width:55%;">
+                                          <input class="smallText" type="text" ng-model="report.Comment" value="{{report.Comment}}" />
+                                          <button style="display:none" type="submit"></button>
+                                        </form>
+                                        <span style="float:left;width:95%;display:inline-block;">{{report.Comment}}</span>
+
+
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+            <div class="x_panel home_pannel" id="newProjectPannel" style="display:none;min-height:600px;">
+              <div class="x_title">
+                <h2 style="font-size:26px;">New Project Form<small style="font-size:16px;"></small></h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+
+                <div id="createNewPorjectView">
+                    <div id ="projectInfoView" class="viewChild">
+                      <h2 style="font-size:32px;margin-left:12%;margin-bottom:16px;">General Information</h2>
+                      <form name="form6" class="form-horizontal" ng-submit="createNewProject()">
+                        <div class="form-group" style="margin-bottom:16px;">
+                          <label for="tb_projectName" class="col-sm-2 control-label">Project ID:</label>
+                          <div class="col-sm-8">
+                            <input class="form-control" ng-model="tb_projectName" placeholder="project name..." required />
+                          </div>
+                        </div>
+                          <div class="form-group" style="margin-bottom:16px;">
+                              <label class="col-sm-2 control-label">Report Url:</label>
+                              <div class="col-sm-8">
+                                  <input class="form-control" ng-model="reportUrl" placeholder="project name..." disabled />
+                              </div>
+                          </div>
+                          <div class="form-group" style="margin-bottom:16px;">
+                              <label class="col-sm-2 control-label">Created by:</label>
+                              <div class="col-sm-8">
+                                  <input class="form-control" ng-model="newProject.Createdby" placeholder="project name..." disabled />
+                              </div>
+                          </div>
+                          <div class="form-group" style="margin-bottom:16px;">
+                              <label class="col-sm-2 control-label">Time created:</label>
+                              <div class="col-sm-8">
+                                  <input class="form-control" ng-model="newProject.Lastmodified" placeholder="project name..." disabled />
+                              </div>
+                          </div>
+
+                        <div class="form-group" style="margin-bottom:16px;">
+                          <label for="tb_company" class="col-sm-2 control-label">Status:</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="select_Category">
+                              <option>ongoing</option>
+                              <option>pass</option>
+                              <option>failed</option>
+                            </select>
+                          </div>
+                        </div>
+                          <div class="form-group" style="margin-bottom:16px;">
+                              <label class="col-sm-2 control-label">Comments:</label>
+                              <div class="col-sm-8">
+                                  <textarea class="form-control" ng-model="newProject.Comment" rows="3" placeholder="comments here..."></textarea>
+                              </div>
+                          </div>
+                        <div class="form-group" style="margin-bottom:16px;">
+                          <div class="col-sm-offset-2 col-sm-8">
+                            <button type="submit" class="btn btn-default">Create project</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div id="previewProjectView" class="viewChild2 col-md-12">
+                      <div class="col-md-12">
+                        <h3 style=";width:100%;display:inline-block;">Add Items
+                        </h3>
+                      </div>
+                      <div class="col-md-12">
+
+                        <div style="margin-bottom:10px;display:inline-block;width:100%;">
+                          <form name="form7" ng-submit="saveCurrentCaterogy()" style="display:inline-block;width:100%;">
+                            <table class="table" style="border:none;">
+                              <tr style="height:80px;line-height:80px;">
+                                <td class="col-md-8">
+                                  <input type="text" class="form-control" ng-model="tb_currentGroupName" placeholder="Group name..." style="border-radius:4px;height:40px;line-height:40px;width:100%;margin:0px;font-size:16px;margin-top:10px;" required />
+                                </td>
+                                <td class="col-md-2">
+                                  <button type="submit" class="btn btn-warning" style="padding-left:20px;padding-right:20px;height:40px;margin-top:10px;display:inline-block;margin-left:auto;margin-right:auto;">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Group
+                                  </button>
+                                </td>
+                                <td class="col-md-2">
+                                  <button class="btn btn-warning" style="float:left;padding-left:20px;padding-right:20px;height:40px;margin-left:auto;margin-right:auto;margin-top:10px;display:inline-block;" id="btn_indertItemToProject">
+                                    <i class="fa fa-plus" aria-hidden="true" style="margin-right:8px;"></i>Add Item
+                                  </button>
+                                </td>
+                              </tr>
+                            </table>
+                          </form>
+                        </div>
+
+                        <table class="table table-hover col-md-12" style="margin-top: 10px;">
+                          <tr style="background-color: #EEEEEE;">
+                            <th style="font-size:16px;">
+                              #
+                            </th>
+                            <th style="font-size:16px;" ng-repeat="field in newProject.fields track by $index">
+                              {{field.fieldname}}
+                            </th>
+                            <th style="font-size:16px;"></th>
+                          </tr>
+                          <tr ng-repeat="entry in newProject.items track by $index">
+                            <td style="line-height:40px;">
+                              {{$index + 1}}
+                            </td>
+                            <td ng-repeat="value in entry track by $index">
+                              <input ng-change="updateThisEntryInNewProjectWithoutGroup($parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                            </td>
+                            <td>
+                              <button class="btn btn-danger" ng-click="removeThisItemFromNewProjectItemsList($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <div ng-repeat="group in newProject.groups" style="margin-top:-1px;width:100%;display:inline-block;">
+                          <div style="background-color:#EEEEEE;width:100%;display:inline-block;height:60px;border:1px solid black;padding:10px;">
+
+                              <input ng-change="updateThisGroupTitleInNewProject($index, group.name)" type="text" class="form-control" style="max-width:400px;display:inline-block;" ng-model="group.name" ng-change="updateGroupName($index, group.name)" value="{{group.name}}" />
+                              <button ng-click="removeThisGroupFromNewProject($index)" class="btn btn-danger" style="float:right;display:inline-block;"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              <button ng-click="addNewItemToThisGroup($index)" class="btn btn-success" style="float:right;display:inline-block;margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i>Add Item</button>
+
+                          </div>
+                          <table class="table table-hover col-md-12" style="margin-top:-1px;">
+                            <tr ng-repeat="entry in group.items track by $index">
+                              <td style="line-height:40px;">
+                                {{$index + 1}}
+                              </td>
+                              <td ng-repeat="value in entry track by $index">
+                                <input ng-change="updateThisEntryInNewProjectWithGroup($parent.$parent.$index, $parent.$index, $index, value)" type="text" ng-model="value" value="{{value}}" class="form-control"></input>
+                              </td>
+                              <td>
+                                  <button class="btn btn-danger" ng-click="removeThisItemFromNewProject(group.name, $index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-success" ng-click="saveThisProjectToServer()" style="font-size:18px;width:30%;display:inline-block;margin-left:35%;height:40px;margin-top:16px;">
+                          Save Report
+                        </button>
+                      </div>
+                    </div>
+
+
+                </div>
+
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="databasePannel" style="display:none;">
+              <div class="x_title">
+                <h2 style="font-size:26px;">Items Management</h2>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                <div class="col-md-12">
+                    <h1 style="font-size:26px;">{{selectedDatabase.name}}
+                      <button class="btn btn-success" style="display:none;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
+                      <button class="btn btn-success" style="display:inline-block;margin-left:10px;margin-right:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
+                    </h1>
+                </div>
+                <div class="col-md-12" id="createNewItemInfoView" style="margin-top:20px;display:none;">
+                    <form name="form8" class="form-horizontal" ng-submit="createNewItem()">
+                        <div ng-repeat="field in selectedDatabase.fields" class="form-group">
+                            <label for="tb_itemName" class="col-sm-2 control-label">{{field.fieldname}}</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-change="performFunctionCalib()" class="form-control" ng-model="field.currentData" placeholder="{{field.currentData}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Create this item</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-hover col-md-12" style="margin-top: 10px;display:none;" id="tableSearchItem">
+                        <tr style="background-color: #EEEEEE;">
+                          <tr style="background-color: #EEEEEE;">
+                              <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+                              <th>Clear</th>
+                          </tr>
+                        </tr>
+                        <tr>
+                          <td ng-repeat="field in selectedDatabase.fields track by $index">
+                            <input ng-change="searchThisEntry()" type="text" class="form-control" ng-model="field.searchTerm" value="{{field.searchTerm}}"></input>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger" ng-click="clearAllSearchTerm()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                          </td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover col-md-12" style="margin-top: 10px;">
+                        <tr style="background-color: #EEEEEE;">
+                            <th ng-repeat="field in selectedDatabase.fields track by $index">{{field.fieldname}}</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="entry in selectedDatabase.data | filter: entry_filter1 track by $index">
+                            <td ng-repeat="field in entry track by $index">
+                              <input ng-change="updateThisEntry($parent.$index, $index, field)" type="text" class="form-control" ng-model="field" value="{{field}}"></input>
+                            </td>
+                            <td>
+                              <button class="btn btn-danger" ng-click="deleteThisEntryFromSelectedDatabase($index)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="createNewDatabasePannel" style="display:none">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Created Databases<small style="font-size:14px;">Navigate between different databases</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <h5 ng-show="!checkLengthDatabases()">No databases created yet.</h5>
+                  <div class=" " ng-repeat="db in databases track by $index">
+                      <div class="x_panel custom_card col-sm-12 card_db">
+                          <div class="x_title">
+                              <h2>{{db.name}}<small></small></h2>
+                              <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content card_content">
+                              <article class="media event" style="margin-bottom:6px;">
+                                  <a class="pull-left date">
+                                      <p class="month">{{getMonthFormated(db.date)}}</p>
+                                      <p class="day">{{getDayFormated(db.date)}}</p>
+                                  </a>
+                                  <div class="media-body">
+                                      <p>ID: {{db.dbid}}</p>
+                                      <p>Date {{db.date}}</p>
+                                      <a class="title btn_chooseThisDB" ng-click="chooseThisDatabase($index)"><u>Choose</u></a> |
+                                      <a class="title" ng-click="updateThisDatabase($index)"><u>Update</u></a> |
+                                      <a class="title" ng-click="deleteThisDatabase($index)"><u>Delete</u></a>
+                                  </div>
+                              </article>
+
+                              <p class="title" style="margin-left:0px;">
+                                <span style="font-weight:bold;float:left;width:40%;display:inline-block;">Field names:</span>
+                                <span style="float:left;width:95%;display:inline-block;">
+                                  <label ng-repeat="field in db.fields" style="font-weight:400;">{{field.fieldname}},</label>
+                                </span>
+
+
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Create New Database<small style="font-size:14px;">Specify new database fields and name</small></h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-12">
+                      <h1 style="font-size:26px;">Database Info:</h1>
+                  </div>
+                  <div class="col-md-12">
+                      <form name="form9" class="form-horizontal">
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Name:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="name..." ng-model="newDatabase.name" required>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemSize" class="col-sm-2 control-label">ID:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="id..." ng-model="newDatabase.dbid" required disabled>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemSize" class="col-sm-2 control-label">Date:</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" placeholder="date..." ng-model="newDatabase.date" required disabled>
+                              </div>
+                          </div>
+                      </form>
+                      <div class="col-md-12">
+                          <h1 style="font-size:26px;">Insert fields:</h1>
+                          <form name="form10" class="form-horizontal" ng-submit="insertThisFieldToNewDatabase(newField)">
+                              <div class="form-group">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Field name:</label>
+                                  <div class="col-sm-10">
+                                      <input type="text" class="form-control" placeholder="name..." ng-model="newField.fieldname" required>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Field type:</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control" ng-model="newField.type" ng-change="showFunctionField(newField.type)">
+                                      <option>value</option>
+                                      <option>function</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group" id="functionField" style="display:none;">
+                                  <label for="tb_itemName" class="col-sm-2 control-label">Function:</label>
+                                  <div class="col-sm-10">
+                                    <select class="form-control input_text" ng-model="funcTit_1">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_1">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_2">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_2">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_3">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_3">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_4">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_4">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_5">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_5">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_6">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_6">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_7">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_7">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_8">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_8">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_9">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_9">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_10">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_10">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_11">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                    <select class="form-control input_operation" ng-model="funcOpe_11">
+                                      <option>+</option>
+                                      <option>-</option>
+                                      <option>*</option>
+                                      <option>/</option>
+                                    </select>
+                                    <select class="form-control input_text" ng-model="funcTit_12">
+                                      <option ng-repeat="field in newDatabase.fields">{{field.fieldname}}</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-sm-offset-2 col-sm-10">
+                                      <button type="submit" class="btn btn-default">Insert this field</button>
+                                  </div>
+                              </div>
+                          </form>
+                          <table style="border:none;" class="col-sm-10 col-sm-offset-2">
+                            <tr ng-repeat="field in newDatabase.fields">
+                              <td class="col-md-2 col-sm-6">{{field.fieldname}}</td>
+                              <td class="col-md-1 col-sm-4"><label style="margin-right:4px;font-weight:400;" ng-repeat="value in field.type track by $index">{{value}}</label></td>
+                              <td class="col-md-1 col-sm-2">
+                                <button type="submt" class="btn btn-danger" ng-click="deleteThisFieldFromNewDatabase($index)">
+                                  <i class="fa fa-minus"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </table>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <h1 style="display:inline-block;width:100%;text-align:center;">{{newDatabase.name}}</h1>
+                      <table class="table table-hover col-md-12" style="margin-top: 10px;">
+                          <tr style="background-color: #EEEEEE;">
+                              <th ng-repeat="field in newDatabase.fields">{{field.fieldname}}</th>
+                          </tr>
+                      </table>
+                  </div>
+                  <div class="col-sm-offset-2 col-sm-10" style="margin-top:20px;">
+                      <button type="submit" class="btn btn-default" ng-click="createThisDatabase()">Create this database</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="importExportPannel" style="display:none;">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Export Data Scheme</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-offset-2 col-md-10">
+                      <textarea class="form-control" ng-model="exprortPackage" rows="10" readonly></textarea>
+                  </div>
+
+                  <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
+                      <button class="btn btn-default" ng-click="createExportPackage()">Export package</button> OR
+                      <button class="btn btn-default" ng-click="createFilePackage()" style="margin-left:8px;">Save as text file</button>
+                  </div>
+                </div>
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Import Data Schemes</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-offset-2 col-md-10" style="padding-bottom:16px;">
+                    <h4 style="font-weight:400;">CHOOSE A SCHEME FILE</h4>
+                    <div class="btn btn-default" style="margin-left:8px;margin-top:16px;margin-left:0px;">
+                      <input type="file" on-read-file="importPackageFromTextFile($fileContent)"></input>
+                    </div><br/>
+                    <b>Progress:</b>
+                    <progress id="uploadProgressBar"></progress>
+                  </div>
+
+                  <div class="col-md-offset-2 col-md-10">
+                    <h4 style="font-weight:400;">OR PAST SCHEME DATA HERE</h4>
+                    <textarea class="form-control" ng-model="importPackage" rows="10"></textarea>
+                  </div>
+
+                  <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
+                      <button class="btn btn-default" ng-click="importThisPackage(importPackage)">Import package</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="x_panel home_pannel" id="companyInfoPannel" style="">
+              <div class="x-panel">
+                <div class="x_title">
+                  <h2 style="font-size:26px;">Company Information</h2>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div class="col-md-12" style="margin-top:20px;">
+                      <form class="form-horizontal">
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Name:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.name" placeholder="{{company.name}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Address:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.address" placeholder="{{company.address}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Phone:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.tel" placeholder="{{company.tel}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Fax:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.fax" placeholder="{{company.fax}}">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="tb_itemName" class="col-sm-2 control-label">Logo:</label>
+                              <div class="col-sm-9">
+                                  <input type="text" ng-change="updateThisCompany()" class="form-control" ng-model="company.logo" placeholder="{{company.logo}}">
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer style="background-color:rgb(247,247,247);">
+      <div class="pull-right">
+        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>
+<!-- <button ng-click="perform_desktop_print_PDF" class="btn btn-primary" id="hidediv" style="position:fixed;bottom:20px;right:20px;">Print PDF</button> -->
