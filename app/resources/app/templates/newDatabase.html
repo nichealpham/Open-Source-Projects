@@ -1,0 +1,133 @@
+<div class="x_panel">
+  <div class="x_title">
+    <h2 style="font-size:24px;">Item Database<small style="font-size:16px;">Insert/Update/Delete Items</small></h2>
+    <ul class="nav navbar-right panel_toolbox">
+      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Settings 1</a>
+          </li>
+          <li><a href="#">Settings 2</a>
+          </li>
+        </ul>
+      </li>
+      <li><a class="close-link"><i class="fa fa-close"></i></a>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+    <div class="col-md-12">
+        <h1 style="font-size:26px;">Manage Items
+          <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_searchItem" ng-click="saveCurrentChanges()"><i class="fa fa-search" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Search Items</button>
+          <button class="btn btn-success" style="display:inline-block;margin-left:10px; float:right;padding-left:20px;padding-right:20px;font-size:16px;" id="btn_createNewItem"><i class="fa fa-plus" aria-hidden="true" style="display:inline-block;margin-right: 10px;"></i>Create new Item</button>
+        </h1>
+    </div>
+    <div class="col-md-12" id="createNewItemInfoView" style="display:none;">
+        <form class="form-horizontal" ng-submit="createNewItem()">
+            <div class="form-group">
+                <label for="tb_itemName" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tb_itemName" ng-model="tb_itemName" placeholder="Item name..." required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tb_itemSize" class="col-sm-2 control-label">Spec</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tb_itemSize" placeholder="Size..." ng-model="tb_itemSize" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tb_itemClass" class="col-sm-2 control-label">Origin</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tb_itemOrigin" placeholder="Origin" ng-model="tb_itemOrigin" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tb_itemClass" class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tb_itemClass" placeholder="Class..." ng-model="tb_itemClass" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tb_itemUnit" class="col-sm-2 control-label">Unit</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tb_itemSize" placeholder="Unit..." ng-model="tb_itemUnit" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="tb_itemPrice">Price</label>
+                <div class="input-group col-md-10">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" id="tb_itemPrize" placeholder="Amount in dollars" ng-model="tb_itemPrice">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="tb_itemlaborCost">Labor cost</label>
+                <div class="input-group col-md-10">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" id="tb_itemlaborCost" placeholder="Amount in dollars" ng-model="tb_itemLaborCost">
+                    <div class="input-group-addon">.00</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Create this item</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-hover col-md-12" style="margin-top: 10px;display:none;" id="tableSearchItem">
+            <tr style="background-color: #EEEEEE;">
+                <th class="col-md-1">Search bar</th>
+                <th class="col-md-5">Description</th>
+                <th class="col-md-1">Spec</th>
+                <th class="col-md-1">Category</th>
+                <th class="col-md-1">Unit</th>
+                <th class="col-md-1">Price</th>
+                <th class="col-md-1">Labor cost</th>
+                <th class="col-md-1"></th>
+            </tr>
+            <tr>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox._id" on-change=""></td>
+                <td class="col-md-5"><input class="form-control" ng-model="searchBox.Description" on-change=""></input></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Spec" on-change=""></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Category" on-change=""></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="searchBox.Unit" on-change=""></td>
+                <td class="col-md-1"><input type="number" class="form-control" ng-model="searchBox.UnitMaterial" on-change=""></td>
+                <td class="col-md-1"><input type="number" class="form-control" ng-model="searchBox.UnitLabor" on-change=""></td>
+                <td class="col-md-1"></td>
+            </tr>
+        </table>
+        <table class="table table-hover col-md-12" style="margin-top: 10px;">
+            <tr style="background-color: #EEEEEE;">
+                <th class="col-md-1">#ID</th>
+                <th class="col-md-5">Description</th>
+                <th class="col-md-1">Spec</th>
+                <th class="col-md-1">Category</th>
+                <th class="col-md-1">Unit</th>
+                <th class="col-md-1">Price</th>
+                <th class="col-md-1">Labor cost</th>
+                <th class="col-md-1"></th>
+            </tr>
+            <tr ng-repeat="item in items | orderBy: 'Description' | filter: searchBox track by $index">
+                <td class="col-md-1">{{item._id}}</td>
+                <td class="col-md-5"><textarea  class="form-control" ng-model="item.Description" ng-change="updateItemName(item)" value="{{item.Description}}"></textarea></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Spec" ng-change="updateItemSize(item)" value="{{item.Spec}}"></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Category" ng-change="updateItemClass(item)" value="{{item.Category}}"></td>
+                <td class="col-md-1"><input type="text" class="form-control" ng-model="item.Unit" ng-change="updateItemUnit(item)" value="{{item.Unit}}"></td>
+                <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitMaterial" ng-change="updateItemPrice(item)" value="{{item.UnitMaterial}}"></td>
+                <td class="col-md-1"><input type="number" class="form-control" ng-model="item.UnitLabor" ng-change="updateItemLaborCost(item)" value="{{item.UnitLabor}}"></td>
+                <td class="col-md-1">
+                  <button class="btn btn-danger" ng-click="deleteThisItem($index, item._id)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                  <button class="btn btn-primary" ng-hide="item.saved" ng-click="updateThisItem(item)"><i class="fa fa-save" aria-hidden="true"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
