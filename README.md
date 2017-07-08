@@ -1,40 +1,58 @@
-# electron-quick-start
+# A Simple, Web-based Bill of Material (BOM) Software
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/1.png)<br/>
+<p>Try the online version here: https://nguyenpham95.github.io/bom_management_software/</p>
 
-**Clone and run for a quick way to see Electron in action.**
+## Installation
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
++ Download the app.zip file
++ Extract and run the executable (.exe) file
++ Enjoy :)
 
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
+## Online Deployment
++ Download the app.zip file
++ Extract the folder
++ Navigate to "\app\resources\app"
++ Copy and pass all files into your web-hosting
++ Done!
 
-A basic Electron application needs just these files:
+# App Features
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+## 1. Create database with custom field, Ex: Revenue = Price - Promotion
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/2.png)
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start).
+## 2. Insert new items into the database, special fields (aka Revenue) will be automatically calculated
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/3.png)
 
-## To Use
+## 3. Create a collection of items as a bill, customize them for different invoice if neccessary
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/4.png)
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+## 5. Manage/Insert/Update/Save as new/Delete old bills
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/6.png)
 
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
-npm start
-```
+## 6. Insert more information for the invoice
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/7.png)
 
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/).
+## 7. Print invoice as PDF or CSV
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/8.png)
 
-## Other Example Apps
+## 8. Customize invoice's header with your company information
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/9.png)
 
-For more example apps, see the
-[list of boilerplates](http://electron.atom.io/community/#boilerplates)
-created by the awesome electron community.
+## 9. Export database/items/reports scheme from one computer to another easily
+![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/10.png)
 
-#### License [CC0 1.0 (Public Domain)](LICENSE.md)
+## License
+
+It is FREE for any individual use.
+Also, stars are very much welcomed. :)
+
+## Commercial
+
+If you want to use this software for commercial purposes, please contact me for an invoice.
+
+## Contact information:
+Name:  Phạm Khôi Nguyên<br/>
+School:  International University – Vietnam National University (VNU)<br/>
+Department:  Biomedical Engineering<br/>
+Email: phamkhoinguyen1995@gmail.com<br/>
+Linkedin: https://vn.linkedin.com/in/pham-khoi-nguyen-43a505102<br/>
