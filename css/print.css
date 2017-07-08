@@ -94,8 +94,13 @@
   #page {
     overflow-y: visible;
   }
-  .no-print, .no-print *
-  {
-      display: none !important;
-  }
+  
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }
