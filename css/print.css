@@ -94,4 +94,8 @@
   #page {
     overflow-y: visible;
   }
+  .no-print, .no-print *
+  {
+      display: none !important;
+  }
 }
