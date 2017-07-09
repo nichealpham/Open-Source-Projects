@@ -43,7 +43,7 @@
 
 ## License
 
-It is FREE for any individual use.
+I failed to deliver this software to my client so I post it here for FREE. Hope that it could bring you any benefits.
 Also, stars are very much appreciated. :)
 
 ## Commercial
