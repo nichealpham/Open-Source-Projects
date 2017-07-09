@@ -23,7 +23,7 @@
 ## 2. Insert new items into the database, special fields (aka Revenue) will be automatically calculated
 ![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/3.png)
 
-## 3. Create a collection of items as a bill, customize them for differently if neccessary
+## 3. Create a collection of items as a bill, customize them for different invoices if neccessary
 ![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/4.png)
 
 ## 5. Manage/Insert/Update/Save As New/Delete old bills
