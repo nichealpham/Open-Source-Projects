@@ -43,12 +43,11 @@
 
 ## License
 
-I failed to deliver this software to my client so I post it here for FREE. Hope that it could bring you any benefits.
-Also, stars are very much appreciated. :)
+This app is just a personal project to finalize my learning with Angular.js. Hope that it could bring you any benefits.
 
 ## Commercial
 
-If you want to use this software for commercial distribution, please contact me for an invoice.
+If you want to use this software for commercial distribution, please contact me for potential collaboration.
 
 ## Contact information:
 Name:  Phạm Khôi Nguyên<br/>
