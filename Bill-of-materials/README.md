@@ -24,7 +24,7 @@ Income = Quantity * Price - Sales
 Expense = Quantity * StockPrice
 Revenue = Income - Expense
 ``` 
-<br/><br/><br/>
+<br/><br/><br/><br/>
 
 ---
 
@@ -33,7 +33,7 @@ Revenue = Income - Expense
 ## 2. Automatic fields update/calculation
 
 Arithmetic fields get automatically calculated when associated fields have data / are updated with new values
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 ---
 
@@ -42,13 +42,13 @@ Arithmetic fields get automatically calculated when associated fields have data 
 ## 3. Create Invoice
 
 Select a collection of items to create an invoice
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="480"><br/>
 
-## 5. Create/Insert/Update/Delete Invoices
+## 4. Create/Insert/Update/Delete Invoices
 
 Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices
 <br/><br/><br/><br/><br/><br/><br/>
@@ -57,16 +57,16 @@ Provide fundamental methods to manage invoices, keep track of Current/Passed/Rej
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="480"><br/>
 
-## 6. Printable invoice
+## 5. Printable invoice
 
 Invoices can be printed into PDF or CSV format
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="480"><br/>
 
-## 7. Customize default invoice template
+## 6. Customize default invoice template
 
 Update invoice's header with your company's info by providing information to the Company Information Tab
 <br/><br/><br/><br/><br/><br/><br/>
@@ -75,10 +75,10 @@ Update invoice's header with your company's info by providing information to the
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="480"><br/>
 
-## 8. Export your environment to other computers
+## 7. Export your environment to other computers
 
 On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 ---
 
