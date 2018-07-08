@@ -24,7 +24,7 @@ Income = Quantity * Price - Sales
 Expense = Quantity * StockPrice
 Revenue = Income - Expense
 ``` 
-<br/><br/>
+<br/><br/><br/>
 
 ---
 
@@ -42,7 +42,7 @@ Arithmetic fields get automatically calculated when associated fields have data 
 ## 3. Create Invoice
 
 Select a collection of items to create an invoice
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
@@ -51,7 +51,7 @@ Select a collection of items to create an invoice
 ## 5. Create/Insert/Update/Delete Invoices
 
 Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
@@ -60,7 +60,7 @@ Provide fundamental methods to manage invoices, keep track of Current/Passed/Rej
 ## 6. Printable invoice
 
 Invoices can be printed into PDF or CSV format
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
@@ -69,7 +69,7 @@ Invoices can be printed into PDF or CSV format
 ## 7. Customize default invoice template
 
 Update invoice's header with your company's info by providing information to the Company Information Tab
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
 
 ---
 
@@ -78,7 +78,7 @@ Update invoice's header with your company's info by providing information to the
 ## 8. Export your environment to other computers
 
 On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 ---
 
