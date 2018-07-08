@@ -1,0 +1,92 @@
+.jquery_file_tree {
+	height           : 200px;
+	width            : 90%;
+	overflow         : auto;
+	border           : 1px solid #dfdfdf;
+	background-color : #f9f9f9;
+	padding          : 3px;
+}
+
+div.inside .jqueryFileTree {
+	margin : 0 5px;
+}
+
+div.inside .jqueryFileTree li {
+	list-style : none;
+}
+
+.file_list {
+	width    : 100%;
+	position : relative;
+}
+
+.file_chooser {
+	float : left;
+	width : 49%;
+}
+
+.list_field {
+	float  : left;
+	height : 200px;
+	width  : 50%;
+}
+
+.list_field textarea {
+	width    : 90% !important;
+	height   : 200px;
+	overflow : auto;
+	padding  : 3px;
+}
+
+.itsec_treeselect_control {
+	visibility  : hidden;
+	margin-left : 10px;
+	position    : absolute;
+	right       : 4px;
+	top         : 4px;
+}
+
+.itsec_treeselect_control img {
+	margin-right : 4px;
+	margin-left  : 4px;
+	margin-top   : 2px;
+	float        : right;
+	cursor       : pointer;
+}
+
+ul.jqueryFileTree a {
+	padding : 5px;
+
+}
+
+UL.jqueryFileTree LI {
+	position : relative;
+}
+
+.file_change_detail_list {
+	margin : 1em 1em 1em 1.5em;
+	border : 1px solid #ebebeb;
+}
+
+.file_change_detail_list .file_change_detail {
+	padding : .75em 1em .75em .25em;
+	margin  : 0;
+}
+
+.file_change_detail_list .file_change_detail:nth-child(2n) {
+	background : #ebebeb;
+}
+
+@media only screen and (max-width : 850px) {
+	.file_chooser {
+		float : none;
+		width : 100%;
+	}
+
+	.list_field {
+		float       : none;
+		margin-left : 0;
+		margin-top  : 1em;
+		width       : 100%;
+	}
+}

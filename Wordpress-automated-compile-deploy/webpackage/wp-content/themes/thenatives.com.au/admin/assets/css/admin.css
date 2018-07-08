@@ -1,0 +1,11 @@
+.clr {
+	clear: both;
+}
+.column-d_featured {
+    width: 30px;
+    text-align: center !important;
+}
+.widg-img img {
+	max-width: 100px;
+	float: left;
+}

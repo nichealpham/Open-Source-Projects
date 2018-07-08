@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="16" viewBox="0 0 60 16">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#231F20" d="M8.454 0L0 7.992l8.454 7.99h51.314V0z"/>
+        <text fill="#FFF" font-family="Banana_Grotesk_BETA_0731-Black, Banana_Grotesk_BETA_0731" font-size="14" font-weight="700" letter-spacing=".5" transform="translate(0 -1)">
+            <tspan x="15" y="14">PREV</tspan>
+        </text>
+    </g>
+</svg>

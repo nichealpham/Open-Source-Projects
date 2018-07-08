@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Q2W3 Fixed Widget\n"
+"POT-Creation-Date: 2013-05-30 21:15+0400\n"
+"PO-Revision-Date: 2013-09-07 07:28+0100\n"
+"Last-Translator: Ramon <marketing@apasionados.es>\n"
+"Language-Team: Apasionados del Marketing <info@apasionados.es>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"Language: es_ES\n"
+"X-Poedit-SearchPath-0: c:\\Program Files (x86)\\Zend\\Apache2\\htdocs\\q2w3."
+"ru-dev\\wp-content\\plugins\\q2w3-fixed-widget\n"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:187
+msgid "Fixed widget"
+msgstr "Fixed Widget (widget fijo)"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:227
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:279
+msgid "Fixed Widget Options"
+msgstr "Opciones de Fixed Widget (widget fijo)"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:283
+msgid "Settings saved."
+msgstr "Ajustes guardados."
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
+msgid "Margin Top:"
+msgstr "Margen superior:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:291
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
+msgid "px"
+msgstr "píxeles"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:293
+msgid "Margin Bottom:"
+msgstr "Margen inferior:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+msgid "Refresh interval:"
+msgstr "Intérvalo de refresco"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+msgid "milliseconds"
+msgstr "milisegundos"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:295
+msgid "Set 0 to disable."
+msgstr "Ajústalo a 0 para deshabilitarlo."
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
+msgid "Screen Max Width:"
+msgstr "Máximo ancho de pantalla:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:297
+msgid ""
+"Plugin will be disabled when browser window width equals or less then "
+"specified value"
+msgstr ""
+"El plugin se va a deshabilitar si la ventana del navegador es igual o menor "
+"que el valor especificado"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:299
+msgid "Custom HTML IDs (each one on a new line):"
+msgstr "IDs HTML personalizados (cada uno en una nueva línea):"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:301
+msgid "Use jQuery(window).load() hook:"
+msgstr "Usar jQuery(window).load():"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:301
+msgid ""
+"Use this option only if you have problems with <a href=\"http://wordpress."
+"org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts\" "
+"target=\"_blank\">other scroll oriented javascript code</a>"
+msgstr ""
+"Utiliza esa opción solo si tienes problemas con <a href=\"http://wordpress."
+"org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts\" "
+"target=\"_blank\">otro código javascript que también use desplazamiento</a>"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:303
+msgid "Disable plugin on phone devices:"
+msgstr "Deshabilitar el plugin en teléfonos móviles:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:303
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:305
+msgid "Option depricated. Use Screen Max Width instead!"
+msgstr "Esta opción está desfasada. Por favor usa "
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:305
+msgid "Disable plugin on tablet devices:"
+msgstr "Deshabilitar el plugin en tabletas:"
+
+#: c:\Program Files
+#: (x86)\Zend\Apache2\htdocs\q2w3.ru-dev\wp-content\plugins\q2w3-fixed-widget/q2w3-fixed-widget.php:307
+msgid "Save Changes"
+msgstr "Guardar ajustes"
+
+#~ msgid "Fixed Widget Options."
+#~ msgstr "Настройки Фиксированных Виджетов"

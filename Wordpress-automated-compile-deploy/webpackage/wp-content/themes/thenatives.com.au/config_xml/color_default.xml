@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Name: Glory H1
+Slug: color_default
+Description: Glory H1 Colour Scheme.
+-->
+<items_setting>
+	<general>
+		<text>General</text>
+		<items>
+			<background_item>
+				<name>Background Color</name>
+				<slug>namtech_bg_color</slug>
+				<std>#fff</std>
+				<attribute>background-color</attribute>
+				<selector>body</selector>
+			</background_item>
+			<item>
+				<name>Text Color</name>
+				<slug>namtech_text_color</slug>
+				<std>#777777</std>
+				<attribute>color</attribute>
+				<selector>body</selector>
+			</item>		
+			<item>
+				<name>Link Color</name>
+				<slug>namtech_link_color</slug>
+				<std>#d51a1a</std>
+				<attribute>color</attribute>
+				<selector>a</selector>
+			</item>	
+			<item>
+				<name>Link Color hover</name>
+				<slug>namtech_link_color_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>a:hover, a:focus</selector>
+			</item>
+			<item>
+				<name>Heading Color</name>
+				<slug>namtech_heading_color</slug>
+				<std>#d51a1a</std>
+				<attribute>color</attribute>
+				<selector>h1, h2, h3, h4, h5, h6</selector>
+			</item>
+		</items>
+	</general>	
+	<header>
+		<text>Header</text>
+		<items>
+			<background_item>
+				<name>Background Color</name>
+				<slug>namtech_header_bg_color</slug>
+				<std>#ffffff</std>
+				<attribute>background-color</attribute>
+				<selector>#header</selector>
+			</background_item>
+			<item>
+				<name>Text Color</name>
+				<slug>namtech_header_text</slug>
+				<std>#777777</std>
+				<attribute>color</attribute>
+				<selector>#header</selector>
+			</item>			
+			<item>
+				<name>Link Color</name>
+				<slug>namtech_header_link_color</slug>
+				<std>#d51a1a</std>
+				<attribute>color</attribute>
+				<selector>#header a</selector>
+			</item>	
+			<item>
+				<name>Link Color hover</name>
+				<slug>namtech_header_link_color_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>#header a:hover, #header a:focus</selector>
+			</item>
+			<item>
+				<name>Heading Color</name>
+				<slug>namtech_header_heading_color</slug>
+				<std>#777777</std>
+				<attribute>color</attribute>
+				<selector>#header h1, #header h2, #header h3, #header h4, #header h5, #header h6</selector>
+			</item>
+		</items>
+	</header>
+	<footer>
+		<text>Footer</text>
+		<items>
+			<background_item>
+				<name>Background Color</name>
+				<slug>namtech_footer_bg_color</slug>
+				<std>#1d1d1d</std>
+				<attribute>background-color</attribute>
+				<selector>#footer</selector>
+			</background_item>
+			<item>
+				<name>Text Color</name>
+				<slug>f_text</slug>
+				<std>#d1d1d1</std>
+				<attribute>color</attribute>
+				<selector>#footer</selector>
+			</item>			
+			<item>
+				<name>Link Color</name>
+				<slug>namtech_footer_link_color</slug>
+				<std>#d1d1d1</std>
+				<attribute>color</attribute>
+				<selector>#footer a</selector>
+			</item>	
+			<item>
+				<name>Link Color hover</name>
+				<slug>namtech_footer_link_color_hover</slug>
+				<std>#ffffff</std>
+				<attribute>color</attribute>
+				<selector>#footer a:hover, #footer a:focus</selector>
+			</item>
+			<item>
+				<name>Heading Color</name>
+				<slug>namtech_footer_heading_color</slug>
+				<std>#ffffff</std>
+				<attribute>color</attribute>
+				<selector>#footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6</selector>
+			</item>
+		</items>
+	</footer>
+	<menu>
+		<text>Menu</text>
+		<items>
+			<background_item>
+				<name>Background Color</name>
+				<slug>namtech_menu_bg_color</slug>
+				<std>#d51a1a</std>
+				<attribute>background-color</attribute>
+				<selector>nav ul.menu,#header ul.menu</selector>
+			</background_item>
+			<item>
+				<name>Dropdown background color</name>
+				<slug>namtech_menu_drop_bg_color</slug>
+				<std>#d51a1a</std>
+				<attribute>background-color</attribute>
+				<selector>nav ul.menu ul.sub-menu,#header ul.menu ul.sub-menu</selector>
+			</item>
+			<item>
+				<name>Text Color</name>
+				<slug>namtech_menu_text</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>nav ul.menu > li > a,#header ul.menu > li > a</selector>
+			</item>	
+		   <item>
+				<name>Color Hover</name>
+				<slug>namtech_menu_text_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>nav ul.menu > li:hover > a,nav ul.menu > li.active > a,#header ul.menu > li:hover > a,#header ul.menu > li.active > a</selector>
+			</item>	
+			<item>
+				<name>Text Dropdown Color</name>
+				<slug>namtech_menu_drop_text</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>nav ul.menu ul.sub-menu > li > a,#header ul.menu ul.sub-menu > li > a</selector>
+			</item>	
+		   <item>
+				<name>Text Dropdown Color Hover</name>
+				<slug>namtech_menu_drop_text_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>nav ul.menu ul.sub-menu > li:hover > a,nav ul.menu ul.sub-menu > li.active > a,#header ul.menu ul.sub-menu > li:hover > a,#header ul.menu ul.sub-menu > li.active > a</selector>
+			</item>
+		</items>
+	</menu>
+	<mobilemenu>
+		<text>Mobile Menu</text>
+		<items>
+			<background_item>
+				<name>Background Color</name>
+				<slug>namtech_mobile_menu_bg_color</slug>
+				<std>#d51a1a</std>
+				<attribute>background-color</attribute>
+				<selector>#mobile-menu-content,#mobile-menu-content ul.menu </selector>
+			</background_item>
+			<item>
+				<name>Dropdown background color</name>
+				<slug>namtech_mobile_menu_drop_bg_color</slug>
+				<std>#d51a1a</std>
+				<attribute>background-color</attribute>
+				<selector>#mobile-menu-content ul.menu ul.sub-menu</selector>
+			</item>
+			<item>
+				<name>Text Color</name>
+				<slug>namtech_mobile_menu_text</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>#mobile-menu-content,#mobile-menu-content a</selector>
+			</item>	
+		   <item>
+				<name>Color Hover</name>
+				<slug>namtech_mobile_menu_text_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>#mobile-menu-content ul.menu > li:hover > a,#mobile-menu-content ul.menu > li.active > a,#mobile-menu-content a:hover</selector>
+			</item>	
+			<item>
+				<name>Text Dropdown Color</name>
+				<slug>namtech_mobile_menu_drop_text</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>#mobile-menu-content ul.menu ul.sub-menu > li > a</selector>
+			</item>	
+		   <item>
+				<name>Text Dropdown Color Hover</name>
+				<slug>namtech_mobile_menu_drop_text_hover</slug>
+				<std>#5a0707</std>
+				<attribute>color</attribute>
+				<selector>#mobile-menu-content ul.menu ul.sub-menu > li:hover > a,#mobile-menu-content ul.menu ul.sub-menu > li.active > a</selector>
+			</item>
+		</items>
+	</mobilemenu>
+	<primarybutton>
+		<text>Primary Button</text>
+		<items>
+			<item>
+				<name>Primary Button Text</name>
+				<slug>namtech_primary_button_text</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>button,.btn,.button</selector>
+			</item>	
+			<item>
+				<name>Primary Button Text Hover</name>
+				<slug>namtech_primary_button_text_hover</slug>
+				<std>#fff</std>
+				<attribute>color</attribute>
+				<selector>button:hover,.btn:hover,.button:hover,button:focus,.btn:focus,.button:focus</selector>
+			</item>
+			<item>
+				<name>Primary Button Background</name>
+				<slug>namtech_primary_button_bg</slug>
+				<std>#d51a1a</std>
+				<attribute>background-color</attribute>
+				<selector>button,.btn,.button</selector>
+			</item>
+			<item>
+				<name>Primary Button Background Hover</name>
+				<slug>namtech_primary_button_bg_hover</slug>
+				<std>#5a0707</std>
+				<attribute>background-color</attribute>
+				<selector>button:hover,.btn:hover,.button:hover</selector>
+			</item>
+		</items>
+	</primarybutton>
+</items_setting>

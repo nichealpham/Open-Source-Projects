@@ -1,0 +1,67 @@
+#icon-options-general,
+#icon-settings {
+	background: url( '../images/logo-ithemes.png' ) no-repeat;
+}
+#ithemes-updater-licensed .subtitle {
+	background: url( '../images/icon-licensed.png' ) no-repeat;
+}
+#ithemes-updater-unlicensed .subtitle {
+	background: url( '../images/icon-unlicensed.png' ) no-repeat;
+}
+#ithemes-updater-unrecognized .subtitle {
+	background: url( '../images/icon-unrecognized.png' ) no-repeat;
+}
+#ithemes-updater-settings .subtitle {
+	background: url( '../images/icon-settings.png' ) no-repeat;
+}
+
+
+.wrap h2 + .error,
+.wrap h2 + .updated {
+	margin-top: 2em;
+}
+.wrap .subtitle {
+	font-size: 23px;
+	line-height: 30px;
+	margin: 1.5em 0 .5em;
+	padding: 0 0 0 35px;
+}
+
+
+.wrap .widefat.ithemes-updater-listing th,
+.wrap .widefat.ithemes-updater-listing td {
+	padding: 0;
+	vertical-align: middle;
+}
+.wrap .widefat.ithemes-updater-listing tfoot td {
+	padding: 13px 10px;
+}
+.ithemes-updater-listing label {
+	display: block;
+	padding: 10px;
+}
+.widefat.ithemes-updater-listing th.check-column {
+}
+.widefat.ithemes-updater-listing th.check-column input {
+	margin: 0;
+}
+
+.wrap #ithemes-updater-unrecognized .widefat.ithemes-updater-listing th,
+.wrap #ithemes-updater-unrecognized .widefat.ithemes-updater-listing td {
+	padding: 10px;
+}
+
+
+.widefat.ithemes-updater-listing tr.expiring {
+	background-color: #FFFFE0;
+}
+.widefat.ithemes-updater-listing tr.expiring.alt {
+	background-color: #F5F5D2;
+}
+
+.widefat.ithemes-updater-listing tr.expired {
+	background-color: #FFEBE8;
+}
+.widefat.ithemes-updater-listing tr.expired.alt {
+	background-color: #F9E1DD;
+}

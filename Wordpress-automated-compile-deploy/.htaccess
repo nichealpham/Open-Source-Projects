@@ -1,0 +1,18 @@
+# BEGIN iThemes Security - Do not modify or remove this line
+# iThemes Security Config Details: 2
+	# Enable the hide backend feature - Security > Settings > Hide Login Area > Hide Backend
+	RewriteRule ^(/)?backoffice/?$ /wp-login.php [QSA,L]
+	RewriteRule ^(/)?wp-register-php/?$ /backoffice?action=register [QSA,L]
+# END iThemes Security - Do not modify or remove this line
+AddType image/svg+xml .svg .svgz
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

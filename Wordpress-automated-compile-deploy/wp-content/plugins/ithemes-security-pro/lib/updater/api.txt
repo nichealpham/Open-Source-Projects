@@ -1,0 +1,40 @@
+# iThemes Updater API #
+
+This document lists the different API features of the iThemes Updater system.
+
+Note: This document is in [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown) format.
+
+
+## Defines ##
+
+The entire updater system can be disabled by creating a define named ITHEMES_UPDATER_DISABLE with a truthy value. For example, the following could be added to the wp-config.php file to disable the updater system:
+
+define( 'ITHEMES_UPDATER_DISABLE', true );
+
+
+## Query Strings ##
+
+The updater system has built in refresh intervals:
+
+* One minute - When on the Dashboard > Updates or Settings > iThemes Licensing pages, the data will refresh in one minute intervals. This means that once the data is a minute or older, it will be refreshed.
+* One hour - When on the Plugins > Installed Plugins or Appearance > Themes pages, the data will refresh in one hour intervals.
+* Twelve hours - On all other pages the data will refresh in twelve hour intervals.
+
+Note that data is only refreshed when in the WordPress Dashboard (wp-admin). This prevents adding additional load time when people are browsing the site.
+
+You can force a manual refresh of the data by modifying the URL of the page to include a non-empty query variable named ithemes-updater-force-refresh. This can be helpful if you think that the updater is having a problem and isn't properly refreshing itself.
+
+For example, if you are on an admin page with a URL of http://example.com/wp-admin/plugins.php, you can force a refresh by changing the URL to the following:
+
+http://example.com/wp-admin/plugins.php?ithemes-updater-force-refresh=1
+
+Note that forcing a refresh only works on the WordPress Dashboard and not on the site front-end. In addition, only users with the manage_options capability have the ability to force a refresh. By default, the only users with this capability are the ones in the Administrator role. These restrictions are to help prevent a non-authorized user from consuming server resources by forcing numerous refreshes.
+
+
+Some of our releases have versions with four digits, such as 3.1.1.1. Releases with a four-digit version are quick releases and are meant for rapid bug fix releases (typically in response to a specific support request). If the version on the site is only different by this last digit in a four-digit version (such as currently running 3.1.1.1 when 3.1.1.4 is available), then the updater will not show an update as available. You can force the updater to make such releases available by modifying an admin page URL to include a non-empty query variable named ithemes-updater-force-minor-update.
+
+For example, if you are on an admin page with a URL of http://example.com/wp-admin/plugins.php, you can force quick bug fix releases to be avaiable by changing the URL to the following:
+
+http://example.com/wp-admin/plugins.php?ithemes-updater-force-minor-update=1
+
+Note: The updater now supports a query variable named ithemes-updater-force-quick-release-update. It has the same functionality as ithemes-updater-force-minor-update.

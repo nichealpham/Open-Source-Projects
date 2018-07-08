@@ -1,0 +1,140 @@
+1.0.0 - 2014-03-25 - Chris Wiegman
+	Initial Release
+1.0.1 - 2014-04-01 - Chris Wiegman
+	Existing pro modules use new upgrade system when upgrading between versions
+1.0.2 - 2014-04-17 - Chris Wiegman
+	Only load front-end classes as needed
+	Add link to free support at .org forums
+1.0.3 - 2014-05-07 - Chris Wiegman
+	Fix check for existence of BackupBuddy
+1.1.0 - 2014-05-19 - Chris Wiegman
+	Added "user-logging" module
+	Minor cleanup
+1.2.0 - 2014-05-28 - Chris Wiegman
+	Added two-factor module
+	Minor cleanup
+1.3.0 - 2014-06-11 - Chris Wiegman
+	Added settings import/export module
+	Use wp_authenticate_user hook instead of authenticate hook for two-factor
+	Increase length of generated app password
+	Fix "Fix it" link on two-factor
+	Put two-factor in correct table of contents
+	Minor bug and typo fixes
+1.3.1 - 2014-06-12 - Chris Wiegman
+	Show time warning on two-factor screen
+1.3.2 - 2014-07-02 - Chris Wiegman
+	Fixed minor typos in text throught the plugin administration screens
+	Enhanced import/export to prevent non-settings fields (such as the file change list) from being exported. This will improve performance and reliability of the feature
+	Enhanced two-factor authentication to prevent it from being activated in the one-click settings
+	Enhanced two-factor to add a field requiring users to confirm two-factor works before the feature is enabled on a given account
+	Enhanced two-factor to allow a time offset when the server's time differs from actual time (up to 5 minutes)
+1.4.0 - 2014-07-28 - Chris Wiegman
+	Added malware scheduler
+	Fixed missing user on all logs for User Logging feature
+	Fixed various typos throughout the dashboard
+	Enhanced dashboard code for better performance
+1.4.1 - 2014-07-29 - Chris Wiegman
+	Updated descriptions an instructions in malware scheduling to make the feature easier to use
+	Numerous typo corrections throughout dashboard
+1.4.2 - 2014-08-11 - Chris Wiegman
+	Modified malware scheduling for simpler interface and less resource usage
+	Add file lock during scheduled malware scans to prevent multiple concurrent scans
+1.4.3 - 2014 -08-20 - Chris Wiegman
+	Fixed Notice: Undefined index: type in ...modules/pro/settings/class-itsec-settings-admin.php on line 171
+1.5.0 - 2014-09-09 - Chris Wiegman
+	Fixed: Added missing index.php files to directories that were missing them to ensure no information could be attained if directory is turned on.
+1.5.1 - 2014-09-09 - Chris Wiegman
+	Fixed: Force stylesheet reload for new nags and other items by pushing plugin build number to stylesheet registrations
+1.5.2 - 2014-09-10 - Chris Wiegman
+	Fixed: Fixed a bug that could prevent multi-site users from scheduling malware scans
+1.6.0 - 2014-09-15 - Chris Wiegman
+	New Feature: Automatically generate strong passwords
+	New Feature: Password expiration
+	Enhancement: Added link to timezone settings in two-factor to fix incorrect setting.
+	Fixed: Increased size of two-factor app password display to make it easier to copy
+1.6.1 - 2014-09-15 - Chris Wiegman
+	Fixed: Updated malware-scheduling to reduce errors when last scans is saved as something other than an array.
+1.6.2 - 2014-09-16 - Chris Wiegman
+	Enhancement: Added ability to choose password length for strong password generation.
+	Enhancement: Added password generator to new user and password reset forms.
+	Fixed: Fixed an error log message that could occur due to resource not being identified correctly.
+	Fixed: Removed errors that could occur due to the use of custom capabilities and roles.
+1.6.3 - 2014-09-17 - Chris Wiegman
+	Enhancement: Added notice to profile screen when password change is forced
+	Fixed: Password rotation will no longer be turned on in one click settings.
+1.7.0 - 2014-10-13 - Chris Wiegman
+	New Feature: Dashboard widget. Get important information and handle user blocking right from the WordPress Dashboard.
+1.8.0 - 2014-10-21 - Chris Wiegman
+	New Feature: File change scanning will now compare WordPress core files to the WordPress.org repository.
+1.9.0 - 2014-11-04 - Chris Wiegman
+	New Feature: Temporary privilege escalation
+	Fixed: App passwords in two-factor authentication will now correctly authenticate themselves.
+1.9.1 - 2014-11-05 - Chris Wiegman
+	Fixed: App passwords in two-factor authentication will now correctly authenticate themselves.
+1.10.0 - 2014-12-04 - Chris Wiegman
+	New Feature: wp-cli integration
+	New Feature: Override two-factor authentication temporarily with iTheme Sync
+	Fixed: Online files will be handled correctly if there is no path
+	Fixed: Malware scheduling will be disabled if Malware detection is disabled
+	Fixed: Online files will no longer show an error if file hash hadn't been correctly saved
+1.11.0 - 2014-12-16 - Chris Wiegman
+	New Feature: Google reCAPTCHA
+	Enhancement: update storage methods for malware scanning engine for more efficient use of the database
+	Fixed: Settings import will now take .json files without error
+1.11.1 - 2014-01-16 - Chris Wiegman
+	Enhancement: Two-factor allows for multiple app passwords
+	Fixed: Two-factor now works with Exchange's login widgets
+	Fix/Enhancement: Refactoring of numerous pro modules for better efficiency
+	Fix: Error wwith invalid index in reCAPTCHA
+1.11.2 - 2014-01-12 - Chris Wiegman
+	Fix: Fixed CSS error on Dashboard caused when other plugins override the .clear style rules.
+1.11.3 - 2015-01-21 - Chris Wiegman
+	Enhancement: Online file change scanning will now count in iThemes products
+	Fix: Recaptcha will not show up on pages without recpatha code or while logged in
+	Fix: Dashboard widget CSS will be less prone to hijacking by other plugins
+1.11.4 - 2015-01-23 - Chris Jean
+	Bug Fix: Rolled-back Recaptcha modifications in order to fix login bug when Recaptcha user login is enabled.
+1.11.5 - 2015-01-27 - Chris Jean
+	Bug Fix: Fixed issue in the Online Files feature that could cause high server load on some sites.
+1.11.6 - 2015-02-05 - Chris Wiegman
+	Fix: More efficient checks for online file scanning
+	Fix: Recaptcha script will not enqueue on pages where it isn't needed
+	Fix: General typo and minor bug fixes.
+1.11.7 - 2015-02-20 - Chris Wiegman
+	Enhancement: Limit the number of lockouts that can be displayed at any given time in the dashboard.
+	Fix: Fix error message from missing login information when displaying lockouts.
+	Fix: Minor copy corrections.
+1.11.8 - 2015-02-20 - Chris Wiegman
+	Enhancement: Limit the number of lockouts that can be displayed at any given time in the dashboard.
+	Fix: Fix error message from missing login information when displaying lockouts.
+	Fix: Minor copy corrections.
+1.12.0 - 2015-03-19 - Chris Jean
+	Enhancement: Settings import now allows for renamed export files.
+	Enhancement: Settings import now provides better error messages.
+	Bug Fix: Settings import no longer respects MIME types sent by the browser. This avoids issues with some
+		browsers/operating systems reporting the MIME type of the uploaded file incorrectly.
+1.13.0 - 2015-04-08 - Chris Jean
+	Enhancement: Broadened the server support in the import settings code.
+1.13.1 - 2015-06-09 - Chris Jean
+	Bug Fix: Warnings when file writes fail are now hidden.
+	Bug Fix: Fixed a situation where creation of a zipped export file would fail, but an email would still be sent as if the zip was created successfully.
+	Enhancement: Improved error messages when file writes fail.
+	Enhancement: Improved error messages when export file creation fails.
+1.14.0 - 2015-07-02 - Chris Jean
+	Feature Removal: Removed the malware scanning and malware wp-cli integration featres as VirusTotal no longer supports scanning from WordPress sites. A replacement is in the works.
+1.15.0 - 2015-08-03 - Chris Jean
+	Enhancement: Improved the reCaptcha feature's integration into comments. It now supports more themes than ever before and bypasses captcha validation for logged in users.
+	Enhancement: Added support for WordPress 4.3's updated password user interface and password generator.
+	Bug Fix: Fixed some issues with profile pages on multisite setups that affected both two factor authentication and the password generator.
+1.16.0 - 2015-09-14 - Chris Jean
+	New Feature: Added malware scanning scheduling with email reporting if issues are found.
+	Enhancement: Two-Factor now supports authentication codes provided via email.
+	Enhancement: Two-Factor now supports backup verification codes.
+	Enhancement: Two-Factor login prompts are now shown after providing valid username and password details and only for users that have Two-Factor enabled.
+1.16.1 - 2015-09-14 - Chris Jean
+	Bug Fix: Fixed potential fatal error and warning when upgrading old malware scheduling settings.
+	Bug Fix: Fixed issue that could prevent two-factor apps on iOS devices from properly adding sites that have spaces in their names.
+	Enhancement: Improved the UI for setting up the TOTP provider for two-factor authentication.
+1.16.2 - 2015-09-15 - Chris Jean
+	Bug Fix: Fixed "Call to undefined function wp_roles()" error that can occur in older versions of WordPress.
+	Bug Fix: Fixed an issue with Sync Two-Factor override.

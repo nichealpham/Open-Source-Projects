@@ -1,0 +1,556 @@
+.bootstart-admin-container{
+	float: unset;
+	margin: 0px auto;
+	margin-right: 12px;
+	padding: 0px;
+}
+
+.bootstart-admin-header{
+	font-size: 1.8em;
+	text-align: center;
+}
+
+.bootstart-admin-header h2{
+	color: #43EBCC;
+}
+
+.bootstart-admin-navigation{
+	text-align: center;
+}
+
+.bootstart-admin-navigation ul li{
+	display: inline-block;
+	font-size: 1.2em;
+	margin: 5px;
+	padding:10px;
+}
+
+.bootstart-admin-navigation ul li:hover{
+	border-bottom: 2px solid #43EBCC;
+}
+
+.bootstart-admin-active-page{
+	border-bottom: 2px solid #43EBCC;
+}
+
+.bootstart-admin-navigation ul li a{
+	text-decoration: none;
+}
+
+.bootstart-admin-footer{
+	text-align: center;
+	font-size: 130%;
+	padding: 5px;
+	margin: 5px;
+}
+
+.bootstart-admin-content{
+	margin: 10px;
+	padding: 10px;
+}
+
+.bootstart-admin-content input{
+	display: inline;
+}
+
+.bootstart-admin-content label{
+	font-size: 120%;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.form-blokc{
+	display: block;
+	margin: 10px;
+	padding: 10px;
+}
+
+.form-blokc small{
+	color: gray;
+}
+
+.bootstart-admin-content input[type='submit']{
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 120%;
+	background-color: #31A6CB;
+	color: white;
+	font-weight: bold;
+	box-shadow: unset;
+}
+
+.bootstart-admin-footer{
+	border-top: 2px solid gray;
+	margin-top: 20px;
+	padding: 10px;
+	padding-top: 20px;
+}
+
+.bootstart-admin-footer span a{
+	text-decoration: none;
+	color: white;
+}
+
+.file-manager-shortcode-table{
+	margin: 10px;
+	padding: 10px;
+}
+
+.file-manager-shortcode-table td{
+	margin: 5px;
+	padding: 5px;
+}
+
+.file-manager-shortcode-table-shortcode{
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.bootstart-admin-footer ul li{
+	display: inline-block;
+	margin: 5px;
+	padding: 15px;
+}
+
+.bootstart-admin-footer ul li a{
+	text-decoration: none;
+}
+
+.fmp_extend{
+	background-color: #31A6CB;
+	color: white;
+}
+
+.fmp_extend a{
+	color: white;
+}
+
+.fm_permission_system_advert img{
+	width: 25%;
+	border: 2px solid cyan;
+	display: inline-block;
+	margin: 5px;
+	padding: 5px;
+	margin-bottom: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fm_permission_system_advert span{
+	width: 100%;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox !important;
+}
+
+input[type=radio]
+{
+  -webkit-appearance:radio !important;
+}
+
+.footer-sticky-button{
+	background: none;
+	margin: 0;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+	background-color: #B10C0C;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.footer-sticky-button a{
+	text-decoration: none;
+	color: white;
+	font-size: 1.1em;
+}
+
+/**
+ * 
+ * Donation Style
+ * 
+ * */
+.fm-donate{
+	text-align: center;
+	margin: 10px;
+}
+
+.fm-donate > form {
+	padding-bottom: 20px;
+}
+
+.fm-donate > p {
+	text-align: justify;
+}
+
+.fm-donate > h2{
+	color: #0073AA;
+	padding-top: 20px;
+}
+
+/*Editor Font Re-fix*/
+.ui-widget textarea {
+    font-family: Verdana,Arial,sans-serif,Trebuchet MS,Tahoma;
+    font-size: 1.3em;
+		background-color: #f0f0f0;
+		padding:10px;
+		text-align:left;
+}
+/*Editor Font Re-fix*/
+
+.bootstart-admin-content{
+	max-width: 73%;
+	min-width: 73%;
+	margin-right: 2%;
+	float: left;
+	display: inline-block;
+}
+
+.bootstart-admin-sidebar{
+	max-width: 22%;
+	min-width: 22%;
+	display: inline-block;
+	min-height: 480px;
+	padding-top: 18px;
+}
+
+.sidebar-highlight{
+	text-align: center;
+	color: #B10C0C;
+	padding: 10px 0px 10px 0px;
+	font-size: 1.2em;
+	border-bottom: 2px solid #B10C0C;
+}
+
+.sidebar-highlight ul li{
+	border-bottom: 1px solid #B10C0C;
+}
+
+.badge-pro{
+	position: relative;
+}
+
+.badge-pro[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:-10px;
+   right:-10px;
+   font-size: 1em;
+   background:#B10C0C;
+   color:white;
+   width:24px;
+   height:24px;
+   text-align:center;
+   line-height:24px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
+
+.badge-free{
+	position: relative;
+}
+
+.badge-free[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:-10px;
+   right:-10px;
+   font-size: 1em;
+   background: white;
+   color: black;
+   width:24px;
+   height:24px;
+   text-align:center;
+   line-height:24px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
+
+
+/**
+ * 
+ * Style Rework
+ * 
+ * */
+ 
+/**
+ * 
+ * Header Style
+ * 
+ * */
+.fm-header{
+	box-shadow: 0 1px 0;
+	padding-left: 50px;
+	width: 94%;
+}
+
+.fm-header > h1 {
+	color: #0073AA;
+	display: inline-block;
+}
+
+.fm-header > ul {
+	display: inline-block;
+	float: right;
+}
+
+.fm-header > ul > li {
+	display: inline-block;
+	margin: 5px;
+	padding: 5px;
+}
+
+/**
+ * 
+ * Main Content Style
+ * 
+ * */
+.fm-container{
+	width: 98%;
+	min-height: 500px;
+/*
+	border: 2px solid black;
+*/
+	margin-top: 20px;
+}
+
+.col-main{
+	width: 69.6%;
+	min-height: 200px;
+/*
+	border: 2px solid red;
+*/
+	float: left;
+}
+
+.col-sidebar{
+	width: 29.6%;
+	min-height: 200px;
+/*
+	border: 2px solid red;
+*/
+	float: right;
+}
+
+.gb-fm-row{
+	width: 98%;
+	background-color: white;
+	min-height: 100px;
+	margin: 5px;
+	margin-bottom: 20px;
+}
+
+
+/**
+ * 
+ * File manager Style
+ * 
+ * */
+#file-manager{
+}
+
+
+/**
+ * 
+ * Marketing Style
+ * 
+ * */
+.fm-marketing > a{
+	color: white;
+	text-decoration: none;
+	font-size: 120%;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #D92519;
+}
+
+
+/**
+ * 
+ * Extension sidebar module
+ * 
+ * */
+.fm-extensions{
+	margin: 10px;
+}
+
+.fm-extensions > h2 {
+	color: #0073AA;
+	padding-top: 20px;
+	text-align: center;
+}
+
+/**
+ * 
+ * Data
+ * 
+ * */
+.fm-data{
+	border-left: 5px solid #0073AA;
+}
+
+.fm-data > table{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fm-data > table > tr > td{
+	padding: 5px;
+}
+
+.fm-call-toaction{
+	color: white;
+	background-color: #D92519;
+	font-size: 120%;
+	padding: 10px;
+	margin: 20px;
+}
+
+.fm-call-toaction:hover{
+	color: white;
+}
+
+/**
+ * 
+ * Footer Style
+ * 
+ * */
+.fm-footer{
+	width: 98%;
+/*
+	border: 2px solid black;
+*/
+	float: left;
+	background-color: #DDDDDD;
+	text-align: center;
+}
+
+.fm-footer > ul > li {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/**
+ * Settings Page form styling
+ * */
+.fmp-settings h2{
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+
+.fmp-settings > form > h4{
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.fmp-settings table{
+	padding: 10px;
+	padding-left: 20px;
+}
+
+.fmp-settings table td {
+	padding: 10px;
+}
+
+.fmp-settings input[type=submit]{
+	padding: 10px 20px 10px 20px;
+	color: white;
+	font-size: 120%;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	background: rgb(28, 184, 65);
+	cursor: pointer;
+}
+
+/**
+ * File edit full screen
+ * */
+div.ui-dialog:nth-child(7){
+	width: 760px !important;
+	top: 10px !important;
+	left: 10px !important;
+}
+
+.elfinder-file-edit{
+	height: 475px;
+}
+/**--------------------------------------------------**/
+
+/**
+ * File preview fullscreen problem fix
+ **/
+
+div.ui-helper-reset:nth-child(9){
+	position: absolute !important;
+	width: 760px !important;
+	height: auto !important;
+	top: 150px !important;
+	left: 190px !important;
+}
+
+.elfinder-quicklook-preview{
+	height: 510px;
+}
+
+div.elfinder-quicklook-navbar-icon:nth-child(2){
+	display: none;
+}
+/**------------------------------------**/
+
+/**
+ *
+ * Designing Logo
+ *
+ * */
+.fm-logo{
+	width: 50px;
+	height: auto;
+	position: relative;
+	top: 15px;
+	left: -15px;
+}
+
+/**
+ *
+ * File manager main view cross button hidden
+ *
+ * */
+span.ui-icon:nth-child(4){
+	display: none !important;
+}
+
+
+/**
+ *
+ * Themepack style
+ *
+ * */
+.fmtp_theme_screenshot{
+	max-width: 100px;
+}
+
+.fmtp_theme_wrapper{
+	display: inline-block;
+	width: 19%;
+}
+
+/**
+ * 
+ * Notification
+ * 
+ * */
+.fm-error{
+	border-left: 4px solid red;
+	display: block;
+}

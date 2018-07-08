@@ -1,0 +1,12 @@
+/***************************************
+	2fa Settings
+****************************************/
+#the-list tr:nth-of-type(odd) {
+	background: #e4f0fd;
+}
+
+
+
+#itsec-application-passwords-list-table-wrapper .tablenav.top {
+	display: none;
+}

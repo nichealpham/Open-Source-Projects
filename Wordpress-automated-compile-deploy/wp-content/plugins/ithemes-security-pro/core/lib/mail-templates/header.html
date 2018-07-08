@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ $lang }}">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={{ $charset }}">
+	<title>{{ $title_tag }}</title>
+	<meta name="viewport" content="width=device-width">
+
+	<style type="text/css">
+		/* From: https://litmus.com/community/learning/13-foundations-email-coding-101 */
+
+		/* GENERAL STYLE RESETS */
+		body,#body-table,#body-cell{height:100%!important;width:100%!important;margin:0;padding:0;}
+		img,aimg{border:0;outline:none;text-decoration:none;}
+		.imageFix{display:block;}
+		table,td{border-collapse:collapse;border-spacing:0;}
+
+		/* CLIENT-SPECIFIC RESETS */
+		.ReadMsgBody{width:100%;}
+		.ExternalClass{width:100%;}
+		.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height:100%;}
+		table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}
+		img{-ms-interpolation-mode:bicubic;}
+		body,table,td,p,a,li,blockquote{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+
+
+		h1,h2,h3,h4,h5,h6{color:#202020;font-family:Helvetica;font-size:20px;font-weight:bold;line-height:150%;margin:0;padding:0;text-align:center;}
+		p{font-family:Helvetica;font-size:16px;line-height:150%;margin-top:10px;margin-right:0;margin-bottom:10px;margin-left:0;padding:0;text-align:center;}
+		a{color:#0084CB;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center;text-decoration:none;}
+		img{height:auto;}
+
+		body,#body-table{background-color:#FFFFFF;}
+		#body-cell{padding-bottom:20px;}
+		.section-padding{padding-top:20px;padding-right:20px;padding-left:20px;}
+		.section-padding-bottom{padding-bottom:20px;}
+		.container-cell{color:#404040;font-family:Helvetica;font-size:16px;line-height:150%;text-align:center;padding-bottom:20px;}
+		#top-banner{background-color:#FFCE08;}
+		#top-banner .container-cell{color:#413F39;font-size:13px;}
+		#top-logo .container-cell{padding-top:20px;}
+		#title-container h1{font-size:34px;}
+		.info-box{padding-top:20px;padding-bottom:20px;}
+		.info-box .container{border:1px solid #CDCECE;background-color:#F2F2F2;}
+		.info-box .section-padding{padding-top:40px;padding-right:40px;padding-left:40px;}
+		.info-box .container-cell{padding-bottom:40px;}
+		.info-box .info-icon{width:33px;height:23px;vertical-align:middle;}
+		.section-heading .container-cell{padding-bottom:0;}
+		.section-heading h4{color:#0084CB;font-size:16px;}
+		.section-heading h4 img{padding-top:2px;padding-right:5px;vertical-align:top;}
+		.lockouts-summary .container.left-column{margin-right:60px;}
+		.lockouts-summary h4{color:#ACAAAA;font-size:16px;font-weight:normal;}
+		.lockouts-summary p{color:#505050;font-size:30px;font-weight:bold;}
+		.lockouts-table{border:1px solid #cdcece;font-family:Helvetica;font-size:14px;}
+		.lockouts-table th,.lockouts-table td{border:1px solid #cdcece;padding:10px;}
+		.lockouts-table th{text-align:left;font-weight:bold;padding:5px 10px;}
+		.lockouts-table .row-label{font-style:italic;}
+		.lockouts-table a,.lockouts-table b{font-size:14px;}
+		.large-text h4{color:#505050;margin-bottom:10px;}
+		.details-box-container{padding-top:20px;padding-bottom:20px;}
+		.details-box{background-color:#E4EEF7;border:1px solid #CDCECE;}
+		.details-box .container-cell{color:#6A6A6A;}
+		.divider .divider-border{border-top-width:1px;border-top-style:solid;border-top-color:#E8E8E8;}
+		.divider .container-cell{line-height:1px;padding-bottom:20px;width:450px;}
+		.module-button .border-radius{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+		.module-button a{background-color:#FFCD08;border:1px solid #FFCD08;color:#2E280E;display:inline-block;font-size:18px;font-weight:bold;line-height:100%;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;}
+		.pro-callout{padding-top:20px;}
+		.pro-callout-background{background-color:#0B1A23;}
+		.pro-callout .section-padding{padding-top:40px;}
+		.pro-callout .two-factor{color:#FFFFFF;margin-top:20px;margin-bottom:20px;}
+		.pro-callout .module-button a{font-size:30px;}
+		.pro-callout .why-pro{color:#999999;font-style:italic;margin-top:20px;margin-bottom:20px;}
+		.footer-heading h2{color:#002030;font-size:26px;}
+		.pro-flag{background-color:#FFCC00;color:#000000;font-size:10px;display:inline-block;padding:3px;line-height:1;position:relative;bottom:10px;text-transform:uppercase;}
+		#security-guide-container{border:1px solid #CDCECE;background-color:#D3E8E9;}
+		#security-guide .container-cell{color:#6C6C6C;text-align:left;}
+		#security-guide h4{color:#6C6C6C;font-size:18px;padding-bottom:10px;text-align:left;}
+		#security-guide a{font-weight:bold;}
+		#footer-source-details .container-cell{line-height:200%;padding-top:60px;padding-bottom:0;}
+		#footer-source-details a{font-size:11px;font-weight:bold;line-height:200%;}
+
+		@media only screen and (max-width:600px){
+			body{width:100% !important;min-width:100% !important;}
+			#body-cell{padding:10px !important;}
+			#main-container, .container{width:100% !important;}
+			.preserve-ratio{height:auto !important;width:100% !important;}
+			.container-cell-bottom{padding-top:20px !important;}
+			.lockouts-summary .container{width:auto !important;}
+		}
+
+		@media only screen and (max-width:450px){
+			.divider .container-cell{width:auto !important;}
+		}
+	</style>
+</head>
+
+<body style="margin: 0;padding: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;height: 100%!important;width: 100%!important;">
+	<center>
+		<table id="body-table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;background-color: #FFFFFF;height: 100%!important;width: 100%!important;">
+			<tr>
+				<td id="body-cell" align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;padding-bottom: 20px;height: 100%!important;width: 100%!important;">
+					<table id="main-container" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+						<tr>
+							<td id="top-banner" align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFCE08;">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+									<tr>
+										<td align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											<table class="container" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+												<tr>
+													<td class="section-padding" align="center" valign="top" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;padding-top: 20px;padding-right: 20px;padding-left: 20px;">
+														<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+															<tr>
+																<td class="container-cell" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #413F39;font-family: Helvetica;font-size: 13px;line-height: 150%;text-align: center;padding-bottom: 20px;">
+																	{{ $banner_title }}
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td id="top-logo" align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+									<tr>
+										<td align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											<table class="container" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+												<tr>
+													<td class="section-padding" align="center" valign="top" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;padding-top: 20px;padding-right: 20px;padding-left: 20px;">
+														<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+															<tr>
+																<td class="container-cell" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #404040;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: center;padding-bottom: 20px;padding-top: 20px;">
+																	<img class="preserve-ratio" src="{{ $logo }}" style="max-width: 300px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;height: auto;" width="300" height="127" alt="" align="center">
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td id="title-container" align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+									<tr>
+										<td align="center" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											<table class="container" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+												<tr>
+													<td class="section-padding" align="center" valign="top" width="600" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;padding-top: 20px;padding-right: 20px;padding-left: 20px;">
+														<table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+															<tr>
+																<td class="container-cell" valign="top" style="border-collapse: collapse;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #404040;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: center;padding-bottom: 20px;">
+																	<h1 style="color: #202020;font-family: Helvetica;font-size: 34px;font-weight: bold;line-height: 150%;margin: 0;padding: 0;text-align: center;">{{ $title }}</h1>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>

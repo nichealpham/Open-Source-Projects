@@ -1,0 +1,19 @@
+#itsec-two-factor-protect_user_type_roles-container ul {
+	margin: 0;
+	padding-left: 0;
+}
+#itsec-two-factor-protect_user_type_roles-container ul li {
+	list-style: none;
+}
+#itsec-two-factor-protect_user_type_roles-container ul li input[type="checkbox"] {
+	margin-top: 0;
+}
+.itsec-two-factor-requires-no-email-provider ul {
+	margin: 1em 0;
+}
+.itsec-two-factor-requires-no-email-provider ul li {
+	font-size: 14px;
+}
+.itsec-two-factor-requires-no-email-provider .itsec-notice-message {
+	margin: 0;
+}

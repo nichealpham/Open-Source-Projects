@@ -1,0 +1,637 @@
+#screen-meta-links #itsec-meta-link-wrap a::after {
+	content      : '';
+	margin-right : 5px;
+}
+
+#itsec-meta-link-wrap a.show-settings {
+	float  : right;
+	margin : 0 0 0 6px;
+}
+
+.wrap h2.nav-tab-wrapper {
+	padding-bottom: 0;
+}
+
+div.inside ul {
+	margin-left : 20px;
+}
+
+div.inside ul li {
+	line-height : 16px;
+	list-style  : disc;
+}
+
+.form-table th, .form-table td label {
+	font-weight : 600;
+}
+
+#poststuff h2.settings-section-header {
+	padding : 1em 0 0;
+}
+
+.current-time-date {
+	display    : inline-block;
+	font-size  : 1.25em;
+	background : #efefef;
+	padding    : .75em 1em;
+}
+
+.ui-datepicker {
+	display : none;
+}
+
+a.itsec_return_to_top {
+	position    : fixed;
+	bottom      : 10px;
+	right       : 10px;
+	z-index     : 200;
+	width       : 41px;
+	height      : 41px;
+	background  : url(../img/return-to-top.png) center center no-repeat;
+	display     : block;
+	text-indent : -9999em;
+	opacity     : .8;
+}
+
+a.itsec_return_to_top:hover {
+	opacity : 1;
+}
+
+#global_table_of_contents div.inside {
+	padding-top : 6px;
+}
+
+#global_table_of_contents .hndle,
+#global_table_of_contents .handlediv {
+	display : none;
+}
+
+#global_table_of_contents.fixed {
+	position : fixed;
+	right    : 0;
+	bottom   : 45%;
+	z-index  : 2;
+}
+
+div.inside .itsec_toc_label {
+	font-weight : 600;
+	font-size   : 14px;
+}
+
+div.inside .itsec_toc {
+	margin : 0;
+}
+
+div.inside .itsec_toc li {
+	list-style : none;
+}
+
+#side-sortables.empty-container {
+	border : none;
+}
+
+.ui-dialog {
+	position : fixed !important;
+}
+
+/***************************************
+	Warnings/Notices
+****************************************/
+.itsec-warning-message {
+	display     : block;
+	clear       : both;
+	font-size   : 1.125em;
+	margin      : 1.5em 0;
+	padding     : 1em;
+	border-left : 4px solid #ca8383;
+	background  : #ffd4d4;
+	color       : #9c3e3e;
+}
+
+.itsec-notice-message {
+	display     : block;
+	clear       : both;
+	font-size   : 1.125em;
+	margin      : 1.5em 0;
+	padding     : 1em;
+	border-left : 4px solid #e8e4a7;
+	background  : #fff9ec;
+}
+
+.itsec-notice-message span,
+.itsec-warning-message span {
+	font-weight : 700;
+}
+
+/***************************************
+	Support Page List
+****************************************/
+.inside .itsec-support {
+	margin : 0;
+}
+
+.inside .itsec-support li {
+	list-style : none;
+}
+
+.inside .itsec-support li h4 {
+	background    : #ebebeb;
+	padding       : 1em;
+	margin-bottom : 0;
+}
+
+.inside .itsec-support li ul {
+	border : 1px solid #ebebeb;
+	margin : 0;
+}
+
+.inside .itsec-support li li {
+	padding : .5em 1em .5em 2em;
+	margin  : 0;
+}
+
+.inside .itsec-support li li:nth-child(2n+1) {
+	background : #fafafa;
+}
+
+/***************************************
+	Dashboard information
+****************************************/
+#itsec_get_started .inside {
+	padding : 0;
+	margin  : 0;
+}
+
+#itsec_get_started .itsec-video {
+	position       : relative;
+	padding-bottom : 48.5%;
+	padding-top    : 25px;
+	height         : 0;
+	width          : 85%;
+	margin         : 1em auto 0 auto;
+}
+
+#itsec_get_started .itsec-video iframe {
+	position : absolute;
+	top      : 0;
+	left     : 0;
+	width    : 100%;
+	height   : 100%;
+}
+
+.itsec_getting_started {
+	padding  : 0 2em;
+	overflow : hidden;
+}
+
+.itsec_getting_started .column {
+	width          : 100%;
+	max-width      : 45%;
+	float          : left;
+	padding-right  : 2.5%;
+	border-right   : 1px solid #ebebeb;
+	padding-bottom : 2em;
+}
+
+.itsec_getting_started .column.two {
+	margin-right  : 0;
+	padding-right : 0;
+	padding-left  : 2.5%;
+	border        : 0;
+	max-width     : 49%;
+}
+
+.itsec_getting_started .itsec-video-link {
+	width     : 100%;
+	max-width : 200px;
+	float     : left;
+	margin    : 0 1.5em 1.5em 0;
+}
+
+.itsec_getting_started .itsec-video-link img {
+	max-width : 100%;
+	height    : auto;
+}
+
+.itsec_getting_started .itsec-video-description {
+
+}
+
+.itsec_getting_started .itsec_video {
+	display : none;
+}
+
+.itsec-video-dialog .itsec_video {
+	padding : 0;
+	margin  : 0 0 -5px 0;
+}
+
+.itsec-video-dialog .ui-dialog-titlebar {
+	line-height   : 1;
+	font-size     : 1em;
+	height        : 35px;
+	background    : #222;
+	border-bottom : none;
+}
+
+.itsec-video-dialog .ui-dialog-titlebar button {
+	height  : 30px;
+	width   : 30px;
+	padding : 0;
+}
+
+#itsec_tabbed_dashboard_content {
+	padding : 0 1em;
+}
+
+#itsec_tabbed_dashboard_content h2 {
+	margin-bottom : 0;
+}
+
+#itsec_tabbed_dashboard_content .itsec-tabs {
+	overflow      : hidden;
+	padding       : 0;
+	margin-top    : 2em;
+	margin-bottom : 2em;
+}
+
+#itsec_tabbed_dashboard_content .itsec-tabs li {
+	display      : block;
+	float        : left;
+	padding      : 0;
+	border       : 0;
+	border-right : 1px solid #ebebeb;
+}
+
+#itsec_tabbed_dashboard_content .itsec-tabs li a {
+	display         : block;
+	padding         : 1em 2em;
+	text-decoration : none;
+	background      : #fff;
+	border-bottom   : 3px solid transparent;
+}
+
+#itsec_tabbed_dashboard_content .itsec-tabs li.ui-state-active a,
+#itsec_tabbed_dashboard_content .itsec-tabs li.ui-state-hover a {
+	background    : #ebebeb;
+	border-bottom : 3px solid #025680;
+}
+
+#itsec_tabbed_dashboard_content .statuslist {
+	margin-bottom : 4em;
+}
+
+#itsec_tabbed_dashboard_content .statuslist li {
+	padding : .75em 1em;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.high-priority {
+	border : 1px solid #ffd4d4;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.high-priority li {
+	background    : #ffeaea url(../img/flag16-red.png) 12px center no-repeat;
+	padding-left  : 40px;
+	border-bottom : 1px solid #ffd4d4;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.medium-priority {
+	border : 1px solid #dadaa4;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.medium-priority li {
+	background    : #ffffcb url(../img/flag16-yellow.png) 12px center no-repeat;
+	padding-left  : 40px;
+	border-left   : 4px solid #dadaa4;
+	border-bottom : 1px solid #dadaa4;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.low-priority {
+	border : 1px solid #a6cbdb;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.low-priority li {
+	background    : #daf4ff url(../img/flag16-blue.png) 12px center no-repeat;
+	padding-left  : 40px;
+	border-left   : 4px solid #a6cbdb;
+	border-bottom : 1px solid #a6cbdb;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.completed li {
+	background   : #fafafa url(../img/check16.png) 12px center no-repeat;
+	padding-left : 40px;
+}
+
+#itsec_tabbed_dashboard_content .statuslist.high-priority li:last-child,
+#itsec_tabbed_dashboard_content .statuslist.medium-priority li:last-child,
+#itsec_tabbed_dashboard_content .statuslist.low-priority li:last-child {
+	border-bottom : 0;
+}
+
+div.itsec_rewrite_rules {
+	height      : 500px;
+	overflow    : auto;
+	width       : 100%;
+	line-height : 1em;
+}
+
+div.itsec_rewrite_rules code {
+	overflow-x       : auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+	overflow-y       : hidden;
+	background-color : transparent;
+	white-space      : pre-wrap; /* css-3 */
+	white-space      : -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space      : -pre-wrap; /* Opera 4-6 */
+	white-space      : -o-pre-wrap; /* Opera 7 */
+	/* width: 99%; */
+	word-wrap        : break-word; /* Internet Explorer 5.5+ */
+}
+
+/***************************************
+	Dashboard Security Status Lists
+****************************************/
+#itsec_status ul {
+	list-style-position : inside;
+	margin              : 1em 0;
+	border              : 1px solid #ebebeb;
+	padding             : 0;
+}
+
+#itsec_status ul li {
+	padding       : .5em 1em;
+	margin        : 0;
+	border-bottom : 1px solid #ebebeb;
+	overflow      : hidden;
+}
+
+#itsec_status ul li:last-child {
+	border-bottom : none;
+}
+
+#itsec_status ul.completed li {
+	border-left : 5px solid #c9c9c9;
+}
+
+#itsec_status ul.high-priority li {
+	border-left : 5px solid #ffd4d4;
+}
+
+#itsec_status ul.medium-priority li {
+	border-left : 5px solid #d9f4ff;
+}
+
+#itsec_status ul.low-priority li {
+	border-left : 5px solid #d9f4ff;
+}
+
+#itsec_status ul li p {
+	float   : left;
+	width   : 75%;
+	margin  : 0;
+	padding : .3em 0;
+}
+
+#itsec_status ul li .itsec_status_action {
+	float       : right;
+	width       : 20%;
+	margin-left : 5%;
+	text-align  : right;
+}
+
+#normal-sortables #itsec_release_lockout_form p.submit {
+	float        : none;
+	padding-left : 0;
+	margin       : 1.5em 0 0;
+	padding-top  : 1.5em;
+}
+
+/***************************************
+	iThemes Security Dialogs
+****************************************/
+
+/* Logs Modal */
+.itsec-dialog-logs .ui-dialog-content {
+	padding : 1em 2em 2em 2em;
+}
+
+.itsec-dialog-logs .ui-dialog-titlebar span {
+	padding    : .25em 1em;
+	text-align : left;
+}
+
+/* All Logs Modal */
+.itsec-all-log-dialog ul li h3 {
+	border-bottom  : 1px solid #ebebeb;
+	text-transform : capitalize;
+}
+
+.itsec-all-log-dialog ul ul li h3 {
+	border         : none;
+	text-transform : none;
+	font-size      : 1.2em;
+	margin         : 0;
+}
+
+.itsec-all-log-dialog ul ul li {
+	padding : .5em 1em;
+}
+
+.itsec-all-log-dialog ul ul ul li,
+.itsec-all-log-dialog ul ul ul ul li {
+	padding : 0;
+}
+
+.itsec-all-log-dialog ul ul li:nth-child(2n) {
+	background : #ebebeb;
+}
+
+.itsec-all-log-dialog ul ul ul li:nth-child(2n),
+.itsec-all-log-dialog ul ul ul ul li:nth-child(2n) {
+	background : transparent;
+}
+
+/* Initial setup Modal */
+.itsec-setup-dialog .ui-dialog-titlebar {
+	background  : #2ea2cc;
+	color       : #fff;
+	font-size   : 1.5em;
+	font-weight : normal;
+	height      : auto;
+	line-height : 2.5;
+	padding     : 0 1em;
+}
+
+.itsec-setup-dialog .ui-dialog-titlebar span {
+	text-align : left;
+}
+
+.itsec-setup-dialog .ui-dialog-titlebar button {
+	width   : 30px;
+	height  : 30px;
+	color   : #5bbdd5;
+	top     : 8px;
+	right   : 15px;
+	margin  : 0;
+	padding : 0;
+}
+
+.itsec-setup-dialog .ui-dialog-titlebar button:before {
+	color : #5bbdd5;
+}
+
+.itsec-setup-dialog .ui-dialog-titlebar button:hover:before {
+	color : #fff;
+}
+
+.itsec-setup-dialog .ui-icon,
+.itsec-setup-dialog .ui-icon:hover {
+	background : none !important;
+}
+
+#itsec_intro_modal {
+	padding : 0;
+	margin  : 0;
+}
+
+#itsec_intro_modal li {
+	border-bottom       : 1px solid #ebebeb;
+	padding             : 1em;
+	overflow            : hidden;
+	list-style          : none;
+	list-style-position : inside;
+}
+
+#itsec_intro_modal li p {
+	margin : 0;
+}
+
+#itsec_intro_modal li h4 {
+	margin : 0;
+}
+
+#itsec_intro_modal .itsec-intro-close {
+	position    : relative;
+	display     : block;
+	width       : 98%;
+	line-height : 3;
+	text-align  : right;
+	color       : #2ea2cc;
+}
+
+#itsec_intro_modal .itsec_tooltip_success {
+	display      : block;
+	padding      : .45em 1em;
+	margin-top   : .25em;
+	border       : 1px solid #c9c9c9;
+	background   : #fafafa url(../img/check16.png) 12px center no-repeat;
+	padding-left : 40px;
+}
+
+#itsec_intro_modal .itsec_tooltip_failure {
+	display      : block;
+	padding      : .45em 1em;
+	margin-top   : .25em;
+	border       : 1px solid #dadaa4;
+	background   : #ffffcb url(../img/flag16-yellow.png) 12px center no-repeat;
+	padding-left : 40px;
+}
+
+/* Malware & File Change status message */
+#itsec_malware_scan_status,
+#itsec_file_change_status {
+	display : none;
+}
+
+#itsec_malware_scan_status p,
+#itsec_file_change_status p {
+	padding    : 5px 10px 5px 30px;
+	border     : 1px solid #a8d657;
+	background : #e2edce url(../img/green-check16.png) 10px center no-repeat;
+	color      : #435523;
+}
+
+/***************************************
+	Media Queries
+****************************************/
+
+@media only screen and (max-width : 1280px) {
+	#itsec_get_started .itsec-video {
+		width          : 100%;
+		padding-bottom : 56.25%;
+	}
+
+}
+
+@media only screen and (max-width : 850px) {
+	#post-body.columns-2 #postbox-container-1 {
+		margin-left : 0;
+		max-width   : 100%;
+	}
+
+	#global_table_of_contents.fixed {
+		bottom : 0;
+		margin : 0;
+		width  : 100%;
+	}
+
+}
+
+@media only screen and (max-width : 600px) {
+	.itsec_getting_started {
+		padding : 0;
+	}
+
+	.itsec_getting_started .button-primary {
+		margin-bottom : 1em;
+	}
+
+	.itsec_getting_started .column {
+		max-width      : 100%;
+		float          : none;
+		padding-right  : 2em;
+		padding-left   : 2em;
+		padding-bottom : 2em;
+		padding-left   : 2em;
+		border-bottom  : 1px solid #ebebeb;
+		border-right   : 0;
+		box-sizing     : border-box;
+		overflow       : hidden;
+	}
+
+	.itsec_getting_started .column.two {
+		padding-right : 2em;
+		padding-left  : 2em;
+		border        : 0;
+		max-width     : 100%;
+	}
+
+	h2.nav-tab-wrapper {
+		border-bottom : 0;
+		padding       : 10px 0 3px 0;
+	}
+
+	h2.nav-tab-wrapper .nav-tab.nav-tab-active,
+	h2.nav-tab-wrapper .nav-tab {
+		border-bottom : 1px solid #ccc;
+		margin        : 2px;
+	}
+}
+
+@media only screen and (max-width : 400px) {
+	#itsec_tabbed_dashboard_content .itsec-tabs li {
+		float : none;
+		width : 100%;
+	}
+
+	#itsec_tabbed_dashboard_content .itsec-tabs li a {
+		border-left   : 3px solid transparent;
+		border-bottom : 0;
+	}
+
+	#itsec_tabbed_dashboard_content .itsec-tabs li.ui-state-active a,
+	#itsec_tabbed_dashboard_content .itsec-tabs li.ui-state-hover a {
+		border-left   : 3px solid #025680;
+		border-bottom : 0;
+	}
+}
+

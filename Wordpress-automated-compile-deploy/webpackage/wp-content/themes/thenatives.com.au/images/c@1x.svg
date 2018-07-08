@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="53px" viewBox="0 0 46 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>c@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Navigation-Expanded" transform="translate(-90.000000, -2659.000000)">
+            <g id="careers/featured-block" transform="translate(90.000000, 2659.000000)">
+                <g transform="translate(0.000000, -38.000000)" id="icon/events-tag">
+                    <g transform="translate(0.000000, 38.000000)">
+                        <g id="c" transform="translate(23.000000, 26.500000) rotate(-270.000000) translate(-23.000000, -26.500000) translate(-3.500000, 3.500000)">
+                            <polygon id="Fill-1" fill="#F5B865" points="0 46 53 46 53 0 0 0"></polygon>
+                            <path d="M19.836,33.28 C23.756,33.28 26.808,31.236 28.236,27.988 L24.988,26.532 C24.064,28.604 22.188,29.892 19.836,29.892 C16.112,29.892 13.676,27.176 13.676,23.2 C13.676,19.224 16.112,16.48 19.836,16.48 C21.992,16.48 23.756,17.74 24.68,19.812 L27.928,18.384 C26.5,15.164 23.56,13.12 19.836,13.12 C14.012,13.12 9.896,17.292 9.896,23.2 C9.896,29.108 14.012,33.28 19.836,33.28 Z" id="C" fill="#FF4222" transform="translate(19.066000, 23.200000) rotate(-90.000000) translate(-19.066000, -23.200000) "></path>
+                            <path d="M39,38 L39,8" id="Stroke-2" stroke="#FF4222" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

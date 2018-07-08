@@ -51,6 +51,7 @@ Libraries
 * AngularJS
 * Socket.io
 * IndexedDB
+* Chartist.js
 
 ---
 

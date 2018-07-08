@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Q2W3 Fixed Widget\n"
+"POT-Creation-Date: 2016-09-08 13:02+0300\n"
+"PO-Revision-Date: 2016-09-08 13:05+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: q2w3-fixed-widget.php:175
+msgid "Fixed widget"
+msgstr "Зафиксировать виджет"
+
+#: q2w3-fixed-widget.php:209 q2w3-fixed-widget.php:313
+msgid "Fixed Widget Options"
+msgstr "Фикс. Виджеты"
+
+#: q2w3-fixed-widget.php:301
+msgid "General Options"
+msgstr "Основные настройки"
+
+#: q2w3-fixed-widget.php:303
+msgid "Compatibility"
+msgstr "Совместимость"
+
+#: q2w3-fixed-widget.php:305
+msgid "Custom IDs"
+msgstr "Произвольные идентификаторы"
+
+#: q2w3-fixed-widget.php:307
+msgid "Help for users"
+msgstr "Помощь пользователям"
+
+#: q2w3-fixed-widget.php:309
+msgid "Help for developer"
+msgstr "Помощь разработчику"
+
+#: q2w3-fixed-widget.php:317
+msgid "Settings saved."
+msgstr "Настройки сохранены."
+
+#: q2w3-fixed-widget.php:343
+msgid ""
+"Note for cache plugin users. Don't forget to clear the cache after options "
+"change!"
+msgstr ""
+"Используете кэширующие плагины? После изменения настроек не забудьте "
+"очистить кэш!"
+
+#: q2w3-fixed-widget.php:345
+msgid "Save Changes"
+msgstr "Сохранить"
+
+#: q2w3-fixed-widget.php:359
+msgid "Margin Top:"
+msgstr "Верхний отступ:"
+
+#: q2w3-fixed-widget.php:359 q2w3-fixed-widget.php:361
+#: q2w3-fixed-widget.php:367 q2w3-fixed-widget.php:369
+msgid "px"
+msgstr "пикс."
+
+#: q2w3-fixed-widget.php:361
+msgid "Margin Bottom:"
+msgstr "Нижний отступ:"
+
+#: q2w3-fixed-widget.php:363
+msgid "Stop ID:"
+msgstr "Стоп ID:"
+
+#: q2w3-fixed-widget.php:363
+msgid ""
+"Here you need to provide html tag id. The position of that html element will "
+"determine margin bottom value."
+msgstr ""
+"Здесь необходимо ввести id html-элемента. Позиция этого html-элемента будет "
+"динамически определять значение нижнего отступа."
+
+#: q2w3-fixed-widget.php:365
+msgid "Refresh interval:"
+msgstr "Интервал обновления:"
+
+#: q2w3-fixed-widget.php:365
+msgid "milliseconds"
+msgstr "миллисекунды"
+
+#: q2w3-fixed-widget.php:365
+msgid ""
+"Used only for compatibility with browsers without MutationObserver API "
+"support! Set 0 to completely disable."
+msgstr ""
+"Используется только для совместимости с браузерами не поддерживающими "
+"MutationObserver API"
+
+#: q2w3-fixed-widget.php:367
+msgid "Disable Width:"
+msgstr "Ширина отключения:"
+
+#: q2w3-fixed-widget.php:367
+msgid ""
+"Use this option to disable plugin on portable devices. When the browser "
+"screen width is less then specified value, the plugin is disabled!"
+msgstr ""
+"Используйте эту опцию для отключения плагина на мобильных устройствах. Если "
+"ширина окна браузера меньше или равна указанной величине, плагин будет "
+"отключен!"
+
+#: q2w3-fixed-widget.php:369
+msgid "Disable Height:"
+msgstr "Высота отключения:"
+
+#: q2w3-fixed-widget.php:369
+msgid "Works the same way as Disable Width option."
+msgstr "Работает аналогично опции \"Ширина отключения\""
+
+#: q2w3-fixed-widget.php:375
+msgid "Custom HTML IDs (each one on a new line):"
+msgstr ""
+"HTML-идентификаторы статических виджетов и прочих нестандартных элементов "
+"(каждый на новой строке):"
+
+#: q2w3-fixed-widget.php:381
+msgid "Auto fix widget id:"
+msgstr "Автоматически исправлять id виджетов:"
+
+#: q2w3-fixed-widget.php:383
+msgid "Disable MutationObserver:"
+msgstr "Отключить MutationObserver:"
+
+#: q2w3-fixed-widget.php:383
+msgid ""
+"If MutationObserver disabled, plugin will use Refresh Interval to reflect "
+"page changes (version 4 behavior)"
+msgstr ""
+"Отключение восстанавливает функционал версии 4 - для обнаружения изменений "
+"на странице используется интервал обновления."
+
+#: q2w3-fixed-widget.php:385
+msgid "Enable plugin for logged in users only:"
+msgstr "Только зарегистрированные пользователи:"
+
+#: q2w3-fixed-widget.php:385
+msgid "Enable this option for debug purposes (frontend problems and etc.)"
+msgstr "Используйте для отладки стилей, скриптов"
+
+#: q2w3-fixed-widget.php:387
+msgid "Inherit widget width from the parent container:"
+msgstr "Наследовать ширину родительского контейнера:"
+
+#: q2w3-fixed-widget.php:387
+msgid "Enable this option for themes with responsive sidebar"
+msgstr ""
+"Задействуйте эту опцию, если ширина сайдбара вашей темы меняется динамически"
+
+#: q2w3-fixed-widget.php:389
+msgid "Use jQuery(window).load() hook:"
+msgstr "Вкл. jQuery(window).load():"
+
+#: q2w3-fixed-widget.php:389
+msgid ""
+"Enable this option only if you have problems with other scroll oriented "
+"javascript code"
+msgstr "Задействуйте эту опцию в случае проблем с другими скриптами"
+
+#: q2w3-fixed-widget.php:391
+msgid "widget_display_callback hook priority:"
+msgstr "Приоритет хука widget_display_callback:"
+
+#: q2w3-fixed-widget.php:397
+msgid "Support forums:"
+msgstr "Форумы поддержки:"
+
+#: q2w3-fixed-widget.php:399
+msgid "English (wordpress.org)"
+msgstr "Английский (wordpress.org)"
+
+#: q2w3-fixed-widget.php:401
+msgid "Russian (www.q2w3.ru)"
+msgstr "Русский (www.q2w3.ru)"
+
+#: q2w3-fixed-widget.php:407
+msgid "RATE THE PLUGIN"
+msgstr "Оцените плагин!"
+
+#~ msgid "Set 0 to disable."
+#~ msgstr "Установите 0, чтобы отключить пересчет параметров"
+
+#~ msgid "Disable screen width:"
+#~ msgstr "Ширина отключения:"
+
+#~ msgid ""
+#~ "HTML ID where the widget should stop floating, for example a footer. # - "
+#~ "not needed"
+#~ msgstr ""
+#~ "Здесь необходимо указать значение атрибута id html-элемента на уровне "
+#~ "которого необходимо остановить виджет. ID указывается без знака #! "
+
+#~ msgid "Disable plugin if screen width less then:"
+#~ msgstr "Отключить плагин, если размер окна меньше чем:"
+
+#~ msgid "Use this option to disable plugin on portable devices"
+#~ msgstr ""
+#~ "Используйте эту опцию для отключения плагина на мобильных устройствах"
+
+#~ msgid "Screen Max Width:"
+#~ msgstr "Ширина окна браузера:"
+
+#~ msgid ""
+#~ "Plugin will be disabled when browser window width equals or less then "
+#~ "specified value"
+#~ msgstr ""
+#~ "Плагин будет отключен, если ширина окна браузера меньше указанного "
+#~ "значения"
+
+#~ msgid "English"
+#~ msgstr "Английский (wordpress.org)"
+
+#~ msgid "Russian"
+#~ msgstr "Русский (www.q2w3.ru)"
+
+#~ msgid ""
+#~ "Use this option only if you have problems with <a href=\"http://wordpress."
+#~ "org/support/topic/doesnt-work-with-infinte-scroll-for-widget-scripts\" "
+#~ "target=\"_blank\">other scroll oriented javascript code</a>"
+#~ msgstr ""
+#~ "Используйте эту опцию только в случае проблем с <a href=\"http://"
+#~ "wordpress.org/support/topic/doesnt-work-with-infinte-scroll-for-widget-"
+#~ "scripts\" target=\"_blank\">другими скриптами</a>"
+
+#~ msgid "Disable plugin on phone devices:"
+#~ msgstr "Отключить плагин на мобильных:"
+
+#~ msgid "Option depricated. Use Screen Max Width instead!"
+#~ msgstr ""
+#~ "Опция устарела и будет удалена в следующей версии! Вместо нее используйте "
+#~ "опцию \"Ширина окна браузера\""
+
+#~ msgid "Disable plugin on tablet devices:"
+#~ msgstr "Отключить плагин на планшетах:"
+
+#~ msgid "Fixed Widget Options."
+#~ msgstr "Настройки Фиксированных Виджетов"

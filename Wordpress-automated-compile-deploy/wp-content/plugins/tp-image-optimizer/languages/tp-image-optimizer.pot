@@ -1,0 +1,630 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-28 01:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#. Name of the plugin
+#: tp-image-optimizer.php:25 templates/install.php:10
+msgid "TP Image Optimizer"
+msgstr ""
+
+#: tp-image-optimizer.php:44
+msgid "Image Optimizer"
+msgstr ""
+
+#: tp-image-optimizer.php:67
+msgid "Install TP Image Optimizer"
+msgstr ""
+
+#: tp-image-optimizer.php:140
+msgid "Please wait..."
+msgstr ""
+
+#: tp-image-optimizer.php:141
+msgid "Get Started"
+msgstr ""
+
+#: tp-image-optimizer.php:142
+msgid "Your token is invalid, please reload to fix it."
+msgstr ""
+
+#: tp-image-optimizer.php:143 templates/panel/account.php:3
+msgid "Standard User"
+msgstr ""
+
+#: tp-image-optimizer.php:144
+msgid "Premium User"
+msgstr ""
+
+#: tp-image-optimizer.php:261
+msgid "Optimize Now"
+msgstr ""
+
+#: includes/class-image.php:98
+msgid "Compress"
+msgstr ""
+
+#: includes/class-image.php:191
+msgid "Saving "
+msgstr ""
+
+#: includes/class-image.php:194
+msgid "%"
+msgstr ""
+
+#: includes/class-image.php:253
+msgid "All image sizes were updated successfully."
+msgstr ""
+
+#: includes/class-image.php:286
+msgid ""
+"This feature is only compatible with WordPress 4.3+. Update your WordPress "
+"to enjoy the perfect performance of Image Optimizer"
+msgstr ""
+
+#: includes/class-image.php:299
+msgid "No media files found."
+msgstr ""
+
+#: includes/class-image.php:301
+msgid "Refresh"
+msgstr ""
+
+#: includes/class-lang.php:28
+msgid "Detail of #"
+msgstr ""
+
+#: includes/class-lang.php:29
+msgid "Examining existing attachments. This may take a few moments..."
+msgstr ""
+
+#: includes/class-lang.php:30
+msgid ""
+"Paused optimize progress. Don't worry, when you click One-click Optimize, we "
+"will continue to compress your image."
+msgstr ""
+
+#: includes/class-lang.php:31 includes/class-statistics.php:111
+msgid "Saving"
+msgstr ""
+
+#: includes/class-lang.php:32
+msgid "Cancel"
+msgstr ""
+
+#: includes/class-lang.php:33
+msgid "Stop"
+msgstr ""
+
+#: includes/class-lang.php:34
+msgid "Updated successfully."
+msgstr ""
+
+#: includes/class-lang.php:35
+msgid ""
+"TP Image Optimizer will still auto-optimize all your images, even you close "
+"this window."
+msgstr ""
+
+#: includes/class-lang.php:36
+msgid "Optimized"
+msgstr ""
+
+#: includes/class-lang.php:37
+msgid "STASTICS OF YOUR LIBRARY"
+msgstr ""
+
+#: includes/class-lang.php:38 templates/sticky-box.php:3
+msgid "Optimizing ..."
+msgstr ""
+
+#: includes/class-lang.php:50
+msgid "Processed"
+msgstr ""
+
+#: includes/class-lang.php:51
+msgid ""
+"You have already optimize all images, you can re-compress all images in "
+"media library with <strong>Force Re-Optimize</strong> option"
+msgstr ""
+
+#: includes/class-lang.php:52
+msgid "Success optimized  attachment ID # "
+msgstr ""
+
+#: includes/class-lang.php:53
+msgid ""
+"<strong>Congratulations!</strong> You have already optimized all image of "
+"your library "
+msgstr ""
+
+#: includes/class-lang.php:54
+msgid "Have already processed all image."
+msgstr ""
+
+#: includes/class-lang.php:55
+msgid "Share plugin to your friend "
+msgstr ""
+
+#: includes/class-lang.php:67
+msgid "API Key is valid"
+msgstr ""
+
+#: includes/class-lang.php:68
+msgid "API Key is invalid"
+msgstr ""
+
+#: includes/class-lang.php:69
+msgid "You need enter a valid API "
+msgstr ""
+
+#: includes/class-lang.php:81
+msgid "Update"
+msgstr ""
+
+#: includes/class-lang.php:82
+msgid "Processing"
+msgstr ""
+
+#: includes/class-lang.php:83
+msgid "Loading.."
+msgstr ""
+
+#: includes/class-lang.php:84
+msgid "Reloading.."
+msgstr ""
+
+#: includes/class-lang.php:85
+msgid "Please wait, processing media list .."
+msgstr ""
+
+#: includes/class-lang.php:86
+msgid "Compressed"
+msgstr ""
+
+#: includes/class-lang.php:87
+msgid "Please wait ..."
+msgstr ""
+
+#: includes/class-lang.php:99
+msgid "Connection lost!"
+msgstr ""
+
+#: includes/class-lang.php:100
+msgid ""
+"<strong>Oops</strong>, I've detected some errors on optimizing process, you "
+"can fix this by manual optimizer."
+msgstr ""
+
+#: includes/class-lang.php:101 includes/class-lang.php:149
+msgid "Unexpected error !"
+msgstr ""
+
+#: includes/class-lang.php:115
+msgid "Token has been generated ! "
+msgstr ""
+
+#: includes/class-lang.php:116
+msgid "Generating.."
+msgstr ""
+
+#: includes/class-lang.php:117
+msgid "Getting all media from WordPress library ..."
+msgstr ""
+
+#: includes/class-lang.php:118
+msgid ""
+"Plugin has been installed successfully, this page will reload to apply "
+"change..."
+msgstr ""
+
+#: includes/class-lang.php:119 includes/class-lang.php:150
+msgid "Detect an unexpected error, please try again..."
+msgstr ""
+
+#: includes/class-lang.php:130
+msgid " Bytes"
+msgstr ""
+
+#: includes/class-lang.php:131
+msgid " KB"
+msgstr ""
+
+#: includes/class-lang.php:132
+msgid " MB"
+msgstr ""
+
+#: includes/class-lang.php:140
+msgid "Stastics by IO service "
+msgstr ""
+
+#: includes/class-lang.php:141
+msgid ""
+"This data is collected by the server of TP Image Optimizer. It shows "
+"statistics of the whole image optimizing process on your site."
+msgstr ""
+
+#: includes/class-lang.php:143
+msgid "Option quality"
+msgstr ""
+
+#: includes/class-lang.php:144
+msgid ""
+"This option allows you to select the optimized image quality. The higher the "
+"image quality is, the larger the compressed image size is"
+msgstr ""
+
+#: includes/class-lang.php:146
+msgid "Option size"
+msgstr ""
+
+#: includes/class-lang.php:147
+msgid ""
+"You set the compressed image size in this item - Popular image sizes in "
+"website (thumbnail, large image, etc.) are recommended to speed up your "
+"website. Full Option is used for compressing the original image."
+msgstr ""
+
+#: includes/class-lang.php:152 templates/panel/optimizer.php:7
+msgid "Force Re-Optimize"
+msgstr ""
+
+#: includes/class-lang.php:153
+msgid ""
+"When you enable \"Force Re-Optimize\" feature, the plugin will automatically "
+"re-optimize all images in your library.This feature will be very useful if "
+"you regenerate all WordPress images.."
+msgstr ""
+
+#: includes/class-lang.php:155 templates/panel/optimizer.php:21
+msgid "Compress original image"
+msgstr ""
+
+#: includes/class-lang.php:156
+msgid ""
+"TP Image Optimizer compress your original images by default. Uncheck this "
+"option if you dont want to optimize the original images. This will help you "
+"save the storage on the hosting.\n"
+"- Tips : Normally, the cropped images will be shown mainly on your site, "
+"instead of original images."
+msgstr ""
+
+#: includes/class-lang.php:159
+msgid "This statistic is for original images only."
+msgstr ""
+
+#: includes/class-lang.php:160
+msgid ""
+"If you skip original image compression, the statistic will be 0%. To view "
+"the detail statistic, click on the View button on the Detail column"
+msgstr ""
+
+#: includes/class-lang.php:162
+msgid "Enable Run in background."
+msgstr ""
+
+#: includes/class-lang.php:163
+msgid ""
+"<b>If TP Image Optimizer is interrupted when optimizing</b>, please disable "
+"'RUN IN BACKGROUND' feature. The Run in background feature is best if your "
+"hosting is strong enough."
+msgstr ""
+
+#: includes/class-lang.php:174
+msgid "Optimizing process has been stopped! You can try it later."
+msgstr ""
+
+#: includes/class-metabox.php:155
+msgid "Last 30 day"
+msgstr ""
+
+#: includes/class-metabox.php:155
+msgid "Current month"
+msgstr ""
+
+#: includes/class-metabox.php:155
+msgid "Last month"
+msgstr ""
+
+#: includes/class-metabox.php:186
+msgid "Lower"
+msgstr ""
+
+#: includes/class-metabox.php:186
+msgid "Medium"
+msgstr ""
+
+#: includes/class-metabox.php:186
+msgid "High (Recommend)"
+msgstr ""
+
+#: includes/class-metabox.php:186
+msgid "Very high"
+msgstr ""
+
+#: includes/class-notice.php:31
+msgid "Security key was not validated."
+msgstr ""
+
+#: includes/class-notice.php:37
+msgid "Please enter a coupon code"
+msgstr ""
+
+#: includes/class-notice.php:52 includes/class-service.php:147
+msgid "Service cannot established."
+msgstr ""
+
+#: includes/class-notice.php:63
+msgid "Done! Your coupon has been applied successfully."
+msgstr ""
+
+#: includes/class-notice.php:74
+msgid "Apply coupon has some error"
+msgstr ""
+
+#: includes/class-service.php:89
+msgid "Detect token of service has already created before !"
+msgstr ""
+
+#: includes/class-service.php:113
+msgid "Cannot get token key, some thing error was happened."
+msgstr ""
+
+#: includes/class-service.php:429
+msgid "Unexpected error!"
+msgstr ""
+
+#: includes/class-service.php:448
+msgid ""
+"404 error: This attachment image (original image or cropped image by "
+"WordPress) has been existing in Database, but removed."
+msgstr ""
+
+#: includes/class-service.php:455
+msgid "Image is too small"
+msgstr ""
+
+#: includes/class-service.php:461
+msgid "This attachment isn't image type"
+msgstr ""
+
+#: includes/class-service.php:512
+msgid ""
+"Cannot process this image because maximum execution timeout ! Please "
+"increase max_execution_time in php.ini to fix this."
+msgstr ""
+
+#: includes/class-service.php:543
+msgid "Success optimizer #"
+msgstr ""
+
+#: includes/class-service.php:612
+msgid "Lost connection to service !"
+msgstr ""
+
+#: includes/class-statistics.php:108
+msgid "Size name"
+msgstr ""
+
+#: includes/class-statistics.php:109
+msgid "Original Size "
+msgstr ""
+
+#: includes/class-statistics.php:110
+msgid "Current size"
+msgstr ""
+
+#: includes/class-statistics.php:147
+msgid "Total saving : "
+msgstr ""
+
+#: includes/class-statistics.php:152
+msgid "Please try again... "
+msgstr ""
+
+#: includes/class-statistics.php:235
+msgid "All images: "
+msgstr ""
+
+#: includes/class-statistics.php:236
+msgid "Total image with selected size: "
+msgstr ""
+
+#: includes/class-statistics.php:237
+msgid "Uncompressed image: "
+msgstr ""
+
+#: includes/class-table.php:420
+msgid "Quanlity was updated successfully."
+msgstr ""
+
+#: templates/content.php:18
+msgid "Dashboard"
+msgstr ""
+
+#: templates/content.php:20
+msgid "Settings"
+msgstr ""
+
+#: templates/header.php:9
+msgid "Optimize all of your images"
+msgstr ""
+
+#: templates/header.php:20
+msgid "Rating now!"
+msgstr ""
+
+#: templates/header.php:44
+msgid "Live Chat Support"
+msgstr ""
+
+#: templates/notice-box.php:5
+msgid "Thanks for installing TP Image Optimizer. Do you have any coupon?"
+msgstr ""
+
+#: templates/notice-box.php:6
+msgid ""
+"One coupon, many benefits. Add your coupon code and enjoy special features. "
+"or"
+msgstr ""
+
+#: templates/notice-box.php:6
+msgid "Dissmiss this notice"
+msgstr ""
+
+#: templates/notice-box.php:12 templates/panel/coupon.php:7
+msgid "Coupon code"
+msgstr ""
+
+#: templates/notice-box.php:13
+msgid "Apply coupon"
+msgstr ""
+
+#: templates/sticky-box.php:10
+msgid "Processsing image #"
+msgstr ""
+
+#: includes/table/class-table-detail.php:28
+msgid "ID"
+msgstr ""
+
+#: includes/table/class-table-detail.php:29
+msgid "Image"
+msgstr ""
+
+#: includes/table/class-table-detail.php:30
+msgid "Original Size"
+msgstr ""
+
+#: includes/table/class-table-detail.php:31
+msgid "Current Size"
+msgstr ""
+
+#: includes/table/class-table-detail.php:32
+msgid "Optimizer"
+msgstr ""
+
+#: includes/table/class-table-detail.php:33
+msgid "Action"
+msgstr ""
+
+#: templates/panel/coupon.php:1
+msgid "Coupon"
+msgstr ""
+
+#: templates/panel/coupon.php:4
+msgid ""
+"One coupon, many benefits. Add your coupon code and enjoy special features."
+msgstr ""
+
+#: templates/panel/coupon.php:8
+msgid "Apply"
+msgstr ""
+
+#: templates/panel/optimizer.php:36
+msgid "Run in background"
+msgstr ""
+
+#: templates/panel/optimizer.php:55
+msgid "One click optimize "
+msgstr ""
+
+#: templates/panel/optimizer.php:61
+msgid "STOP "
+msgstr ""
+
+#: templates/panel/range-chart.php:3
+msgid "Stastics of your library"
+msgstr ""
+
+#: templates/panel/register.php:6
+msgid "Enter your email "
+msgstr ""
+
+#: templates/panel/register.php:10
+msgid "Verify token"
+msgstr ""
+
+#: templates/panel/settings.php:2
+msgid "Select compress quality "
+msgstr ""
+
+#: templates/panel/sizes.php:3
+msgid "Size setting"
+msgstr ""
+
+#: templates/panel/sizes.php:8
+msgid "The following image sizes will be optimized  by TP Image Optimizer"
+msgstr ""
+
+#: templates/panel/sizes.php:13
+msgid "Original"
+msgstr ""
+
+#: templates/panel/statistics.php:30
+msgid "Total optimized saving"
+msgstr ""
+
+#: templates/panel/statistics.php:37
+msgid "Total optimized image"
+msgstr ""
+
+#: templates/panel/statistics.php:38
+msgid "Total uploaded size "
+msgstr ""
+
+#: templates/panel/statistics.php:39
+msgid "Total size after being optimized"
+msgstr ""
+
+#: templates/panel/statistics.php:40
+msgid "Total saving size  "
+msgstr ""
+
+#: templates/panel/statistics_running.php:10
+msgid "Processing "
+msgstr ""
+
+#: templates/panel/statistics_running.php:17
+msgid "images"
+msgstr ""
+
+#: templates/panel/statistics_running.php:20
+msgid "Error "
+msgstr ""
+
+#: templates/panel/sync.php:2
+msgid "Sync media data"
+msgstr ""
+
+#: templates/panel/sync.php:5
+msgid ""
+"When you click this button - All image of your media library will be updated "
+"to plugin data - Old statistics data for each image of TP Image Optimizer "
+"will be cleared."
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"A WordPress plugin that allows you to reduce image file sizes and optimize "
+"all images in the media library."
+msgstr ""
+
+#. Author of the plugin
+msgid "ThemesPond"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://themespond.com/"
+msgstr ""

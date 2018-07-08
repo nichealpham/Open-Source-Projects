@@ -1,0 +1,94 @@
+.updated.itsec-notice {
+	margin: 1em 0;
+	position: relative;
+	font-size: 14px;
+	line-height: 1.6;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #3e85b5;
+	border: 1px solid #9fd0f1;
+	border-bottom-width: 3px;
+	background: #e3eef6;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	padding: 10px 60px 10px 10px !important;
+}
+
+.updated.itsec-notice p {
+	font-size: 14px;
+}
+
+.updated.itsec-notice span.it-icon-itsec {
+	font-size: 2em;
+	line-height: .1;
+	vertical-align: middle;
+	margin: 0;
+	margin-right: .5em;
+	padding: 0;
+	display: inline;
+}
+
+.updated.itsec-notice .itsec-notice-button {
+	background: #9fd0f1;
+	border: 1px solid #79afd3;
+	border-bottom-width: 2px;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 4px 10px;
+	padding: 10px 18px;
+	-webkit-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	transition: all .1s linear;
+	color: #0071bc;
+	font-weight: bold;
+	text-decoration: none;
+	position: inherit;
+}
+
+.itsec-two-factor-notice .itsec-notice-button.itsec-notice-hide {
+	background-color: #C9DEEC;
+	color: #7F9DB1;
+	border-color: #9FBCD0;
+}
+
+.itsec_notice_text {
+	display: block;
+	margin: 10px 0 10px 0;
+}
+
+.itsec-notice .itsec-notice-hide {
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: 7px 14px;
+	-webkit-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	transition: all .1s linear;
+	background: none;
+	font-weight: bold;
+	text-decoration: none;
+	position: absolute;
+	top: 50%;
+	margin-top: -17px;
+	right: 10px;
+}
+
+.itsec-notice .itsec-notice-hide:hover {
+	background: #9fd0f1;
+	border: 1px solid #79afd3;
+	border-bottom-width: 2px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+/* Specified after '.itsec-notice .itsec-notice-hide:hover' for preference on buttons with both .itsec-notice-hide and .itsec-notice-button */
+.itsec-notice .itsec-notice-button:hover {
+	background: #eff7fd;
+	cursor: pointer;
+}
+
+.itsec-notice a.itsec-notice-button {
+	line-height: 15px;
+	font-size: 14px;
+}

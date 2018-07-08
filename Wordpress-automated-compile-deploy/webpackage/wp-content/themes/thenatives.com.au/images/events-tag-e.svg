@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="53" viewBox="0 0 46 53">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#DAE8FF" d="M0 0v53h46V0z"/>
+        <text fill="#3FA57F" font-family="Banana_Grotesk_BETA_0731-Black, Banana_Grotesk_BETA_0731" font-size="28" font-weight="700" transform="translate(6.5 -4.5)">
+            <tspan x="9" y="33">E</tspan>
+        </text>
+        <path stroke="#3FA57F" stroke-width="2" d="M8 39h30"/>
+    </g>
+</svg>

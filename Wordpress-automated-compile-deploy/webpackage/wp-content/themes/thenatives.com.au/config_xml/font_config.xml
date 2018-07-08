@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<items_setting>
+	<general>
+		<text>General</text>
+		<items>
+			<item>
+				<name>Font Family</name>
+				<slug>namtech_font_family</slug>
+				<desc>Default: Arial</desc>
+				<type>font_family</type>
+				<std>Arial</std>
+				<selector>body</selector>
+				<attribute>font-family</attribute>
+			</item>
+			<item>
+				<name>Font Size</name>
+				<slug>namtech_font_size</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<selector>body</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 1</name>
+				<slug>namtech_h1</slug>
+				<desc>Default: 28px</desc>
+				<type>font_size</type>
+				<std>28px</std>
+				<selector>h1</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 2</name>
+				<slug>namtech_h2</slug>
+				<desc>Default: 24px</desc>
+				<type>font_size</type>
+				<std>24px</std>
+				<selector>h2</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 3</name>
+				<slug>namtech_h3</slug>
+				<desc>Default: 20px</desc>
+				<type>font_size</type>
+				<std>20px</std>
+				<selector>h3</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 4</name>
+				<slug>namtech_h4</slug>
+				<desc>Default: 18px</desc>
+				<type>font_size</type>
+				<std>18px</std>
+				<selector>h4</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 5</name>
+				<slug>namtech_h5</slug>
+				<desc>Default: 16px</desc>
+				<type>font_size</type>
+				<std>16px</std>
+				<selector>h5</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 6</name>
+				<slug>namtech_h6</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<selector>h6</selector>
+				<attribute>font-size</attribute>
+			</item>
+		</items>
+	</general>
+	<header>
+		<text>Header</text>	
+		<items>
+			<item>
+				<name>Set Default</name>
+				<slug>namtech_header_typo_default</slug>
+				<desc>Yes / No Inherit General Typography</desc>
+				<type>switch</type>
+				<on>Yes</on>
+				<off>No</off>
+				<std>1</std>
+			</item>
+			<item>
+				<name>Font Family</name>
+				<slug>namtech_header_font_family</slug>
+				<desc>Default: Arial</desc>
+				<type>font_family</type>
+				<std>Arial</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header</selector>
+				<attribute>font-family</attribute>
+			</item>
+			<item>
+				<name>Font Size</name>
+				<slug>namtech_header_font_size</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 1</name>
+				<slug>namtech_header_h1</slug>
+				<desc>Default: 28px</desc>
+				<type>font_size</type>
+				<std>28px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h1</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 2</name>
+				<slug>namtech_header_h2</slug>
+				<desc>Default: 24px</desc>
+				<type>font_size</type>
+				<std>24px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h2</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 3</name>
+				<slug>namtech_header_h3</slug>
+				<desc>Default: 20px</desc>
+				<type>font_size</type>
+				<std>20px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h3</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 4</name>
+				<slug>namtech_header_h4</slug>
+				<desc>Default: 18px</desc>
+				<type>font_size</type>
+				<std>18px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h4</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 5</name>
+				<slug>namtech_header_h5</slug>
+				<desc>Default: 16px</desc>
+				<type>font_size</type>
+				<std>16px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h5</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 6</name>
+				<slug>namtech_header_h6</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<fold>namtech_header_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#header h6</selector>
+				<attribute>font-size</attribute>
+			</item>
+		</items>
+	</header>
+	<footer>
+		<text>Footer</text>
+		<items>
+			<item>
+				<name>Set Default</name>
+				<slug>namtech_footer_typo_default</slug>
+				<desc>Yes / No Inherit General Typography</desc>
+				<type>switch</type>
+				<on>Yes</on>
+				<off>No</off>
+				<std>1</std>
+			</item>
+			<item>
+				<name>Font Family</name>
+				<slug>namtech_footer_font_family</slug>
+				<desc>Default: Arial</desc>
+				<type>font_family</type>
+				<std>Arial</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer</selector>
+				<attribute>font-family</attribute>
+			</item>
+			<item>
+				<name>Font Size</name>
+				<slug>namtech_footer_font_size</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 1</name>
+				<slug>namtech_footer_h1</slug>
+				<desc>Default: 28px</desc>
+				<type>font_size</type>
+				<std>28px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h1</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 2</name>
+				<slug>namtech_footer_h2</slug>
+				<desc>Default: 24px</desc>
+				<type>font_size</type>
+				<std>24px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h2</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 3</name>
+				<slug>namtech_footer_h3</slug>
+				<desc>Default: 20px</desc>
+				<type>font_size</type>
+				<std>20px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h3</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 4</name>
+				<slug>namtech_footer_h4</slug>
+				<desc>Default: 18px</desc>
+				<type>font_size</type>
+				<std>18px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h4</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 5</name>
+				<slug>namtech_footer_h5</slug>
+				<desc>Default: 16px</desc>
+				<type>font_size</type>
+				<std>16px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h5</selector>
+				<attribute>font-size</attribute>
+			</item>
+			<item>
+				<name>Heading 6</name>
+				<slug>namtech_footer_h6</slug>
+				<desc>Default: 14px</desc>
+				<type>font_size</type>
+				<std>14px</std>
+				<fold>namtech_footer_typo_default</fold>
+				<fold_val>0</fold_val>
+				<selector>#footer h6</selector>
+				<attribute>font-size</attribute>
+			</item>
+		</items>
+	</footer>
+</items_setting>

@@ -1,0 +1,218 @@
+/***************************************
+	Global Page Styles
+****************************************/
+.two-factor-setup {
+	padding: 2em;
+}
+
+.two-factor-setup p {
+	max-width: 960px;
+}
+
+.two-factor-setup h2 {
+	margin-top: 3em;
+}
+
+.two-factor-setup h1, .two-factor-setup h2, .two-factor-setup h3 {
+	line-height: 1.5;
+}
+/***************************************
+	Main Content/ Setup Steps
+****************************************/
+.two-factor-setup-steps {
+	float: left;
+	width: 60%;
+	box-sizing: border-box;
+}
+
+.two-factor-setup-provider-table {
+	border-collapse: collapse;
+}
+
+.two-factor-setup-provider-table th {
+	text-align: left;
+	padding: 1em 0 .5em 0;
+}
+
+.two-factor-setup-provider-table td {
+	padding: .25em 2em .25em .5em;
+}
+
+.two-factor-setup-provider-table .recommended-provider {
+	background: #E4F0FE;
+}
+
+.two-factor-setup-provider-table .recommended-provider td {
+	padding: 1em 2em 1em .5em;
+}
+
+.two-factor-setup-provider-table .recommended-provider td:nth-of-type(1) {
+	width: 140px;
+}
+
+.two-factor-setup-provider-table a {
+	text-decoration: none;
+}
+
+.two-factor-setup .totp-authentication-code-input {
+	width: 300px;
+}
+
+.two-factor-setup input.totp-verify-code-button {
+	padding: 0 2em;
+}
+
+.two-factor-setup .enable-totp-button {
+	padding: 1em 2em;
+	margin-top: 2em;
+	white-space: normal;
+	height: auto;
+}
+/***************************************
+	Tooltip
+****************************************/
+.tooltip {
+	position: relative;
+	top: -6px;
+	display: inline-block;
+	background: #0080C9;
+	padding: 0px 4px;
+	border-radius: 50px;
+	font-size: 0.7em;
+	margin: -10px 0;
+	cursor: pointer;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+.tooltip:hover .info,
+.tooltip:focus .info {
+	visibility: visible;
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+.tooltip .info {
+	box-sizing: border-box;
+	position: absolute;
+	top: 18px;
+	left: -8px;
+	display: block;
+	background: #0080C9;
+	border: 1px solid #D6D6D6;
+	width: 350px;
+	font-size: 1.45em;
+	font-weight: 300;
+	line-height: 1.5;
+	cursor: text;
+	visibility: hidden;
+	opacity: 0;
+	transform: translate3d(0, -20px, 0);
+	transition: all .5s ease-out;
+}
+
+.tooltip .info:before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 14px;
+	bottom: -14px;
+	left: 0;
+}
+
+.tooltip .info:after {
+	position: absolute;
+	content: '';
+	width: 10px;
+	height: 10px;
+	transform: rotate(45deg);
+	top: -5px;
+	left: 13px;
+	margin-left: -5px;
+	background: #0080C9;
+}
+
+.tooltip .text {
+	display: block;
+	padding: 2em;
+	color: #FFFFFF;
+}
+
+.included-with-bb .tooltip span {
+	border-bottom: none;
+}
+
+.tooltip .tooltip-container .info {
+	border-bottom: 1px solid #D6D6D6;
+}
+
+/***************************************
+	Exit Setup Section
+****************************************/
+.two-factor-exit-setup {
+	float: right;
+	width: 30%;
+	box-sizing: border-box;
+	margin-top: 1em;
+}
+
+.two-factor-exit-button {
+	color: #555555;
+	font-weight: 600;
+	padding: .5em 1.5em;
+	border: 1px solid #BEBEBE;
+	border-radius: 3px;
+	background: #E2E2E2;
+	box-shadow: 0 1px #BEBEBE;
+	margin: 0 auto;
+	display: block;
+}
+
+.two-factor-exit-button:hover {
+	background: #EFEFEF;
+	cursor: pointer;
+}
+
+.two-factor-exit-note {
+	text-align: center;
+	color: #9F9F9F;
+}
+
+@media screen and ( max-width: 808px ) {
+	.two-factor-setup input.totp-verify-code-button {
+		padding: .25em 2em;
+	}
+}
+
+@media screen and ( max-width: 699px ) {
+	.two-factor-setup {
+		position: relative;
+	}
+	
+	.two-factor-setup-steps {
+		margin-top: 75px;
+		width: 100%;
+	}
+	
+	.two-factor-exit-setup {
+		float: none;
+		width: auto;
+		position: absolute;
+		margin-top: 1em;
+	}
+	
+	.two-factor-exit-button {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.two-factor-exit-note {
+		text-align: left;
+	}
+}
+
+@media screen and ( max-width: 473px ) {
+	.two-factor-setup input.totp-verify-code-button {
+		margin-top: 1em;
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "gulp-starter",
+  "dependencies": {
+    "jquery": "<2.0.0",
+    "handlebars": "*"
+  }
+}

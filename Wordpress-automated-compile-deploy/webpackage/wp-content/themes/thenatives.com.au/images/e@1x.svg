@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="53px" viewBox="0 0 46 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>e@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Navigation-Expanded" transform="translate(-90.000000, -1136.000000)">
+            <g id="event/featured-block" transform="translate(90.000000, 1136.000000)">
+                <g id="e">
+                    <g>
+                        <g id="icon/events-tag" transform="translate(23.000000, 26.500000) rotate(-270.000000) translate(-23.000000, -26.500000) translate(-3.500000, 3.500000)">
+                            <polygon id="Fill-1" fill="#DAE8FF" points="0 46 53 46 53 0 0 0"></polygon>
+                            <polygon id="E" fill="#3FA57F" transform="translate(17.596000, 23.200000) rotate(-90.000000) translate(-17.596000, -23.200000) " points="14.516 29.612 14.516 24.74 23.392 24.74 23.392 21.352 14.516 21.352 14.516 16.76 24.428 16.76 24.428 13.4 10.736 13.4 10.736 33 24.456 33 24.456 29.612"></polygon>
+                            <path d="M39,38 L39,8" id="Stroke-2" stroke="#3FA57F" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

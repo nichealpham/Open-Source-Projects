@@ -1,0 +1,38 @@
+1.0.0 - 2013-04-11 - Chris Jean
+	Release ready version.
+1.0.1 - 2013-05-01 - Chris Jean
+	Fixed a compatibility problem with the automatic-updater plugin.
+1.0.2 - 2013-06-21 - Chris Jean
+	Fixed an issue where requests would fail when made by servers with a non-default value for arg_separator.output in the php.ini file.
+1.1.0 - 2013-10-02 - Chris Jean
+	Big rewrite to the updater in order to make the code more flexible. This improves compatibility with plugins that allow for remote updating of plugins and themes.
+	The updater now supports providing changelog details for plugins and themes that have updates available. These details can be viewed by clicking the "View version **** details" link for the appropriate plugin or theme.
+1.2.0 - 2013-10-04 - Chris Jean
+	Enhancement: When releases with four version digits are released (such as 2.1.0.3), by default, the updater will not offer to update if just this last digit is updated. For instance, it will not automatically offer to update 2.1.0.1 to 2.1.0.3; rather, an automatic upgrade will become available when version 2.1.1 or greater is released. If you wish to force an update to these versions, you can add ithemes-updater-force-minor-update=1 to an admin page request (such as http://domain.com/wp-admin/index.php?ithemes-updater-force-minor-update=1) in order to force the updater make these releases available for an hour. If the update is not performed within the hour, the updater reverts back to default behavior.
+	Bug Fix: Corrected source of the following error when updating: Download failed. SSL certificate problem, verify that the CA cert is OK. Details: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+	Bug Fix: Corrected source of the following warning: Warning: require_once(/api.php) [function.require-once]: failed to open stream: No such file or directory
+1.2.1 - 2013-10-07 - Chris Jean
+	Bug Fix: Corrected another source of the following warning which occur immediate after updating the plugin or theme: Warning: require_once(/api.php) [function.require-once]: failed to open stream: No such file or directory
+1.3.0 - 2013-10-23 - Chris Jean
+	Enhancement: Added a "Quick Release Updates" setting to the bottom of the licensing page. Enabling this option allows the site to receive automatic update notices for product quick releases (releases that do not have automatic update support by default).
+	Enhancement: Changed how the licensing page works on Multisite. Now it will appear at Settings > iThemes Licensing in the network admin Dashboard and at Settings > iThemes Licensing on sites when the current user is a network admin. This prevents exposing the licensing page to users that don't are not super users and thus should not be performing updates. As this update makes the functionality of the "Licensing Page Access" setting obsolete, the setting has been removed.
+	Enhancement: Using the ithemes-updater-force-minor-update query string variable will now force a data flush, allowing any available quick release updates to appear instantly.
+	Enhancement: Added "License" links to the Plugins and Themes pages for the Network Admin Dashboard of multisite installs.
+1.3.1 - 2013-12-13 - Chris Jean
+	Enhancement: Recently updated plugins and themes no longer report that an update is available.
+	Enhancement: Added alternate line styling to the listings on the licensing page.
+	Enhancement: Products with iThemes in the name will now properly capitalize the name.
+	Enhancement: The updater and licensing system now handle iThemes server outages without causing long page delays or by reporting confusing error messages.
+1.3.2 - 2013-12-18 - Chris Jean
+	Bug Fix: Removed unneeded check on package-info.ithemes.com which was causing performance issues on some sites.
+1.3.3 - 2013-12-19 - Chris Jean
+	Bug Fix: Licensing will now be universal across all sites of a multisite network. This means that you will only need to license on one site to have the license apply across the entire network.
+1.3.4 - 2014-02-03 - Chris Jean
+	Bug Fix: Licensing on SSL-enabled sites now works properly.
+1.4.0 - 2014-11-14 - Chris Jean
+	Enhancement: Reduced caching to allow updates to appear more quickly.
+	Enhancement: Authenticating users now uses the new authentication system.
+1.4.1 - 2015-04-23 - Chris Jean
+	Compatibility Fix: Updated plugin and theme update data format to match changes in WordPress 4.2.
+1.4.2 - 2015-07-14 - Chris Jean
+	Enhancement: Updated link to iThemes support.

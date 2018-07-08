@@ -1,0 +1,1 @@
+sudo mysql -u root -p wordpress < /opt/lampp/htdocs/wp-db/fashionJournalDb.sql

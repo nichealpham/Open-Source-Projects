@@ -1,0 +1,119 @@
+.notice_box{
+    &{
+        padding: 0;
+        margin: 5px 0 10px;
+        border: 1px solid #E5E5E5;
+        background: #FFF;
+        overflow: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+        position: relative;
+        z-index: 1;
+        min-height: 87px;
+        font: 13px "Open Sans", sans-serif;
+        display: none;
+    }
+
+    &:after{
+        @extend %clearfix;
+    }
+
+    &__content{
+        padding-right: 370px;
+        padding-top: 22px;
+        padding-left: 70px;
+        float:left;
+        p{
+            &{
+                margin: 0;
+            }
+            strong{
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__icon{
+        width: 40px;
+        height: 40px;
+        background-image: url(../images/gift-flat.png);
+        background-size: 40px;
+        position: absolute;
+        left: 20px;
+        top: 23px;
+        &--success{
+            background-image: url(../images/checked.png);
+        }
+    }
+
+    &__form{
+        &{
+            width: 300px;
+            position: relative;
+            float: right;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 10px 15px;
+            background-color: #efefef;
+            background-image: url(../images/bg.png);
+            border-left: 2px dashed #8fc5c5;
+        }
+
+        &:before{
+            content: '';
+            background-image: url(../images/scissors.png);
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            bottom: 0px;
+            left: -12px;
+            transform: rotateX(0deg);
+
+        }
+
+        .coupon-form__warning{
+            color: red;
+            text-shadow: 0px 1px 0px #fff;
+        }
+        
+        .coupon-form.hasError{
+            input{
+                border:1px solid red;
+            }
+        }
+
+        input[type="text"]{
+            height: 30px;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        button{
+            width: calc(100% - 1px);
+            margin-left: 2px;
+            display: block;
+            border: none;
+            background-color: #98dc2b;
+            color: #fff;
+            height: 30px;
+            outline: none;
+            cursor: pointer;
+            border-bottom: 2px solid #7ab122;
+            border-radius: 3px;
+            font-weight: bold;
+            text-shadow:0px 1px 0px rgba(0,0,0,.15);
+            &:hover{
+                background-color: #8fd026;
+            }
+            &:focus{
+                border-top: 2px solid #7ab122;
+                border-bottom: none;
+            }
+            &.disabled{
+                background-color: #aaa;
+                border-color: #888;
+            }
+        }
+    }
+}

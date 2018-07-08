@@ -1,0 +1,239 @@
+.clear {
+	height: inherit;
+}
+
+.widget-section {
+	border-bottom : 1px solid #eee;
+	padding       : 0 0 10px 0;
+	width         : 100%;
+}
+
+.widget-section .inside:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+#itsec-dashboard-widget h4 {
+	padding        : 8px;
+	font-size      : 18px;
+	line-height    : 20px;
+	text-transform : uppercase;
+	font-weight    : bold;
+	color          : #333;
+	text-align     : center;
+}
+
+#itsec-dashboard-widget h4:before {
+	margin-right : 5px;
+}
+
+#itsec-dashboard-widget p {
+/*	text-transform : uppercase;*/
+	color          : #999;
+	text-align     : center;
+}
+
+.itsec_links ul {
+	margin : 0;
+}
+
+.itsec_links li {
+	display      : inline-block;
+	margin-right : 10px;
+}
+
+/* Summary */
+
+.itsec_summary_widget {
+	position : relative;
+	margin   : 0 0 10px 0;
+}
+
+.summary-item {
+	width        : 48%;
+	float        : left;
+	margin-right : 1%;
+	margin-bottom: 1em;
+}
+
+.summary-item:nth-child(even) {
+	margin-right : 0;
+	margin-left  : 1%;
+}
+
+.summary-item h5 {
+	font-size      : 14px;
+	text-transform : uppercase;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.itsec_summary_widget.widget-section.clear.postbox.closed {
+	padding : 0;
+}
+
+.summary-total {
+	display       : block;
+	font-size     : 2.75em;
+	font-weight   : 300;
+	line-height   : 75px;
+	text-align    : center;
+	color         : #fece0a;
+	border        : 3px solid #0a263b;
+	border-radius : 100%;
+	height        : 75px;
+	width         : 75px;
+	margin        : 0 auto;
+}
+
+/* Whitelist */
+
+.itsec_whitelist_widget {
+	padding : 10px 0 0 0;
+}
+
+#normal-sortables p.itsec_temp_whitelist.submit {
+	float   : none;
+	padding : 0;
+}
+
+#itsec-dashboard-widget p.itsec_temp_whitelist.submit {
+	margin         : 0;
+	padding        : 0;
+	text-transform : inherit;
+}
+
+p.itsec_temp_whitelist.submit .button-secondary,
+a.itsec_temp_whitelist_ajax.button-primary,
+a.itsec_temp_whitelist_release_ajax.button-primary,
+.itsec_temp_whitelist_ip,
+#itsec-dashboard-widget .button-primary,
+#itsec-dashboard-widget .button-secondary,
+#itsec_one_time_malware_scan_submit,
+#itsec_one_time_file_check_submit {
+	position   : relative;
+	display    : block;
+	text-align : center;
+	margin     : 0 0 10px 0;
+	width      : 100%;
+}
+
+p.itsec_temp_whitelist.submit .button-secondary,
+a.itsec_temp_whitelist_ajax.button-primary,
+a.itsec_temp_whitelist_release_ajax.button-primary,
+#itsec_release_lockout_form .submit .button-primary,
+#itsec-dashboard-widget .button-primary,
+#itsec-dashboard-widget .button-secondary,
+#itsec_one_time_malware_scan_submit, #itsec_one_time_file_check_submit {
+	border-radius : 4px;
+	padding       : 5px 10px;
+	height        : auto;
+}
+
+p.itsec_temp_whitelist.submit .button-secondary,
+a.itsec_temp_whitelist_ajax.button-primary,
+a.itsec_temp_whitelist_release_ajax.button-primary,
+#itsec_release_lockout_form .submit .button-primary,
+#itsec-dashboard-widget .button-primary,
+#itsec_one_time_malware_scan_submit,
+#itsec_one_time_file_check_submit {
+	background    : #1785d8;
+	border        : none;
+	border-color  : transparent;
+	border-bottom : 4px solid #045a93;
+	font-size     : 16px;
+}
+
+#itsec_release_lockout_form .submit .button-primary {
+	width : 100%;
+}
+
+p.itsec_temp_whitelist.submit .button-secondary,
+#itsec_one_time_malware_scan_submit,
+#itsec_one_time_file_check_submit {
+	background  : none;
+	border      : 4px dashed #999;
+	font-weight : bold;
+}
+
+#itsec_one_time_malware_scan_submit, #itsec_one_time_file_check_submit {
+	width     : 100%;
+	font-size : 14px;
+}
+
+a.itsec_temp_whitelist_ajax.button-primary:active, a.itsec_temp_whitelist_release_ajax.button-primary:active, #itsec_release_lockout_form .submit .button-primary:active {
+	top           : 4px;
+	border-bottom : 0;
+}
+
+.itsec_temp_whitelist_ip, #itsec_file_change_status {
+	background-color : #d7eead;
+	padding          : 10px;
+	border-radius    : 3px;
+	border           : 2px solid #7aac24;
+	text-align       : left;
+}
+
+/* Malware / File Change */
+
+.itsec_malware_widget, .itsec_file-change_widget {
+	width        : 48%;
+	margin-right : 1%;
+	float        : left;
+}
+
+.itsec_file-change_widget {
+	margin-right : 0;
+	margin-left  : 1%;
+}
+
+#itsec-dashboard-widget .malware .button-primary,
+#itsec-dashboard-widget .file-change .button-primary,
+#itsec-dashboard-widget .file-change .button-secondary {
+	width     : 100%;
+	font-size : 14px;
+}
+
+.full-width {
+	width        : 100%;
+	margin-right : 0;
+	margin-left  : 0;
+}
+
+/* Lockouts */
+
+.itsec_lockouts_widget li {
+	background    : #0a263b;
+	border-radius : 20px;
+	padding       : 10px 15px 10px 45px;
+	margin-bottom : 10px;
+	position      : relative;
+	display       : inline-block;
+	font-size     : 16px;
+	list-style    : none;
+}
+
+.itsec_lockouts_widget a {
+	text-decoration : none;
+	color           : #fff;
+}
+
+.itsec-locked-out-remove {
+	margin-right  : 5px;
+	background    : #fece0a;
+	border-radius : 100%;
+	padding       : 4px 4px;
+	font-weight   : bold;
+	position      : absolute;
+	top           : 7px;
+	left          : 7px;
+	font-size     : 20px;
+	color         : #0a263b;
+}
+
+#itsec-dashboard-widget .itsec-widget-user-security-check {
+	float: left;
+	clear: both;
+	margin: 1em 0 0 0;
+}

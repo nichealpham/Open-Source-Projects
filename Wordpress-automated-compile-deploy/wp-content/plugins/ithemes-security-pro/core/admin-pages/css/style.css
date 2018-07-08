@@ -1,0 +1,691 @@
+/*
+ * Override Core styling
+ */
+#poststuff #post-body.columns-2 {
+	margin-right: 320px;
+}
+#post-body.columns-2 #postbox-container-1,
+#post-body.columns-2 #postbox-container-2 {
+	border-top: 1px solid #ddd;
+	padding-top: 20px;
+}
+#post-body.columns-2 #postbox-container-1 {
+	box-sizing: border-box;
+	margin-right: -300px;
+	padding-left: 20px;
+	width: 300px;
+}
+#post-body.columns-2 #postbox-container-2 {
+	border-right: 1px solid #ddd;
+	box-sizing: border-box;
+	padding-right: 20px;
+}
+
+.wrap h1 img,
+.wrap h1 a {
+	vertical-align: middle;
+}
+
+.wrap h1 img {
+	margin-right: 1.5em;
+}
+
+#post-body.columns-2 #postbox-container-1 .hndle {
+	cursor: inherit;
+}
+
+ul {
+	list-style: outside;
+	padding-left: 1em;
+}
+
+.itsec-error-code {
+	color: #AAA;
+	display: none;
+}
+.itsec-show-error-codes .itsec-error-code {
+	display: inline;
+}
+
+.itsec-write-files-enabled .itsec-write-files-enabled,
+.itsec-write-files-disabled .itsec-write-files-disabled {
+	display: block;
+}
+.itsec-write-files-disabled .itsec-write-files-enabled,
+.itsec-write-files-enabled .itsec-write-files-disabled {
+	display: none;
+}
+
+
+/*
+ * Module settings container
+ */
+
+/* List Styling */
+
+.list .itsec-module-settings-container {
+	clear: both;
+	background: #fff;
+	padding: 2em 2em 4em 2em;
+	-moz-box-shadow:    inset  0  8px 8px -8px #ddd,
+	                    inset  0 -8px 8px -8px #ddd;
+	-webkit-box-shadow: inset  0  8px 8px -8px #ddd,
+	                    inset  0 -8px 8px -8px #ddd;
+	box-shadow:         inset  0  8px 8px -8px #ddd,
+	                    inset  0 -8px 8px -8px #ddd;
+}
+.list .itsec-modal-navigation,
+.list .itsec-modal-content-footer {
+	display: none;
+}
+.list .itsec-modal-header {
+	display: none;
+}
+
+.itsec-pro-label {
+	background: #ffcd08;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	font-size: 13px;
+	color: #5e5018;
+	text-transform: uppercase;
+}
+.list .itsec-pro-label {
+	display: inline;
+	float: left;
+	font-size: 10px;
+	margin: .35em 0 0 1em;
+	padding: 1px 3px;
+	position: relative;
+}
+.grid .itsec-pro-label {
+	padding: 3px 6px;
+	position: absolute;
+	right: -4px;
+	top: 5px;
+}
+
+
+
+
+/* Grid Styling */
+
+.itsec-modal-background {
+	display: none;
+}
+
+.grid .itsec-module-settings-container {
+	position: fixed;
+	top: 52px;
+	right: 20px;
+	bottom: 20px;
+	left: 20px;
+	margin-left: 160px;
+	background: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	z-index: 510;
+}
+.grid .itsec-modal-navigation,
+.grid .itsec-modal-content-footer {
+	display: block;
+}
+.grid .itsec-list-content-footer,
+.grid #itsec-save {
+	display: none;
+}
+.grid .itsec-module-settings-content-container {
+	position: absolute;
+	top: 40px;
+	right: 0;
+	bottom: 60px;
+	left: 0;
+	overflow: auto;
+	padding: 25px 50px;
+}
+.grid .itsec-module-settings-content {
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+}
+.grid .itsec-module-settings-content .itsec-module-description p {
+	font-size: 16px;
+}
+.grid .itsec-modal-header {
+	display: block;
+	font-size: 20px;
+}
+.grid textarea {
+	width: 100%;
+	min-height: 14em;
+}
+
+/* Override max width for user security check */
+#itsec-module-card-user-security-check .itsec-module-settings-content {
+	max-width: 100%;
+	position: relative;
+}
+@media screen and (max-width: 782px) {
+	#itsec-module-card-user-security-check  p.search-box {
+		width: 100%;
+	}
+	#itsec-user-table {
+		padding-bottom: 100px;
+	}
+}
+
+/* Correct font size of user table nav in user security check */
+#itsec-module-card-user-security-check .tablenav {
+	font-size: 12px;
+}
+.itsec-module-pro-upsell {
+	opacity: .5;
+}
+
+.itsec-pro-upsell {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	text-decoration: none;
+}
+
+@media ( max-width: 960px ) {
+	.grid .itsec-module-settings-container {
+		margin-left: 36px;
+	}
+}
+@media ( max-width: 782px ) {
+	.grid .itsec-module-settings-container {
+		margin-left: 0px;
+		top: 0px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100000; /* to get above wp admin bar */
+	}
+	.grid .itsec-module-settings-content-container {
+		padding: 15px 30px;
+	}
+}
+
+
+
+/*
+ * Grid Settings Modal
+ */
+body.itsec-modal-open {
+	/* This is set to keep the body from scrolling when modal is open */
+	overflow: hidden;
+}
+.itsec-modal-background {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+	z-index: 500;
+	cursor: pointer;
+}
+.itsec-modal-navigation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+}
+.itsec-modal-navigation button {
+	width: 40px;
+	height: 39px;
+	float: right;
+	background: #fff;
+	border: none;
+	outline: none;
+	border-left: 1px solid #ddd;
+	font-family: dashicons;
+	font-size: 20px;
+}
+.itsec-modal-navigation button:hover,
+.itsec-modal-navigation button:focus {
+	background: #efefef;
+	cursor: pointer;
+}
+.itsec-modal-navigation button.itsec-left:before {
+	content: '\f341';
+}
+.itsec-modal-navigation button.itsec-right:before {
+	content: '\f345';
+}
+.itsec-modal-navigation button.itsec-close-modal:before {
+	content: '\f335';
+}
+.itsec-modal-content-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-top: 1px solid #ddd;
+	padding: 15px;
+	background: #efefef;
+	box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+.itsec-modal-content-footer .align-left{
+	float: left;
+}
+
+.itsec-modal-content-footer .align-right{
+	float: right;
+}
+
+
+/*
+ * Modal Settings
+ */
+.itsec-settings-section {
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding-top: 20px;
+}
+.itsec-settings-section label {
+	font-weight: bold;
+}
+.itsec-settings-section .itsec-setting-field {
+	margin-bottom: 1.5em;
+}
+
+
+
+/*
+ * Main content area and module cards
+ */
+.itsec-module-section-heading {
+	margin: 0 0 1em 0;
+	overflow: hidden;
+}
+.itsec-settings-view-toggle {
+	float: left;
+	margin-right: 1em;
+	padding: .35em 0;
+}
+.itsec-settings-view-toggle a,
+.itsec-settings-view-toggle a:before {
+	color: #b4b9be;
+	padding: 0 .25em 0 0;
+}
+.itsec-settings-view-toggle a:hover,
+.itsec-settings-view-toggle a:focus {
+	color: #999;
+	cursor: pointer;
+}
+.itsec-settings-view-toggle a.itsec-selected {
+	color: #00a0d2;
+}
+.itsec-feature-search {
+	float: left;
+}
+.itsec-feature-tabs {
+	float: right;
+	margin: 0;
+}
+.itsec-module-cards-container {
+	clear: both;
+	box-sizing: border-box;
+}
+.itsec-module-cards {
+	text-align: justify;
+	font-size: 0.1px;
+}
+.itsec-module-cards:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+.itsec-module-card,
+.itsec-module-card-filler {
+	font-size: 16px;
+	display: inline-block;
+	width: 100%;
+	max-width: 32%;
+	text-align: left;
+	margin-bottom: 2%;
+	vertical-align: top;
+}
+
+.itsec-module-card-content {
+	font-size: 16px;
+	position: relative;
+	background: #fff;
+	border-left: 3px solid #afafaf;
+	box-shadow: 1px 1px 0px rgba(0,0,0,.1);
+	padding: 1em;
+}
+#poststuff .itsec-module-card h2 {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+.itsec-module-card-content .module-description {
+	display: block;
+}
+.itsec-module-type-enabled .itsec-module-card-content {
+	background: #f7fcfe;
+	border-left-color: #00a0d2;
+	box-shadow: 1px 1px 0px rgba(0,0,0,.1);
+}
+.itsec-module-card-content .module-actions {
+	float: none;
+	margin: 1em 0 0 0;
+}
+.itsec-module-type-disabled .itsec-settings-module-settings,
+.itsec-module-type-disabled .itsec-module-settings-save,
+.itsec-module-type-disabled .itsec-list-content-footer {
+	display: none;
+}
+.itsec-module-type-disabled .itsec-module-settings-container {
+	padding: 2em;
+}
+.itsec-module-settings-content pre{
+	background: #f1f1f1;
+	overflow:scroll;
+	padding: 1em;
+}
+
+/*
+ * List View
+ */
+.list .itsec-module-card {
+	max-width: 100%;
+	padding: 0;
+	float: none;
+	margin-bottom: 1px;
+}
+.list .itsec-module-card-content {
+	cursor: pointer;
+	padding: .5em .5em .5em .75em;
+}
+.list .itsec-module-card-content:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.list .itsec-module-card:hover .itsec-module-card-content {
+	background: #fafafa;
+}
+.list .itsec-module-card.enabled:hover .itsec-module-card-content {
+	background: #ebf7fc;
+}
+.list .module-description,
+.list .itsec-module-card-filler {
+	display: none;
+}
+#poststuff .list .itsec-module-card h2 {
+	float: left;
+	line-height: 1.8;
+	font-size: 14px;
+}
+.list .itsec-module-card-content .module-actions {
+	float: right;
+	margin-top: 0;
+}
+.list textarea {
+	max-width: 100%;
+	width: 500px;
+	min-height: 14em;
+}
+
+@media ( max-width: 782px ) {
+	#poststuff .list .itsec-module-card h2 {
+		line-height: 2.6;
+	}
+}
+
+@media ( max-width: 600px ) {
+	#poststuff .list .itsec-module-card h2 {
+		float: none;
+	}
+	.list .itsec-module-card-content .module-actions {
+		float:none;
+	}
+}
+
+/*
+ * Success Error Messages
+ */
+#itsec-settings-messages-container {
+	position: fixed;
+	padding: 2em;
+	top: -100px;
+	left: 0;
+	right: 0;
+	max-width: 300px;
+	width: 100%;
+	margin: auto;
+	z-index: 500;
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	opacity: 0;
+	border-radius: 3px;
+	background: #fff;
+	box-shadow: 0px 0px 25px rgba( 0,0,0,0.4 );
+}
+
+#itsec-settings-messages-container.visible:not(.no-module) {
+	top: 52px;
+	opacity: 1;
+}
+
+#itsec-settings-messages-container div,
+.itsec-module-messages-container div {
+	background: #f1f1f1;
+}
+
+#itsec-settings-messages-container.no-module {
+	position: relative;
+	padding: 0;
+	top: inherit;
+	right: inherit;
+	opacity: 1;
+	background: none;
+	border-radius: none;
+	box-shadow:none;
+	-webkit-transition: none;
+	transition: none;
+	margin: 1em 0;
+	max-width: 100%;
+}
+
+#itsec-settings-messages-container.no-module div {
+	box-shadow: none;
+	background: #fff;
+}
+
+#itsec-settings-messages-container div:first-child {
+	margin-top: 0;
+}
+#itsec-settings-messages-container div:last-child {
+	margin-bottom: 0;
+}
+
+@media ( max-width: 1400px ) {
+	.itsec-module-card {
+		max-width: 49%;
+	}
+}
+
+@media ( max-width: 500px ) {
+	.wrap h1 img {
+		display: block;
+		margin-bottom: 1em;
+	}
+	.itsec-module-card {
+		max-width: 100%;
+		padding-right: 0;
+		padding-bottom: 10px;
+	}
+	.itsec-module-card .module-description {
+		display: none;
+	}
+	.itsec-feature-search,
+	.itsec-feature-search input {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	.itsec-feature-tabs {
+		float: none;
+	}
+	.itsec-feature-tabs li {
+		font-size: 12px;
+	}
+}
+
+
+/* Sidebar Styles */
+/* Pro Upsell */
+#itsec-sidebar-widget-pro-upsell {
+	background-color: #FFF1B8;
+}
+
+#itsec-sidebar-widget-pro-upsell > h3 {
+	background-color: #FFCD08;
+}
+
+
+/* Extra styling */
+.current-date-time {
+	display: inline-block;
+	font-size: 1.25em;
+	background: #EFEFEF;
+	padding: .75em 1em;
+}
+
+.itsec-module-cards textarea.textarea-small {
+	height: 6em;
+	min-height: 6em;
+	width: 25em;
+	max-width: 100%;
+}
+
+.itsec-warning-message {
+	display: block;
+	clear: both;
+	font-size: 1.125em;
+	margin: 1.5em 0;
+	padding: 1em;
+	border-left: 4px solid #ca8383;
+	background: #ffd4d4;
+	color: #9c3e3e;
+}
+
+.itsec-notice-message {
+	display: block;
+	clear: both;
+	font-size: 1.125em;
+	margin: 1.5em 0;
+	padding: 1em;
+	border-left: 4px solid #e8e4a7;
+	background: #fff9ec;
+}
+
+/*
+ * Security Check
+ */
+
+.itsec-security-check-list {
+	font-size: 13px;
+	margin: 0 0 2em 1em;
+}
+
+.itsec-security-check-list p {
+	margin: 0;
+}
+
+.itsec-security-check-container {
+	padding: 0 10px 0 50px;
+	border: 1px solid #ddd;
+	border-left-width: 4px;
+	margin: 0 0 8px;
+	position: relative;
+}
+
+.itsec-security-check-container:before {
+	font-family: 'Dashicons';
+	font-size: 1.75em;
+	position: absolute;
+	left: 7px;
+	top: 50%;
+	margin: -9px 0 0 0;
+}
+
+.itsec-security-check-container-action-taken:before,
+.itsec-security-check-container-complete:before,
+.itsec-security-check-container-confirmation:before {
+	content: "\f147";
+	color: #46b450;
+}
+
+.itsec-security-check-container-incomplete:before,
+.itsec-security-check-container-call-to-action:before {
+	content: "\f534";
+	color: #f2dd28;
+}
+
+.itsec-security-check-container-error:before {
+	content: "\f534";
+	color: #dc3232;
+}
+
+.itsec-security-check-container-action-taken,
+.itsec-security-check-container-complete,
+.itsec-security-check-container-confirmation {
+	border-left-color: #46b450;
+}
+
+.itsec-security-check-container-incomplete,
+.itsec-security-check-container-call-to-action {
+	border-left-color: #f2dd28;
+}
+
+.itsec-security-check-container-error {
+	border-left-color: #dc3232;
+}
+
+/**
+ * User Security Check
+ */
+.itsec-two-factor .dashicons {
+	cursor: default;
+}
+.itsec-two-factor .dashicons.dashicons-unlock {
+	color: #dc3232;
+}
+.itsec-password-age {
+	display:inline-block;
+}
+.itsec-password-strength {
+	background: #ddd;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	color: #23282d;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 1.5;
+	padding: 0px 4px;
+}
+.itsec-password-strength.short {
+	background: #f1adad;
+	border-color: #e35b5b;
+}
+.itsec-password-strength.bad {
+	background-color: #fbc5a9;
+	border-color: #f78b53;
+}
+.itsec-password-strength.good {
+	background-color: #ffe399;
+	border-color: #ffc733;
+}
+.itsec-password-strength.strong {
+	background-color: #c1e1b9;
+	border-color: #83c373;
+}

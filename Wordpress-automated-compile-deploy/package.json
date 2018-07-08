@@ -1,0 +1,61 @@
+{
+    "name": "gulp-starter",
+    "version": "1.3.0",
+    "author": {
+        "name": "Juri Saltbacka",
+        "email": "juri@3bola.io"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/3bola/gulp-starter.git"
+    },
+    "scripts": {
+        "install": "bower install",
+        "init": "gulp clear && gulp compile && gulp init",
+        "start": "gulp clear && gulp compile && gulp watch",
+        "build": "gulp clear && gulp compile && gulp replace-dev",
+        "rebuild": "gulp clear && gulp compile && gulp replace-prod && gulp rebuild-appspec",
+        "export": "gulp export",
+        "import": "gulp import",
+        "release": "gulp release",
+        "deploy": "git push git@github.com:nguyenpham95/fashion-journal.git --all",
+        "pull": "git pull git@github.com:nguyenpham95/fashion-journal.git"
+    },
+    "devDependencies": {
+        "bower": "*",
+        "del": "*",
+        "express": "*",
+        "gulp": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-bower": "*",
+        "gulp-cache": "*",
+        "gulp-clean-css": "^3.7.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-declare": "*",
+        "gulp-define-module": "*",
+        "gulp-filter": "^5.0.1",
+        "gulp-handlebars": "*",
+        "gulp-if": "*",
+        "gulp-if-else": "*",
+        "gulp-imagemin": "*",
+        "gulp-livereload": "*",
+        "gulp-minify-css": "*",
+        "gulp-minify-html": "*",
+        "gulp-replace": "^0.6.1",
+        "gulp-run": "^1.7.1",
+        "gulp-sass": "*",
+        "gulp-uglify": "*",
+        "gulp-useref": "^3.1.2",
+        "gulp-util": "*",
+        "gulp-watch": "*",
+        "gulp-zip": "^4.0.0",
+        "minimist": "*",
+        "opn": "*",
+        "standard": "*"
+    },
+    "dependencies": {
+        "grunt": "^1.0.1",
+        "gulp-install": "^1.1.0",
+        "pump": "^1.0.2"
+    }
+}
