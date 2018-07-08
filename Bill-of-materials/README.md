@@ -18,13 +18,16 @@
 
 ## 1. Database with arithmetic fields, support +\-\*\/
 
-<p hspace="10">For example, user can create new fields like ```Revenue = Quantity * Price - Sales``` </p>
+For example, user can create new fields like 
+```
+Revenue = Quantity * Price - Sales
+``` 
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
+<br/><br/><br/><br/><br/>
 
 ___
 
-<br/><br/><br/><br/><br/>
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 2. Automatic fields update/calculation
