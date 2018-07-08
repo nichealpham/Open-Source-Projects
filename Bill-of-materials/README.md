@@ -23,12 +23,13 @@
 
 ___
 
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520">
 
 ## 2. Automatic fields update/calculation
 
 <p hspace="10">Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
+
 ___
 
 <br/><br/><br/><br/>
