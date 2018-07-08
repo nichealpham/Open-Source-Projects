@@ -14,7 +14,7 @@ Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
 <br/>
 
-## 1. Bill-of-materials (BOM) software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
+## 1. Bill-of-materials (BOM) (software/website): [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="480">
 
@@ -34,7 +34,9 @@ Libraries
 
 ---
 
-## 2. ECG-visualization-analysis software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Ecg-visualization-analysis)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Ecg-visualization-analysis)
+<br/>
+
+## 2. ECG-visualization-analysis (website): [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Ecg-visualization-analysis)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Ecg-visualization-analysis)
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Ecg-visualization-analysis/images/signal.PNG" vspace="0" width="480">
 
@@ -55,11 +57,13 @@ Libraries
 
 ---
 
-## 3. Wordpress-automated-compile-deploy source: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy)/[Production](http://fj.nativesdev.com.au)
+<br/>
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy/webpackage/app-structure.png" vspace="0" width="480">
+## 3. Wordpress-aws-code-pipeline (source): [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-aws-code-pipeline)/[Production](http://fj.nativesdev.com.au)
 
-A Web-based ECG signal visualization software for cardiac education
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-aws-code-pipeline/webpackage/app-structure.png" vspace="0" width="480">
+
+A front-end Gulp compiler for Wordpress application and Automatic deploy to AWS Code Pipeline
 
 Features
 
@@ -80,6 +84,8 @@ Libraries
 * AWS Code Pipeline
 
 ---
+
+<br/>
 
 ## Commercial
 If you want to use/extend these projects for commercial distribution, contact me for potential collaboration.

@@ -178,7 +178,7 @@ AWS CodePipeline will automatically compile neccessary files and deloy them to t
 
 #### Codeflow
 
-![Image structure not found](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy/webpackage/app-structure.png)<br/>
+![Image structure not found](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-aws-code-pipeline/webpackage/app-structure.png)<br/>
 
 When `npm start` is runned, it does the following:
 
