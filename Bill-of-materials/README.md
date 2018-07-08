@@ -19,6 +19,7 @@
 <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
 
 <img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
+
 ___
 
 ## 2. Automatic fields update/calculation
@@ -26,6 +27,7 @@ ___
 <p>Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
 
 <img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="30" vspace="10" width="520">
+
 ___
 
 <p>
@@ -37,11 +39,13 @@ ___
 </p>
 ___
 
+<p>
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="30" vspace="10" width="520">
 
 ## 5. Create/Insert/Update/Delete Invoices
 
 <p>Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices</p>
+</p>
 
 ___
 
