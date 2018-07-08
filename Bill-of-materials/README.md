@@ -14,36 +14,40 @@
 
 # App Features
 
+---
 
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
 
 ## 1. Database with arithmetic fields, support +\-\*\/
 
-For example, user can create new fields like 
+For example, user can create new fields similar to
 ```
-Revenue = Quantity * Price - Sales
+Income = Quantity * Price - Quantity * SalesPerItem
+Expense = Quantity * StockPrice
+Revenue = Income - Expense
 ``` 
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
 <br/><br/><br/><br/><br/>
 
-___
+---
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 2. Automatic fields update/calculation
 
-<p hspace="10">Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
-
-___
+Arithmetic fields get automatically calculated when associated fields have data / are updated with new values
 
 <br/><br/><br/><br/>
+
+---
+
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 3. Create Invoice
 
 <p hspace="10">Select a collection of items to create an invoice</p>
 
-___
+---
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520"><br/>
 
@@ -51,7 +55,7 @@ ___
 
 <p hspace="10">Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices</p>
 
-___
+---
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520"><br/>
 
@@ -59,7 +63,7 @@ ___
 
 <p hspace="10">Invoices can be printed into PDF or CSV format</p>
 
-___
+---
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520"><br/>
 
@@ -67,7 +71,7 @@ ___
 
 <p hspace="10">Update invoice's header with your company's info by providing information to the Company Information Tab</p>
 
-___
+---
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520"><br/>
 
@@ -75,7 +79,7 @@ ___
 
 <p hspace="10">On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.</p>
 
-___
+---
 
 ## License
 
