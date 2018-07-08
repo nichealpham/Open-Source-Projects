@@ -14,6 +14,10 @@ Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
 <br/>
 
+---
+
+<br/>
+
 ## 1. Bill-of-materials (BOM) (software/website): [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="480">
@@ -31,6 +35,8 @@ Libraries
 * AngularJS
 * jQuery
 * localStorage
+
+<br/>
 
 ---
 
@@ -54,6 +60,8 @@ Libraries
 * Socket.io
 * IndexedDB
 * Chartist.js
+
+<br/>
 
 ---
 
@@ -82,6 +90,8 @@ Libraries
 * Nodejs
 * Gulp
 * AWS Code Pipeline
+
+<br/>
 
 ---
 
