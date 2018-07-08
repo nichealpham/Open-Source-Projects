@@ -1,8 +1,8 @@
-# Welcome to my Open-Source Projects
+# Welcome to my Open-Source Programming Projects
 
 <img align="right" src="https://bigcoinvietnam.com/uploads/thiendz/opensource/open-source-word-cloud.jpg" hspace="0" vspace="0" width="520">
 
-<p> A collection of my personal programming projects that reflect my knowledge and experience in certain programming languages.</p>
+<p> A collection of projects that reflect my knowledge and experience in certain programming languages.</p>
 
 ### App Features
 * Single-page architecture
