@@ -20,6 +20,14 @@ Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
 A simple Bill of Materials (BOM) software
 
+Features
+
+* Arithmetic database
+* Invoice/Items management
+* Fields automated calculation
+
+Libraries
+
 * AngularJS
 * jQuery
 * localStorage
