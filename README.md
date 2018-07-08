@@ -1,6 +1,6 @@
 # Welcome to my Open-Source Programming Projects
 
-<img align="right" src="https://bigcoinvietnam.com/uploads/thiendz/opensource/open-source-word-cloud.jpg" hspace="0" vspace="0" width="480">
+<img align="right" src="https://i1.wp.com/echip.pro/wp-content/uploads/2017/02/Open-Source-Word-Cloud.jpg" hspace="0" vspace="0" width="480">
 
 <p> A collection of projects that reflect my knowledge and experience in certain programming languages.</p>
 
