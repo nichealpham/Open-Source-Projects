@@ -14,7 +14,7 @@ Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
 <br/>
 
-## 1. Bill-of-materials (BOM) software: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
+## 1. Bill-of-materials (BOM) software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
 
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="480">
 
@@ -32,7 +32,25 @@ Libraries
 * jQuery
 * localStorage
 
-<br/>
+---
+
+## 2. ECG-visualization-analysis software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/ECG-visualization-analysis)/[Demo](https://nichealpham.github.io/Open-Source-Projects/ECG-visualization-analysis)
+
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/ECG-visualization-analysis/images/signal.PNG" vspace="0" width="480">
+
+A Web-based ECG signal visualization software for cardiac education
+
+Features
+
+* ECG signal visualization
+* Simple analysis technique (STe, STd, Arr)
+* PDF Report Printable
+
+Libraries
+
+* AngularJS
+* Socket.io
+* IndexedDB
 
 ---
 
