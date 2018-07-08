@@ -1,57 +1,31 @@
-# A Simple, Web-based Bill of Material (BOM) Software
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/1.png)<br/>
-<p>Try the online version here: https://nguyenpham95.github.io/bom_management_software/</p>
+# Welcome to my Open-Source Projects
 
-## Installation
+<img align="right" src="https://www.google.com.vn/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=2ahUKEwjV7PbB2Y7cAhWJa7wKHZasB18QjRx6BAgBEAU&url=https%3A%2F%2Fbigcoinvietnam.com%2Fma-nguon-mo-open-source-la-gi-tai-sao-ma-nguon-mo-lai-quan-trong-voi-tien-ma-hoa-lam-the-nao-de-xay-dung-mot-du-an-blockchain&psig=AOvVaw26CejXwiHoeXqfxuVLJQRb&ust=1531111650997864" hspace="30" vspace="10" width="380">
 
-+ Download the app.zip file
-+ Extract and run the executable (.exe) file
-+ Enjoy :)
+### A collection of my personal programming projects
+<p> In this repo you will find some projects that reflect my knowledge and experience on certain programming languages that I developed during my free time.</p>
 
-## Online Deployment
-+ Download the app.zip file
-+ Extract the folder
-+ Navigate to "\app\resources\app"
-+ Copy and pass all files into your web-hosting
-+ Done!
+### App Features
+* Single-page architecture
+* Serverless
+* In-browser database
+* 100% front-end
+* Easy to host/deploy
 
-# App Features
+### License
+Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
-## 1. Create databases with customized fields, for example: Revenue = Price - Promotion
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/2.png)
-
-## 2. Insert new items into the database, special fields (aka Revenue) will be automatically calculated
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/3.png)
-
-## 3. Create a collection of items as a bill, customize them for different invoices if neccessary
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/4.png)
-
-## 5. Manage/Insert/Update/Save As New/Delete old bills
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/6.png)
-
-## 6. Insert more information for the invoice
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/7.png)
-
-## 7. Print invoice as PDF or CSV
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/8.png)
-
-## 8. Customize invoice's header with your company information
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/9.png)
-
-## 9. Export your Database/Items/Reports Scheme from one computer to another easily
-![alt text](https://github.com/nguyenpham95/bom_management_software/blob/master/captures/10.png)
-
-## License
-
-This app is just a personal project to finalize my learning with Angular.js. Hope that it could bring you any benefits.
+## 1. Bill-of-materials: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
+<img align="left" src="https://www.google.com.vn/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiKtvvF3Y7cAhWLdt4KHcHIDJ4QjRx6BAgBEAU&url=https%3A%2F%2Fdwglogo.com%2Fangularjs-logo%2F&psig=AOvVaw2u_sprnJreoZ2OAowKuEYB&ust=1531112709329621" hspace="30" vspace="10" width="80">
+<p>A simple Bill of Materials (BOM) software</p>
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
 
 ## Commercial
-
-If you want to use this software for commercial distribution, please contact me for potential collaboration.
+If you want to use/extend these projects for commercial distribution, contact me for potential collaboration.
 
 ## Contact information:
-Name:  Phạm Khôi Nguyên<br/>
+Name:  Nicheal Pham<br/>
 School:  International University – Vietnam National University (VNU)<br/>
 Department:  Biomedical Engineering<br/>
-Email: phamkhoinguyen1995@gmail.com<br/>
-Linkedin: https://vn.linkedin.com/in/pham-khoi-nguyen-43a505102<br/>
+Email: nichealpham@gmail.com<br/>
+Linkedin: https://www.linkedin.com/in/nguyenpham95/<br/>
