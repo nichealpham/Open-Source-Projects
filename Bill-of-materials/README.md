@@ -1,8 +1,6 @@
 # A simple Bill of Materials (BOM) software
 <p>Online demo: https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials</p>
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="10" width="520" right="10">
-
 ## Installation
 + Download the app.zip file
 + Extract and run the executable (.exe) file
@@ -16,28 +14,27 @@
 
 # App Features
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
-
 ## 1. Database with arithmetic fields, support +\-\*\/
 
 <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
 
+<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
 ___
-
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="30" vspace="10" width="520">
 
 ## 2. Automatic fields update/calculation
 
 <p>Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
 
+<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="30" vspace="10" width="520">
 ___
 
+<p>
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="30" vspace="10" width="520">
 
 ## 3. Create Invoice
 
 <p>Select a collection of items to create an invoice</p>
-
+</p>
 ___
 
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="30" vspace="10" width="520">
