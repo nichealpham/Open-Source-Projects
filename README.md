@@ -1,6 +1,6 @@
 # Welcome to my Open-Source Projects
 
-<img align="right" src="https://bigcoinvietnam.com/uploads/thiendz/opensource/open-source-word-cloud.jpg" hspace="30" vspace="10" width="520">
+<img align="right" src="https://bigcoinvietnam.com/uploads/thiendz/opensource/open-source-word-cloud.jpg" hspace="30" vspace="10" width="480">
 
 <p> A collection of my personal programming projects that reflect my knowledge and experience in certain programming languages.</p>
 
@@ -14,9 +14,12 @@
 ### License
 Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
-## 1. Bill-of-materials: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
+## 1. Bill-of-materials (BOM) software: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
+
 <img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="680">
-<p>A simple Bill of Materials (BOM) software</p><br/>
+
+<p>A simple Bill of Materials (BOM) software</p>
+
 * AngularJS
 * jQuery
 * localStorage
