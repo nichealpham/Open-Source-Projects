@@ -14,22 +14,24 @@
 
 # App Features
 
+
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
+
 ## 1. Database with arithmetic fields, support +\-\*\/
 
 <p hspace="10">For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
 
-<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
-
 ___
+
+<br/><br/><br/><br/><br/><br/>
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520">
 
 ## 2. Automatic fields update/calculation
 
 <p hspace="10">Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
-
-<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520">
-
 ___
 
+<br/><br/><br/><br/>
 <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520">
 
 ## 3. Create Invoice
