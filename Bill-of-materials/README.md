@@ -14,76 +14,59 @@
 
 # App Features
 
-<p float="left">
-  <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
-  <p>
-    ## 1. Database with arithmetic fields, support +\-\*\/
-    <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
-  </p>
-  
-    ___
-    
-</p>
+## 1. Database with arithmetic fields, support +\-\*\/
 
-<p float="left">
-  <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
-  <p>
-    ## 1. Database with arithmetic fields, support +\-\*\/
-    <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
-  </p>
-  
-    ___
-    
-</p>
+<p hspace="10">For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
+
+<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
+
+___
 
 ## 2. Automatic fields update/calculation
 
-<p>Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
+<p hspace="10">Arithmetic fields get automatically calculated when associated fields have data / are updated </p>
 
-<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="30" vspace="10" width="520">
+<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520">
 
 ___
 
-<p>
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="30" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520">
 
 ## 3. Create Invoice
 
-<p>Select a collection of items to create an invoice</p>
-</p>
+<p hspace="10">Select a collection of items to create an invoice</p>
+
 ___
 
-<p>
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="30" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520">
 
 ## 5. Create/Insert/Update/Delete Invoices
 
-<p>Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices</p>
-</p>
+<p hspace="10">Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices</p>
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="30" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520">
 
 ## 6. Printable invoice
 
-<p>Invoices can be printed into PDF or CSV format</p>
+<p hspace="10">Invoices can be printed into PDF or CSV format</p>
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="30" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520">
 
 ## 7. Customize default invoice template
 
-<p>Update invoice's header with your company's info by providing information to the Company Information Tab</p>
+<p hspace="10">Update invoice's header with your company's info by providing information to the Company Information Tab</p>
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="30" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520">
 
 ## 8. Export your environment to other computers
 
-<p>On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.</p>
+<p hspace="10">On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.</p>
 
 ___
 
