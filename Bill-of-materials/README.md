@@ -14,70 +14,64 @@
 
 # App Features
 
----
-
 <img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
 
 ## 1. Database with arithmetic fields, support +\-\*\/
 
 For example, user can create new fields similar to
 ```
-Income = Quantity * Price - Quantity * SalesPerItem
+Income = Quantity * Price - Sales
 Expense = Quantity * StockPrice
 Revenue = Income - Expense
 ``` 
 
-<br/><br/><br/><br/><br/>
-
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 2. Automatic fields update/calculation
 
 Arithmetic fields get automatically calculated when associated fields have data / are updated with new values
 
-<br/><br/><br/><br/>
-
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 3. Create Invoice
 
-<p hspace="10">Select a collection of items to create an invoice</p>
+Select a collection of items to create an invoice
 
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 5. Create/Insert/Update/Delete Invoices
 
-<p hspace="10">Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices</p>
+Provide fundamental methods to manage invoices, keep track of Current/Passed/Rejected invoices
 
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 6. Printable invoice
 
-<p hspace="10">Invoices can be printed into PDF or CSV format</p>
+Invoices can be printed into PDF or CSV format
 
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 7. Customize default invoice template
 
-<p hspace="10">Update invoice's header with your company's info by providing information to the Company Information Tab</p>
+Update invoice's header with your company's info by providing information to the Company Information Tab
 
 ---
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 8. Export your environment to other computers
 
-<p hspace="10">On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.</p>
+On the Export Tab, click export and copy the result data into other computers. This will retain all yours invoices, databases and company information.
 
 ---
 
