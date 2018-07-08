@@ -14,7 +14,7 @@
 
 # App Features
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="480">
 
 ## 1. Database with arithmetic fields, support +\-\*\/
 
@@ -28,7 +28,7 @@ Revenue = Income - Expense
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 2. Automatic fields update/calculation
 
@@ -37,7 +37,7 @@ Arithmetic fields get automatically calculated when associated fields have data 
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 3. Create Invoice
 
@@ -46,7 +46,7 @@ Select a collection of items to create an invoice
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 5. Create/Insert/Update/Delete Invoices
 
@@ -55,7 +55,7 @@ Provide fundamental methods to manage invoices, keep track of Current/Passed/Rej
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 6. Printable invoice
 
@@ -64,7 +64,7 @@ Invoices can be printed into PDF or CSV format
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 7. Customize default invoice template
 
@@ -73,7 +73,7 @@ Update invoice's header with your company's info by providing information to the
 
 ---
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520"><br/>
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="480"><br/>
 
 ## 8. Export your environment to other computers
 
