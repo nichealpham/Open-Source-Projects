@@ -12,6 +12,8 @@
 ### License
 Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
+<br/>
+
 ## 1. Bill-of-materials (BOM) software: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
 
 <img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="680">
