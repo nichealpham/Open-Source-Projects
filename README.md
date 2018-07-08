@@ -15,9 +15,11 @@
 Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
 ## 1. Bill-of-materials: [source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials)/[demo](https://nichealpham.github.io/Open-Source-Projects/Bill-of-materials)
-<img src="https://dwglogo.com/wp-content/uploads/2017/03/AngularJS_logo_004.svg" vspace="10" width="40"><br/>
+<img src="https://dwglogo.com/wp-content/uploads/2017/03/AngularJS_logo_004.svg" vspace="10" hspace="10" width="60"><br/>
+<img src="http://precision-software.com/wp-content/uploads/2014/04/jQurery.gif" vspace="10" hspace="10" width="60"><br/>
 <p>A simple Bill of Materials (BOM) software</p><br/>
-<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="10" width="620">
+
+<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/1.png" vspace="0" width="680">
 
 ## Commercial
 If you want to use/extend these projects for commercial distribution, contact me for potential collaboration.
