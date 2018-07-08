@@ -14,8 +14,7 @@
 
 # App Features
 
-
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 1. Database with arithmetic fields, support +\-\*\/
 
@@ -24,7 +23,7 @@
 ___
 
 <br/><br/><br/><br/><br/>
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/3.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 2. Automatic fields update/calculation
 
@@ -33,7 +32,7 @@ ___
 ___
 
 <br/><br/><br/><br/>
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/4.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 3. Create Invoice
 
@@ -41,7 +40,7 @@ ___
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/6.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 5. Create/Insert/Update/Delete Invoices
 
@@ -49,7 +48,7 @@ ___
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/8.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 6. Printable invoice
 
@@ -57,7 +56,7 @@ ___
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/9.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 7. Customize default invoice template
 
@@ -65,7 +64,7 @@ ___
 
 ___
 
-<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520">
+<img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/10.png" hspace="10" vspace="10" width="520"><br/>
 
 ## 8. Export your environment to other computers
 
