@@ -1,0 +1,387 @@
+<html ng-app="app" ng-controller="laboratoryController">
+<head>
+  <title>Cassandra Laboratory</title>
+  <link rel="stylesheet" type="text/css" href="css/scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap_grid.css">
+  <link rel="stylesheet" type="text/css" href="css/global.css">
+  <link rel="stylesheet" type="text/css" href="css/loading_spinner.css">
+  <link rel="stylesheet" type="text/css" href="lib/chartist/chartist.css">
+  <link rel="stylesheet" type="text/css" href="lib/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="css/montserrat/fonts.css">
+  <link rel="stylesheet" href="css/lato/fonts.css">
+  <link rel="stylesheet" href="css/open-sans/fonts.css">
+</head>
+<body style="overflow:hidden;" class="ng-cloak">
+  <div class="div_nen_den" style="" id="upload_record_popup">
+    <form ng-submit="save_this_record()">
+      <div id="smallPopup_uploadRecord" class="div_small_popup" style="border:3px solid black;top:60px;border-radius:0px;opacity:0;">
+          <div class="header">
+            <h2 style="">SAVE THIS RECORD</h2>
+            <label ng-click="close_popup_upload_record()" class="record-block-quiter grey_color" style="font-size:24px;top:11px;right:6px;">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </label>
+          </div>
+          <div class="body">
+              <div class="collum" style="width:34%;border-right:0px solid black;padding:14px;">
+                <span style="width:100%;display:inline-block;float:left;text-align:center;margin-top:18px;">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right:3px;font-size:13px;"></i>
+                  ECG data:
+                </span>
+                <textarea class="sub-section" style="height:232px;margin-top:18px;" ng-model="file_content" disabled required></textarea>
+                <span style="width:100%;display:inline-block;float:left;text-align:left;margin:16px 0px;font-size:13px;padding-left:2px;">
+                  <i class="fa fa-file-o" aria-hidden="true" style="margin-right:2px;"></i>
+                  Total: {{ecg_data.length | number}} rows
+                </span>
+              </div>
+              <div class="collum" style="width:66%;border-right:0px solid black;padding:2px 14px 14px 14px;">
+
+                <div class="collum" style="width:80%;float:left;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-key" aria-hidden="true" style="margin-right:2px;"></i>
+                    Record name:
+                  </span>
+                  <input type="text" class="sub-section" placeholder="Record name..." ng-model="record_name" style="width:calc(100% - 26px);" required="true">
+                </div>
+
+                <div class="collum" style="width:20%;float:left;padding:0px;margin-left:-30px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa-calendar-o" aria-hidden="true" style="margin-right:2px;"></i>
+                    Date:
+                  </span>
+                  <input type="text" class="sub-section" placeholder="Record name..." ng-model="record_date" value="{{record_date}}" style="width:120px;" disabled required>
+                </div>
+
+                <div class="collum" style="width:100%;float:left;margin-top:-8px;padding-right:4px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-pencil" aria-hidden="true" style="margin-right:2px;"></i>
+                    Comments:
+                  </span>
+                  <input type="text" class="sub-section" placeholder="Record comments..." ng-model="record_comment" style="width:100%;" required>
+                </div>
+
+                <div class="collum" style="width:80%;float:left;margin-top:-8px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-key" aria-hidden="true" style="margin-right:2px;"></i>
+                    Sampling frequency:
+                  </span>
+                  <input type="text" class="sub-section" placeholder="Hz..." ng-model="record_sampling_frequency" ng-change="update_duration()" style="width:calc(100% - 26px);" required>
+                </div>
+
+                <div class="collum" style="width:20%;float:left;padding:0px;margin-left:-30px;margin-top:-8px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa-clock-o" aria-hidden="true" style="margin-right:2px;"></i>
+                    Duration:
+                  </span>
+                  <input type="text" class="sub-section" placeholder="sec..." ng-model="record_duration" value="{{record_duration | number}}" style="width:120px;" required>
+                </div>
+
+                <div class="collum" style="width:100%;float:left;margin-top:6px;">
+                  <div class="my-card" style=";margin-left:6px;height:46px;background-color:transparent;float:right;width:100%;">
+                    <button type="submit" class="sign-in button" style="border:none;color:white;cursor:pointer;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;width:200px;float:right;margin-left:12px;">
+                      <i class="fa fa-cloud-upload" aria-hidden="true" style="margin-right:2px;"></i>
+                      Save now
+                    </button>
+                    <button ng-click="close_popup_upload_record()" class="sign-in button cancel-btn" style="">
+                      <i class="fa fa-time" aria-hidden="true" style="margin-right:2px;"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="div_nen_den" style="display:none;" id="find_nearby_devices_popup">
+
+      <div id="smallPopup_findNearbyDevices" class="div_small_popup" style="border:3px solid black;top:60px;border-radius:0px;opacity:0;">
+          <div class="header">
+            <h2 style="">DISCOVER DEVICES</h2>
+            <label ng-click="close_popup_find_nearby_devices()" class="record-block-quiter grey_color" style="font-size:24px;top:11px;right:6px;">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </label>
+          </div>
+          <div class="body">
+              <div class="collum" style="width:35%;border-right:0px solid black;padding:0px 20px 4px 16px;">
+                <span style="line-height:32px;width:100%;display:inline-block;font-family:Montserrat;float:left;text-align:left;margin-top:0px;border-bottom:1px solid white;">
+                  Nearby Devices:
+                </span>
+                <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                  <div style="width:22%;display:inline-block;float:left;">
+                    <img src="images/usb.png" style="width:86%;margin-top:-1px;"/>
+                  </div>
+                  <div style="width:78%;display:inline-block;float:left;">
+                    <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">Cassandra ECG Device</label>
+                    <!--<label style="width:100%;float:left;display:inline-block;color:white;font-size:13px;color:#e0e0e0;cursor:pointer;font-family:Montserrat;margin-top:3px;">200Hz</label>-->
+                  </div>
+                </div>
+              </div>
+              <div class="collum" style="width:65%;position:relative;display:inline-block">
+                
+                <div class="collum" style="width:50%;float:left;padding-right:20px;">
+                  <span style="line-height:32px;width:100%;display:inline-block;font-family:Montserrat;float:left;text-align:left;margin-top:0px;border-bottom:1px solid white;">
+                    > Services:
+                  </span>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/email.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D0D</label>
+                    </div>
+                  </div>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/email.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D0D</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="collum" style="width:50%;float:left;padding-right:20px;">
+                  <span style="line-height:32px;width:100%;display:inline-block;font-family:Montserrat;float:left;text-align:left;margin-top:0px;border-bottom:1px solid white;">
+                    >> Characteristics:
+                  </span>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/file.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D37</label>
+                    </div>
+                  </div>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/file.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D37</label>
+                    </div>
+                  </div>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/file.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D37</label>
+                    </div>
+                  </div>
+                  <div style="width:100%;display:inline-block;margin-top:8px;cursor:pointer;padding:6px;" class="hover_hightlight">
+                    <div style="width:22%;display:inline-block;float:left;">
+                      <img src="images/options/file.png" style="width:76%;margin-top:-1px;margin:5%;"/>
+                    </div>
+                    <div style="width:78%;display:inline-block;float:left;">
+                      <label style="width:100%;float:left;display:inline-block;color:white;font-size:14px;font-family:Montserrat;cursor:pointer;margin-top:10px;">2D37</label>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+                <div class="collum" style="width:100%;right:12px;bottom:12px;position:absolute;">
+                  <div class="my-card" style=";margin-left:6px;height:46px;background-color:transparent;float:right;width:100%;">
+                    <button type="submit" class="sign-in button" style="border:none;color:white;cursor:pointer;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;width:200px;float:right;margin-left:12px;">
+                      <i class="fa fa-cloud-upload" aria-hidden="true" style="margin-right:2px;"></i>
+                      Scan Devices
+                    </button>
+                    <button ng-click="close_popup_find_nearby_devices()" class="sign-in button cancel-btn" style="">
+                      <i class="fa fa-time" aria-hidden="true" style="margin-right:2px;"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+
+  </div>
+  <div class="sk-circle" id="page_loading" style="position:fixed;z-index:2000;top:calc(50% - 146px);right:calc(50% - 30px);">
+    <div class="sk-circle1 sk-child"></div>
+    <div class="sk-circle2 sk-child"></div>
+    <div class="sk-circle3 sk-child"></div>
+    <div class="sk-circle4 sk-child"></div>
+    <div class="sk-circle5 sk-child"></div>
+    <div class="sk-circle6 sk-child"></div>
+    <div class="sk-circle7 sk-child"></div>
+    <div class="sk-circle8 sk-child"></div>
+    <div class="sk-circle9 sk-child"></div>
+    <div class="sk-circle10 sk-child"></div>
+    <div class="sk-circle11 sk-child"></div>
+    <div class="sk-circle12 sk-child"></div>
+  </div>
+    <div id="divMain" class="main-container container-fluid" style="width:100vw;height:100vh;position:fixed;color:white;top:0px;left:0px;padding-bottom:0px;">
+      <header style="z-index:1;height:80px;padding-top:4px;background-color:rgba(31,37,61,0.6);position:fixed;top:0px;border-radius:0px;" class="block col-md-12 window_drag">
+          <ul class="header-menu horizontal-list">
+            <li class="window_no_drag">
+                <a ng-click="open_popup_find_nearby_device()" class="header-menu-tab"><span class="icon entypo-cog scnd-font-color"></span>Discover Devices</a>
+            </li>
+            <!--<li class="window_no_drag">
+                <a class="header-menu-tab"><span class="icon fontawesome-user scnd-font-color"></span>Observers</a>
+                <a ng-hide="hide_if_zero(doctors)" class="header-menu-number">{{viewers.length}}</a>
+            </li>-->
+
+            <li class="window_no_drag">
+                <a class="header-menu-tab"><span class="icon fontawesome-envelope scnd-font-color"></span>Run Analysis</a>
+            </li>
+          </ul>
+          <!-- <div class="profile-menu" style="cursor:pointer;">
+
+              <div class="profile-picture small-profile-picture">
+                  <img width="40px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg">
+              </div>
+              <p style="margin-left:10px;">{{userInfo.email}} <a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
+          </div> -->
+          <ul class="header-menu horizontal-list" style="float:right;">
+              <li ng-click="open_popup_upload_record()" class="window_no_drag">
+                  <a class="header-menu-tab"><span class="icon entypo-cog scnd-font-color"></span>Stop and Save</a>
+              </li>
+          </ul>
+          
+      </header>
+
+      <div id="data_view" class="lab_view" style="z-index:0;width:100%;margin-top:4px;height:100%;overflow:scroll;padding-bottom:60px;position:fixed;top:76px;padding-top:0px;">
+        <div class="block-general col-md-12 col-sm-12 col-xs-12 col-lg-9" style="padding:0px 0px 0px 10px;">
+          <div class="main-container" style="width:100%;min-width:600px;">
+            <div class="block block-general" style="width:100%;padding:10px;">
+              <h2 class="titular">ECG DATA</h2>
+              <div class="ct-chart block-general" style="width:100%;height:calc(100vh - 325px);">
+
+              </div>
+            </div>
+          </div> <!-- end main-container -->
+          <div class="col-md-4 col-sm-12 col-xs-12 feature-block" style="padding:0px 0px 0px 0px;min-width:300px;">
+            <div class="block block-general" style="width:100%;padding:10px;padding-bottom:0px;cursor:pointer;margin-top:-4px;">
+              <div class="block-general" style="width:100%;height:90px;padding-bottom:0px;">
+                  <h2 style="margin-top:32px;margin-left:-4px;float:left;display:inline-block;">HEART RATE (bpm):</h2>
+                  <h2 style="margin-top:16px;margin-left:6px;color:{{heart_rate_color}};font-size:42px;float:left;display:inline-block;">
+                    <i class="fa fa-heart blinking" style="font-size:36px;float:left;color:{{heart_rate_color}};margin-top:7px;"></i>
+                    <span style="color:{{heart_rate_color}};margin-left:6px;">
+                      {{heart_rate}}
+                    </span>
+                  </h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12 feature-block" style="padding:0px 0px 0px 10px;min-width:300px;">
+            <div class="block block-general" style="width:100%;padding:10px;padding-bottom:0px;cursor:pointer;margin-top:-4px;">
+              <div class="block-general" style="width:100%;height:90px;padding-bottom:0px;">
+                <h2 style="margin-top:32px;margin-left:-4px;float:left;display:inline-block;">VARIABILITY (std):</h2>
+                <h2 style="margin-top:16px;margin-left:6px;color:{{variability_color}};font-size:42px;float:left;display:inline-block;">
+                  <span style="color:{{variability_color}};margin-left:6px;">
+                    {{variability}}
+                  </span>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12 feature-block" style="padding:0px 0px 0px 10px;min-width:300px;">
+            <div class="block block-general" style="width:100%;padding:10px;padding-bottom:0px;cursor:pointer;margin-top:-4px;">
+              <div class="block-general" style="width:100%;height:90px;padding-bottom:0px;">
+                <h2 style="margin-top:32px;margin-left:-4px;float:left;display:inline-block;">STATUS:</h2>
+                <h2 style="margin-top:19px;margin-left:6px;color:{{health_color}};font-size:36px;float:left;display:inline-block;">
+                  <span style="color:{{health_color}};margin-left:6px;">
+                    {{health}}
+                  </span>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-general col-md-12 col-sm-12 col-xs-12 col-lg-3" style="padding:0px 0px 0px 10px;">
+          <div class="menu-box block" style="height:auto;padding-bottom:0px;"> <!-- MENU BOX (LEFT-CONTAINER) -->
+
+              <div class="block block-general" style="width:100%;padding:10px;padding-bottom:0px;cursor:pointer;">
+                <div class="block-general" style="width:100%;height:90px;padding-bottom:0px;">
+                  <h2 style="margin-top:32px;margin-left:-3px;float:left;display:inline-block;">T PEAK MAG(%):</h2>
+                  <h2 style="margin-top:19px;margin-left:6px;color:{{tmag_color}};font-size:36px;float:left;display:inline-block;">
+                    <span style="color:{{tmag_color}};margin-left:6px;">
+                      {{tmag}}%
+                    </span>
+                  </h2>
+                </div>
+              </div>
+
+              <div class="block block-general" style="width:100%;padding:10px;padding-bottom:0px;cursor:pointer;margin-top:-4px;">
+                <div class="block-general" style="width:100%;height:90px;padding-bottom:0px;">
+                  <h2 style="margin-top:32px;margin-left:-3px;float:left;display:inline-block;">ST DEVIATE (%):</h2>
+                  <h2 style="margin-top:19px;margin-left:6px;color:{{tmag_color}};font-size:36px;float:left;display:inline-block;">
+                    <span style="color:{{std_color}};margin-left:6px;">
+                      {{std_val}}%
+                    </span>
+                  </h2>
+                </div>
+              </div>
+
+              <div class="block block-general" style=";width:100%;padding-bottom:0px;cursor:pointer;margin-top:-4px;height:calc(100vh - 356px);overflow:hidden;padding:0px;">
+                <div style="height:calc(100vh - 406px);width:100%;padding:10px 6px 10px 10px;width:100%;overflow:hidden;">
+                  <div id="div_chat_content" style="height:100%;overflow:scroll;overflow-x:hidden;width:100%;">
+                    <p ng-repeat="message in chat_messages" style="width:100%;float:left;display:inline-block;margin:0px;">
+                      <span style="{{message.style}};font-size:16px;font-weight:700;">{{message.name}}: </span>
+                      <span style="font-size:16px;" ng-bind-html="message.content"></span>
+                    </p>
+                  </div>
+                </div>
+
+                <div id="div_chat_input" style="height:60px;;width:100%;">
+                  <form ng-submit="insert_chat_message(message_content)">
+                    <span class="icon entypo-paper-plane scnd-font-color scnd-font-color" style="position:absolute;margin-top:15px;margin-left:10px;font-size:18px;font-weight:800;"></span>
+                    <input ng-model="message_content" type="text" placeholder="Say something here..." style="width:100%;margin-left:0px;padding:0px 10px 0px 35px;border-radius:4px;">
+                    <button type="submit" style="display:none;">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="title-bar">
+      <div id="title-bar-btns">
+        <button class="handler-btn quit_bgcolor" id="close-btn"></button>
+        <button class="handler-btn zoom_bgcolor" id="max-btn"></button>
+        <button class="handler-btn mini_bgcolor" id="min-btn"></button>    
+      </div>
+    </div>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script>
+      try {
+          $ = jQuery = module.exports;
+          // If you want module.exports to be empty, uncomment:
+          // module.exports = {};
+      } catch(e) {}
+    </script>
+    <script src="js/electron-handler.js"></script>
+    <script src="lib/jqueryDraggable/jqueryDraggable.min.js"></script>
+    <script>
+      jQuery("#smallPopup_uploadRecord").tinyDraggable({ handle: '.header' });
+    </script>
+    <!-- <script src="lib/dsp/fili.min.js"></script> -->
+
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+
+    <script src="lib/chartist/chartist.min.js"></script>
+
+    <script src="lib/json/json_parse.js"></script>
+    <script src="lib/json/json2.js"></script>
+    <script src="lib/json/json_parse_state.js"></script>
+
+    <script src="lib/socket-io-client/socket.io.js"></script>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular/angular-sanitize.js"></script>
+    <script src="lib/filesaver/angular-file-saver.bundle.min.js"></script>
+
+    <script src="js/lab/lab.js"></script>
+    <script src="js/lab/lab_controller.js"></script>
+</body>
+</html>

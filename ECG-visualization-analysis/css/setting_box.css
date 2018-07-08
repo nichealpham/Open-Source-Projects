@@ -1,0 +1,74 @@
+.setting_box_icontop {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+}
+
+#settingApp {
+    width: 880px;
+    height: 560px;
+    left: calc(50% - 440px);
+    position: fixed;
+}
+
+#setting_contentArea_noMailSelected {
+    width:100%;
+    height: 100%;
+    display: inline-block;
+    background-color:rgb(31,37,61);
+    /*background-color:red;*/
+}
+
+.content_area_setting {
+    width:100%;
+    height: 100%;
+    display: inline-block;
+    background-color:rgb(31,37,61);
+    padding: 0px;
+}
+#div_background_image {
+    width:100%;display:inline-block;overflow:hidden;bottom:2px;display:none;
+    height:calc(100% - 0px);bottom:0px;
+}
+#div_background_image .app_contentArea_scroll {
+    background-color:rgb(31,37,61);padding-bottom:10px;position:absolute;padding-left:4px;
+    width: 100%;
+    height: 100%;
+}
+
+.suboption_bgImage_div {
+	width:50%;display:inline-block;
+	height: auto;
+    display: table-cell;
+    float:left;
+    margin-bottom: 4px;
+    vertical-align: middle;
+	/*-webkit-app-region: no-drag;*/
+}
+
+
+.setting_sub_option_text {
+	font-weight:400;font-size:14px;font-family:Montserrat;
+	margin-top:26px;margin-left:14px;
+	/*-webkit-app-region: no-drag;*/
+}
+
+
+
+.image_background_select {
+	cursor: pointer;
+	width: calc(100% - 4px);
+    margin-left: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+	border:2px solid transparent;
+	transition: border 0.4s;
+	/*-webkit-app-region: no-drag;*/
+}
+
+.image_background_select:hover {
+	border:2px solid rgb(84,151,211);
+	/*-webkit-app-region: no-drag;*/
+}

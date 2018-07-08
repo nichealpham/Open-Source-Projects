@@ -1,0 +1,195 @@
+<div class="main-container" style="padding-right:-10px;min-width:960px;height:calc(100vh - 90px);overflow:hidden;">
+  <div class="div_nen_den" style="" id="upload_record_popup">
+    <form ng-submit="save_this_record()">
+      <div id="smallPopup_uploadRecord" class="div_small_popup" style="border:3px solid black;top:140px;border-radius:0px;opacity:0;background-color:rgba(0,0,0,0.72);">
+          <div class="header">
+            <h2 style="">UPLOAD A RECORD</h2>
+            <label ng-click="close_popup_upload_record()" class="record-block-quiter" style="font-size:24px;top:11px;right:6px;">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </label>
+          </div>
+          <div class="body">
+              <div class="collum" style="width:34%;border-right:0px solid black;padding:14px;">
+                <label for="file-upload" class="custom-file-upload" style="margin-top:2px;">
+                  <i class="fa fa-cloud-upload" style="margin-right:4px;"></i> Custom Upload
+                </label>
+                <input on-read-file="importPackageFromTextFile($fileContent)" id="file-upload" type="file"/>
+                <span style="width:100%;display:inline-block;float:left;text-align:center;margin-top:18px;">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right:3px;font-size:13px;"></i>
+                  Or past data here:
+                </span>
+                <textarea required ng-change="update_ecg_data_and_duration()" class="sub-section" style="height:232px;margin-top:18px;" ng-model="file_content"></textarea>
+                <span style="width:100%;display:inline-block;float:left;text-align:left;margin:16px 0px;font-size:13px;padding-left:2px;">
+                  <i class="fa fa-file-o" aria-hidden="true" style="margin-right:2px;"></i>
+                  Total: {{ecg_data.length | number}} rows
+                </span>
+              </div>
+              <div class="collum" style="width:66%;border-right:0px solid black;padding:2px 14px 14px 14px;">
+
+                <div class="collum" style="width:80%;float:left;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-key" aria-hidden="true" style="margin-right:2px;"></i>
+                    Record name:
+                  </span>
+                  <input required type="text" class="sub-section" placeholder="Record name..." ng-model="record_name" style="width:calc(100% - 26px);border-top-right-radius:0px;border-bottom-right-radius:0px;">
+                </div>
+
+                <div class="collum" style="width:20%;float:left;padding:0px;margin-left:-30px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa-calendar-o" aria-hidden="true" style="margin-right:2px;"></i>
+                    Date:
+                  </span>
+                  <input required type="text" class="sub-section" placeholder="Record name..." ng-model="record_date" value="{{record_date}}" style="width:120px;border-top-left-radius:0px;border-bottom-left-radius:0px;" disabled>
+                </div>
+
+                <div class="collum" style="width:100%;float:left;margin-top:-8px;padding-right:4px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-pencil" aria-hidden="true" style="margin-right:2px;"></i>
+                    Comments:
+                  </span>
+                  <input required type="text" class="sub-section" placeholder="Record comments..." ng-model="record_comment" style="width:100%;">
+                </div>
+
+                <div class="collum" style="width:80%;float:left;margin-top:-8px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa fa-key" aria-hidden="true" style="margin-right:2px;"></i>
+                    Sampling frequency:
+                  </span>
+                  <input required ng-change="update_duration()" type="text" class="sub-section" placeholder="Hz..." ng-model="record_sampling_frequency" style="width:calc(100% - 26px);border-top-right-radius:0px;border-bottom-right-radius:0px;">
+                </div>
+
+                <div class="collum" style="width:20%;float:left;padding:0px;margin-left:-30px;margin-top:-8px;">
+                  <span style="width:100%;display:inline-block;float:left;text-align:left;margin:13px 0px;font-size:16px;padding-left:2px;">
+                    <i class="fa fa-clock-o" aria-hidden="true" style="margin-right:2px;"></i>
+                    Duration:
+                  </span>
+                  <input required type="text" class="sub-section" placeholder="sec..." ng-model="record_duration" value="{{record_duration | number}}" style="width:120px;border-top-left-radius:0px;border-bottom-left-radius:0px;" disabled>
+                </div>
+
+                <div class="collum" style="width:100%;float:left;margin-top:6px;">
+                  <div class="my-card" style=";margin-left:6px;height:46px;background-color:transparent;float:right;width:100%;">
+                    <button type="submit" class="sign-in button" style="border:none;color:white;cursor:pointer;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;width:200px;float:right;margin-left:12px;">
+                      <i class="fa fa-cloud-upload" aria-hidden="true" style="margin-right:2px;"></i>
+                      Upload now
+                    </button>
+                    <button ng-click="close_popup_upload_record()" class="sign-in button cancel-btn" style="">
+                      <i class="fa fa-time" aria-hidden="true" style="margin-right:2px;"></i>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="sk-circle" id="page_loading" style="position:fixed;z-index:2000;top:calc(50% - 146px);right:calc(50% - 30px);display: none;">
+    <div class="sk-circle1 sk-child"></div>
+    <div class="sk-circle2 sk-child"></div>
+    <div class="sk-circle3 sk-child"></div>
+    <div class="sk-circle4 sk-child"></div>
+    <div class="sk-circle5 sk-child"></div>
+    <div class="sk-circle6 sk-child"></div>
+    <div class="sk-circle7 sk-child"></div>
+    <div class="sk-circle8 sk-child"></div>
+    <div class="sk-circle9 sk-child"></div>
+    <div class="sk-circle10 sk-child"></div>
+    <div class="sk-circle11 sk-child"></div>
+    <div class="sk-circle12 sk-child"></div>
+  </div>
+  <div style="height:calc(100vh - 90px);overflow:hidden;padding-right:4px;width:320px;float:left;display:inline-block;">
+    <div class="loading block" style="padding-right:20px;padding-left:20px;padding-top:10px;padding-bottom:10px;height:200px;margin-top:0px;"> <!-- LOADING (RIGHT-CONTAINER) -->
+        <h2 style="width:100%;display:inline-block;text-align:center;margin-bottom:20px;">STORAGE USE</h2>
+        <div class="progress-bar downloading" style="width:100%;"></div>
+        <p style="margin-top:11px;">Local: 2GB</p>
+        <p class="percentage">81%</p>
+        <div class="progress-bar uploading" style="width:100%;"></div>
+        <p style="margin-top:11px;">Online: 200MB</p>
+        <p class="percentage">43%</p>
+    </div>
+    <div class="donut-chart-block block" style="height:calc(100vh - 307px);padding:0px;position:relative;overflow:hidden;margin-top:-3px;max-height:400px;">
+        <h2 class="titular overflow-3dot" style="margin-top:-14px;padding-left:4px;padding-right:4px;">{{selected_record.name}}</h2>
+        <div class="ct-chart" style="width:330px;height:calc(100% - 140px);margin-left:-4px;margin-top:-23px;"></div>
+        <ul class="os-percentages horizontal-list" style="width:100%;height:84px;position:absolute;bottom:36px;background-color:transparent;">
+            <li style="width:34%;display:inline-block;float:left;height:84px;margin-top:-1px;background-color:transparent;">
+                <p class="mac os scnd-font-color white_color" style="font-weight:bold;">Normal</p>
+                <p class="os-percentage normal_color" style="font-weight:bold;">{{selected_record.statistics[0]}}<sup>%</sup></p>
+            </li>
+            <li style="width:33%;display:inline-block;float:left;height:84px;background-color:transparent;">
+                <p class="linux os scnd-font-color white_color" style="font-weight:bold;">Caution</p>
+                <p class="os-percentage caution_color" style="font-weight:bold;">{{selected_record.statistics[1]}}<sup>%</sup></p>
+            </li>
+            <li style="width:33%;display:inline-block;float:left;height:84px;background-color:transparent;">
+                <p class="ios os scnd-font-color white_color" style="font-weight:bold;">Danger</p>
+                <p class="os-percentage danger_color" style="font-weight:bold;">{{selected_record.statistics[2]}}<sup>%</sup></p>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div style="height:56px;width:calc(100% - 320px);display:inline-block;padding-left:6px;padding-right:8px;">
+    <div class="block e_health_input_block" style="width:calc(100% - 299px);padding:0px;margin:0px;">
+      <input type="text" placeholder="Search any records here..." ng-model="record_search_term" style="margin:0px;background-color:rgb(57,66,100);border-radius:3px;">
+    </div>
+    <div class="my-card" style="width:143px;padding:0px;margin-left:10px;height:46px;overflow:hidden;">
+      <button class="section-button">
+        <i class="fa fa-list-ul" aria-hidden="true"></i>
+      </button>
+      <button class="section-button" style="width:48px;">
+        <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+      <button class="section-button" style="border:0px;">
+        <i class="fa fa-download" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="my-card" style="width:135px;margin-left:6px;height:46px;background-color:transparent;float:right;">
+      <button ng-click="open_popup_upload_record()" class="sign-in button" style="border:none;color:white;cursor:pointer;width:100%;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;">
+        <i class="fa fa-cloud-upload" aria-hidden="true" style="margin-right:2px;"></i>
+        Upload
+      </button>
+    </div>
+  </div>
+  <div style="height:calc(100vh - 151px);overflow-x:hidden;overflow-y:scroll;width:calc(100% - 320px);float:left;display:inline-block;">
+    <div class="col-md-12" style="padding-right:4px;"><!--orderBy:'-'-->
+      <div class="col-lg-6 col-md-6 col-sm-12 record-block-container" ng-mouseleave="mouse_leave_this_record()" ng-mouseenter ="display_record_statistics($index)" ng-repeat="record in records | filter: record_search_term track by $index" style="min-width:320px;padding: 0px 5px 0px 5px;height:auto;position:relative;cursor:pointer;border-radius:3px;">
+        <div class="record-block" style="padding:0px 0px 6px 0px;">
+          <div class="overflow-3dot" style="width:100%;float:left;display:inline-block;font-weight:bold;padding:10px;font-size:16px;margin-top:4px;">
+            {{$index + 1}}. {{record.name}}
+          </div>
+          <div style="width:100%;float:left;display:inline-block;margin-top:-16px;padding-left:10px;">
+            <p style="font-size:12px;" class="highlight_color">{{record.date | date}}</p>
+          </div>
+          <div class="" style="width:100%;float:left;display:inline-block;margin-top:-10px;padding-left:10px;height:32px;line-height:20px;padding-right:10px;">
+            <p style="font-size:14px;height:32px;line-height:20px;" class="grey_color overflow-3dot">
+              <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+               {{record.description}}
+             </p>
+          </div>
+          <ul class="profile-options horizontal-list" style="width:100%;display:inline-block;margin-left:0px;margin-top:2px;">
+              <li ng-click="analize_this_signal(record)" style="width:33%;display:inline-block;float:left;border:none;padding:0px;height:64px;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="comments "><p class="grey_color" style="font-size:14px;">Run Analysis</li></p></a>
+              <li ng-click="view_this_signal(record)" style="width:34%;display:inline-block;float:left;border:none;padding:0px;margin-top:-0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="views"><p class="grey_color" style="font-size:14px;">View Signal</li></p></a>
+              <li ng-click="" style="width:33%;display:inline-block;float:left;border:none;padding:0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="likes"><p class="grey_color" style="font-size:14px;">Send Doctor</li></p></a>
+          </ul>
+        </div>
+        <label ng-click="delete_this_record($index)" class="record-block-quiter grey_color" style="">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </label>
+      </div>
+    </div>
+    <!--<div class="sectional_loading" id="loading_records_spinner" style="position:absolute;z-index:999;top:calc(50% - 80px);right:calc(50% - 220px);"></div>-->
+    <div class="sk-circle" id="loading_records_spinner" style="position:absolute;z-index:2000;top:calc(50% - 146px);right:calc(32% - 30px);">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+  </div>
+</div>

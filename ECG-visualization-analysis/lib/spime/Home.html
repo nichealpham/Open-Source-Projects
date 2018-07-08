@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather" />
+    <script src="Scripts/angular.min.js"></script>
+    <!--<script src="Scripts/angular-resource.min.js"></script>-->
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="jquery/gridlayout.js"></script>
+    <script src="jquery/mailApp.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Module/app.js"></script>
+    <link href="css/fixedBar.css?v={random number/string}" rel="stylesheet" />
+    <link href="css/reuseable.css?v={random number/string}" rel="stylesheet" />
+    <link href="css/mailApp.css?v={random number/string}" rel="stylesheet" />
+</head>                                            
+<body ng-app="app" ng-controller="main">
+    <div class="page">
+        <div class="sideBar app_bg">
+            <i class="fa fa-windows sideBar_iconAnchor window">
+                <span class="iconAnchor_spanText">Window</span>
+            </i>
+            <i class="fa fa-bar-chart sideBar_iconAnchor2 dashboard">
+                <span class="iconAnchor_spanText">Statistic</span>
+            </i>
+            <i class="fa fa-globe sideBar_iconAnchor3 globe">
+                <span class="iconAnchor_spanText">Research</span>
+            </i>           
+            <i class="fa fa-file sideBar_iconAnchor4 article">
+                <span class="iconAnchor_spanText">Article</span>
+            </i>
+            <i class="fa fa-building sideBar_iconAnchor5 office">
+                <span class="iconAnchor_spanText">Office</span>
+            </i>
+            <i class="fa fa-users sideBar_iconAnchor6 profile">
+                <span class="iconAnchor_spanText">Profile</span>
+            </i>
+            
+        </div>
+        <div class="topBar app_bg">
+            <div class="SpimeBar orange_bg">
+                <button type="button" class="btn_Spime">
+                    SPIME
+                    <span class="icon">
+                        <i class="fa fa-bars lighter"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="paralel mg_left_-40">
+                <a class="paralel_textInside black_cl">{{pageTitle | uppercase}}</a>
+                <div class="deco_limBar orange_bg"></div>
+            </div>
+            <div class="topBar_searchBox_laptop">
+                <form>
+                    <i class="fa fa-search searchIcon"></i>
+                    <input type="text" class="tbSearch" placeholder="Search for someone, some projects and apps..." />
+                </form>
+            </div>
+            <div class="topBar_nameBox laptop">
+                <a class="nameBox_anchor">
+                    <img src="user/avarta/nguyen.png" class="bameBox_img" />
+                    {{admin[0].name}}
+                    <i class="fa fa-sort-desc nameBox_icon"></i>
+                </a>                
+            </div>
+            <div class="topBar_toolBox_laptop">
+                <a class="toolBox_anchor">
+                    <i class="fa fa-bell toolBox_icon"><span class="chip orange_bg" id="chip_newNoti">{{newNoti}}</span></i>
+                </a>  
+                <a class="toolBox_anchor">
+                    <i class="fa fa-tasks toolBox_icon"><span class="chip violet_bg" id="chip_newNoti">{{newTask}}</span></i>
+                </a> 
+                <a class="toolBox_anchor" id="topBar_btnmail">
+                    <i class="fa fa-envelope toolBox_icon"><span class="chip sunflower_bg" id="chip_newNoti">{{newMail}}</span></i>
+                </a>              
+            </div>
+        </div>
+        <div class="viewer">
+            <div class="viewport">
+                {{clickedMail.content}}
+            </div>
+        </div>
+        <div id="divNenDen2" class="shadow_x_1"></div>
+        <div id="personalBox">
+            <div id="personalBox_timelineBox">
+                <img class="timelineBox_img" src="user/timeline/donate.png" />
+                <img class="timelineBox_imgAva" src="user/avarta/nguyen.png" />
+                <label id="timelineBox_textName">{{admin[0].shortName}}</label>
+                <label id="timelineBox_textOccupation">{{admin[0].occupation}}</label>               
+            </div>
+            <i class="fa fa-envelope personalBox_iconButton">
+                <span class="personalBox_iconButton_text">nguyenpk95@spime.com</span>
+            </i>
+            <i class="fa fa-phone personalBox_iconButton2">
+                <span class="personalBox_iconButton_text2">0914 11 88 96</span>
+            </i>
+            <i class="fa fa-globe personalBox_iconButton3">
+                <span class="personalBox_iconButton_text2">/nguyenspime95</span>
+            </i>
+            <div class="personalBox_moreOpt">
+                <label class="personalBox_moreOpt_lbTitle">More options:</label>
+                <a class="personalBox_moreOpt_button">
+                    <i class="fa fa-trophy personalBox_moreOpt_button_icon"></i>
+                    <label class="personalBox_moreOpt_button_lbText">Portolio</label>
+                </a>
+                <a class="personalBox_moreOpt_button2">
+                    <i class="fa fa-shield personalBox_moreOpt_button_icon2"></i>
+                    <label class="personalBox_moreOpt_button_lbText">User Info</label>
+                </a>
+                <a class="personalBox_moreOpt_button3">
+                    <i class="fa fa-unlock-alt personalBox_moreOpt_button_icon2"></i>
+                    <label class="personalBox_moreOpt_button_lbText">Security</label>
+                </a>
+                <a class="personalBox_moreOpt_button4">
+                    <i class="fa fa-cogs personalBox_moreOpt_button_icon"></i>
+                    <label class="personalBox_moreOpt_button_lbText">Setting</label>
+                </a>
+                <a class="personalBox_moreOpt_button5">
+                    <i class="fa fa-gift personalBox_moreOpt_button_icon2"></i>
+                    <label class="personalBox_moreOpt_button_lbText">Billing</label>
+                </a>
+                <a class="personalBox_moreOpt_button6">
+                    <i class="fa fa-sign-out personalBox_moreOpt_button_icon2"></i>
+                    <label class="personalBox_moreOpt_button_lbText">Log Out</label>
+                </a>
+            </div>
+        </div>
+        <div id="mailApp" class="app_box app_bg">
+            <div class="app_topBar app_textcl">
+                <div class="app_titleBar xanhla_bg">
+                    <button type="button" class="app_btnTitle">
+                        MAIL BOX
+                        <span class="icon">
+                            <i class="fa fa-envelope lighter"></i>
+                        </span>
+                    </button>
+                    <a class="app_sectionbg app_textcl">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+                <div class="app_navBar app_textcl app_sectionbg">
+                    <a class="innitial" id="mailApp_inbox" ng-click="bindInbox()">Inbox</a>
+                    <a id="mailApp_outbox" ng-click="bindOutbox()">Outbox</a>
+                    <a id="mailApp_allmail">All mails</a>                    
+                    <span class="quit xanhla_bg" id="app_mail_btnquit">
+                        <i class="fa fa-times"></i>
+                    </span>
+                    <span class="hightlight">
+                        <i class="fa fa-pencil-square-o"></i>Compose
+                    </span>
+                </div>
+            </div>
+            <div class="app_sideBar app_textcl app_sectionbg app_textcl">
+                <div class="sideBar_scroll">
+                    <div class="app_searchBox">
+                        <form>
+                            <input type="text" class="app_tbsearch app_textcl" placeholder="Search some mails here..." ng-model="searchMail.from"/>
+                        </form>
+                    </div>
+                    <div class="app_sectionNameBar xanhla_bg">
+                        All inbox mails
+                        <span class="app_sectionNameBar_chip">{{getLength(getThisMailType(currentMailType))}}</span>
+                    </div>
+                    <div class="app_sideBar_contentArea">
+                        <a id="mail_anchor" class="app_mail_anchor" ng-repeat="mail in getThisMailType(currentMailType) | filter: searchMail: strict" ng-click="clickThisMail(mail)">
+                            <img class="app_mail_imgAva" src="{{mail.fromAvarta}}" onError="this.onerror=null;this.src='user/avarta/anonymous.png';"  />
+                            <i class="fa fa-calendar-o app_mail_titleIcon"></i>
+                            <label class="app_mail_fromText">{{mail.from}} - {{mail.date | date: 'MMM-dd '}}</label> 
+                            <i class="fa fa-send-o app_mail_titleIcon2"></i>
+                            <label class="app_mail_fromText2"><span style="font-size: 14px; font-weight: 600;">{{mail.title }}</span></label>                          
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="app_contentArea app_bg app_textcl">
+                <div class="app_contentArea_scroll">
+                    <div class="mail_content_topBar">
+                        <img class="mail_content_topBar_imgAva" src="{{clickedMail.fromAvarta}}" />
+                        <label class="mail_content_topBar_fromText">{{clickedMail.from}} - {{clickedMail.date}}</label>
+                        <label class="mail_content_topBar_fromText"><span style="font-size: 18px; font-weight: 600;">{{clickedMail.title | uppercase}}</span></label>      
+                    </div>
+                    <label class="mail_lbcontent" ng-bind-html="clickedMail.content | sanitize"></label>
+                    <div id="mail_contentArea_noMailSelected" class="app_textcl app_bg">
+                        <i class="fa fa-file-o app_textcl"></i>
+                        Select a mail to display
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>  
+</body>
+</html>

@@ -1,0 +1,194 @@
+<div class="main-container" style="padding-right:10px;min-width:960px;">
+
+  <div class="col-md-12 donut-chart-block block" style="height:360px;">
+    <div class="col-md-4 profile" style="padding:20px;padding-top:26px;max-width:320px;">
+      <div class="profile-picture big-profile-picture clear">
+          <img width="150px" style="border-radius:6px;" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg" >
+      </div>
+      <h1 class="user-name" style="font-size:24px;margin-top:12px;">{{ehealth.fullname}}</h1>
+      <div class="profile-description" style="margin-top:-10px;margin-bottom:-24px;">
+          <p class="scnd-font-color" style=";font-size:18px;font-weight:700;">{{ehealth.occupation}}</p>
+      </div>
+      <a class="sign-in button" style="max-width:160px;height:50px;line-height:50px;margin-top:40px;cursor:pointer;font-size:14px;font-weight:400;">CHANGE PICTURE</a>
+    </div>
+
+    <div class="col-md-8" style="padding-right:40px;">
+      <h2 class="titular" style="text-align:left;float:left;display:inline-block;width:100%;">1. GENERAL INFORMATION</h2>
+      <div style="float:left;display:inline-block;width:100%;">
+        <div class="col-md-12">
+          <div class="block e_health_text_block" style="width:90px;text-align:right;">Fullname:</div>
+          <div class="block e_health_input_block" style="width:calc(100% - 100px);">
+            <input type="text" ng-change="updateInfo()" placeholder="User full name..." ng-model="ehealth.fullname">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="block e_health_text_block" style="width:90px;text-align:right;">MSSID:</div>
+          <div class="block e_health_input_block" style="width:calc(100% - 100px);">
+            <input type="text" ng-change="updateInfo()" placeholder="MSSID..." ng-model="ehealth.mssid" disabled="true" style="background-color:#607D8B;">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="block e_health_text_block" style="width:90px;text-align:right;">DOB:</div>
+          <div class="block e_health_input_block" style="width:calc(100% - 370px);">
+            <input type="text" ng-change="updateInfo()" placeholder="DD/MM/YYYY" ng-model="ehealth.date_of_birth">
+          </div>
+          <div class="block e_health_text_block" style="width:50px;text-align:right;margin-left:20px;">Sex:</div>
+          <div class="block e_health_input_block" style="width:200px;">
+            <input type="text" ng-change="updateInfo()" placeholder="Male/Female/Others" ng-model="ehealth.sex">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="block e_health_text_block" style="width:90px;text-align:right;">Occupation:</div>
+          <div class="block e_health_input_block" style="width:calc(100% - 100px);">
+            <input type="text" ng-change="updateInfo()" placeholder="Max 40 characters..." ng-model="ehealth.occupation">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 block;" style="margin-top:-3px;">
+    <div class="col-md-8" style=";padding-right:10px;">
+      <div class="donut-chart-block block" style="width:100%;padding:0px 20px 20px 20px;height:400px;">
+        <h2 class="titular" style="text-align:left;float:left;display:inline-block;width:100%;">2. CONTACT INFORMATION</h2>
+        <div style="float:left;display:inline-block;width:100%;">
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Phone:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Personal mobile phone..." ng-model="ehealth.phone">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Email:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Personal email..." ng-model="ehealth.email">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Country:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 390px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Country..." ng-model="ehealth.country">
+            </div>
+            <div class="block e_health_text_block" style="width:50px;text-align:right;margin-left:20px;">City:</div>
+            <div class="block e_health_input_block" style="width:200px;">
+              <input type="text" ng-change="updateInfo()" placeholder="City..." ng-model="ehealth.city">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Address 1:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Max 40 characters..." ng-model="ehealth.address_line_1">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Address 2:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Max 40 characters..." ng-model="ehealth.address_line_2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="donut-chart-block block" style="width:100%;padding:0px 20px 20px 20px;height:400px;">
+        <h2 class="titular" style="text-align:left;float:left;display:inline-block;width:100%;">4. MEDICAL HISTORY</h2>
+        <div class="col-md-12 checkbox-container" style="margin-top:-14px;">
+          <div class="control-group">
+            <label class="control control--checkbox">History of heart attack
+              <input type="checkbox" ng-model="ehealth.medical_history.history_stroke" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">High blood pressure
+              <input type="checkbox" ng-model="ehealth.medical_history.high_blood_pressure" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Overweight
+              <input type="checkbox" ng-model="ehealth.medical_history.obesity" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Alcoholism
+              <input type="checkbox" ng-model="ehealth.medical_history.alcoholism" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+
+
+
+        </div>
+        <h2 class="titular" style="text-align:left;float:left;display:inline-block;width:100%;margin-top:-90px;">5. CLINICAL SYMPTOMS</h2>
+        <div class="col-md-12 checkbox-container" style="margin-top:-24px;">
+          <div class="control-group">
+            <label class="control control--checkbox">Chest pain
+              <input type="checkbox" ng-model="ehealth.clinical_symptoms.chest_pain" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Shortness of breath
+              <input type="checkbox" ng-model="ehealth.clinical_symptoms.shortness_of_breath" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Severe sweeting
+              <input type="checkbox" ng-model="ehealth.clinical_symptoms.severe_sweating" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">Dizziness
+              <input type="checkbox" ng-model="ehealth.clinical_symptoms.dizziness" ng-change="updateInfo()"/>
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 block;" style="margin-top:-73px;border-top-left-radius:0px;border-top-right-radius:0px;">
+    <div class="col-md-8" style=";padding-right:10px;border-top-left-radius:0px;border-top-right-radius:0px;">
+      <div class="donut-chart-block block" style="width:100%;padding:0px 20px 20px 20px;height:460px;">
+        <h2 class="titular" style="text-align:left;float:left;display:inline-block;width:100%;">3. DOCTOR INFORMATION</h2>
+        <div style="float:left;display:inline-block;width:100%;">
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Fullname:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].fullname" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">DSSID:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].dssid" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Specialty:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].specity" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Office:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].work_address" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Phone:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].phone" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="block e_health_text_block" style="width:90px;text-align:right;">Email:</div>
+            <div class="block e_health_input_block" style="width:calc(100% - 120px);">
+              <input type="text" ng-change="updateInfo()" placeholder="Currently you have no doctors..." ng-model="ehealth.my_doctors[0].email" disabled="true" style="background-color:#607D8B;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" style="border-top-left-radius:0px;border-top-right-radius:0px;">
+      <div class="donut-chart-block block" style="width:100%;padding:0px 20px 20px 20px;height:460px;">
+
+      </div>
+    </div>
+  </div>
+</div>

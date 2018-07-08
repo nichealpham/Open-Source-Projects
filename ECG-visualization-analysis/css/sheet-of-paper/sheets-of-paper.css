@@ -1,0 +1,316 @@
+/*!
+ * HTML-Sheets-of-Paper (https://github.com/delight-im/HTML-Sheets-of-Paper)
+ * Copyright (c) delight.im (https://www.delight.im/)
+ * Licensed under the MIT License (https://opensource.org/licenses/MIT)
+ */
+
+html, body {
+	/* Reset the document's margin values */
+	margin: 0;
+	/* Reset the document's padding values */
+	padding: 0;
+	/* Use the platform's native font as the default */
+	font-family: "Open Sans", "Montserrat", "Roboto", -apple-system, "San Francisco", "Segoe UI", "Helvetica Neue", sans-serif;
+	/* Define a reasonable base font size */
+	font-size: 10pt;
+
+	/* Styles for better appearance on screens only -- are reset to defaults in print styles later */
+
+	/* Use a non-white background color to make the content areas stick out from the full page box */
+	background-color: #eee;
+	color: black !important;
+}
+/* Styles that are shared by all elements */
+* {
+	/* Include the content box as well as padding and border for precise definitions */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.page {
+	/* Styles for better appearance on screens only -- are reset to defaults in print styles later */
+
+	/* Divide single pages with some space and center all pages horizontally */
+	margin: 1cm auto;
+	/* Define a white paper background that sticks out from the darker overall background */
+	background: #fff;
+	/* Show a drop shadow beneath each page */
+	box-shadow: 0 4px 5px rgba(75, 75, 75, 0.2);
+	/* Override outline from user agent stylesheets */
+	outline: 0;
+	color:black;
+	width: 800px;
+	/* Reflect the paper height in the screen rendering (must match size from @page rule) */
+	min-height: 1100px;
+	width: 800px;
+	/* Reflect the paper height in the screen rendering (must match size from @page rule) */
+	min-height: 1100px;
+
+	/* Reflect the actual page margin/padding on paper in the screen rendering (must match margin from @page rule) */
+	padding-left: 1cm;
+	padding-top: 1cm;
+	padding-right: 1cm;
+	padding-bottom: 1cm;
+}
+/* Defines a class for manual page breaks via inserted .page-break element */
+div.page-break {
+	page-break-after: always;
+	color: black;
+}
+/* For top-level headings only */
+h1 {
+	/* Force page breaks after */
+	page-break-before: always;
+	color: black;
+}
+/* For all headings */
+h1, h2, h3, h4, h5, h6 {
+	/* Avoid page breaks immediately */
+	page-break-after: avoid;
+	color: black;
+}
+/* For all paragraph tags */
+p {
+	/* Reset the margin so that the text starts and ends at the expected marks */
+	margin: 0;
+	color: black;
+}
+/* For adjacent paragraph tags */
+p + p {
+	/* Restore the spacing between the paragraphs */
+	margin-top: 0.5cm;
+	color: black;
+}
+/* For links in the document */
+a {
+	/* Prevent colorization or decoration */
+	text-decoration: none;
+	color: black;
+}
+/* For tables in the document */
+table {
+	/* Avoid page breaks inside */
+	page-break-inside: avoid;
+	color: black;
+}
+/* Use CSS Paged Media to switch from continuous documents to sheet-like documents with separate pages */
+@page {
+	/* You can only change the size, margins, orphans, widows and page breaks here */
+
+	/* Require that at least this many lines of a paragraph must be left at the bottom of a page */
+	orphans: 4;
+	/* Require that at least this many lines of a paragraph must be left at the top of a new page */
+	widows: 2;
+}
+/* When the document is actually printed */
+@media print {
+	* {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+	html, body {
+		/* Reset the document's background color */
+		background-color: #fff;
+		color: black !important;
+	}
+	.page {
+		size: 210mm 297mm; /* landscape */
+		/* Reset all page styles that have been for better screen appearance only */
+		/* Break cascading by using the !important rule */
+		/* These resets are absolute must-haves for the print styles and the specificity may be higher elsewhere */
+		width: 800px !important;
+		height: 1100px !important;
+		margin: 0px !important;
+		padding: 1cm !important;
+		border: initial !important;
+		border-radius: initial !important;
+		background: initial !important;
+		box-shadow: initial !important;
+		color: black !important;
+		/* Force page breaks after each .page element of the document */
+		page-break-after: always;
+		/*overflow: hidden;*/
+	}
+	.page_section {
+		width: 100%;
+		height: auto;
+		display: inline-block;
+	}
+	.border-invisible-on-print {
+		border-bottom:0px dotted black !important;
+		padding-top:3px;
+	}
+	.hidden_on_print {
+		display: none !important;
+	}
+	.ct-grid {
+		stroke: rgba(0, 0, 0, 0.2);
+		stroke-width: 1px;
+		stroke-dasharray: 2px; 
+	}
+	.page_section {
+		width: 100%;
+		height: auto;
+		display: inline-block;
+		/*margin-bottom:24px;*/
+	}
+	.color_caution {
+		color:rgb(255,201,14);
+	}
+	.color_black {
+		color: black;
+	}
+	.color_normal {
+		color: rgb(34,177,76);
+	}
+	.border-invisible-on-print {
+		border-bottom:1px dotted black;
+	}
+	.primary_color{
+		color: rgb(52,152,219);
+	}
+	.page_title {
+		font-family: Lato;
+		font-size: 18px;
+		color: black;
+		width:100%;
+		display:inline-block;
+		float:left;
+		text-align: center;
+		
+	}
+	.table-cell-title {
+		width:100px;
+		text-align: right;
+		padding-top:4px;
+	}
+	.table-cell-content {
+		width:calc(100% - 100px);
+		text-align: left;
+		padding-left:4px;padding-right:0px;
+	}
+	.print-standard-text {
+		font-family: Open Sans;
+		font-size: 13px;
+		line-height: 21px;
+		color: black;
+		width:100%;
+		display:inline-block;
+		float:left;
+		text-align: left;
+		font-weight:400;
+	}
+	.company_logo {
+		display: inline-block;
+		float:left;
+		height:72px;
+	}
+	.page_section header {
+		font-family: Open Sans;
+		font-size:16px;font-weight: 300;
+		display: inline-block;
+		width: 100%;
+		padding: 0px 0px 4px 0px;
+		border-bottom: 1px solid rgb(0,162,232);
+		color: rgb(0,162,232);
+		margin-bottom: 10px;
+	}
+	.page_devision {
+		width: 100%;
+		height: auto;
+		display: inline-block;
+		float:left;
+	}
+	#print-pdf-button {
+		width:260px;position:fixed;bottom:0px;
+		/*left:calc(50% - 130px);*/
+		right:8px;
+		border:none;color:white;cursor:pointer;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;width:200px;float:right;margin-left:12px;
+	}
+}
+	.ct-grid {
+		stroke: rgba(0, 0, 0, 0.2);
+		stroke-width: 1px;
+		stroke-dasharray: 2px; 
+	}
+	.page_section {
+		width: 100%;
+		height: auto;
+		display: inline-block;
+		margin-bottom:24px;
+	}
+	.color_caution {
+		color:rgb(255,201,14);
+	}
+	.color_black {
+		color: black;
+	}
+	.color_normal {
+		color: rgb(34,177,76);
+	}
+	.border-invisible-on-print {
+		border-bottom:1px dotted black;
+	}
+	.primary_color{
+		color: rgb(52,152,219);
+	}
+	.page_title {
+		font-family: Lato;
+		font-size: 18px;
+		color: black;
+		width:100%;
+		display:inline-block;
+		float:left;
+		text-align: center;
+		
+	}
+	.table-cell-title {
+		width:100px;
+		text-align: right;
+		padding-top:4px;
+	}
+	.table-cell-content {
+		width:calc(100% - 100px);
+		text-align: left;
+		padding-left:4px;padding-right:0px;
+	}
+	.print-standard-text {
+		font-family: Open Sans;
+		font-size: 13px;
+		line-height: 21px;
+		color: black;
+		width:100%;
+		display:inline-block;
+		float:left;
+		text-align: left;
+		font-weight:400;
+	}
+	.company_logo {
+		display: inline-block;
+		float:left;
+		height:72px;
+	}
+	.page_section header {
+		font-family: Open Sans;
+		font-size:16px;font-weight: 300;
+		display: inline-block;
+		width: 100%;
+		padding: 0px 0px 4px 0px;
+		border-bottom: 1px solid rgb(0,162,232);
+		color: rgb(0,162,232);
+		margin-bottom: 10px;
+	}
+	.page_devision {
+		width: 100%;
+		height: auto;
+		display: inline-block;
+		float:left;
+	}
+	#print-pdf-button {
+		width:260px;position:fixed;bottom:0px;
+		/*left:calc(50% - 130px);*/
+		right:8px;
+		border:none;color:white;cursor:pointer;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;width:200px;float:right;margin-left:12px;
+	}
+
+	
+	

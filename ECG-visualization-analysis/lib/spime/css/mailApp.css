@@ -1,0 +1,410 @@
+﻿.app_bg{
+    background-color: rgba(31,37,61,0.64);
+}
+.app_textbg{
+    color: rgba(57,66,100,0.64);
+}
+.app_bg_700{
+    background-color: rgba(31,37,61,0.7);
+}
+.app_textbg_700{
+    color: rgba(0,0,0,0.64);
+}
+.app_sectionbg{
+    background-color: rgb(57,66,100);
+}
+.app_textcl{
+    color: rgb(138,146,165);
+}
+.xanhla_bg{
+    background-color: #16a085;
+}
+.app_box{
+    width: 800px;
+    height: 500px;
+    position: fixed;
+    overflow: hidden;
+    font-family: Montserrat;
+    z-index: 1;
+    top: calc(50vh - 250px - 80px);
+    left: calc(50vw - 400px);
+    /*border: 4px solid rgba(31,37,61,1);*/
+    border: 4px solid rgba(0,0,0,0.9);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.app_topBar{
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+    color: white;
+    line-height: 52px;
+    position: relative;
+    font-family: inherit;
+    line-height: 60px;
+    float: left;
+}
+.app_btnTitle{
+    padding-right: 20px;
+    height: 52px;
+    float: left;
+    position: relative;
+    font-size: 16px;
+    line-height: 52px;
+    color: white;
+    font-family: Montserrat;
+    font-weight: 400;
+    display: block;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+.app_btnTitle:focus{
+    outline: none;
+}
+.app_btnTitle span{
+    margin-left: -10px;
+    margin-top: 2px;
+}
+.app_titleBar a{
+    position: absolute;
+    left: 188px;
+    width: 52px;
+    height: 52px;
+    display: block;
+    cursor: pointer;
+}
+.app_titleBar a i{
+    position: relative;
+    float: left;
+    color: inherit;
+    font-size: 16px;
+    margin: 18px;
+}
+.app_titleBar{
+    width: 240px;
+    height: 52px;
+    float: left;
+    position: relative;
+}
+.app_navBar{
+    position: relative;
+    width: 552px;
+    height: 52px;
+    font-family: inherit;
+    font-size: 16px;
+    float: right;
+    line-height: 52px;
+    overflow: hidden;
+    /*border-left: 4px solid rgba(31,37,61,1);*/
+    border-left: 4px solid rgba(57,66,100,1);
+}
+.app_navBar a{
+    font-size: 14px;
+    padding: 0px 16px 0px 16px;
+    display: block;
+    position: relative;
+    float: left;
+    cursor: pointer;
+}
+.innitial{
+    font-size: 14px;
+    padding: 0px 16px 0px 16px;
+    display: block;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    background-color: #16a085;
+    color: white;
+}
+.quit{
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+.quit i{
+    font-size: 16px;
+    padding: 18px;
+    color: white;
+}
+.hightlight{
+    position: relative;
+    float: right;
+    cursor: pointer;
+    padding-right: 16px;
+    line-height: 52px;
+    font-size: 14px;
+    transition: background-color ease-in-out 0.4s;
+    margin-right: 3px;
+}
+.hightlight:hover{
+    background-color: #16a085;
+    color: white;
+}
+.hightlight i{
+    position: relative;
+    float: left;
+    font-size: 20px;
+    margin-right: 8px;
+    margin-top: 16px;
+    padding-left: 16px;
+}
+.app_sideBar{
+    position: relative;
+    float: left;
+    width: 244px;
+    height: 448px;
+    overflow: hidden;
+    border-right: 4px solid rgba(31,37,61,1);
+}
+.app_contentArea{
+    position: absolute;
+    float: right;
+    width: 548px;
+    height: 440px;
+    overflow: hidden;
+    bottom: 0px;right:0px;
+}
+.sideBar_scroll{
+    width: 255px;
+    height: 448px;
+    position: relative;
+    padding-right: 15px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.app_searchBox{
+    position: fixed;
+    width: 240px;
+    height: 52px;
+    z-index: 1;
+    background-color: inherit;
+    padding: 0px;
+}
+.app_sectionNameBar{
+    position: absolute;
+    width: calc(100% - 4px);
+    height: 42px;
+    margin-top: 52px;
+    font-family: Montserrat;
+    font-size: 15px;
+    line-height: 42px;
+    color: white;
+    text-align: left;
+    z-index: 1;
+    padding-left: 12px;
+}
+.app_tbsearch{
+    width: 216px;
+    height: 52px;
+    position: relative;
+    float: left;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    line-height: 52px;
+    margin-left: 0px;
+    font-size: 15px;
+    font-family: Montserrat;
+    transition: color ease-in 0.4s;
+    background-color: red;
+}
+.app_tbsearch:focus{
+    color: white;
+}
+.app_sectionNameBar_chip{
+    font-family: inherit;
+    font-size: 14px;
+    color: white;
+    border-radius: 6px;
+    background-color: #e74c3c;
+    position: relative;
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin: 9px 12px 20px 10px;
+}
+.app_sideBar_contentArea{
+    position: relative;
+    float: left;
+    clear: both;
+    width: 240px;
+    margin-top: 100px;
+}
+.app_mail_anchor{
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 65px;
+    font-family: Montserrat;
+    font-size: 13px;
+    border-bottom: 2px solid rgba(47,52,61,0.6);
+    transition: background-color ease-in 0.4s;
+    margin-top: -0px;
+    cursor: pointer;
+}
+.app_mail_anchor:hover{
+    background-color: rgba(47,52,61,0.5);
+}
+.app_mail_anchor_innitial{
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    height: 60px;
+    font-family: Montserrat;
+    font-size: 13px;
+    border-bottom: 2px solid rgba(47,52,61,0.6);
+    transition: background-color ease-in 0.4s;
+    cursor: pointer;
+}
+.app_mail_anchor_innitial:hover{
+    background-color: rgba(47,52,61,0.5);
+}
+.app_mail_imgAva{
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-left: 8px;
+    margin-top: 10px;
+    float: left;
+    font-family: Montserrat;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.app_mail_fromText{
+    position: relative;
+    display: inline-block;
+    height: 13px;
+    line-height: 13px;
+    float: left;
+    margin-left: 6px;
+    margin-top: 14px;
+    width: 172px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Don't forget this one */
+    cursor: pointer;
+    font-size: 10px;
+}
+.mail_content_topBar_fromText{
+    position: relative;
+    display: inline-block;
+    height: 13px;
+    line-height: 13px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 14px;
+    white-space: nowrap;
+    width: 460px;
+}
+.app_mail_titleIcon{
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    height: 13px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 14px;
+}
+.app_mail_fromText2{
+    position: relative;
+    display: inline-block;
+    height: 13px;
+    line-height: 13px;
+    float: left;
+    margin-left: 6px;
+    margin-top: 6px;
+    width: 172px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Don't forget this one */
+    cursor: pointer;
+}
+.app_mail_titleIcon2{
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    height: 13px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 6px;
+}
+.app_contentArea_scroll{
+    width: 577px;
+    padding-right: -17px;
+    height: 448px;
+    overflow: scroll;
+    overflow-x: hidden;
+    clear: both;
+    font-size: 15px;
+}
+.mail_content_topBar{
+    width: 560px;
+    position: relative;
+    display: inline-block;
+    height: 70px;
+}
+.mail_content_topBar_imgAva{
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin: 10px 0px 0px 15px;
+    border-radius: 40px;
+    float: left;
+}
+.mail_lbcontent{
+    margin: 15px 30px 15px 30px;
+    position: relative;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: Lato;
+}
+#mail_contentArea_noMailSelected{
+    width: 560px;
+    height: 448px;
+    position: absolute;
+    margin-top: -60px;
+    font-family: Montserrat;
+    font-size: 18px;
+    text-align: center;
+}
+#mail_contentArea_noMailSelected i{
+    font-size: 100px;
+    width: 560px;
+    margin-top: 180px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#setting_contentArea_noMailSelected{
+    width: 560px;
+    height: 448px;
+    position: absolute;
+    margin-top: -60px;
+    font-family: Montserrat;
+    font-size: 18px;
+    text-align: center;
+}
+#setting_contentArea_noMailSelected i{
+    font-size: 100px;
+    width: 560px;
+    margin-top: 180px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#mailApp{
+    display: none;
+    opacity: 0;
+}
