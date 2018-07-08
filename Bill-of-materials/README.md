@@ -14,13 +14,27 @@
 
 # App Features
 
-## 1. Database with arithmetic fields, support +\-\*\/
+<p float="left">
+  <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
+  <p>
+    ## 1. Database with arithmetic fields, support +\-\*\/
+    <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
+  </p>
+  
+    ___
+    
+</p>
 
-<p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
-
-<img src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
-
-___
+<p float="left">
+  <img align="left" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Bill-of-materials/captures/2.png" hspace="30" vspace="10" width="520">
+  <p>
+    ## 1. Database with arithmetic fields, support +\-\*\/
+    <p>For example, user can create new fields like Revenue = Quantity * Price - Sales </p>
+  </p>
+  
+    ___
+    
+</p>
 
 ## 2. Automatic fields update/calculation
 
