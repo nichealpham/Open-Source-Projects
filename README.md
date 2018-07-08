@@ -1,7 +1,6 @@
-<img src="https://i1.wp.com/echip.pro/wp-content/uploads/2017/02/Open-Source-Word-Cloud.jpg" hspace="0" vspace="0" width="520">
-
 # Welcome to my Open-Source Programming Projects
 <p> A collection of projects that reflect my knowledge and experience in certain programming languages.</p>
+<img align="right" src="https://thedistance.co.uk/wp-content/uploads/2016/04/Open-Source-Software-.jpg" hspace="0" vspace="0" width="520">
 
 ### App Features
 * Single-page architecture
