@@ -5,7 +5,6 @@
 A front-end Gulp compiler for Wordpress application and Automatic deploy to AWS Code Pipeline
 
 * Inspired by: [http://github.com/3bola/gulp-starter](http://github.com/3bola/gulp-starter)
-* Visit staging server: [http://fj-dev.nativesdev.com.au](http://fj-dev.nativesdev.com.au)
 * Visit production server: [http://fj.nativesdev.com.au](http://fj.nativesdev.com.au)
 
 ### Features
@@ -39,7 +38,7 @@ NOTE: before following the steps below please:
 2. Locate your `htdocs` folder. Then open Command Prompt and type:
 
 ```sh
-git clone git@github.com:nguyenpham95/fashion-journal.git /***/***/htdocs
+git clone git@github.com:nichealpham/fashion-journal.git /***/***/htdocs
 cd /***/***/htdocs
 npm install && npm run init
 ```
@@ -141,14 +140,6 @@ npm run export
 
 #### Deployment
 
-IMPORTANT NOTE: Only deploy to servers' branches when everything is ready!
-
-Branch structure:
-
-1. Master branch: for developers to pull code and push code during development. Commits on this branch will HAVE NO EFFECT on servers.
-2. Staging branch: for deploying to staging server at: [http://fj-dev.nativesdev.com.au](http://fj-dev.nativesdev.com.au).
-3. Production branch: for deploying to production server at: [http://fj.nativesdev.com.au](http://fj.nativesdev.com.au).
-
 In other to deploy, merge code from master branch to the corresponding branches.
 
 ##### Steps to server deployment
@@ -177,8 +168,6 @@ Merge code from master to staging
 git merge master
 ```
 
-NOTE: this step usually involves fixing some code conflicts. When this happens, try to solve the conflicted files and add them to `stage changes` section and merge again.
-
 After merging, developers can swith back to master and continue working:
 
 ```sh
@@ -189,7 +178,7 @@ AWS CodePipeline will automatically compile neccessary files and deloy them to t
 
 #### Codeflow
 
-![Image structure not found](https://github.com/nguyenpham95/fashion-journal/blob/master/webpackage/app-structure.png)<br/>
+![Image structure not found](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy/webpackage/app-structure.png)<br/>
 
 When `npm start` is runned, it does the following:
 
@@ -222,7 +211,7 @@ You can find some useful options in the `gulpfile.js` file.
 
 #### The MIT License (MIT)
 
-Copyright (c) Juri Saltbacka
+Copyright (c) 2017 Nicheal Pham
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -233,11 +222,3 @@ so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.

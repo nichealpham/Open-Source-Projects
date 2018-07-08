@@ -1,13 +1,13 @@
 {
-    "name": "gulp-starter",
+    "name": "php-package-for-aws-gulp",
     "version": "1.3.0",
     "author": {
-        "name": "Juri Saltbacka",
-        "email": "juri@3bola.io"
+        "name": "Nicheal Pham",
+        "email": "nichealpham@gmail.com"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/3bola/gulp-starter.git"
+        "url": "https://github.com/nichealpham/Open-Source-Projects/tree/master/Wordpress-automated-compile-deploy"
     },
     "scripts": {
         "install": "bower install",
@@ -17,9 +17,7 @@
         "rebuild": "gulp clear && gulp compile && gulp replace-prod && gulp rebuild-appspec",
         "export": "gulp export",
         "import": "gulp import",
-        "release": "gulp release",
-        "deploy": "git push git@github.com:nguyenpham95/fashion-journal.git --all",
-        "pull": "git pull git@github.com:nguyenpham95/fashion-journal.git"
+        "release": "gulp release"
     },
     "devDependencies": {
         "bower": "*",

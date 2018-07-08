@@ -34,9 +34,9 @@ Libraries
 
 ---
 
-## 2. ECG-visualization-analysis software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/ECG-visualization-analysis)/[Demo](https://nichealpham.github.io/Open-Source-Projects/ECG-visualization-analysis)
+## 2. ECG-visualization-analysis software: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Ecg-visualization-analysis)/[Demo](https://nichealpham.github.io/Open-Source-Projects/Ecg-visualization-analysis)
 
-<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/ECG-visualization-analysis/images/signal.PNG" vspace="0" width="480">
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Ecg-visualization-analysis/images/signal.PNG" vspace="0" width="480">
 
 A Web-based ECG signal visualization software for cardiac education
 
@@ -52,6 +52,32 @@ Libraries
 * Socket.io
 * IndexedDB
 * Chartist.js
+
+---
+
+## 3. Wordpress-automated-compile-deploy source: [Source](https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy)/[Production](http://fj.nativesdev.com.au)
+
+<img align="right" src="https://github.com/nichealpham/Open-Source-Projects/blob/master/Wordpress-automated-compile-deploy/webpackage/app-structure.png" vspace="0" width="480">
+
+A Web-based ECG signal visualization software for cardiac education
+
+Features
+
+* Original Wordpress application structure
+* Livereloading development server with automatic building of SCSS
+* Bower component management
+* Automatic image compressing
+* SCSS compiling
+* CSS autoprefixing, combining and minifying
+* JavaScript combining and compressing with uglify
+* Automatic deploy to AWS Code Pipeline with AWS CodeCommit, CodeBuild and CodeDeploy
+
+Libraries
+
+* Php
+* Nodejs
+* Gulp
+* AWS Code Pipeline
 
 ---
 
