@@ -1,6 +1,6 @@
 # Welcome to my Open-Source Programming Projects
 <p> A collection of projects that reflect my knowledge and experience in certain programming languages.</p>
-<img align="right" src="https://thedistance.co.uk/wp-content/uploads/2016/04/Open-Source-Software-.jpg" hspace="0" vspace="0" width="380">
+<img align="right" src="https://thedistance.co.uk/wp-content/uploads/2016/04/Open-Source-Software-.jpg" hspace="0" vspace="0" width="320">
 
 ### App Features
 * Single-page architecture
@@ -23,14 +23,15 @@ A simple Bill of Materials (BOM) software
 Features
 
 * Arithmetic database
-* Invoice/Items management
-* Fields automated calculation
+* Invoice/Item management
 
 Libraries
 
 * AngularJS
 * jQuery
 * localStorage
+
+<br/><br/>
 
 ---
 
