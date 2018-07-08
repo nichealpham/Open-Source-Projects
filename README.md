@@ -24,6 +24,7 @@ Features
 
 * Arithmetic database
 * Invoice/Item management
+* Fields automated calculation
 
 Libraries
 
@@ -31,7 +32,7 @@ Libraries
 * jQuery
 * localStorage
 
-<br/><br/>
+<br/>
 
 ---
 
