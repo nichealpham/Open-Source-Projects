@@ -613,7 +613,7 @@ var app = angular.module("app")
     $scope.openLaboratory = function() {
       $scope.left_navigator_count = 0;
       $scope.hide_left_navigator();
-      $window.open("laboratory.html", "_blank", 'width=1024,height=680');
+      $window.open("laboratory.html", "_blank", 'width=1260,height=760');
       // $scope.socket.emit("command_app_to_open_laboratory_as_new_window");
       // var win = new $scope.BrowserWindow({ width: 1024, height: 690 });
       // win.loadURL('www.google.com');
@@ -1292,13 +1292,13 @@ var app = angular.module("app")
     $scope.view_this_signal = function(record) {
       var index = $scope.records.indexOf(record);
       $window.localStorage["cassandra_command_lab_to_run_this_signal"] = JSON.stringify($scope.records[index]);
-      $window.open("laboratory.html", "_blank", 'width=1024,height=700');
+      $window.open("laboratory.html", "_blank", 'width=1260,height=760');
       // $scope.socket.emit("command_app_to_open_laboratory_as_new_window");
     };
     $scope.analize_this_signal = function(record) {
       var index = $scope.records.indexOf(record);
       $window.localStorage["cassandra_command_analysis_to_run_this_signal"] = JSON.stringify($scope.records[index]);
-      $window.open("analysis_2.html", "_blank", 'width=1024,height=700');
+      $window.open("analysis_2.html", "_blank", 'width=1260,height=760');
       // $scope.socket.emit("command_app_to_open_analysis_as_new_window");
     };
     $scope.delete_this_record = function(index) {
@@ -1751,7 +1751,7 @@ var app = angular.module("app")
   $scope.openLaboratory = function() {
     $scope.left_navigator_count = 0;
     $scope.hide_left_navigator();
-    $window.open("laboratory.html", "_blank", 'width=1024,height=680');
+    $window.open("laboratory.html", "_blank", 'width=1260,height=760');
     // $scope.socket.emit("command_app_to_open_laboratory_as_new_window");
     // var win = new $scope.BrowserWindow({ width: 1024, height: 690 });
     // win.loadURL('www.google.com');

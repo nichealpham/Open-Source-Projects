@@ -128,7 +128,7 @@
     </div>
   </div>
   <div style="height:56px;width:calc(100% - 320px);display:inline-block;padding-left:6px;padding-right:8px;">
-    <div class="block e_health_input_block" style="width:calc(100% - 299px);padding:0px;margin:0px;">
+    <div class="block e_health_input_block" style="width:calc(100% - 380px);padding:0px;margin:0px;">
       <input type="text" placeholder="Search any records here..." ng-model="record_search_term" style="margin:0px;background-color:rgb(57,66,100);border-radius:3px;">
     </div>
     <div class="my-card" style="width:143px;padding:0px;margin-left:10px;height:46px;overflow:hidden;">
@@ -142,16 +142,16 @@
         <i class="fa fa-download" aria-hidden="true"></i>
       </button>
     </div>
-    <div class="my-card" style="width:135px;margin-left:6px;height:46px;background-color:transparent;float:right;">
+    <div class="my-card" style="width:216px;margin-left:6px;height:46px;background-color:transparent;float:right;">
       <button ng-click="open_popup_upload_record()" class="sign-in button" style="border:none;color:white;cursor:pointer;width:100%;height:46px;margin-top:2px;border-radius:2px;line-height:36px;font-size:15px;">
         <i class="fa fa-cloud-upload" aria-hidden="true" style="margin-right:2px;"></i>
-        Upload
+        Upload Record
       </button>
     </div>
   </div>
   <div style="height:calc(100vh - 151px);overflow-x:hidden;overflow-y:scroll;width:calc(100% - 320px);float:left;display:inline-block;">
     <div class="col-md-12" style="padding-right:4px;"><!--orderBy:'-'-->
-      <div class="col-lg-6 col-md-6 col-sm-12 record-block-container" ng-mouseleave="mouse_leave_this_record()" ng-mouseenter ="display_record_statistics($index)" ng-repeat="record in records | filter: record_search_term track by $index" style="min-width:320px;padding: 0px 5px 0px 5px;height:auto;position:relative;cursor:pointer;border-radius:3px;">
+      <div class="col-lg-4 col-md-6 col-sm-12 record-block-container" ng-mouseleave="mouse_leave_this_record()" ng-mouseenter ="display_record_statistics($index)" ng-repeat="record in records | filter: record_search_term track by $index" style="min-width:320px;padding: 0px 5px 0px 5px;height:auto;position:relative;cursor:pointer;border-radius:3px;">
         <div class="record-block" style="padding:0px 0px 6px 0px;">
           <div class="overflow-3dot" style="width:100%;float:left;display:inline-block;font-weight:bold;padding:10px;font-size:16px;margin-top:4px;">
             {{$index + 1}}. {{record.name}}
@@ -166,9 +166,10 @@
              </p>
           </div>
           <ul class="profile-options horizontal-list" style="width:100%;display:inline-block;margin-left:0px;margin-top:2px;">
-              <li ng-click="analize_this_signal(record)" style="width:33%;display:inline-block;float:left;border:none;padding:0px;height:64px;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="comments "><p class="grey_color" style="font-size:14px;">Run Analysis</li></p></a>
-              <li ng-click="view_this_signal(record)" style="width:34%;display:inline-block;float:left;border:none;padding:0px;margin-top:-0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="views"><p class="grey_color" style="font-size:14px;">View Signal</li></p></a>
-              <li ng-click="" style="width:33%;display:inline-block;float:left;border:none;padding:0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="likes"><p class="grey_color" style="font-size:14px;">Send Doctor</li></p></a>
+              <!--<li ng-click="analize_this_signal(record)" style="width:49%;display:inline-block;float:left;border:none;padding:0px;height:64px;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="views "><p class="grey_color" style="font-size:14px;">Run Analysis</li></p></a>-->
+              <li ng-click="analize_this_signal(record)" style="width:49%;display:inline-block;float:left;border:none;padding:0px;height:64px;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="comments"><p class="grey_color" style="font-size:14px;">Run Analysis</li></p></a>
+              <li ng-click="view_this_signal(record)" style="width:50%;display:inline-block;float:left;border:none;padding:0px;margin-top:-0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="likes"><p class="grey_color" style="font-size:14px;">View Signal</li></p></a>
+              <!--<li ng-click="$window.open('print.html', '_blank', 'width=1280,height=720')" style="width:33%;display:inline-block;float:left;border:none;padding:0px;height:64px;overflow:hidden;" class="overflow-3dot"><a style="width:92%;display:inline-block;float:left;padding:0px;margin-left:4%;overflow:hidden;" class="likes"><p class="grey_color" style="font-size:14px;">Send Doctor</li></p></a>-->
           </ul>
         </div>
         <label ng-click="delete_this_record($index)" class="record-block-quiter grey_color" style="">
