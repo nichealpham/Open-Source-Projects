@@ -12,6 +12,9 @@
 ### License
 Copyright (c) 2017-2019 Nicheal Pham, The MIT License (MIT).
 
+### Support
+I am happy if these projects could bring you any benefit. Give it a star and share with your friends if you find this repository helpful. You can contact me for extended development or potential collaboration. Thanks.
+
 <br/>
 
 ---
