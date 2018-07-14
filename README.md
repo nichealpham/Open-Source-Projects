@@ -4,7 +4,7 @@
 
 ### App Features
 * Single-page architecture
-* Serverless
+* Serverless/Web-hosting
 * In-browser database
 * 100% front-end
 * Easy to host/deploy
